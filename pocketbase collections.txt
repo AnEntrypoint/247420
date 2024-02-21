@@ -1,0 +1,399 @@
+[
+    {
+        "id": "_pb_users_auth_",
+        "name": "users",
+        "type": "auth",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "users_name",
+                "name": "name",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "users_avatar",
+                "name": "avatar",
+                "type": "file",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "maxSize": 5242880,
+                    "mimeTypes": [
+                        "image/jpeg",
+                        "image/png",
+                        "image/svg+xml",
+                        "image/gif",
+                        "image/webp"
+                    ],
+                    "thumbs": null,
+                    "protected": false
+                }
+            }
+        ],
+        "indexes": [],
+        "listRule": "id = @request.auth.id",
+        "viewRule": "id = @request.auth.id",
+        "createRule": "",
+        "updateRule": "id = @request.auth.id",
+        "deleteRule": "id = @request.auth.id",
+        "options": {
+            "allowEmailAuth": true,
+            "allowOAuth2Auth": true,
+            "allowUsernameAuth": true,
+            "exceptEmailDomains": null,
+            "manageRule": null,
+            "minPasswordLength": 8,
+            "onlyEmailDomains": null,
+            "requireEmail": false
+        }
+    },
+    {
+        "id": "vjb7w8wdzil5t6b",
+        "name": "members",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "vezyogbi",
+                "name": "ERC20",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "6hdjynzw",
+                "name": "pseudonym",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "jdyc0d5h",
+                "name": "bio",
+                "type": "editor",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "convertUrls": false
+                }
+            },
+            {
+                "system": false,
+                "id": "2eyq6y12",
+                "name": "pfp",
+                "type": "file",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "maxSize": 5242880,
+                    "mimeTypes": [],
+                    "thumbs": [],
+                    "protected": false
+                }
+            },
+            {
+                "system": false,
+                "id": "2drkc1zr",
+                "name": "title",
+                "type": "editor",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "convertUrls": false
+                }
+            },
+            {
+                "system": false,
+                "id": "jwzfxrzb",
+                "name": "posts",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "0vcutsayoiofvov",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": null,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "qivfhfrl",
+                "name": "catchphrase",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "g0ltfj9a",
+                "name": "twitter",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "9hu9kgxs",
+                "name": "facebook",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "h0lxajdf",
+                "name": "github",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "sbpapfhe",
+                "name": "youtube",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "bxiperkd",
+                "name": "mastodon",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "wodfhp2u",
+                "name": "steemit",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "row3ahja",
+                "name": "hive",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "e4ev3vct",
+                "name": "rumble",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "dcq6wdgt",
+                "name": "lens",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "indexes": [
+            "CREATE UNIQUE INDEX `idx_rf9Wnmq` ON `members` (`ERC20`)"
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    },
+    {
+        "id": "0vcutsayoiofvov",
+        "name": "posts",
+        "type": "base",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "h0vmatqf",
+                "name": "remote_id",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "wnxlmpzh",
+                "name": "network",
+                "type": "text",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "ol60dlcp",
+                "name": "member",
+                "type": "relation",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "collectionId": "vjb7w8wdzil5t6b",
+                    "cascadeDelete": false,
+                    "minSelect": null,
+                    "maxSelect": 1,
+                    "displayFields": null
+                }
+            },
+            {
+                "system": false,
+                "id": "to6apezl",
+                "name": "metadata",
+                "type": "json",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {}
+            },
+            {
+                "system": false,
+                "id": "f0pscs8x",
+                "name": "body",
+                "type": "editor",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "convertUrls": false
+                }
+            },
+            {
+                "system": false,
+                "id": "1bs3vvlg",
+                "name": "createdAt",
+                "type": "date",
+                "required": false,
+                "presentable": false,
+                "unique": false,
+                "options": {
+                    "min": "",
+                    "max": ""
+                }
+            }
+        ],
+        "indexes": [
+            "CREATE UNIQUE INDEX `idx_yHnGVk4` ON `posts` (`remote_id`)"
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null,
+        "options": {}
+    }
+]
