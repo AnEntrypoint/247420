@@ -7,7 +7,7 @@ export async function load(ctx) {
         membersSub.subscribe((a)=>{
             if(a) res(a.filter((item) => {
                 const nick = ctx.params.nick
-                return item.id === nick
+                return item.ERC20 === nick
             })[0])
         })
     })
