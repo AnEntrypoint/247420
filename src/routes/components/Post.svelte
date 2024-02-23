@@ -1,5 +1,7 @@
 <script>
     export let post;
+    export let data;
+    $: ({ member } = data)
 </script>
 <div class="mb-5 md:col-span-10 space-y-5">
     <div class="infinite-scroll-component__outerdiv">

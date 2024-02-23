@@ -1,18 +1,13 @@
 <script>
 	import { Skeleton } from '$lib/components/ui/skeleton';
+	import Post from '../../components/Post.svelte'
 	export let data;
 	$: ({ member } = data)
 </script>
 
 <div class="container mx-auto max-w-screen-xl flex-grow px-0 pt-8 pb-2 sm:px-5 pt-6">
 	<div class="grid grid-cols-12 lg:gap-8">
-		{#if member.expand}
-			<div class="col-span-12 lg:col-span-8">
-				{#each member.expand.posts || [] as post}
-					
-				{/each}
-			</div>
-		{/if}
+		
 		<div class="col-span-3 md:col-span-3 lg:col-span-4 align-top">
 			<div class="mb-4 space-y-5 px-5 sm:px-0">
 				<div class="relative mt-4 h-32 w-32 sm:mt-4 sm:h-52 sm:w-52">

@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+
+Disallow: /*.js$
+Disallow: /*.json
+Disallow: /analytics.json
+Disallow: /current-visitors.json
