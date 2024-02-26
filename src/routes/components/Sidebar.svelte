@@ -13,7 +13,7 @@
 		<div class="px-3 py-2">
 			
 			<img
-									class="object-cover transition-all rounded-md m-1 hover:scale-105 aspect-[3/4]"
+									class=" transition-all rounded-md m-1 hover:scale-105"
 									src="/logo.gif"
 									alt=""
 								/>
