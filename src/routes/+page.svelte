@@ -1,7 +1,7 @@
 <script>
 	import Post from "$lib/components/post.svelte"
 	export let data;
-	let posts = data.posts;
+	$: ({ posts } = data)
 </script>
 
 <div class="container mx-auto max-w-screen-xl flex-grow px-0 pt-8 pb-2 sm:px-5 pt-6">

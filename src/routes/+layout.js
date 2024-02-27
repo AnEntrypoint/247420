@@ -1,5 +1,6 @@
 import db from '$lib/db.js';
 export const prerender = true;
+export const trailingSlash = 'always'
 export async function load(ctx) {
     const membersSub = await db.getMembers();
     const postsSub = await db.getPosts();

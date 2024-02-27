@@ -1,6 +1,6 @@
 <script>
 	import { Skeleton } from '$lib/components/ui/skeleton';
-	import Post from '../../components/Post.svelte'
+	import Post from '../../../components/Post.svelte'
 	export let data;
 	$: ({ member } = data)
 </script>

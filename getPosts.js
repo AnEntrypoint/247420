@@ -112,9 +112,11 @@ const getMembers = (async () => {
                     console.log(newPost.createdAt)
 
                 } catch (e) {
-                    console.log('skipped ', newPost.remote_id)
-                    //console.error(JSON.stringify(e, null, 2))
-                    //process.exit();
+                    if(e?.originalError?.data?.data?.remote_id?.code != 'validation_not_unique') {
+                        console.log('skipped ', newPost.remote_id)
+                        console.error(JSON.stringify(e, null, 2))
+                        process.exit();
+                    }
                 }
             }
             if (changed) members.update(created.id, created)
