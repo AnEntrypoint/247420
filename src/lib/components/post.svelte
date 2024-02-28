@@ -1,10 +1,8 @@
 <script>
-    import showdown from "showdown"
+    import SvelteMarkdown  from "svelte-markdown"
     export let post;
     export let data;
-	let members = data.members;
-    let converter = new showdown.Converter({simplifiedAutoLink:true,excludeTrailingPunctuationFromURLs:true,tables:true});
-    post.body = converter.makeHtml(post.body);
+	$: ({ members } = data)
     </script>
 <div class="mb-5 md:col-span-10 space-y-5">
     <div class="infinite-scroll-component__outerdiv">
@@ -57,7 +55,7 @@
                             </span>
                         </div>
                         <div class="ml-[53px]">
-                            {@html post.body}
+                            <SvelteMarkdown source={post.body}></SvelteMarkdown>
                             <div class="grid-cols-1 grid-rows-1 grid gap-2 pt-3">
                                 {#each post.imageUrls as url}
                                     <div class="w-2/3 relative">
