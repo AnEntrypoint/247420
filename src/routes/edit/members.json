@@ -1,0 +1,106 @@
+{
+    "id": "vjb7w8wdzil5t6b",
+    "name": "members",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "id": "vezyogbi",
+        "name": "ERC20",
+        "type": "text",
+        "inputClass": "w-80",
+        "required":true
+      },
+      {
+        "id": "6hdjynzw",
+        "name": "pseudonym",
+        "type": "text",
+        "inputClass": "w-32",
+        "required":true
+      },
+      {
+        "id": "jdyc0d5h",
+        "name": "bio",
+        "type": "editor",
+        "required":true
+      },
+      {
+        "id": "2eyq6y12",
+        "name": "pfp",
+        "type": "file",
+        "options": {
+          "maxSelect": 1,
+          "maxSize": 5242880
+        }
+      },
+      {
+        "id": "qivfhfrl",
+        "name": "catchphrase",
+        "type": "text",
+        "inputClass":"w-80"
+      },
+      {
+        "id": "g0ltfj9a",
+        "name": "twitter",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "9hu9kgxs",
+        "name": "facebook",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "h0lxajdf",
+        "name": "github",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "sbpapfhe",
+        "name": "youtube",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "bxiperkd",
+        "name": "mastodon",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "wodfhp2u",
+        "name": "steemit",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "row3ahja",
+        "name": "hive",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "e4ev3vct",
+        "name": "rumble",
+        "type": "text",
+        "inputClass":"w-32"
+      },
+      {
+        "id": "dcq6wdgt",
+        "name": "lens",
+        "type": "text",
+        "inputClass":"w-32"
+      }
+    ],
+    "indexes": [
+      "CREATE UNIQUE INDEX `idx_rf9Wnmq` ON `members` (`ERC20`)"
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {}
+  }

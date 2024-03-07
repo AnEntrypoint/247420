@@ -24,8 +24,6 @@ const getPosts = () => {
     }
     return posts;
 }
-let member = writable();
-let memberDone = false;
 let members = writable();
 let membersDone = false;
 const getMembers = () => {
@@ -56,5 +54,18 @@ const getMembers = () => {
     }
     return members
 }
+let collections = writable();
+let collectionsDone = false;
+const getCollections = () => {
+    if (!collectionsDone) {
+        collectionsDone = true
+        pb.collections.getList(1, 30, {}).then(
+            (items) => {
+                collections.set(items.items)
+            }
+        )
+    }
+    return members
+}
 
-export default { getMembers,  getPosts }
+export default { getMembers,  getPosts, getCollections }

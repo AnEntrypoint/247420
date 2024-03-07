@@ -5,7 +5,7 @@
 	export let data;
 	$: ({ members } = data)
 </script>
-<div class="dark:bg-black dark:text-white">
+<div class="">
 <ModeWatcher />
 <Sidebar members={members}/>
 <div class="flex-auto ml-64 ">

@@ -8,15 +8,11 @@
 	export let members;
 </script>
 
-<div class="pb-12 hidden lg:block flex-1 w-64 absolute dark:bg-black dark:text-white">
+<div class="pb-12 lg:block flex-1 w-64 absolute dark:bg-black dark:text-white">
 	<div class="space-y-4 py-4">
 		<div class="px-3 py-2">
 			<a href="/">
-			<img
-									class=" transition-all rounded-md m-1 hover:scale-105"
-									src="/logo.gif"
-									alt=""
-								/>
+				<img class=" transition-all rounded-md m-1 hover:scale-105" src="/logo.gif" alt="" />
 			</a>
 			<div class="space-y-1">
 				<button
@@ -37,7 +33,12 @@
 					>
 					Sign in</button
 				>
-				<Button on:click={toggleMode} class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start" variant="outline" size="icon">
+				<Button
+					on:click={toggleMode}
+					class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start"
+					variant="outline"
+					size="icon"
+				>
 					<Sun
 						class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 					/>
