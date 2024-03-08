@@ -3,17 +3,17 @@
 	import { Input } from '$lib/components/ui/input';
 	import { Label } from '$lib/components/ui/label';
 
-	export let name = '';
-	export let id = '';
-	export let system = '';
-	export let type, presentable, unique, options, inputClass;
-	export let value = '';
-	let isVisible = true; // Assuming it's always visible
-	let error = '';
-	let touched = false;
-	let required = true; // Assuming it's always required
-	let props = {};
-	const dispatch = createEventDispatcher();
+	export let name = ''
+	export let id = ''
+
+	export let inputClass
+	export let value = ''
+	let isVisible = true
+	export let error = ''
+	let touched = false
+	let required = true
+	let props = {}
+	const dispatch = createEventDispatcher()
 
 	function handleChange(event) {
 		touched = true;
@@ -37,7 +37,7 @@
 			{...props}
 		/>
 		<!--p class="text-sm text-muted-foreground">{name}</p-->
-		{#if touched && error}
+		{#if error}
 			<div id="{name}-error">{error}</div>
 		{/if}
 	</div>

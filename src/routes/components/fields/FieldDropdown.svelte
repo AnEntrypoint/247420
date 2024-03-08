@@ -7,7 +7,7 @@
     export let options = [];
     let selectedOption = '';
     let isVisible = true;
-    let error = '';
+    export let error = '';
     let touched = false;
     let required = true;
     let props = {};

@@ -6,8 +6,8 @@
       if (!touched) touched = true;
       props.onChange(props.name, e.target.value);
     }
-  
-    $: displayError = props.submited || touched ? props.error : null;
+    export let error;
+    $: displayError = props.submited || touched ? error : null;
   </script>
   
   {#if props.isVisible}

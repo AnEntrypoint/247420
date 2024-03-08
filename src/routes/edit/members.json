@@ -9,7 +9,8 @@
         "name": "ERC20",
         "type": "text",
         "inputClass": "w-80",
-        "required":true
+        "required":true,
+        "ajv":{"minLength": 42}
       },
       {
         "id": "6hdjynzw",

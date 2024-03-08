@@ -6,11 +6,11 @@
     export let name = '';
     export let id = '';
     export let isChecked = false;
-    let isVisible = true;
-    let error = '';
-    let touched = false;
-    let required = true;
-    let props = {};
+    export let isVisible = true;
+    export let error = '';
+    export let touched = false;
+    export let required = true;
+    export let props = {};
     const dispatch = createEventDispatcher();
   
     function handleChange(event) {
