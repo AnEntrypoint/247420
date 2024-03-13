@@ -9,7 +9,7 @@
 	export let type, presentable, unique, options, inputClass
 	export let value = ''
 	let isVisible = true // Assuming it's always visible
-	let error = ''
+	export let error = ''
 	let touched = false
 	let required = true // Assuming it's always required
 	let props = {}

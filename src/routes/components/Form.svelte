@@ -59,16 +59,13 @@
 				const pathparts = error.instancePath.split('/');
 				pathparts.shift()
 				let out = schema;
-				for(let depth in pathparts) {
-					const path = pathparts[depth]
-					for(let p of pathparts) {
-						out=out.filter(i=>i.name==p)[0]
-						schema=schema
-					}
+				for(let p of pathparts) {
+					out=out.filter(i=>i.name==p)[0]
+					schema=schema
 				}
-				console.log(out.element)
 				out.element.scrollIntoView({behavior: 'smooth'})
 				out.error = error.message
+				console.log({error}, {out})
 			}
 		} else {
 						

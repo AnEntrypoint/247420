@@ -6,6 +6,11 @@
 
 	import { toggleMode } from 'mode-watcher';
 	export let members;
+
+	export let data
+	let loggedin
+	data.loggedin.subscribe(a=>loggedin=a)
+
 </script>
 
 <div class="pb-12 lg:block flex-1 w-64 absolute dark:bg-black dark:text-white">
@@ -15,24 +20,33 @@
 				<img class=" transition-all rounded-md m-1 hover:scale-105" src="/logo.gif" alt="" />
 			</a>
 			<div class="space-y-1">
-				<button
-					type="button"
-					tabindex="0"
-					class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start"
-					data-bits-button-root=""
-					><svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="mr-2 h-4 w-4"
-						><circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" /></svg
+				{#if loggedin} 
+					<Button class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start" on:click={data.logout}>Sign out</Button>
+				{/if}
+				{#if !loggedin}
+					<button
+						type="button"
+						tabindex="0"
+						class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start"
+						data-bits-button-root=""
+						on:click={data.login}
+						><svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="mr-2 h-4 w-4"
+							><circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" /></svg
+						>
+						Sign in</button
 					>
-					Sign in</button
-				>
+				{/if}
+				{#if loggedin} 
+					<a href="/edit" class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start">Profile</a>
+				{/if}
 				<Button
 					on:click={toggleMode}
 					class="inline-flex items-center rounded-md text-sm font-medium whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 w-full justify-start"

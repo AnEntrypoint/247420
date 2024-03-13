@@ -14,5 +14,5 @@ export async function load(ctx) {
             if(a) res(a)
         })
     })
-    return {members, posts}
+    return {members, posts, login:db.login, logout:db.logout, loggedin:db.loggedin}
 }

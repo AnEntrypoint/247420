@@ -7,7 +7,7 @@
 	$: ({ members } = data)
 </script>
 <ModeWatcher />
-<Sidebar members={members}/>
+<Sidebar members={members} data={data}/>
 <div class="flex-auto ml-64 ">
 	<Countdown></Countdown>
 	<slot />

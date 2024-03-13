@@ -1,7 +1,12 @@
-import { writable } from 'svelte/store';
+import { writable } from 'svelte/store'
+import { browser } from '$app/environment'
+import PocketBase from 'pocketbase'
+import Web3 from 'web3';
 
-import PocketBase from 'pocketbase';
-const pb = new PocketBase('https://pb.lan.247420.xyz');
+const pb = new PocketBase('https://pb.lan.247420.xyz')
+if (browser) {
+    window.pb=pb
+}
 let posts = writable();
 let postsDone = false;
 const getPosts = () => {
@@ -68,4 +73,55 @@ const getCollections = () => {
     return members
 }
 
-export default { getMembers,  getPosts, getCollections }
+let loggedin = writable();
+loggedin.set(pb.authStore.model)
+
+const login=async () => {
+    if (browser) {
+        if (window.ethereum) {
+            const web3 = new Web3(window.ethereum);
+
+            let accounts = await window.ethereum.enable();
+            const message = '247420';
+            const account = accounts[0];
+            console.log({ account });
+            try {
+                const signedMessage = await web3.eth.personal.sign(message, account, '');
+                var hash = await window.crypto.subtle.digest(
+                    'SHA-256',
+                    new TextEncoder().encode(signedMessage)
+                );
+                var hexString = Array.from(new Uint8Array(hash))
+                    .map((byte) => ('00' + byte.toString(16)).slice(-2))
+                    .join('');
+                try {
+                    const createOpts = {
+                        email: account + '@247420.xyz',
+                        name: account,
+                        password: hexString,
+                        passwordConfirm: hexString
+                    };
+                    await pb.collection('users').create(createOpts);
+                } catch(e) {
+
+                }
+                console.log([account + '@247420.xyz', hexString])
+                const authData = await pb
+                    .collection('users')
+                    .authWithPassword(account + '@247420.xyz', hexString);
+                loggedin.set(pb.authStore.model)
+                } catch (e) {
+                console.error(e);
+            }
+        } else {
+            console.error('MetaMask not detected. Please make sure you have MetaMask installed.');
+        }
+    }
+}
+
+const logout=() => {
+    pb.authStore.clear();
+    loggedin.set(pb.authStore.model)
+}
+
+export default { getMembers,  getPosts, getCollections, login, logout, loggedin }
