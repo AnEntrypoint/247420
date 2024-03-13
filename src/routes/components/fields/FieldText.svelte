@@ -1,23 +1,23 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
+	import { createEventDispatcher } from 'svelte'
+	import { Input } from '$lib/components/ui/input'
+	import { Label } from '$lib/components/ui/label'
 
-	export let name = '';
-	export let id = '';
-	export let system = '';
-	export let type, presentable, unique, options, inputClass;
-	export let value = '';
-	let isVisible = true; // Assuming it's always visible
-	let error = '';
-	let touched = false;
-	let required = true; // Assuming it's always required
-	let props = {};
-	const dispatch = createEventDispatcher();
+	export let name = ''
+	export let id = ''
+	export let system = ''
+	export let type, presentable, unique, options, inputClass
+	export let value = ''
+	let isVisible = true // Assuming it's always visible
+	let error = ''
+	let touched = false
+	let required = true // Assuming it's always required
+	let props = {}
+	const dispatch = createEventDispatcher()
 
 	function handleChange(event) {
-		touched = true;
-		dispatch('change', { name, value: event.target.value });
+		touched = true
+		dispatch('change', { name, value: event.target.value })
 	}
 </script>
 

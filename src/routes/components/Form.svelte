@@ -6,11 +6,13 @@
 	import FieldDropdown from './fields/FieldDropdown.svelte'
 	import { Button } from "$lib/components/ui/button"
 	import Ajv from 'ajv'
+	import FieldCrop from './fields/FieldCrop.svelte';
 	//import RangeCalendar from '$lib/components/ui/range-calendar/range-calendar.svelte';
 	const ajv = new Ajv()
 	const fields = {
 		number: FieldNumber,
 		text: FieldText,
+		crop: FieldCrop,
 		editor: FieldEditor,
 		radio: FieldRadio,
 		dropdown: FieldDropdown,

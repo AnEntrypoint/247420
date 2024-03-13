@@ -28,7 +28,7 @@
       {
         "id": "2eyq6y12",
         "name": "pfp",
-        "type": "file",
+        "type": "crop",
         "options": {
           "maxSelect": 1,
           "maxSize": 5242880
