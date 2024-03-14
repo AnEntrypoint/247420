@@ -1,4 +1,5 @@
 <script>
+  import db from '$lib/db.js';
   import { createEventDispatcher } from 'svelte'
   import { Label } from '$lib/components/ui/label'
   import Cropper from "svelte-easy-crop"
@@ -6,19 +7,16 @@
 
   export let name = ''
   export let id = ''
-  export let system = ''
-  export let type, presentable, unique, options, inputClass;
+  export let type, presentable, unique, options, inputClass, title;
   export let value = ''
   export let image;
   export let crop = { x: 0, y: 0 }
   export let zoom = 1
-  let pixelCrop, croppedImage;
-  let isVisible = true; // Assuming it's always visible
-  let error = '';
-  let touched = false;
-  let required = true; // Assuming it's always required
-  let props = {};
-  const defaultSrc = "https://cdn1-www.dogtime.com/assets/uploads/2011/03/puppy-development.jpg";
+  export let values
+  export let pixelCrop, croppedImage
+  export let isVisible = true
+  export let error = ''
+  export let touched = false
 
   const dispatch = createEventDispatcher();
 
@@ -53,9 +51,14 @@
 
 {#if isVisible}
   <div class="grid w-full items-center gap-1.5 mb-8">
-      <Label for={id}>{name}</Label>
+      <Label for={id}>{title||name}</Label>
+      {#if value}
+        <img src={db.getUrl(values, value)} width="100" height="100"/>
+      {/if}
+      {#if image}
       <div style="position: relative; width: 100%; height: 300px;">
-          <Cropper
+        Crop Preview:
+        <Cropper
               {image}
               class={inputClass}
               bind:crop 
@@ -64,12 +67,13 @@
               aspect={1}
           />
       </div>
+      <button type="button" on:click={cropImage}>Crop Image</button>
+      <button type="button" on:click={reset}>Reset</button>
+      {/if}
       <input type="file" capture="user" accept="image/*" on:change={onFileSelected} style="margin-top: 10px;">
       {#if touched && error}
           <div id="{name}-error">{error}</div>
       {/if}
-      <button type="button" on:click={cropImage}>Crop Image</button>
-      <button type="button" on:click={reset}>Reset</button>
   </div>
 {/if}
 

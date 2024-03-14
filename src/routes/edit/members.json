@@ -28,6 +28,7 @@
       {
         "id": "2eyq6y12",
         "name": "pfp",
+        "title": "Profile Picture",
         "type": "crop",
         "options": {
           "maxSelect": 1,

@@ -124,4 +124,13 @@ const logout=() => {
     loggedin.set(pb.authStore.model)
 }
 
-export default { getMembers,  getPosts, getCollections, login, logout, loggedin }
+const getName=()=>{
+    if(pb.authStore.model) return pb.authStore.model.name;
+}
+
+const getUrl=(record, value, options)=>{
+    console.log('getting url', record, value)
+    return pb.files.getUrl(record, value, options);
+}
+
+export default { getMembers,  getPosts, getCollections, login, logout, loggedin, getName, getUrl }

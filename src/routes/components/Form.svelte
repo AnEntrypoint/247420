@@ -46,7 +46,7 @@
 	};
 	const ajvschema = buildajvschema(schema)
 	let compiledschema = ajv.compile(ajvschema)
-	let values = {}
+	export let values = {}
 	export let errors = {}
 	const handleSubmit = ()=>{
 		for(let field of schema) {
@@ -77,7 +77,7 @@
 	
 	{#each schema as field, index}
 		<div bind:this={field.element}>
-		<svelte:component this={fields[field.type]} {...field} bind:value={values[field.name]}/>
+		<svelte:component this={fields[field.type]} {...field} values={values} bind:value={values[field.name]}/>
 		</div>
 	{/each}
 	<Button on:click={handleSubmit}>Submit</Button>
