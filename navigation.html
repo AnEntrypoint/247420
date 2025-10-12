@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>247420@terminal:~$ | Navigation Protocol</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --terminal-bg: #000000;
+            --terminal-green: #00ff00;
+            --terminal-green-bright: #33ff33;
+            --terminal-amber: #ffb000;
+            --terminal-red: #ff3333;
+            --terminal-blue: #0099ff;
+            --text-primary: #00ff00;
+            --text-secondary: #cccccc;
+            --text-dim: #666666;
+            --border-color: #333333;
+            --cursor-color: #00ff00;
+            --terminal-bg-alt: #0a0a0a;
+            --terminal-border: #1a1a1a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', monospace;
+            background: var(--terminal-bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .terminal-scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.03),
+                rgba(0, 255, 0, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+
+        .terminal-flicker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--terminal-bg);
+            animation: terminalFlicker 0.15s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes terminalFlicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.99; }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--terminal-bg-alt);
+            border: 1px solid var(--terminal-green);
+            border-radius: 4px;
+            padding: 8px 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 247420;
+            font-family: 'JetBrains Mono', monospace;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .navbar a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 0.85rem;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .navbar a:hover {
+            background: rgba(0, 255, 0, 0.1);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+
+        .navbar a.active {
+            background: rgba(0, 255, 0, 0.2);
+            color: var(--terminal-green);
+            border: 1px solid var(--terminal-green);
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+        }
+
+        .navbar i {
+            font-size: 14px;
+            color: var(--terminal-green);
+        }
+
+        .content-container {
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                max-width: 95%;
+                gap: 6px;
+                padding: 6px 12px;
+            }
+
+            .navbar a {
+                padding: 4px 8px;
+                font-size: 12px;
+                gap: 6px;
+            }
+
+            .navbar i {
+                font-size: 12px;
+            }
+
+            .content-container {
+                margin-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-scanlines"></div>
+    <div class="terminal-flicker"></div>
+
+    <nav class="navbar">
+        <a href="index.html">
+            <i class="fas fa-terminal"></i>
+            $ ./home.sh
+        </a>
+        <a href="lore.html">
+            <i class="fas fa-file-alt"></i>
+            $ cat lore.txt
+        </a>
+        <a href="images-thread.html">
+            <i class="fas fa-image"></i>
+            $ ls images/
+        </a>
+        <a href="videos-thread.html">
+            <i class="fas fa-play"></i>
+            $ ./media_player --tv
+        </a>
+        <a href="https://247420.4247420769.xyz/" target="_blank">
+            <i class="fas fa-network-wired"></i>
+            $ ssh world@247420
+        </a>
+        <a href="https://thirdweb.com/somnia/0x1Fb25216baC410872CF548cc9A1D1B9B00F67A12" target="_blank">
+            <i class="fas fa-coins"></i>
+            $ ./mint_nft.sh
+        </a>
+    </nav>
+
+    <div class="content-container">
+        <!-- Content will be inserted here -->
+    </div>
+
+    <script>
+        // Set active navigation based on current page
+        function setActiveNav() {
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.navbar a');
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPath || (currentPath === 'index.html' && href === 'index.html')) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // System Statistics function
+        function showStats() {
+            const statsContent = `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,0,20,0.9); z-index: 9999; display: flex; justify-content: center; align-items: center;">
+                    <div style="background: rgba(26,0,51,0.9); backdrop-filter: blur(20px); border-radius: 25px; padding: 50px; max-width: 600px; width: 90%; text-align: center; color: var(--text-primary); border: 2px solid var(--accent-cyan); box-shadow: var(--glow-cyan); font-family: 'Orbitron', monospace;">
+                        <h2 style="margin-bottom: 30px; color: var(--accent-cyan); font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">⚡ System Statistics ⚡</h2>
+                        <div style="font-size: 1.1rem; line-height: 2; font-family: 'Space Mono', monospace;">
+                            <p style="color: var(--text-secondary);">🔗 Network Nodes: <span style="color: var(--accent-cyan); font-weight: 700;">247,420</span></p>
+                            <p style="color: var(--text-secondary);">🧠 Consciousness Index: <span style="color: var(--accent-magenta); font-weight: 700;">∞</span></p>
+                            <p style="color: var(--text-secondary);">📊 Data Flow Rate: <span style="color: var(--accent-purple); font-weight: 700;">77.7 TB/s</span></p>
+                            <p style="color: var(--text-secondary);">⚛️ Quantum Coherence: <span style="color: var(--accent-cyan); font-weight: 700;">99.7%</span></p>
+                            <p style="color: var(--text-secondary);">🌐 Active Connections: <span style="color: var(--accent-magenta); font-weight: 700;">∞</span></p>
+                            <p style="color: var(--text-secondary);">🔥 Protocol Status: <span style="color: #00ff00; font-weight: 700;">ACTIVE</span></p>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" style="margin-top: 30px; padding: 15px 30px; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-magenta)); border: none; border-radius: 25px; color: var(--primary-dark); font-weight: 700; font-family: 'Orbitron', monospace; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: var(--glow-cyan);">Terminate Connection</button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', statsContent);
+        }
+
+        // Load shared navbar
+        // Initialize navigation on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setActiveNav();
+        });
+    </script>
+</body>
+</html>

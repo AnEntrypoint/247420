@@ -1,0 +1,53 @@
+name: Optimized Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci --production
+
+    - name: Build application
+      run: npm run build:production
+
+    - name: Optimize build artifacts
+      run: |
+        # Compress text files
+        find dist -name "*.js" -o -name "*.css" -o -name "*.html" | xargs -I {} gzip -k {}
+        find dist -name "*.js" -o -name "*.css" -o -name "*.html" | xargs -I {} brotli -k {}
+
+    - name: Cache build artifacts
+      uses: actions/cache@v3
+      with:
+        path: |
+          dist
+          node_modules
+        key: ${{ runner.os }}-build-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
+    - name: Deploy to production
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deploying to production..."
+        # Add your deployment commands here

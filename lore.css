@@ -1,0 +1,384 @@
+/* Dynamic Lore Engine Styles */
+.lore-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.nav-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 25px;
+  text-decoration: none;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(240, 147, 251, 0.5);
+}
+
+.nav-icon {
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.nav-text {
+  flex: 1;
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #f093fb;
+}
+
+.nav-subtitle {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Chapter Styles */
+.lore-chapter {
+  min-height: 100vh;
+  padding: 40px 20px;
+  transition: all 0.3s ease;
+}
+
+.chapter-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.chapter-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.chapter-title {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.chapter-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* Section Styles */
+.lore-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.section-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.content-block {
+  margin-bottom: 30px;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border-left: 4px solid var(--primary-color, #f093fb);
+}
+
+.content-headline {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--accent-color, #4a90e2);
+  font-weight: 600;
+}
+
+.content-copy {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* List Styles */
+.lore-list {
+  list-style: none;
+  padding: 0;
+}
+
+.lore-item {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 15px;
+  border-left: 4px solid var(--secondary-color, #f5576c);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.lore-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme-specific overrides */
+.theme-cyberpunk {
+  --primary-color: #f093fb;
+  --secondary-color: #f5576c;
+  --accent-color: #4a90e2;
+}
+
+.theme-neon-noir {
+  --primary-color: #ff006e;
+  --secondary-color: #8338ec;
+  --accent-color: #3a86ff;
+}
+
+.theme-cosmic-horror {
+  --primary-color: #7209b7;
+  --secondary-color: #560bad;
+  --accent-color: #480ca8;
+}
+
+.theme-occult-cyber {
+  --primary-color: #c77dff;
+  --secondary-color: #e0aaff;
+  --accent-color: #10002b;
+}
+
+.theme-cyberpunk-finance {
+  --primary-color: #00f5ff;
+  --secondary-color: #ff006e;
+  --accent-color: #ffbe0b;
+}
+
+/* Enhanced Lore Card Styles */
+a.lore-card {
+  display: block !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.lore-card-mood {
+  position: absolute !important;
+  top: 15px !important;
+  right: 15px !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  padding: 4px 10px !important;
+  border-radius: 12px !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  backdrop-filter: blur(8px) !important;
+  color: #f093fb !important;
+  border: 1px solid rgba(240, 147, 251, 0.4) !important;
+  z-index: 15 !important;
+  pointer-events: none !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Interactive Elements */
+#random-lore-snippet {
+  cursor: pointer;
+  color: #f093fb;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+#random-lore-snippet:hover {
+  color: #f5576c;
+  text-shadow: 0 0 10px rgba(240, 147, 251, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lore-nav {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .nav-item {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .nav-icon {
+    font-size: 2rem;
+  }
+
+  .nav-title {
+    font-size: 1.3rem;
+  }
+
+  .chapter-title {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .lore-section {
+    padding: 25px;
+  }
+
+  .content-block {
+    padding: 20px;
+  }
+
+  .content-headline {
+    font-size: 1.3rem;
+  }
+}
+
+/* Animations */
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 10px rgba(240, 147, 251, 0.5); }
+  50% { text-shadow: 0 0 20px rgba(240, 147, 251, 0.8); }
+}
+
+.glow-text {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Progress Dots */
+.progress-dot {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-dot:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px rgba(240, 147, 251, 0.7);
+}
+
+/* Loading State */
+.loading-lore {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.loading-lore::after {
+  content: '...';
+  animation: dots 1.5s infinite;
+}
+
+/* Back Button */
+.back-button-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Inline Chapter Display */
+.chapter-inline {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px;
+  margin: 20px 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* Editor Comments Styling */
+.editor-comment {
+  background: rgba(255, 255, 0, 0.1);
+  border-left: 3px solid #ffff00;
+  padding: 2px 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+  font-style: italic;
+  font-size: 0.9em;
+  color: #ffffcc;
+  text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+  font-family: 'Courier New', monospace;
+}
+
+.editor-comment:hover {
+  background: rgba(255, 255, 0, 0.2);
+  transform: translateX(5px);
+  transition: all 0.3s ease;
+}

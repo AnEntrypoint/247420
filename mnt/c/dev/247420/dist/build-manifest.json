@@ -1,0 +1,53 @@
+{
+  "buildTime": "2025-10-07T07:00:33.055Z",
+  "buildDuration": 599,
+  "version": "1.0.0",
+  "config": {
+    "baseDir": "/mnt/c/dev/247420",
+    "inputDir": "/mnt/c/dev/247420",
+    "outputDir": "/mnt/c/dev/247420/dist",
+    "staticDir": "static",
+    "contentDir": "content",
+    "enablePhraseProcessing": true,
+    "enableMediaGeneration": true,
+    "enableViteBuild": true,
+    "enableCMSIntegration": true,
+    "enableValidation": true,
+    "cleanOutput": true,
+    "backupFiles": true,
+    "verbose": true
+  },
+  "stats": {
+    "processedFiles": 3,
+    "htmlFiles": 0,
+    "copiedFiles": 3,
+    "errors": 0,
+    "warnings": 0
+  },
+  "phraseStats": {
+    "totalPhrases": 0,
+    "totalGroups": 0,
+    "totalKeys": 0,
+    "averagePhrasesPerKey": 0
+  },
+  "mediaStats": null,
+  "files": [
+    {
+      "input": "mnt/c/dev/247420/saved_images.json",
+      "output": "mnt/c/dev/247420/dist/saved_images.json",
+      "processed": false
+    },
+    {
+      "input": "mnt/c/dev/247420/saved_media.json",
+      "output": "mnt/c/dev/247420/dist/saved_media.json",
+      "processed": false
+    },
+    {
+      "input": "mnt/c/dev/247420/saved_videos.json",
+      "output": "mnt/c/dev/247420/dist/saved_videos.json",
+      "processed": false
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

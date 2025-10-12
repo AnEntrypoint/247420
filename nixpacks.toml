@@ -1,0 +1,20 @@
+[phases.setup]
+nixPkgs = ["nodejs_20", "npm"]
+
+[variables]
+CI = "true"
+NPM_CONFIG_UPDATE_NOTIFIER = "false"
+
+[phases.install]
+cmds = [
+  "rm -rf node_modules package-lock.json",
+  "npm install --no-cache --prefer-offline"
+]
+
+[phases.build]
+cmds = [
+  "npm run build"
+]
+
+[start]
+cmd = "npx serve -s dist -p 3000"
