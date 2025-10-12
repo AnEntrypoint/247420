@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
-import { copyFileSync, existsSync } from 'fs'
-import { resolve } from 'path'
+import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'fs'
+import { resolve, join } from 'path'
 
 export default defineConfig({
   build: {
@@ -32,18 +32,15 @@ export default defineConfig({
           // Copy any other static assets from public folder
           const publicDir = resolve(__dirname, 'public')
           if (existsSync(publicDir)) {
-            const fs = require('fs')
-            const path = require('path')
-
             function copyRecursive(src, dest) {
-              const stat = fs.statSync(src)
+              const stat = statSync(src)
               if (stat.isDirectory()) {
-                if (!fs.existsSync(dest)) {
-                  fs.mkdirSync(dest, { recursive: true })
+                if (!existsSync(dest)) {
+                  mkdirSync(dest, { recursive: true })
                 }
-                const files = fs.readdirSync(src)
+                const files = readdirSync(src)
                 files.forEach(file => {
-                  copyRecursive(path.join(src, file), path.join(dest, file))
+                  copyRecursive(join(src, file), join(dest, file))
                 })
               } else {
                 copyFileSync(src, dest)
