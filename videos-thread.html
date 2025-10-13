@@ -798,6 +798,17 @@
                 this.currentProgramIndex = 0;
                 this.scheduledPlayTimeout = null;
 
+                // Weekly schedule system
+                this.weeklySchedule = null;
+                this.currentWeek = null;
+                this.scheduleStart = null;
+                this.isScheduledVideoPlaying = false;
+
+                // Loop scheduling system
+                this.loopSchedule = [];
+                this.loopDuration = 3600000; // 1 hour default
+                this.epochStart = new Date('2025-01-01T00:00:00Z').getTime();
+
                 this.initAudioNoise();
                 this.initNoiseCanvas();
             }
@@ -823,12 +834,13 @@
 
             async init() {
                 await this.loadVideos();
+                await this.loadWeeklySchedule();
                 this.setupEventListeners();
                 this.setupVolumeControl();
                 this.setupAudioInteraction();
                 this.startNoiseAnimation();
                 this.generateProgramSchedule();
-                await this.startSynchronizedBroadcast();
+                await this.startHybridBroadcast();
             }
 
             async loadVideos() {
@@ -837,6 +849,11 @@
                     if (!response.ok) throw new Error('Failed to fetch videos');
 
                     this.videos = await response.json();
+
+                    // Create loop schedule from videos for continuous programming
+                    if (Object.keys(this.videos).length > 0) {
+                        this.createLoopSchedule();
+                    }
 
                     // If no videos loaded, create a default test video
                     if (Object.keys(this.videos).length === 0) {
@@ -872,63 +889,259 @@
                 }
             }
 
+            createLoopSchedule() {
+                const videoArray = Object.keys(this.videos).map(filename => ({
+                    filename: filename,
+                    ...this.videos[filename]
+                }));
+
+                this.loopSchedule = [];
+                let offsetMs = 0;
+
+                // Create continuous loop from available videos
+                while (offsetMs < this.loopDuration) {
+                    for (const video of videoArray) {
+                        if (offsetMs >= this.loopDuration) break;
+
+                        const duration = (video.duration || 30) * 1000;
+                        this.loopSchedule.push({
+                            filename: video.filename,
+                            duration: duration,
+                            offsetMs: offsetMs,
+                            videoIndex: this.videos.findIndex(v => v.filename === video.filename)
+                        });
+
+                        offsetMs += duration + 2000; // 2 second gap between videos
+                    }
+                }
+
+                console.log(`📺 Created loop schedule with ${this.loopSchedule.length} slots, duration: ${(this.loopDuration / 60000).toFixed(1)}min`);
+            }
+
+            async loadWeeklySchedule() {
+                try {
+                    const currentWeek = this.getCurrentWeek();
+                    await this.loadWeekData(currentWeek);
+                    console.log(`📅 Loaded weekly schedule for week ${currentWeek}`);
+                } catch (error) {
+                    console.log('⚠️ Could not load weekly schedule, using default programming:', error.message);
+                    this.weeklySchedule = null;
+                }
+            }
+
+            getCurrentWeek() {
+                const now = new Date();
+                const gmt = Date.UTC(
+                    now.getUTCFullYear(),
+                    now.getUTCMonth(),
+                    now.getUTCDate(),
+                    now.getUTCHours(),
+                    now.getUTCMinutes(),
+                    now.getUTCSeconds()
+                );
+
+                const start = new Date('2025-10-11T00:00:00Z');
+                const elapsed = gmt - start.getTime();
+                if (elapsed < 0) return 1;
+
+                const week = Math.floor(elapsed / (7 * 24 * 60 * 60 * 1000)) + 1;
+                return week;
+            }
+
+            async loadWeekData(week) {
+                try {
+                    const response = await fetch(`/schedule_weeks/week_${week}.json`);
+                    if (!response.ok) {
+                        throw new Error(`Week ${week} not found`);
+                    }
+
+                    const scheduleData = await response.json();
+                    this.weeklySchedule = scheduleData;
+                    this.scheduleStart = new Date(scheduleData.m.start);
+                    this.currentWeek = week;
+                } catch (error) {
+                    throw new Error(`Failed to load week ${week}: ${error.message}`);
+                }
+            }
+
+            async getCurrentScheduledVideo() {
+                if (!this.weeklySchedule) return null;
+
+                const now = new Date();
+                const gmt = Date.UTC(
+                    now.getUTCFullYear(),
+                    now.getUTCMonth(),
+                    now.getUTCDate(),
+                    now.getUTCHours(),
+                    now.getUTCMinutes(),
+                    now.getUTCSeconds()
+                );
+
+                if (this.scheduleStart) {
+                    const scheduleStartGMT = Date.UTC(
+                        this.scheduleStart.getUTCFullYear(),
+                        this.scheduleStart.getUTCMonth(),
+                        this.scheduleStart.getUTCDate(),
+                        this.scheduleStart.getUTCHours(),
+                        this.scheduleStart.getUTCMinutes(),
+                        this.scheduleStart.getUTCSeconds()
+                    );
+
+                    const elapsedInWeek = gmt - scheduleStartGMT;
+                    if (elapsedInWeek < 0) return null;
+
+                    const day = Math.floor(elapsedInWeek / (24 * 60 * 60 * 1000));
+                    const hour = Math.floor((elapsedInWeek % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+
+                    const scheduleStartDay = 6; // Saturday
+                    const currentDay = (scheduleStartDay + day) % 7;
+                    const dayIndex = currentDay === 0 ? 6 : currentDay - 1;
+                    const dayName = this.weeklySchedule.m.days[dayIndex];
+
+                    const slots = this.weeklySchedule.s.filter(s =>
+                        s.d === dayName && this.parseTime(s.t) === hour
+                    );
+
+                    if (slots.length === 0) return null;
+
+                    const slot = slots[0];
+                    const video = this.weeklySchedule.v[slot.v];
+
+                    if (video) {
+                        return {
+                            ...video,
+                            duration: (video.du || slot.du || 30) * 1000,
+                            filename: video.filename || `scheduled_${slot.v}.mp4`
+                        };
+                    }
+                }
+
+                return null;
+            }
+
+            parseTime(timeStr) {
+                const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+                if (!match) return 0;
+
+                let hour = parseInt(match[1]);
+                const period = match[3];
+                if (period === 'PM' && hour !== 12) hour += 12;
+                if (period === 'AM' && hour === 12) hour = 0;
+                return hour;
+            }
+
             seededRandom(seed) {
                 const x = Math.sin(seed) * 10000;
                 return x - Math.floor(x);
             }
 
             generateProgramSchedule() {
-                const EPOCH_START = new Date('2025-01-01T00:00:00Z').getTime();
                 const now = Date.now();
-                const elapsedTime = now - EPOCH_START;
+                const elapsedSinceEpoch = now - this.epochStart;
+                const currentLoopPosition = elapsedSinceEpoch % this.loopDuration;
 
-                let schedule = [];
-                let currentTime = 0;
-                let seedOffset = 0;
-
-                while (currentTime < elapsedTime + 3600000 && this.videos.length > 0) {
-                    for (let i = 0; i < this.videos.length; i++) {
-                        const videoIndex = Math.floor(this.seededRandom(this.PROGRAM_SEED + seedOffset) * this.videos.length);
-                        const video = this.videos[videoIndex];
-
-                        schedule.push({
-                            videoIndex: videoIndex,
-                            startTime: EPOCH_START + currentTime,
-                            duration: video.duration * 1000 || 30000,
-                            filename: video.filename
-                        });
-
-                        currentTime += (video.duration * 1000 || 30000) + 2000;
-                        seedOffset++;
-                    }
-                }
-
-                this.schedule = schedule;
-                const currentSlot = this.schedule.find(slot =>
-                    slot.startTime <= now && slot.startTime + slot.duration + 2000 > now
+                const currentSlot = this.loopSchedule.find(slot =>
+                    slot.offsetMs <= currentLoopPosition && slot.offsetMs + slot.duration > currentLoopPosition
                 );
 
                 if (currentSlot) {
-                    this.currentProgramIndex = this.schedule.indexOf(currentSlot);
-                    console.log(`📺 Synced to program slot ${this.currentProgramIndex}: ${currentSlot.filename}`);
+                    this.currentProgramIndex = this.loopSchedule.indexOf(currentSlot);
+                    console.log(`📺 Synced to loop position ${this.currentProgramIndex}: ${currentSlot.filename}`);
                 } else {
-                    this.currentProgramIndex = this.schedule.findIndex(slot => slot.startTime > now);
-                    console.log(`📺 Waiting for next program slot at ${new Date(this.schedule[this.currentProgramIndex].startTime).toLocaleTimeString()}`);
+                    this.currentProgramIndex = this.loopSchedule.findIndex(slot => slot.offsetMs > currentLoopPosition);
+                    if (this.currentProgramIndex === -1) this.currentProgramIndex = 0;
+                    console.log(`📺 Waiting for next program at index ${this.currentProgramIndex}`);
+                }
+            }
+
+                  async startHybridBroadcast() {
+                // Check for scheduled video first
+                const scheduledVideo = await this.getCurrentScheduledVideo();
+
+                if (scheduledVideo && scheduledVideo.filename) {
+                    console.log(`📅 Scheduled video detected: ${scheduledVideo.show || scheduledVideo.filename}`);
+                    await this.playWeeklyScheduledVideo(scheduledVideo);
+                    this.isScheduledVideoPlaying = true;
+                } else {
+                    // No scheduled video, play regular 247420 content
+                    console.log('📺 No scheduled video, playing regular 247420 content');
+                    this.isScheduledVideoPlaying = false;
+                    await this.startSynchronizedBroadcast();
+                }
+            }
+
+            async playWeeklyScheduledVideo(video) {
+                // Show static briefly before scheduled content
+                this.staticElement.classList.add('active', 'temporal-refresh');
+                this.playStaticNoise();
+
+                const videoPath = video.filename.startsWith('http')
+                    ? video.filename
+                    : `/saved_videos/${video.filename}`;
+
+                this.currentVideoElement.src = videoPath;
+                this.currentVideoElement.volume = this.volume / 100;
+                this.currentVideoElement.muted = this.volume === 0;
+                this.currentVideoElement.preload = 'auto';
+                this.currentVideoElement.load();
+
+                try {
+                    await new Promise((resolve, reject) => {
+                        const timeout = setTimeout(() => {
+                            console.log('⚠️ Scheduled video timeout, playing anyway');
+                            resolve();
+                        }, 10000);
+
+                        this.currentVideoElement.addEventListener('canplay', () => {
+                            clearTimeout(timeout);
+                            resolve();
+                        }, { once: true });
+
+                        this.currentVideoElement.addEventListener('error', (e) => {
+                            clearTimeout(timeout);
+                            reject(e);
+                        }, { once: true });
+                    });
+
+                    // Clear static and play scheduled video
+                    this.staticElement.classList.remove('active', 'temporal-refresh');
+                    this.stopStaticNoise();
+
+                    document.getElementById('loadingText').style.display = 'none';
+                    document.getElementById('nowPlaying').style.display = 'block';
+                    document.getElementById('nowPlaying').innerHTML = `<i class="fas fa-satellite-dish"></i> SCHEDULED: ${video.show || video.filename}`;
+
+                    await this.currentVideoElement.play();
+
+                    // Set timeout for video end
+                    setTimeout(() => {
+                        this.onScheduledVideoEnd();
+                    }, video.duration + 2000);
+
+                    console.log(`📅 Playing scheduled video: ${video.filename}`);
+                } catch (error) {
+                    console.error('❌ Error playing scheduled video:', error);
+                    this.onScheduledVideoEnd();
                 }
             }
 
             async startSynchronizedBroadcast() {
                 const now = Date.now();
-                const currentSlot = this.schedule[this.currentProgramIndex];
+                const elapsedSinceEpoch = now - this.epochStart;
+                const currentLoopPosition = elapsedSinceEpoch % this.loopDuration;
+                const currentSlot = this.loopSchedule[this.currentProgramIndex];
+                const slotStartTime = this.epochStart + Math.floor(elapsedSinceEpoch / this.loopDuration) * this.loopDuration + currentSlot.offsetMs;
 
                 if (!currentSlot) {
                     console.error('❌ No program slot found');
                     return;
                 }
 
-                const timeUntilStart = currentSlot.startTime - now;
+                const timeUntilStart = slotStartTime - now;
+                const timeIntoVideo = now - slotStartTime;
 
-                if (timeUntilStart > 0) {
+                // Only show static and wait if we're MORE than 500ms early
+                if (timeUntilStart > 500) {
                     console.log(`📺 Static until program starts in ${(timeUntilStart / 1000).toFixed(1)}s`);
                     this.staticElement.classList.add('active', 'temporal-refresh');
                     this.playStaticNoise();
@@ -938,23 +1151,25 @@
                     this.scheduledPlayTimeout = setTimeout(() => {
                         this.playScheduledVideo();
                     }, timeUntilStart);
+                } else if (timeIntoVideo < 0 || timeIntoVideo < currentSlot.duration) {
+                    // Play immediately if we're within 2s of start time OR already in progress
+                    const seekTime = Math.max(0, timeIntoVideo / 1000);
+                    console.log(`📺 Playing video ${seekTime > 0 ? 'at ' + seekTime.toFixed(1) + 's' : 'from start'}`);
+                    await this.preloadScheduledVideo(this.currentProgramIndex);
+                    await this.playScheduledVideo(seekTime);
                 } else {
-                    const timeIntoVideo = now - currentSlot.startTime;
-                    if (timeIntoVideo < currentSlot.duration) {
-                        console.log(`📺 Joining in-progress video at ${(timeIntoVideo / 1000).toFixed(1)}s`);
-                        await this.preloadScheduledVideo(this.currentProgramIndex);
-                        await this.playScheduledVideo(timeIntoVideo / 1000);
-                    } else {
-                        this.currentProgramIndex++;
-                        await this.startSynchronizedBroadcast();
+                    this.currentProgramIndex++;
+                    if (this.currentProgramIndex >= this.loopSchedule.length) {
+                        this.currentProgramIndex = 0;
                     }
+                    await this.startSynchronizedBroadcast();
                 }
             }
 
             async preloadScheduledVideo(programIndex) {
-                if (programIndex >= this.schedule.length) return;
+                if (programIndex >= this.loopSchedule.length) return;
 
-                const slot = this.schedule[programIndex];
+                const slot = this.loopSchedule[programIndex];
                 const videoPath = `/saved_videos/${slot.filename}`;
 
                 this.currentVideoElement.src = videoPath;
@@ -1004,9 +1219,11 @@
             }
 
             async playScheduledVideo(seekTime = 0) {
-                const currentSlot = this.schedule[this.currentProgramIndex];
+                const currentSlot = this.loopSchedule[this.currentProgramIndex];
                 const now = Date.now();
-                const actualSeekTime = (now - currentSlot.startTime) / 1000;
+                const elapsedSinceEpoch = now - this.epochStart;
+                const slotStartTime = this.epochStart + Math.floor(elapsedSinceEpoch / this.loopDuration) * this.loopDuration + currentSlot.offsetMs;
+                const actualSeekTime = (now - slotStartTime) / 1000;
 
                 if (!this.isVideoPreloaded) {
                     console.log('⚠️ Video not fully loaded, staying on static');
@@ -1014,7 +1231,10 @@
                     const checkInterval = setInterval(async () => {
                         if (this.isVideoPreloaded) {
                             clearInterval(checkInterval);
-                            const newSeekTime = (Date.now() - currentSlot.startTime) / 1000;
+                            const newNow = Date.now();
+                            const newElapsed = newNow - this.epochStart;
+                            const newSlotStart = this.epochStart + Math.floor(newElapsed / this.loopDuration) * this.loopDuration + currentSlot.offsetMs;
+                            const newSeekTime = (newNow - newSlotStart) / 1000;
 
                             if (newSeekTime < currentSlot.duration / 1000) {
                                 console.log(`✅ Video loaded, joining at ${newSeekTime.toFixed(1)}s`);
@@ -1073,54 +1293,58 @@
 
                 const remainingTime = currentSlot.duration - (actualSeekTime * 1000);
 
-                const bufferMonitor = setInterval(() => {
-                    if (this.currentVideoElement.paused || this.currentVideoElement.readyState < 3) {
-                        console.log('⚠️ Video buffering detected, pausing and showing static');
-                        this.currentVideoElement.pause();
-                        this.staticElement.classList.add('active', 'temporal-refresh');
-                        this.playStaticNoise();
-
-                        const waitForBuffer = setInterval(() => {
-                            if (this.currentVideoElement.readyState >= 3) {
-                                clearInterval(waitForBuffer);
-                                this.staticElement.classList.remove('active', 'temporal-refresh');
-                                this.stopStaticNoise();
-                                this.currentVideoElement.play();
-                                console.log('✅ Buffering complete, resuming playback');
-                            }
-                        }, 100);
-                    }
-                }, 100);
-
-                this.currentVideoElement.addEventListener('ended', () => {
-                    clearInterval(bufferMonitor);
+                const endVideo = () => {
                     this.onScheduledVideoEnd();
-                }, { once: true });
+                };
 
-                setTimeout(() => {
-                    clearInterval(bufferMonitor);
-                    this.onScheduledVideoEnd();
-                }, remainingTime + 2000);
+                this.currentVideoElement.addEventListener('ended', endVideo, { once: true });
 
-                this.currentProgramIndex++;
-                if (this.currentProgramIndex < this.schedule.length) {
-                    await this.preloadScheduledVideo(this.currentProgramIndex);
-                }
+                // Use SCHEDULED duration to maintain perfect sync across all clients
+                const scheduledEndTimeout = remainingTime;
+                setTimeout(endVideo, scheduledEndTimeout);
+
+                // Preload next video BEFORE incrementing index
+                const nextIndex = (this.currentProgramIndex + 1) % this.loopSchedule.length;
+                await this.preloadScheduledVideo(nextIndex);
 
                 console.log(`📺 Playing fully buffered video with ${(remainingTime / 1000).toFixed(1)}s remaining`);
             }
 
             onScheduledVideoEnd() {
-                console.log('📺 Scheduled video ended, moving to next');
-                this.staticElement.classList.add('active', 'temporal-refresh');
-                this.playStaticNoise();
+                console.log('📺 Loop video ended, checking for scheduled content');
 
-                if (this.currentProgramIndex < this.schedule.length) {
-                    this.startSynchronizedBroadcast();
+                // ALWAYS stop and mute all videos first
+                this.currentVideoElement.pause();
+                this.nextVideoElement.pause();
+                this.thirdVideoElement.pause();
+                this.currentVideoElement.volume = 0;
+                this.nextVideoElement.volume = 0;
+                this.thirdVideoElement.volume = 0;
+
+                // Hide all video elements completely
+                document.getElementById('currentVideo').style.display = 'none';
+                document.getElementById('nextVideo').style.display = 'none';
+                document.getElementById('thirdVideo').style.display = 'none';
+
+                // Increment index immediately
+                this.currentProgramIndex++;
+                if (this.currentProgramIndex >= this.loopSchedule.length) {
+                    this.currentProgramIndex = 0;
+                }
+
+                // 20% chance to show brief static transition for retro TV effect
+                if (Math.random() < 0.2) {
+                    console.log('📺 Random static transition');
+
+                    this.staticElement.classList.add('active', 'temporal-refresh');
+                    this.playStaticNoise();
+
+                    setTimeout(() => {
+                        this.startHybridBroadcast();
+                    }, 2000);
                 } else {
-                    console.log('📺 End of schedule, regenerating...');
-                    this.generateProgramSchedule();
-                    this.startSynchronizedBroadcast();
+                    // Go directly to next content
+                    this.startHybridBroadcast();
                 }
             }
 
@@ -1652,18 +1876,30 @@
             }
 
             createAtmosphericAudio() {
-                // Create high-pitched whine (8-12kHz range)
+                // Create high-pitched whine (8-12kHz range) with enhanced modulation
                 this.whineOscillator = this.audioContext.createOscillator();
                 this.whineGain = this.audioContext.createGain();
+                this.whineLFO = this.audioContext.createOscillator();
+                this.whineLFODepth = this.audioContext.createGain();
 
                 this.whineOscillator.type = 'sine';
                 this.whineOscillator.frequency.value = 10000; // 10kHz whine
                 this.whineGain.gain.value = 0; // Start silent
 
-                // Create fat hum (60Hz with harmonics)
+                // Add LFO for subtle frequency modulation to create more dynamic whine
+                this.whineLFO.type = 'triangle';
+                this.whineLFO.frequency.value = 0.2; // Very slow modulation
+                this.whineLFODepth.gain.value = 200; // ±200Hz variation
+                this.whineLFO.connect(this.whineLFODepth);
+                this.whineLFODepth.connect(this.whineOscillator.frequency);
+                this.whineLFO.start();
+
+                // Create fat hum (60Hz with harmonics) and additional oscillators
                 this.humOscillator = this.audioContext.createOscillator();
                 this.humGain = this.audioContext.createGain();
                 this.humFilter = this.audioContext.createBiquadFilter();
+                this.humOscillator2 = this.audioContext.createOscillator(); // Second hum for richness
+                this.humGain2 = this.audioContext.createGain();
 
                 this.humOscillator.type = 'sawtooth'; // Rich harmonics for fat sound
                 this.humOscillator.frequency.value = 60; // 60Hz hum
@@ -1672,36 +1908,44 @@
                 this.humFilter.Q.value = 0.5;
                 this.humGain.gain.value = 0; // Start silent
 
-                // Create volume crackle effect
+                this.humOscillator2.type = 'square'; // Different waveform for complexity
+                this.humOscillator2.frequency.value = 120; // First harmonic of 60Hz
+                this.humGain2.gain.value = 0; // Start silent
+
+                // Create enhanced volume crackle effect with multiple noise sources
                 this.crackleGain = this.audioContext.createGain();
                 this.crackleFilter = this.audioContext.createBiquadFilter();
+                this.crackleFilter2 = this.audioContext.createBiquadFilter();
+                this.crackleFilter3 = this.audioContext.createBiquadFilter();
                 this.crackleNoiseBuffer = null;
                 this.crackleSource = null;
+                this.staticCrackleBuffer = null;
+                this.staticCrackleSource = null;
 
-                // SHARP filters for piercing crackle sound
+                // Enhanced SHARP filters for piercing crackle sound
                 this.crackleFilter.type = 'bandpass';
-                this.crackleFilter.frequency.value = 7000; // HIGHER frequency for sharper crackle
-                this.crackleFilter.Q.value = 3.0; // NARROWER band for more piercing sound
+                this.crackleFilter.frequency.value = 7000;
+                this.crackleFilter.Q.value = 3.0;
 
-                // Add secondary filter for SHARP texture
-                this.crackleFilter2 = this.audioContext.createBiquadFilter();
                 this.crackleFilter2.type = 'highpass';
-                this.crackleFilter2.frequency.value = 8000; // VERY HIGH frequency for piercing hiss
-                this.crackleFilter2.Q.value = 5.0; // VERY SHARP resonance
+                this.crackleFilter2.frequency.value = 8000;
+                this.crackleFilter2.Q.value = 5.0;
 
-                // Add third filter for ultra-high frequencies
-                this.crackleFilter3 = this.audioContext.createBiquadFilter();
                 this.crackleFilter3.type = 'highpass';
-                this.crackleFilter3.frequency.value = 10000; // ULTRA HIGH for piercing crackle
-                this.crackleFilter3.Q.value = 8.0; // MAXIMUM sharpness
+                this.crackleFilter3.frequency.value = 10000;
+                this.crackleFilter3.Q.value = 8.0;
 
                 this.crackleGain.gain.value = 0; // Start silent
 
                 this.createCrackleNoise();
+                this.createStaticCrackle();
 
                 // Connect hum through filter
                 this.humOscillator.connect(this.humFilter);
                 this.humFilter.connect(this.humGain);
+
+                // Connect second hum directly with lower volume
+                this.humOscillator2.connect(this.humGain2);
 
                 // Connect whine directly
                 this.whineOscillator.connect(this.whineGain);
@@ -1714,13 +1958,15 @@
                 // Start oscillators (they'll be silent until gain is adjusted)
                 this.whineOscillator.start();
                 this.humOscillator.start();
+                this.humOscillator2.start();
 
                 // Connect atmospheric audio to destination
                 this.whineGain.connect(this.audioContext.destination);
                 this.humGain.connect(this.audioContext.destination);
+                this.humGain2.connect(this.audioContext.destination);
                 this.crackleGain.connect(this.audioContext.destination);
 
-                console.log('✅ Atmospheric audio created (whine, hum, and crackle)');
+                console.log('✅ Enhanced atmospheric audio created (whine, dual hum, and crackle)');
             }
 
             createCrackleNoise() {
@@ -1787,18 +2033,46 @@
                 console.log(`⚡🔊⚡ ULTRA SHARP CRACKLE at volume: ${crackleVolume.toFixed(2)}`);
             }
 
+            createStaticCrackle() {
+                // Create additional static-based crackle for more texture
+                const bufferSize = this.audioContext.sampleRate * 0.15; // 0.15 seconds
+                const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+                const output = buffer.getChannelData(0);
+
+                for (let i = 0; i < bufferSize; i++) {
+                    // More varied static pattern
+                    const randomFactor = Math.random();
+                    if (randomFactor > 0.7) {
+                        // Occasional louder static burst
+                        output[i] = (Math.random() * 2 - 1) * 1.5;
+                    } else if (randomFactor > 0.4) {
+                        // Medium static
+                        output[i] = (Math.random() * 2 - 1) * 0.8;
+                    } else {
+                        // Light static or silence
+                        output[i] = (Math.random() * 2 - 1) * 0.2;
+                    }
+                }
+
+                this.staticCrackleBuffer = buffer;
+                console.log('✅ Created static crackle buffer');
+            }
+
             updateAtmosphericVolume() {
                 if (this.volume === 0) {
                     // Mute all atmospheric audio when volume is 0
                     if (this.whineGain) this.whineGain.gain.value = 0;
                     if (this.humGain) this.humGain.gain.value = 0;
+                    if (this.humGain2) this.humGain2.gain.value = 0;
                 } else {
                     // Set atmospheric audio volume based on TV volume (very subtle)
                     const whineVolume = Math.min(0.02, this.volume / 5000); // Very soft whine
-                    const humVolume = Math.min(0.025, this.volume / 4000);  // Half as loud hum
+                    const humVolume = Math.min(0.025, this.volume / 4000);  // Main hum
+                    const hum2Volume = Math.min(0.015, this.volume / 6000); // Secondary hum
 
                     if (this.whineGain) this.whineGain.gain.value = whineVolume;
                     if (this.humGain) this.humGain.gain.value = humVolume;
+                    if (this.humGain2) this.humGain2.gain.value = hum2Volume;
                 }
             }
 
