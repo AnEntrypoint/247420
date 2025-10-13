@@ -17,4 +17,4 @@ cmds = [
 ]
 
 [start]
-cmd = "npx serve -s dist -p 3000"
+cmd = "npx serve dist -p 3000"
