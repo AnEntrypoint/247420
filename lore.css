@@ -1,29 +1,49 @@
-/* Dynamic Lore Engine Styles */
+/* Dynamic Lore Engine Styles - Enhanced with 247420 Unified Theme */
+
+/* Lore Navigation Grid */
 .lore-nav {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin: 40px 0;
+  gap: var(--spacing-lg);
+  margin: var(--spacing-2xl) 0;
 }
 
 .nav-item {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 25px;
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
   text-decoration: none;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-accent);
+  transition: var(--transition-normal);
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--spacing-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0.05;
+  transition: var(--transition-slow);
+}
+
+.nav-item:hover::before {
+  left: 0;
 }
 
 .nav-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-color: rgba(240, 147, 251, 0.5);
+  box-shadow: var(--glow-purple);
+  border-color: var(--border-glow);
 }
 
 .nav-icon {
