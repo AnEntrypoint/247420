@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>247420 Community</title>
+    <title data-phrase-group="pages" data-phrase-key="homePageTitle">247420 Digital Dive Bar 🍻 | Drunk Hacker Protocols & Meme Culture</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="247420 Digital Dive Bar - The ultimate hangout for drunk hackers, meme culturists, and chaotic energy. Featuring bar stories, deployment guides, and questionable decisions.">
+    <meta name="keywords" content="247420 digital dive bar, drunk hacker protocols, meme culturists, bar rules, deployment guides, chaotic architecture, dive bar network, internet memes">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://247420.247247420.xyz/">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://247420.247247420.xyz/">
+    <meta property="og:title" content="247420 | Digital Dive Bar 🍻">
+    <meta property="og:description" content="The ultimate hangout for drunk hackers, meme culturists, and chaotic energy. Serving questionable decisions since 247420.">
+    <meta property="og:image" content="https://247420.247247420.xyz/logo.gif">
+    <meta property="og:site_name" content="247420 Digital Dive Bar">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="247420 | Digital Dive Bar 🍻">
+    <meta name="twitter:description" content="Where drunk hackers and meme culturists gather for chaos and questionable decisions.">
+    <meta name="twitter:image" content="https://247420.247247420.xyz/logo.gif">
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323:wght@400;700&family=Share+Tech+Mono&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/lore.css">
+    <script src="/static/lore-engine.js" type="module"></script>
+
     <style>
+        /* Digital Dive Bar Theme Variables */
+        :root {
+            --dive-bar-bg: #1a1a1a;
+            --dive-bar-dark: #0d0d0d;
+            --beer-foam: #f5e6d3;
+            --dirty-wall: #2d2d2d;
+            --neon-sign: #ff6b35;
+            --neon-blue: #00d4ff;
+            --spilled-beer: #8b6914;
+            --graffiti-red: #ff1744;
+            --terminal-green: #00ff41;
+            --urine-stain: #c4b000;
+            --rust-metal: #8b4513;
+            --bar-stool: #4a3c28;
+            --vomit-green: #7a8c3a;
+            --dark-wood: #3e2723;
+            --smoke-haze: rgba(255, 255, 255, 0.05);
+            --beer-glass: rgba(255, 250, 240, 0.1);
+
+            /* Terminal Colors (kept for compatibility) */
+            --terminal-bg: var(--dive-bar-bg);
+            --terminal-green: var(--terminal-green);
+            --terminal-green-bright: var(--neon-sign);
+            --terminal-amber: var(--spilled-beer);
+            --terminal-red: var(--graffiti-red);
+            --terminal-blue: var(--neon-blue);
+            --text-primary: var(--beer-foam);
+            --text-secondary: var(--beer-foam);
+            --text-dim: var(--rust-metal);
+            --border-color: var(--dirty-wall);
+            --cursor-color: var(--terminal-green);
+            --terminal-bg-alt: var(--dive-bar-dark);
+            --terminal-border: var(--rust-metal);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,251 +74,731 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'VT323', 'Share Tech Mono', 'Press Start 2P', 'JetBrains Mono', monospace;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(139, 105, 20, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, var(--dive-bar-bg) 0%, var(--dive-bar-dark) 100%);
+            color: var(--beer-foam);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            color: white;
+            overflow-x: hidden;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
         }
 
-        header {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
+        /* Import Dive Bar Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=VT323:wght@400;700&family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
+
+        /* Beer Stain Overlay */
+        body::before {
+            content: '';
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(139, 105, 20, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 80%, rgba(196, 0, 0, 0.08) 0%, transparent 30%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .terminal-scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 107, 53, 0.03),
+                rgba(255, 107, 53, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+
+        .terminal-flicker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--dive-bar-bg);
+            animation: diveBarFlicker 0.2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes diveBarFlicker {
+            0% { opacity: 0.96; }
+            25% { opacity: 1; }
+            50% { opacity: 0.98; }
+            75% { opacity: 0.97; }
+            100% { opacity: 0.99; }
+        }
+
+        /* Beer Spill Drip Animation */
+        @keyframes beerDrip {
+            0% { transform: translateY(-10px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .beer-drip {
+            position: fixed;
+            top: -10px;
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(to bottom, var(--beer-foam), var(--spilled-beer));
+            border-radius: 50%;
+            animation: beerDrip 8s infinite;
+            pointer-events: none;
             z-index: 1000;
         }
 
-        nav {
-            max-width: 1200px;
+        .beer-drip:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .beer-drip:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .beer-drip:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .beer-drip:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .beer-drip:nth-child(5) { left: 90%; animation-delay: 1s; }
+
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
+            border: 2px solid var(--neon-sign);
+            border-radius: 12px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            gap: 12px;
+            z-index: 247420;
+            font-family: 'VT323', 'Share Tech Mono', monospace;
+            box-shadow:
+                0 8px 32px rgba(255, 107, 53, 0.3),
+                0 0 20px rgba(0, 212, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: navGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes navGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3), 0 0 20px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 12px 40px rgba(255, 107, 53, 0.5), 0 0 30px rgba(0, 212, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+        }
+
+        .navbar a {
+            color: var(--beer-foam);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
             align-items: center;
+            gap: 10px;
+            font-weight: 400;
+            font-size: 1rem;
+            position: relative;
+            border: 1px solid var(--rust-metal);
+            background: rgba(139, 69, 19, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: navBounce 2s ease-in-out infinite;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            text-decoration: none;
+        @keyframes navBounce {
+            0%, 80%, 100% { transform: translateY(0); }
+            85% { transform: translateY(-3px); }
+            90% { transform: translateY(-1px); }
+            95% { transform: translateY(-2px); }
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .navbar a:nth-child(odd) { animation-delay: 0.1s; }
+        .navbar a:nth-child(even) { animation-delay: 0.2s; }
+
+        .navbar a:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(0, 212, 255, 0.2));
+            color: var(--neon-sign);
+            border: 2px solid var(--neon-blue);
+            box-shadow:
+                0 0 15px rgba(255, 107, 53, 0.6),
+                0 0 25px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px) scale(1.05);
+            animation: none;
         }
 
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
+        .navbar a.active {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(0, 212, 255, 0.3));
+            color: var(--neon-sign);
+            border: 2px solid var(--neon-blue);
+            box-shadow:
+                0 0 20px rgba(255, 107, 53, 0.8),
+                0 0 30px rgba(0, 212, 255, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: none;
         }
 
-        .nav-links a:hover {
-            color: #ffd700;
+        .navbar i {
+            font-size: 16px;
+            color: var(--neon-sign);
+            animation: iconGlow 2s ease-in-out infinite;
         }
 
-        main {
-            flex: 1;
-            padding-top: 100px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+        @keyframes iconGlow {
+            0%, 100% { text-shadow: 0 0 5px var(--neon-sign); }
+            50% { text-shadow: 0 0 15px var(--neon-sign), 0 0 25px var(--neon-blue); }
         }
 
-        .hero {
+        .header {
             text-align: center;
-            padding: 4rem 0;
+            padding: 140px 0 80px;
+            position: relative;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--neon-sign);
+            margin-bottom: 20px;
+            text-shadow:
+                0 0 10px var(--neon-sign),
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(255, 107, 53, 0.5);
+            line-height: 1.1;
+            font-weight: 700;
+            font-family: 'Press Start 2P', 'VT323', monospace;
+            animation: titleGlitch 4s ease-in-out infinite;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        @keyframes titleGlitch {
+            0%, 90%, 100% {
+                transform: translate(0);
+                filter: hue-rotate(0deg) brightness(1);
+                text-shadow: 0 0 10px var(--neon-sign), 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 107, 53, 0.5);
+            }
+            91% {
+                transform: translate(-2px, 2px);
+                filter: hue-rotate(90deg) brightness(1.2);
+                text-shadow: 2px 2px 0 var(--graffiti-red), -2px -2px 0 var(--neon-blue);
+            }
+            92% {
+                transform: translate(2px, -2px);
+                filter: hue-rotate(180deg) brightness(0.8);
+                text-shadow: -2px 2px 0 var(--terminal-green), 2px -2px 0 var(--urine-stain);
+            }
+            93% {
+                transform: translate(-1px, 1px);
+                filter: hue-rotate(270deg) brightness(1.1);
+                text-shadow: 1px -1px 0 var(--neon-blue), -1px 1px 0 var(--spilled-beer);
+            }
         }
 
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--beer-foam);
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: subtitleFlicker 3s ease-in-out infinite;
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        @keyframes subtitleFlicker {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+            75% { opacity: 0.95; }
         }
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 4rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, var(--dirty-wall), var(--dive-bar-dark));
+            border: 2px solid var(--rust-metal);
             border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s;
+            padding: 35px;
+            text-decoration: none;
+            color: var(--beer-foam);
+            transition: all 0.4s ease;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 8px 32px rgba(255, 107, 53, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            animation: cardScan 5s infinite;
+        }
+
+        @keyframes cardScan {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            border: 2px solid var(--neon-sign);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), var(--dive-bar-dark));
+            box-shadow:
+                0 15px 45px rgba(255, 107, 53, 0.4),
+                0 0 30px rgba(0, 212, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px) rotate(0.5deg);
         }
 
         .feature-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .gallery-section {
-            padding: 4rem 0;
+            margin-bottom: 20px;
+            display: block;
             text-align: center;
+            color: var(--neon-sign);
+            text-shadow: 0 0 15px var(--neon-sign);
+            animation: iconGlitch 3s ease-in-out infinite;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+        @keyframes iconGlitch {
+            0%, 85%, 100% {
+                transform: scale(1) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            86% {
+                transform: scale(1.1) rotate(-5deg);
+                filter: hue-rotate(90deg);
+            }
+            87% {
+                transform: scale(0.9) rotate(5deg);
+                filter: hue-rotate(180deg);
+            }
+            88% {
+                transform: scale(1.05) rotate(-2deg);
+                filter: hue-rotate(270deg);
+            }
+            89% {
+                transform: scale(0.95) rotate(2deg);
+                filter: hue-rotate(360deg);
+            }
         }
 
-        .gallery-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--neon-sign);
+            text-align: center;
+            font-weight: 700;
+            font-family: 'VT323', monospace;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--beer-foam);
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 80px 0;
+            position: relative;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
+            color: var(--neon-sign);
+            padding: 18px 40px;
+            border: 2px solid var(--neon-sign);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            font-family: 'VT323', 'Press Start 2P', monospace;
+            cursor: pointer;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            box-shadow:
+                0 8px 25px rgba(255, 107, 53, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
             overflow: hidden;
-            aspect-ratio: 1;
-            transition: transform 0.3s;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item img {
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
         }
 
-        footer {
-            background: rgba(0, 0, 0, 0.3);
+        .cta-button:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), var(--dive-bar-dark));
+            border: 2px solid var(--neon-blue);
+            color: var(--beer-foam);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow:
+                0 15px 40px rgba(255, 107, 53, 0.5),
+                0 0 30px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: buttonPulse 1s ease-in-out infinite;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: translateY(-3px) scale(1.05); }
+            50% { transform: translateY(-4px) scale(1.07); }
+        }
+
+        /* Adult Content Warning Styles - Dive Bar Edition */
+        .age-verification-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dive-bar-bg), var(--dive-bar-dark));
+            backdrop-filter: blur(8px);
+            z-index: 9000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .age-verification-modal {
+            background: linear-gradient(135deg, var(--dirty-wall), var(--dive-bar-dark));
+            border: 2px solid var(--neon-sign);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
             text-align: center;
-            padding: 2rem 0;
+            color: var(--beer-foam);
+            box-shadow:
+                0 20px 60px rgba(255, 107, 53, 0.4),
+                0 0 40px rgba(0, 212, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .age-verification-modal h2 {
+            color: var(--neon-sign);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-shadow:
+                0 0 15px var(--neon-sign),
+                2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 700;
+            font-family: 'Press Start 2P', 'VT323', monospace;
+            animation: modalTitleGlitch 3s ease-in-out infinite;
+        }
+
+        @keyframes modalTitleGlitch {
+            0%, 85%, 100% { transform: scale(1); filter: hue-rotate(0deg); }
+            86% { transform: scale(1.05); filter: hue-rotate(90deg); }
+            87% { transform: scale(0.95); filter: hue-rotate(180deg); }
+            88% { transform: scale(1.02); filter: hue-rotate(270deg); }
+            89% { transform: scale(0.98); filter: hue-rotate(360deg); }
+        }
+
+        .age-verification-modal p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: var(--beer-foam);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .age-verification-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .enter-button {
+            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
+            color: var(--neon-sign);
+            border: 2px solid var(--neon-sign);
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'VT323', 'Press Start 2P', monospace;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            box-shadow:
+                0 8px 25px rgba(255, 107, 53, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .enter-button:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), var(--dive-bar-dark));
+            border: 2px solid var(--neon-blue);
+            color: var(--beer-foam);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow:
+                0 15px 40px rgba(255, 107, 53, 0.5),
+                0 0 30px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .leave-button {
+            background: linear-gradient(135deg, var(--rust-metal), var(--bar-stool));
+            color: var(--beer-foam);
+            border: 2px solid var(--rust-metal);
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            font-family: 'VT323', 'Press Start 2P', monospace;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            box-shadow:
+                0 5px 15px rgba(139, 69, 19, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .leave-button:hover {
+            background: linear-gradient(135deg, rgba(196, 0, 0, 0.3), var(--rust-metal));
+            border: 2px solid var(--graffiti-red);
+            color: var(--neon-sign);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow:
+                0 10px 25px rgba(196, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .content-blurred {
+            filter: blur(5px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .glow-text {
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 5px rgba(255, 107, 53, 0.5); }
+            50% { text-shadow: 0 0 15px rgba(255, 107, 53, 0.8), 0 0 25px rgba(0, 212, 255, 0.6); }
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .navbar {
+                flex-wrap: wrap;
+                max-width: 90%;
+                gap: 10px;
             }
 
-            .hero h1 {
-                font-size: 2rem;
+            .navbar a {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .header {
+                padding: 100px 0 40px;
             }
 
             .features {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#" class="logo">247420</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#lore">Lore</a></li>
-                <li><a href="#community">Community</a></li>
-            </ul>
+    <div class="terminal-scanlines"></div>
+    <div class="terminal-flicker"></div>
+
+    <!-- Beer Drip Animations -->
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+
+    <!-- Age Verification Overlay -->
+    <div id="age-verification" class="age-verification-overlay">
+        <div class="age-verification-modal">
+            <h2>🍻 ./age_check.sh --beer_required</h2>
+            <p>This digital dive bar contains drunk hackers, chaotic energy, questionable decisions, and memes that may not be compatible with sober minds. By proceeding, you confirm that you're old enough to handle the chaos and won't blame us for poor life choices. Bring your own liver protection.</p>
+            <div class="age-verification-buttons">
+                <button onclick="document.getElementById('age-verification').style.display='none'; document.getElementById('main-content').classList.remove('content-blurred'); localStorage.setItem('age_verified', 'true');" class="enter-button">🍺 ./enter_bar.sh --drunk</button>
+                <a href="https://google.com" class="leave-button">🚪 ./sober_exit.sh</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content" class="content-blurred">
+        <div class="terminal-scanlines"></div>
+        <div class="terminal-flicker"></div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html" class="active">
+                <i class="fas fa-beer"></i>
+                🍺 ./home.sh
+            </a>
+            <a href="lore.html">
+                <i class="fas fa-scroll"></i>
+                📜 ./bar_stories.txt
+            </a>
+            <a href="images-thread.html">
+                <i class="fas fa-images"></i>
+                🖼️ ./ls memes/
+            </a>
+            <a href="videos-thread.html">
+                <i class="fas fa-tv"></i>
+                📺 ./play_videos.sh
+            </a>
+            <a href="https://247420.4247420769.xyz/" target="_blank">
+                <i class="fas fa-wifi"></i>
+                🌐 ./ssh bar@247420
+            </a>
+            <a href="https://thirdweb.com/somnia/0x1Fb25216baC410872CF548cc9A1D1B9B00F67A12" target="_blank">
+                <i class="fas fa-coins"></i>
+                💰 ./buy_beer.sh
+            </a>
         </nav>
-    </header>
 
-    <main>
-        <section id="home" class="hero">
-            <h1>247420 Community</h1>
-            <p>A creative digital space for art, media, and community collaboration</p>
-            <a href="#gallery" class="cta-button">Explore Gallery</a>
-        </section>
+        <div class="container">
+            <div class="header">
+                <h1 class="hero-title glow-text">🍻 247420 Digital Dive Bar</h1>
+                <p class="hero-subtitle">Where Drunk Hackers & Meme Culturists Unite</p>
+            </div>
 
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>Digital Art</h3>
-                <p>Explore a curated collection of digital artwork from our community members</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📸</div>
-                <h3>Photography</h3>
-                <p>Discover stunning photography and visual stories from around the world</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎮</div>
-                <h3>Gaming</h3>
-                <p>Connect with fellow gamers and share your gaming experiences</p>
-            </div>
-        </section>
+            <div class="features">
+                <a href="lore.html" class="feature-card">
+                    <span class="feature-icon">📜</span>
+                    <h3>Bar Stories</h3>
+                    <p>Dive into the chaotic chronicles of our digital dive bar and discover the drunk hacker protocols that keep the party going.</p>
+                </a>
 
-        <section id="gallery" class="gallery-section">
-            <h2>Community Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="logo.gif" alt="Community Logo">
-                </div>
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎨</div>
-                </div>
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #ff6b6b, #ee5a24); display: flex; align-items: center; justify-content: center; font-size: 2rem;">📸</div>
-                </div>
-                <div class="gallery-item">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(45deg, #4ecdc4, #44a08d); display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎮</div>
-                </div>
-            </div>
-        </section>
-    </main>
+                <a href="images-thread.html" class="feature-card">
+                    <span class="feature-icon">🖼️</span>
+                    <h3>Meme Gallery</h3>
+                    <p>Browse our curated collection of shitposts, rare pepes, and questionable content that makes our bar special.</p>
+                </a>
 
-    <footer>
-        <p>&copy; 2024 247420 Community. Built with passion and creativity.</p>
-    </footer>
+                <a href="videos-thread.html" class="feature-card">
+                    <span class="feature-icon">📺</span>
+                    <h3>Video Archive</h3>
+                    <p>Watch the best drinking games, hacking tutorials, and fails that have become legendary in our community.</p>
+                </a>
+            </div>
+
+            <div class="cta-section">
+                <p style="font-size: 1.2rem; margin-bottom: 30px; color: var(--beer-foam);">
+                    Ready to enter the chaos?
+                    <span id="random-chaos-quote" style="color: var(--neon-sign); font-weight: 700;">Loading bar wisdom...</span>
+                </p>
+                <a href="lore.html" class="cta-button">
+                    🍺 ./enter_the_chaos.sh
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Check if user is already verified
+        function checkAgeVerification() {
+            const isVerified = localStorage.getItem('age_verified') === 'true';
 
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            if (isVerified) {
+                document.getElementById('age-verification').style.display = 'none';
+                document.getElementById('main-content').classList.remove('content-blurred');
+            }
+        }
+
+        // Global enterSite function to ensure consistency
+        function enterSite() {
+            document.getElementById('age-verification').style.display = 'none';
+            document.getElementById('main-content').classList.remove('content-blurred');
+            localStorage.setItem('age_verified', 'true');
+        }
+
+        // Random chaos quotes
+        const chaosQuotes = [
+            "Remember: if it compiles, ship it.",
+            "Stack overflow? Just add more beer.",
+            "Production is for people who can't handle chaos.",
+            "The best code is written at 3AM after 6 beers.",
+            "It's not a bug, it's undocumented chaos.",
+            "Test in prod? We live in prod.",
+            "Error 404: Sober mind not found.",
+            "Git commit -m 'fix things' works every time.",
+            "Why test when you can pray?",
+            "In beer we trust. All others must pay cash."
+        ];
+
+        function updateRandomQuote() {
+            const quoteElement = document.getElementById('random-chaos-quote');
+            if (quoteElement) {
+                const randomQuote = chaosQuotes[Math.floor(Math.random() * chaosQuotes.length)];
+                quoteElement.textContent = randomQuote;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAgeVerification();
+            updateRandomQuote();
+
+            // Update quote every 8 seconds
+            setInterval(updateRandomQuote, 8000);
         });
     </script>
 </body>

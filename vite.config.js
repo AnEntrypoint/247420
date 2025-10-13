@@ -7,7 +7,10 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
+        main: resolve(__dirname, 'index.html'),
+        lore: resolve(__dirname, 'lore.html'),
+        gallery: resolve(__dirname, 'images-thread.html'),
+        videos: resolve(__dirname, 'videos-thread.html')
       }
     }
   },
@@ -27,6 +30,26 @@ export default defineConfig({
           if (existsSync(logoFile)) {
             copyFileSync(logoFile, resolve(__dirname, 'dist', 'logo.gif'))
             console.log('✅ Copied logo.gif')
+          }
+
+          // Copy lore.css if it exists
+          const loreCssFile = resolve(__dirname, 'lore.css')
+          if (existsSync(loreCssFile)) {
+            copyFileSync(loreCssFile, resolve(__dirname, 'dist', 'lore.css'))
+            console.log('✅ Copied lore.css')
+          }
+
+          // Copy navbar files if they exist
+          const navbarFile = resolve(__dirname, 'navbar.html')
+          if (existsSync(navbarFile)) {
+            copyFileSync(navbarFile, resolve(__dirname, 'dist', 'navbar.html'))
+            console.log('✅ Copied navbar.html')
+          }
+
+          const navbarCssFile = resolve(__dirname, 'navbar.css')
+          if (existsSync(navbarCssFile)) {
+            copyFileSync(navbarCssFile, resolve(__dirname, 'dist', 'navbar.css'))
+            console.log('✅ Copied navbar.css')
           }
 
           // Copy any other static assets from public folder
