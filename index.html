@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-phrase-group="pages" data-phrase-key="homePageTitle">247420 Digital Dive Bar 🍻 | Drunk Hacker Protocols & Meme Culture</title>
+    <title data-phrase-group="pages" data-phrase-key="homePageTitle">247420 Digital Stoner Den 🌿 | Creative Chaos & Meme Alchemy</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="247420 Digital Dive Bar - The ultimate hangout for drunk hackers, meme culturists, and chaotic energy. Featuring bar stories, deployment guides, and questionable decisions.">
-    <meta name="keywords" content="247420 digital dive bar, drunk hacker protocols, meme culturists, bar rules, deployment guides, chaotic architecture, dive bar network, internet memes">
+    <meta name="description" content="247420 Digital Stoner Den - The ultimate collective for creative stoners, meme alchemists, and digital chaos. Featuring games, music, art, 3D content, AI creations, and internet trend disruption.">
+    <meta name="keywords" content="247420 digital stoner den, creative chaos, meme alchemy, stoner collective, games music art, 3D AI content, internet trends, fake secret society">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://247420.247247420.xyz/">
 
@@ -31,39 +31,39 @@
     <link rel="stylesheet" href="/lore.css">
 
     <style>
-        /* Digital Dive Bar Theme Variables */
+        /* Digital Stoner Den Theme Variables */
         :root {
-            --dive-bar-bg: #1a1a1a;
-            --dive-bar-dark: #0d0d0d;
-            --beer-foam: #f5e6d3;
-            --dirty-wall: #2d2d2d;
-            --neon-sign: #ff6b35;
-            --neon-blue: #00d4ff;
-            --spilled-beer: #8b6914;
-            --graffiti-red: #ff1744;
+            --stoner-den-bg: #1a1a1a;
+            --stoner-den-dark: #0d0d0d;
+            --haze-purple: #9b59b6;
+            --green-bud: #27ae60;
+            --trippy-pink: #e91e63;
+            --neon-cyan: #00bcd4;
+            --mellow-yellow: #f1c40f;
+            --deep-indigo: #3f51b5;
             --terminal-green: #00ff41;
-            --urine-stain: #c4b000;
-            --rust-metal: #8b4513;
-            --bar-stool: #4a3c28;
-            --vomit-green: #7a8c3a;
-            --dark-wood: #3e2723;
+            --chill-orange: #ff9800;
+            --vintage-wood: #5d4037;
+            --secret-society: #37474f;
+            --troll-purple: #673ab7;
+            --chaos-red: #f44336;
             --smoke-haze: rgba(255, 255, 255, 0.05);
-            --beer-glass: rgba(255, 250, 240, 0.1);
+            --glaze-glass: rgba(255, 250, 240, 0.1);
 
             /* Terminal Colors (kept for compatibility) */
-            --terminal-bg: var(--dive-bar-bg);
+            --terminal-bg: var(--stoner-den-bg);
             --terminal-green: var(--terminal-green);
-            --terminal-green-bright: var(--neon-sign);
-            --terminal-amber: var(--spilled-beer);
-            --terminal-red: var(--graffiti-red);
-            --terminal-blue: var(--neon-blue);
-            --text-primary: var(--beer-foam);
-            --text-secondary: var(--beer-foam);
-            --text-dim: var(--rust-metal);
-            --border-color: var(--dirty-wall);
+            --terminal-green-bright: var(--green-bud);
+            --terminal-amber: var(--mellow-yellow);
+            --terminal-red: var(--chaos-red);
+            --terminal-blue: var(--neon-cyan);
+            --text-primary: var(--haze-purple);
+            --text-secondary: var(--trippy-pink);
+            --text-dim: var(--secret-society);
+            --border-color: var(--vintage-wood);
             --cursor-color: var(--terminal-green);
-            --terminal-bg-alt: var(--dive-bar-dark);
-            --terminal-border: var(--rust-metal);
+            --terminal-bg-alt: var(--stoner-den-dark);
+            --terminal-border: var(--troll-purple);
         }
 
         * {
@@ -75,11 +75,11 @@
         body {
             font-family: 'VT323', 'Share Tech Mono', 'Press Start 2P', 'JetBrains Mono', monospace;
             background:
-                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(139, 105, 20, 0.08) 0%, transparent 50%),
-                linear-gradient(135deg, var(--dive-bar-bg) 0%, var(--dive-bar-dark) 100%);
-            color: var(--beer-foam);
+                radial-gradient(circle at 20% 80%, rgba(155, 89, 182, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 188, 212, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(39, 174, 96, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, var(--stoner-den-bg) 0%, var(--stoner-den-dark) 100%);
+            color: var(--haze-purple);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -89,7 +89,7 @@
         /* Import Dive Bar Fonts */
         @import url('https://fonts.googleapis.com/css2?family=VT323:wght@400;700&family=Share+Tech+Mono&family=Press+Start+2P&display=swap');
 
-        /* Beer Stain Overlay */
+        /* Smoke Haze Overlay */
         body::before {
             content: '';
             position: fixed;
@@ -98,9 +98,9 @@
             width: 100%;
             height: 100%;
             background:
-                radial-gradient(ellipse at 10% 20%, rgba(139, 105, 20, 0.12) 0%, transparent 40%),
-                radial-gradient(ellipse at 90% 80%, rgba(196, 0, 0, 0.08) 0%, transparent 30%),
-                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 60%);
+                radial-gradient(ellipse at 10% 20%, rgba(155, 89, 182, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 80%, rgba(39, 174, 96, 0.08) 0%, transparent 30%),
+                radial-gradient(ellipse at 50% 50%, rgba(233, 30, 99, 0.05) 0%, transparent 60%);
             pointer-events: none;
             z-index: 1;
         }
@@ -114,8 +114,8 @@
             z-index: -1;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(255, 107, 53, 0.03),
-                rgba(255, 107, 53, 0.03) 1px,
+                rgba(155, 89, 182, 0.03),
+                rgba(155, 89, 182, 0.03) 1px,
                 transparent 1px,
                 transparent 2px
             );
@@ -129,12 +129,12 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: var(--dive-bar-bg);
-            animation: diveBarFlicker 0.2s infinite;
+            background: var(--stoner-den-bg);
+            animation: stonerDenFlicker 0.2s infinite;
             pointer-events: none;
         }
 
-        @keyframes diveBarFlicker {
+        @keyframes stonerDenFlicker {
             0% { opacity: 0.96; }
             25% { opacity: 1; }
             50% { opacity: 0.98; }
@@ -142,31 +142,31 @@
             100% { opacity: 0.99; }
         }
 
-        /* Beer Spill Drip Animation */
-        @keyframes beerDrip {
-            0% { transform: translateY(-10px); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0; }
+        /* Smoke Bubble Animation */
+        @keyframes smokeBubble {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        .beer-drip {
+        .smoke-bubble {
             position: fixed;
             top: -10px;
-            width: 3px;
-            height: 20px;
-            background: linear-gradient(to bottom, var(--beer-foam), var(--spilled-beer));
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, var(--haze-purple), var(--trippy-pink));
             border-radius: 50%;
-            animation: beerDrip 8s infinite;
+            animation: smokeBubble 8s infinite;
             pointer-events: none;
             z-index: 1000;
         }
 
-        .beer-drip:nth-child(1) { left: 10%; animation-delay: 0s; }
-        .beer-drip:nth-child(2) { left: 30%; animation-delay: 2s; }
-        .beer-drip:nth-child(3) { left: 50%; animation-delay: 4s; }
-        .beer-drip:nth-child(4) { left: 70%; animation-delay: 6s; }
-        .beer-drip:nth-child(5) { left: 90%; animation-delay: 1s; }
+        .smoke-bubble:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .smoke-bubble:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .smoke-bubble:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .smoke-bubble:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .smoke-bubble:nth-child(5) { left: 90%; animation-delay: 1s; }
 
         .container {
             max-width: 1000px;
@@ -179,8 +179,8 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
-            border: 2px solid var(--neon-sign);
+            background: linear-gradient(135deg, var(--stoner-den-dark), var(--vintage-wood));
+            border: 2px solid var(--haze-purple);
             border-radius: 12px;
             padding: 10px 20px;
             display: flex;
@@ -188,8 +188,8 @@
             z-index: 247420;
             font-family: 'VT323', 'Share Tech Mono', monospace;
             box-shadow:
-                0 8px 32px rgba(255, 107, 53, 0.3),
-                0 0 20px rgba(0, 212, 255, 0.2),
+                0 8px 32px rgba(155, 89, 182, 0.3),
+                0 0 20px rgba(0, 188, 212, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             animation: navGlow 3s ease-in-out infinite;
@@ -662,21 +662,21 @@
     <div class="terminal-scanlines"></div>
     <div class="terminal-flicker"></div>
 
-    <!-- Beer Drip Animations -->
-    <div class="beer-drip"></div>
-    <div class="beer-drip"></div>
-    <div class="beer-drip"></div>
-    <div class="beer-drip"></div>
-    <div class="beer-drip"></div>
+    <!-- Smoke Bubble Animations -->
+    <div class="smoke-bubble"></div>
+    <div class="smoke-bubble"></div>
+    <div class="smoke-bubble"></div>
+    <div class="smoke-bubble"></div>
+    <div class="smoke-bubble"></div>
 
     <!-- Age Verification Overlay -->
     <div id="age-verification" class="age-verification-overlay">
         <div class="age-verification-modal">
-            <h2>🍻 ./age_check.sh --beer_required</h2>
-            <p>This digital dive bar contains drunk hackers, chaotic energy, questionable decisions, and memes that may not be compatible with sober minds. By proceeding, you confirm that you're old enough to handle the chaos and won't blame us for poor life choices. Bring your own liver protection.</p>
+            <h2>🌿 ./age_check.sh --consciousness_expansion</h2>
+            <p>This digital stoner den contains creative chaos, mind-expanding content, advanced shitposting, and reality-bending memes that may not be compatible with mundane consciousness. By proceeding, you confirm that you're enlightened enough to handle the creativity and won't blame us for existential breakthroughs. Bring your own open mind.</p>
             <div class="age-verification-buttons">
-                <button onclick="document.getElementById('age-verification').style.display='none'; document.getElementById('main-content').classList.remove('content-blurred'); localStorage.setItem('age_verified', 'true');" class="enter-button">🍺 ./enter_bar.sh --drunk</button>
-                <a href="https://google.com" class="leave-button">🚪 ./sober_exit.sh</a>
+                <button onclick="document.getElementById('age-verification').style.display='none'; document.getElementById('main-content').classList.remove('content-blurred'); localStorage.setItem('age_verified', 'true');" class="enter-button">🌿 ./enter_den.sh --elevated</button>
+                <a href="https://google.com" class="leave-button">🚪 ./mundane_exit.sh</a>
             </div>
         </div>
     </div>
@@ -688,64 +688,64 @@
         <!-- Navigation -->
         <nav class="navbar">
             <a href="index.html" class="active">
-                <i class="fas fa-beer"></i>
-                🍺 ./home.sh
+                <i class="fas fa-cannabis"></i>
+                🌿 ./home.sh
             </a>
             <a href="lore.html">
                 <i class="fas fa-scroll"></i>
-                📜 ./bar_stories.txt
+                📜 ./sacred_texts.txt
             </a>
             <a href="images-thread.html">
                 <i class="fas fa-images"></i>
-                🖼️ ./ls memes/
+                🖼️ ./ls creations/
             </a>
             <a href="videos-thread.html">
                 <i class="fas fa-tv"></i>
-                📺 ./play_videos.sh
+                📺 ./play_visuals.sh
             </a>
-            <a href="https://247420.4247420769.xyz/" target="_blank">
-                <i class="fas fa-wifi"></i>
-                🌐 ./ssh bar@247420
+            <a href="https://420360.xyz/" target="_blank">
+                <i class="fas fa-gamepad"></i>
+                🎮 ./argcade.sh
             </a>
             <a href="https://thirdweb.com/somnia/0x1Fb25216baC410872CF548cc9A1D1B9B00F67A12" target="_blank">
                 <i class="fas fa-coins"></i>
-                💰 ./buy_beer.sh
+                💰 ./fund_chaos.sh
             </a>
         </nav>
 
         <div class="container">
             <div class="header">
-                <h1 class="hero-title glow-text">🍻 247420 Digital Dive Bar</h1>
-                <p class="hero-subtitle">Where Drunk Hackers & Meme Culturists Unite</p>
+                <h1 class="hero-title glow-text">🌿 247420 Digital Stoner Den</h1>
+                <p class="hero-subtitle">Where Creative Chaos & Meme Alchemy Converge</p>
             </div>
 
             <div class="features">
                 <a href="lore.html" class="feature-card">
                     <span class="feature-icon">📜</span>
-                    <h3>Bar Stories</h3>
-                    <p>Dive into the chaotic chronicles of our digital dive bar and discover the drunk hacker protocols that keep the party going.</p>
+                    <h3>Sacred Texts</h3>
+                    <p>Explore the ancient protocols of our digital stoner society and discover the creative alchemy that fuels our collective consciousness.</p>
                 </a>
 
                 <a href="images-thread.html" class="feature-card">
-                    <span class="feature-icon">🖼️</span>
-                    <h3>Meme Gallery</h3>
-                    <p>Browse our curated collection of shitposts, rare pepes, and questionable content that makes our bar special.</p>
+                    <span class="feature-icon">🎨</span>
+                    <h3>Creation Gallery</h3>
+                    <p>Browse our evolving collection of games, music, art, 3D models, AI experiments, and memes that define our digital ecosystem.</p>
                 </a>
 
                 <a href="videos-thread.html" class="feature-card">
                     <span class="feature-icon">📺</span>
-                    <h3>Video Archive</h3>
-                    <p>Watch the best drinking games, hacking tutorials, and fails that have become legendary in our community.</p>
+                    <h3>Visual Archives</h3>
+                    <p>Experience the trippiest visual journeys, creative tutorials, and chaotic collaborations from our community's collective mind.</p>
                 </a>
             </div>
 
             <div class="cta-section">
-                <p style="font-size: 1.2rem; margin-bottom: 30px; color: var(--beer-foam);">
-                    Ready to enter the chaos?
-                    <span id="random-chaos-quote" style="color: var(--neon-sign); font-weight: 700;">Loading bar wisdom...</span>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; color: var(--haze-purple);">
+                    Ready to elevate your consciousness?
+                    <span id="random-chaos-quote" style="color: var(--green-bud); font-weight: 700;">Loading sacred wisdom...</span>
                 </p>
                 <a href="lore.html" class="cta-button">
-                    🍺 ./enter_the_chaos.sh
+                    🌿 ./elevate_mind.sh
                 </a>
             </div>
         </div>
@@ -771,16 +771,16 @@
 
         // Random chaos quotes
         const chaosQuotes = [
-            "Remember: if it compiles, ship it.",
-            "Stack overflow? Just add more beer.",
+            "Remember: if it vibes, ship it.",
+            "Stack overflow? Just elevate your perspective.",
             "Production is for people who can't handle chaos.",
-            "The best code is written at 3AM after 6 beers.",
-            "It's not a bug, it's undocumented chaos.",
-            "Test in prod? We live in prod.",
-            "Error 404: Sober mind not found.",
-            "Git commit -m 'fix things' works every time.",
-            "Why test when you can pray?",
-            "In beer we trust. All others must pay cash."
+            "The best code is written at 4:20PM after sacred meditation.",
+            "It's not a bug, it's undocumented consciousness.",
+            "Test in prod? We live in elevated reality.",
+            "Error 404: Mundane mind not found.",
+            "Git commit -m 'manifest reality' works every time.",
+            "Why debug when you can ascend?",
+            "In creativity we trust. All others must pay with inspiration."
         ];
 
         function updateRandomQuote() {
