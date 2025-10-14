@@ -1,3 +1,0 @@
-This is a test file for testing the upstream repo merge process.
-Created: 2025-10-14
-Purpose: Testing git workflow and upstream merging functionality
