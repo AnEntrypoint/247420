@@ -884,6 +884,82 @@
                 font-size: 2.25rem; /* 2.5x bigger than 0.9rem */
             }
         }
+
+        /* Hero Section Styles - matching other pages */
+        .hero-section {
+            text-align: center;
+            padding: 140px 0 80px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--neon-sign);
+            margin-bottom: 20px;
+            text-shadow:
+                0 0 10px var(--neon-sign),
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 20px rgba(255, 107, 53, 0.5);
+            line-height: 1.1;
+            font-weight: 700;
+            font-family: 'Press Start 2P', 'VT323', monospace;
+            animation: titleGlitch 4s ease-in-out infinite;
+        }
+
+        @keyframes titleGlitch {
+            0%, 90%, 100% {
+                transform: translate(0);
+                filter: hue-rotate(0deg) brightness(1);
+                text-shadow: 0 0 10px var(--neon-sign), 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 107, 53, 0.5);
+            }
+            91% {
+                transform: translate(-2px, 2px);
+                filter: hue-rotate(90deg) brightness(1.2);
+                text-shadow: 2px 2px 0 var(--graffiti-red), -2px -2px 0 var(--neon-blue);
+            }
+            92% {
+                transform: translate(2px, -2px);
+                filter: hue-rotate(180deg) brightness(0.8);
+                text-shadow: -2px 2px 0 var(--terminal-green), 2px -2px 0 var(--urine-stain);
+            }
+            93% {
+                transform: translate(-1px, 1px);
+                filter: hue-rotate(270deg) brightness(1.1);
+                text-shadow: 1px -1px 0 var(--neon-blue), -1px 1px 0 var(--spilled-beer);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--beer-foam);
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: subtitleFlicker 3s ease-in-out infinite;
+        }
+
+        @keyframes subtitleFlicker {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+            75% { opacity: 0.95; }
+        }
+
+        /* Add missing CSS variables from other pages for consistency */
+        :root {
+            /* Dive bar theme variables for compatibility */
+            --dive-bar-bg: #1a1a1a;
+            --dive-bar-dark: #0d0d0d;
+            --beer-foam: #f5e6d3;
+            --dirty-wall: #2d2d2d;
+            --neon-sign: #ff6b35;
+            --neon-blue: #00d4ff;
+            --spilled-beer: #8b6914;
+            --graffiti-red: #ff1744;
+            --terminal-green: #00ff41;
+            --urine-stain: #c4b000;
+            --rust-metal: #8b4513;
+            --bar-stool: #4a3c28;
+        }
     </style>
 </head>
 <body>
