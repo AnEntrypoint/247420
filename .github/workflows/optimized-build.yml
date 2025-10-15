@@ -28,7 +28,7 @@ jobs:
       run: npm ci
 
     - name: Build application
-      run: npm run build:ssr
+      run: npm run build:full
 
     - name: Optimize build artifacts
       run: |

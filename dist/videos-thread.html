@@ -1525,9 +1525,22 @@
         };
         document.head.appendChild(navbarScript);
 
+        // Load enhanced scheduler
+        const schedulerScript = document.createElement('script');
+        schedulerScript.type = 'module';
+        schedulerScript.src = '/components/video-player-with-scheduler.js';
+        document.head.appendChild(schedulerScript);
+
         document.addEventListener('DOMContentLoaded', async () => {
             const tv = new Schwelevision();
             await tv.init();
+
+            // Initialize enhanced scheduler (will auto-initialize if loaded)
+            if (window.videoPlayer) {
+                console.log('🎛️ Enhanced video player with scheduler loaded');
+            } else {
+                console.log('⚠️ Enhanced scheduler not available, using default player');
+            }
         });
     </script>
 </body>
