@@ -30,10 +30,53 @@ export default defineConfig({
         lore: resolve(__dirname, 'lore.html'),
         gallery: resolve(__dirname, 'images-thread.html'),
         videosThread: resolve(__dirname, 'videos-thread.html')
+      },
+      output: {
+        manualChunks: {
+          'components': [
+            'dist/components/theme.css',
+            'dist/components/base.css',
+            'dist/components/animations.css',
+            'dist/components/navbar-unified.css',
+            'dist/components/cards.css',
+            'dist/components/buttons.css',
+            'dist/components/utilities.css',
+            'dist/components/loader.css'
+          ],
+          'vendor': [
+            // Add any third-party dependencies here
+          ]
+        },
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/\.(mp4|webm|ogg|mp3|wav|flac|aac)$/.test(assetInfo.name)) {
+            return `assets/media/[name]-[hash][extname]`;
+          }
+          if (/\.(png|jpe?g|gif|svg|webp|avif)$/.test(assetInfo.name)) {
+            return `assets/images/[name]-[hash][extname]`;
+          }
+          if (/\.css$/.test(assetInfo.name)) {
+            return `assets/css/[name]-[hash][extname]`;
+          }
+          return `assets/[ext]/[name]-[hash][extname]`;
+        }
       }
     },
     emptyOutDir: false,
-    assetsInlineLimit: 0
+    assetsInlineLimit: 4096, // Inline assets smaller than 4KB
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    },
+    cssCodeSplit: true,
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000
   },
   plugins: [
     {

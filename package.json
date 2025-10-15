@@ -10,12 +10,15 @@
     "build:ssr": "node build-ssr.js",
     "build:vite-only": "vite build",
     "build:production": "npm run build:ssr",
+    "build:optimize": "node scripts/optimize-build.js",
+    "build:full": "npm run build && npm run build:optimize",
     "preview": "vite preview",
     "preview:ssr": "NODE_ENV=production node server.js",
     "start": "NODE_ENV=production node server.js",
     "start:dev": "NODE_ENV=development node server.js",
     "deploy:ssr": "npm run build:ssr && git add . && git commit -m 'build: SSR deployment build' && git push",
-    "deploy": "npm run build && git add . && git commit -m 'build: deployment build' && git push"
+    "deploy": "npm run build && git add . && git commit -m 'build: deployment build' && git push",
+    "deploy:optimized": "npm run build:full && git add . && git commit -m 'build: optimized deployment' && git push"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",

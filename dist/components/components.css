@@ -1,0 +1,275 @@
+/* 247420 Digital Dive Bar - Master Component Library */
+/* Consolidated component system - import this file for all components */
+
+/* === IMPORT ORDER === */
+/* 1. Theme system (variables and base styles) */
+/* 2. Animations (shared animations) */
+/* 3. Components (navbar, cards, buttons) */
+/* 4. Utilities (helper classes) */
+
+/* === THEME SYSTEM === */
+@import url('./theme.css');
+@import url('./base.css');
+
+/* === SHARED ANIMATIONS === */
+@import url('./animations.css');
+
+/* === COMPONENT LIBRARIES === */
+@import url('./navbar-unified.css');
+@import url('./cards.css');
+@import url('./buttons.css');
+
+/* === COMPONENT LOADER === */
+@import url('./loader.css');
+
+/* === UTILITY CLASSES === */
+@import url('./utilities.css');
+
+/* === COMPONENT-SPECIFIC ENHANCEMENTS === */
+
+/* Grid system for component layouts */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--component-grid-gap, var(--space-6, 1.5rem));
+  margin: var(--component-grid-margin, var(--space-6, 1.5rem) 0);
+}
+
+.component-grid-sm {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--component-grid-sm-gap, var(--space-4, 1rem));
+}
+
+.component-grid-lg {
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: var(--component-grid-lg-gap, var(--space-8, 2rem));
+}
+
+/* Component spacing utilities */
+.component-section {
+  margin: var(--component-section-margin, var(--space-8, 2rem) 0);
+}
+
+.component-section-sm {
+  margin: var(--component-section-sm-margin, var(--space-6, 1.5rem) 0);
+}
+
+.component-section-lg {
+  margin: var(--component-section-lg-margin, var(--space-12, 3rem) 0);
+}
+
+/* Component wrapper for consistent styling */
+.component-wrapper {
+  max-width: var(--component-wrapper-max-width, 1200px);
+  margin: var(--component-wrapper-margin, 0 auto);
+  padding: var(--component-wrapper-padding, var(--space-6, 1.5rem));
+}
+
+/* Component header pattern */
+.component-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--component-header-gap, var(--space-4, 1rem));
+  margin-bottom: var(--component-header-margin, var(--space-6, 1.5rem));
+  padding-bottom: var(--component-header-padding, var(--space-4, 1rem));
+  border-bottom: 1px solid var(--component-header-border, var(--border-secondary, rgba(255, 255, 255, 0.1)));
+}
+
+.component-title {
+  font-size: var(--component-title-size, var(--text-2xl, 1.5rem));
+  font-weight: var(--component-title-weight, 600);
+  color: var(--component-title-color, var(--text-primary, #f5e6d3));
+  margin: 0;
+}
+
+.component-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--component-actions-gap, var(--space-3, 0.75rem));
+}
+
+/* Component footer pattern */
+.component-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--component-footer-gap, var(--space-4, 1rem));
+  margin-top: var(--component-footer-margin, var(--space-6, 1.5rem));
+  padding-top: var(--component-footer-padding, var(--space-4, 1rem));
+  border-top: 1px solid var(--component-footer-border, var(--border-secondary, rgba(255, 255, 255, 0.1)));
+  font-size: var(--component-footer-size, var(--text-sm, 0.875rem));
+  color: var(--component-footer-color, var(--text-dim, rgba(245, 230, 211, 0.6)));
+}
+
+/* Component loading states */
+.component-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.component-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  animation: componentShimmer 1.5s infinite;
+}
+
+@keyframes componentShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Component error states */
+.component-error {
+  padding: var(--component-error-padding, var(--space-4, 1rem));
+  background: var(--component-error-bg, rgba(255, 23, 68, 0.1));
+  border: 1px solid var(--component-error-border, var(--graffiti-red, #ff1744));
+  border-radius: var(--component-error-radius, var(--radius-lg, 1rem));
+  color: var(--component-error-color, var(--graffiti-red, #ff1744));
+  text-align: center;
+  font-size: var(--component-error-size, var(--text-sm, 0.875rem));
+}
+
+/* Component empty states */
+.component-empty {
+  padding: var(--component-empty-padding, var(--space-8, 2rem));
+  text-align: center;
+  color: var(--component-empty-color, var(--text-dim, rgba(245, 230, 211, 0.6)));
+}
+
+.component-empty-icon {
+  font-size: var(--component-empty-icon-size, 3rem);
+  margin-bottom: var(--component-empty-icon-margin, var(--space-4, 1rem));
+  opacity: var(--component-empty-icon-opacity, 0.5);
+}
+
+.component-empty-title {
+  font-size: var(--component-empty-title-size, var(--text-lg, 1.125rem));
+  font-weight: var(--component-empty-title-weight, 600);
+  color: var(--component-empty-title-color, var(--text-secondary, rgba(245, 230, 211, 0.8)));
+  margin-bottom: var(--component-empty-title-margin, var(--space-2, 0.5rem));
+}
+
+.component-empty-description {
+  font-size: var(--component-empty-description-size, var(--text-sm, 0.875rem));
+  color: var(--component-empty-description-color, var(--text-dim, rgba(245, 230, 211, 0.6)));
+  margin-bottom: var(--component-empty-description-margin, var(--space-4, 1rem));
+}
+
+/* Responsive component utilities */
+@media (max-width: 768px) {
+  .component-wrapper {
+    padding: var(--component-wrapper-mobile-padding, var(--space-4, 1rem));
+  }
+
+  .component-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--component-header-mobile-gap, var(--space-3, 0.75rem));
+  }
+
+  .component-actions {
+    justify-content: center;
+  }
+
+  .component-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--component-footer-mobile-gap, var(--space-3, 0.75rem));
+    text-align: center;
+  }
+
+  .component-grid {
+    grid-template-columns: 1fr;
+    gap: var(--component-grid-mobile-gap, var(--space-4, 1rem));
+  }
+}
+
+/* Component theme variants */
+.component-terminal {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  background: var(--component-terminal-bg, #000000);
+  border: 2px solid var(--component-terminal-border, var(--terminal-green, #00ff41));
+  border-radius: var(--component-terminal-radius, var(--radius-md, 0.5rem));
+  box-shadow: var(--glow-green, 0 0 20px rgba(0, 255, 65, 0.3));
+}
+
+.component-neon {
+  background: var(--component-neon-bg, linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(153, 69, 255, 0.1) 100%));
+  border: 1px solid var(--component-neon-border, var(--neon-blue, #00d4ff));
+  box-shadow: var(--component-neon-shadow, 0 0 30px rgba(0, 212, 255, 0.2));
+}
+
+.component-glass {
+  background: var(--component-glass-bg, rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--component-glass-border, rgba(255, 255, 255, 0.1));
+}
+
+/* Component animation classes */
+.component-enter {
+  animation: componentEnter 0.5s ease;
+}
+
+.component-exit {
+  animation: componentExit 0.3s ease;
+}
+
+@keyframes componentEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes componentExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Component accessibility enhancements */
+.component-focusable:focus {
+  outline: 2px solid var(--component-focus-outline, var(--neon-blue, #00d4ff));
+  outline-offset: 2px;
+}
+
+.component-focusable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Component high contrast mode support */
+@media (prefers-contrast: high) {
+  .component-wrapper,
+  .card,
+  .btn {
+    border-width: 2px;
+  }
+}
+
+/* Component reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .component-enter,
+  .component-exit,
+  .component-loading::after {
+    animation: none !important;
+  }
+}
