@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "components": [
+    "navbar",
+    "footer",
+    "media-grid"
+  ],
+  "lastBuilt": "2025-10-15T21:43:55.081Z"
+}

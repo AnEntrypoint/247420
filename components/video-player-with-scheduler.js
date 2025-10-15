@@ -3,7 +3,7 @@
  * Integrates the 247420 scheduler with the existing video player functionality
  */
 
-import VideoScheduler from './scheduler.js';
+import Schwelevision from '420kit-shared/schwelevision';
 
 class EnhancedVideoPlayer {
     constructor() {
@@ -14,8 +14,8 @@ class EnhancedVideoPlayer {
         this.isPlaying = false;
         this.isBuffering = false;
 
-        // Scheduler integration
-        this.scheduler = null;
+        // Scheduler integration using 420kit Schwelevision
+        this.schwelevision = null;
         this.currentScheduledVideo = null;
         this.adBreaks = [];
         this.isAdPlaying = false;
@@ -31,45 +31,31 @@ class EnhancedVideoPlayer {
         this.nowPlaying = null;
         this.loadingText = null;
 
-        // Initialize scheduler
-        this.initializeScheduler();
+        // Initialize Schwelevision
+        this.initializeSchwelevision();
     }
 
     /**
-     * Initialize the video scheduler
+     * Initialize the Schwelevision scheduler from 420kit
      */
-    async initializeScheduler() {
-        this.scheduler = new VideoScheduler({
-            enableScheduledOverride: true,
-            enableClipAds: true,
-            maxAdsPerHour: 4,
-            minAdDuration: 30,
-            maxAdDuration: 120,
-            fallbackToSavedVideos: true,
-            fallbackToStatic: true
+    async initializeSchwelevision() {
+        this.schwelevision = new Schwelevision({
+            videoElement: 'tvVideo',
+            nowPlayingElement: 'nowPlaying',
+            loadingElement: 'loadingText',
+            schedulePath: '/public/schedule_weeks/',
+            fallbackToSaved: true,
+            enableAudio: true
         });
 
-        const success = await this.scheduler.initialize();
-        if (success) {
-            console.log('✅ Scheduler initialized successfully');
+        try {
+            await this.schwelevision.initialize();
+            console.log('✅ Schwelevision initialized successfully');
 
-            // Set up scheduler event listeners
-            this.scheduler.on('scheduledVideoStart', (video) => {
-                console.log('📅 Scheduled video started:', video.show || video.filename);
-                this.updateNowPlaying(video, 'scheduled');
-            });
-
-            this.scheduler.on('adBreakStart', (adBreak) => {
-                console.log('📺 Ad break started');
-                this.updateNowPlaying(adBreak.video, 'ad');
-            });
-
-            this.scheduler.on('fallbackVideo', (video) => {
-                console.log('📼 Playing fallback video');
-                this.updateNowPlaying(video, video.source);
-            });
-        } else {
-            console.error('❌ Failed to initialize scheduler');
+            // Schwelevision handles all video scheduling and playback internally
+            // We can monitor its state through its status methods
+        } catch (error) {
+            console.error('❌ Failed to initialize Schwelevision:', error);
         }
     }
 
@@ -77,9 +63,10 @@ class EnhancedVideoPlayer {
      * Initialize the video player
      */
     async initialize() {
-        console.log('🚀 Initializing Enhanced Video Player...');
+        console.log('🚀 Initializing Enhanced Video Player with 420kit Schwelevision...');
 
-        // Get DOM elements
+        // Schwelevision handles all video setup, loading, and playback
+        // Just ensure DOM elements are available
         this.videoElement = document.getElementById('tvVideo');
         this.nowPlaying = document.getElementById('nowPlaying');
         this.loadingText = document.getElementById('loadingText');
@@ -89,19 +76,7 @@ class EnhancedVideoPlayer {
             return;
         }
 
-        // Setup video player
-        this.setupVideoPlayer();
-
-        // Load videos
-        await this.loadVideos();
-
-        // Create loop schedule for fallback content
-        this.createLoopSchedule();
-
-        // Start playback
-        await this.startHybridBroadcast();
-
-        console.log('✅ Enhanced Video Player initialized');
+        console.log('✅ Enhanced Video Player initialized with 420kit Schwelevision');
     }
 
     /**
@@ -483,12 +458,13 @@ class EnhancedVideoPlayer {
      * Get current scheduler status
      */
     getSchedulerStatus() {
-        return this.scheduler?.getStatus() || {
+        return this.schwelevision?.getStatus() || {
             hasWeeklySchedule: false,
-            hasSavedVideos: this.videos.length > 0,
+            hasSavedVideos: false,
             hasStaticSchedule: false,
             isScheduledVideoPlaying: !!this.currentScheduledVideo,
-            isBufferingScheduledVideo: this.isBuffering
+            isBufferingScheduledVideo: false,
+            schwelevisionActive: !!this.schwelevision
         };
     }
 
@@ -496,13 +472,12 @@ class EnhancedVideoPlayer {
      * Force check for scheduled content
      */
     async checkForScheduledContent() {
-        if (!this.scheduler) return;
+        if (!this.schwelevision) return;
 
-        const scheduledVideo = await this.scheduler.getCurrentScheduledVideo();
-        if (scheduledVideo && !this.currentScheduledVideo) {
-            console.log('📅 New scheduled content detected, switching...');
-            await this.playScheduledVideo(scheduledVideo);
-        }
+        // Schwelevision handles scheduled content detection automatically
+        // We can trigger a refresh if needed
+        const status = this.schwelevision.getStatus();
+        console.log('📅 Schwelevision status:', status);
     }
 }
 
