@@ -1,0 +1,32 @@
+{
+  "videos": [
+    {
+      "filename": "static-program-1.mp4",
+      "title": "247420 Static Programming",
+      "description": "Default programming for when no other content is available",
+      "duration": 1800,
+      "category": "static"
+    },
+    {
+      "filename": "static-program-2.mp4",
+      "title": "Digital Dive Bar Archive",
+      "description": "Classic content from the 247420 archive",
+      "duration": 1800,
+      "category": "static"
+    }
+  ],
+  "loop": [
+    {
+      "filename": "static-program-1.mp4",
+      "duration": 1800000,
+      "offsetMs": 0
+    },
+    {
+      "filename": "static-program-2.mp4",
+      "duration": 1800000,
+      "offsetMs": 1800000
+    }
+  ],
+  "loopDurationMs": 3600000,
+  "epochStart": 1728000000000
+}

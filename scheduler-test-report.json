@@ -1,0 +1,92 @@
+{
+  "timestamp": "2025-10-15T19:44:34.434Z",
+  "summary": {
+    "passed": 13,
+    "failed": 0,
+    "warnings": 0,
+    "errors": 0,
+    "skipped": 0,
+    "total": 13,
+    "overallStatus": "PASS"
+  },
+  "results": [
+    {
+      "test": "File existence: components/scheduler.js",
+      "status": "PASS",
+      "details": "File exists",
+      "timestamp": "2025-10-15T19:44:34.402Z"
+    },
+    {
+      "test": "File existence: components/video-player-with-scheduler.js",
+      "status": "PASS",
+      "details": "File exists",
+      "timestamp": "2025-10-15T19:44:34.403Z"
+    },
+    {
+      "test": "File existence: saved_videos.json",
+      "status": "PASS",
+      "details": "File exists",
+      "timestamp": "2025-10-15T19:44:34.403Z"
+    },
+    {
+      "test": "File existence: public/schedule_weeks/week_1.json",
+      "status": "PASS",
+      "details": "File exists",
+      "timestamp": "2025-10-15T19:44:34.404Z"
+    },
+    {
+      "test": "File existence: static/video-schedule.json",
+      "status": "PASS",
+      "details": "File exists",
+      "timestamp": "2025-10-15T19:44:34.405Z"
+    },
+    {
+      "test": "Schedule format validation",
+      "status": "PASS",
+      "details": "v: true, s: true, m: 2025-10-11T00:00:00Z",
+      "timestamp": "2025-10-15T19:44:34.419Z"
+    },
+    {
+      "test": "Video list format validation",
+      "status": "PASS",
+      "details": "Object format: true, Has required fields: 30, Count: 335",
+      "timestamp": "2025-10-15T19:44:34.427Z"
+    },
+    {
+      "test": "420kit dependency",
+      "status": "PASS",
+      "details": "420kit-shared found in dependencies",
+      "timestamp": "2025-10-15T19:44:34.429Z"
+    },
+    {
+      "test": "Scheduler implementation files",
+      "status": "PASS",
+      "details": "scheduler.js: true, video-player-with-scheduler.js: true",
+      "timestamp": "2025-10-15T19:44:34.431Z"
+    },
+    {
+      "test": "Fallback source: Weekly schedule availability",
+      "status": "PASS",
+      "details": "Priority 1: Available",
+      "timestamp": "2025-10-15T19:44:34.432Z"
+    },
+    {
+      "test": "Fallback source: Saved videos availability",
+      "status": "PASS",
+      "details": "Priority 2: Available",
+      "timestamp": "2025-10-15T19:44:34.433Z"
+    },
+    {
+      "test": "Fallback source: Static schedule availability",
+      "status": "PASS",
+      "details": "Priority 3: Available",
+      "timestamp": "2025-10-15T19:44:34.434Z"
+    },
+    {
+      "test": "Fallback hierarchy logic",
+      "status": "PASS",
+      "details": "Available sources: 3, Hierarchy working: true",
+      "timestamp": "2025-10-15T19:44:34.434Z"
+    }
+  ]
+}
