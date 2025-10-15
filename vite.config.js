@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import { copyFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'fs'
+import { copyFileSync, mkdirSync, existsSync, readdirSync, statSync, writeFileSync } from 'fs'
 import { dirname, join } from 'path'
 
 function recursiveCopy(src, dest) {
@@ -37,11 +37,29 @@ export default defineConfig({
   },
   plugins: [
     {
+      name: 'build-components',
+      buildStart() {
+        console.log('🔨 Building component system...')
+      }
+    },
+    {
       name: 'copy-static-files',
       closeBundle: {
         sequential: true,
         handler() {
-          console.log('Copying additional static files...')
+          console.log('📦 Copying additional static files...')
+
+          // Create component manifest
+          const componentManifest = {
+            version: '1.0.0',
+            components: ['navbar', 'footer', 'media-grid'],
+            lastBuilt: new Date().toISOString()
+          }
+          writeFileSync(
+            resolve(__dirname, 'dist', 'component-manifest.json'),
+            JSON.stringify(componentManifest, null, 2)
+          )
+          console.log('✅ Created component manifest')
 
           // Copy JSON files
           const jsonFiles = ['saved_images.json', 'saved_media.json', 'saved_videos.json']
@@ -53,18 +71,25 @@ export default defineConfig({
             }
           })
 
-          // Copy navbar files
-          const navbarFile = resolve(__dirname, 'navbar.html')
-          if (existsSync(navbarFile)) {
-            copyFileSync(navbarFile, resolve(__dirname, 'dist', 'navbar.html'))
-            console.log('✅ Copied navbar.html')
+          // Copy components directory
+          const componentsDir = resolve(__dirname, 'dist', 'components')
+          if (!existsSync(componentsDir)) {
+            mkdirSync(componentsDir, { recursive: true })
           }
 
-          const navbarCssFile = resolve(__dirname, 'navbar.css')
-          if (existsSync(navbarCssFile)) {
-            copyFileSync(navbarCssFile, resolve(__dirname, 'dist', 'navbar.css'))
-            console.log('✅ Copied navbar.css')
-          }
+          const componentFiles = [
+            'components/navbar.js',
+            'components/navbar.css',
+            'components/base.css',
+            'components/loader.js'
+          ]
+          componentFiles.forEach(file => {
+            const srcFile = resolve(__dirname, 'dist', file)
+            if (existsSync(srcFile)) {
+              copyFileSync(srcFile, srcFile) // Already in dist
+              console.log(`✅ Component ready: ${file}`)
+            }
+          })
 
           // Copy CSS files
           const cssFiles = ['style.css', 'lore.css']
@@ -77,7 +102,7 @@ export default defineConfig({
           })
 
           // Copy directories
-          const directories = ['saved_images', 'saved_videos', 'public']
+          const directories = ['saved_images', 'saved_videos', 'public', 'scripts']
           directories.forEach(dir => {
             const srcDir = resolve(__dirname, dir)
             if (existsSync(srcDir)) {
@@ -92,6 +117,25 @@ export default defineConfig({
             copyFileSync(logoFile, resolve(__dirname, 'dist', 'logo.gif'))
             console.log('✅ Copied logo.gif')
           }
+
+          // Generate build info
+          const buildInfo = {
+            buildTime: new Date().toISOString(),
+            version: require('./package.json').version,
+            environment: process.env.NODE_ENV || 'development',
+            components: componentManifest.components,
+            assets: {
+              images: existsSync(resolve(__dirname, 'dist', 'saved_images')) ?
+                readdirSync(resolve(__dirname, 'dist', 'saved_images')).length : 0,
+              videos: existsSync(resolve(__dirname, 'dist', 'saved_videos')) ?
+                readdirSync(resolve(__dirname, 'dist', 'saved_videos')).length : 0
+            }
+          }
+          writeFileSync(
+            resolve(__dirname, 'dist', 'build-info.json'),
+            JSON.stringify(buildInfo, null, 2)
+          )
+          console.log('✅ Generated build info')
         }
       }
     }
