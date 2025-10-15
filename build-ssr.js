@@ -52,6 +52,14 @@ async function buildSSR() {
       }
     })
 
+    // Step 4: Copy static.mp4 file if it exists
+    const staticFile = path.join(__dirname, 'static.mp4')
+    const destStaticFile = path.join(__dirname, 'dist', 'static.mp4')
+    if (fs.existsSync(staticFile)) {
+      fs.copyFileSync(staticFile, destStaticFile)
+      console.log(`✅ Copied static.mp4`)
+    }
+
     console.log('🎉 SSR build completed successfully!')
     console.log('📦 Ready for deployment with node server.js')
 
