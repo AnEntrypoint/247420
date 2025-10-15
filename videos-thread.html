@@ -381,7 +381,11 @@
             object-fit: cover; /* Fill screen without side borders */
             object-position: 50% 30%; /* Focus lower for 9:16 videos, avoid cutting important content */
             background: var(--tv-screen);
-            filter: blur(1px) saturate(1.3) hue-rotate(180deg); /* Enhanced cyberpunk TV effect */
+            filter: none; /* Reset all filters to default coloring */
+            image-rendering: pixelated; /* Add pixelated effect */
+            image-rendering: -moz-crisp-edges; /* Firefox support */
+            image-rendering: crisp-edges; /* Modern browsers */
+            transform: scale(1.05); /* Slight scaling to enhance pixelation */
         }
 
         .scan-lines {
@@ -683,11 +687,7 @@
         }
 
         .tv-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap;
+            display: none; /* Completely hide all video controls */
         }
 
         .tv-button {
@@ -1032,22 +1032,7 @@
             <audio id="staticNoise" loop preload="auto"></audio>
         </div>
 
-        <div class="tv-controls">
-            <button class="tv-button" id="changeChannel">
-                <i class="fas fa-random"></i>
-                CHANGE CHANNEL
-            </button>
-            <button class="tv-button" id="fullscreenToggle">
-                <i class="fas fa-expand"></i>
-                FULLSCREEN
-            </button>
-            <div class="volume-control">
-                <div class="volume-knob" id="volumeKnob">
-                    <div class="volume-indicator" id="volumeIndicator"></div>
-                </div>
-                <div class="volume-level" id="volumeLevel">0</div>
-            </div>
-        </div>
+        <!-- Video controls removed for clean viewing experience -->
 
         </div>
     </div>
@@ -1120,7 +1105,6 @@
                 await this.loadVideos();
                 await this.loadWeeklySchedule();
                 this.setupEventListeners();
-                this.setupVolumeControl();
                 this.setupAudioInteraction();
                 this.startNoiseAnimation();
                 this.generateProgramSchedule();
@@ -2476,36 +2460,7 @@
                     setTimeout(() => this.playRandomVideo(), 2000);
                 });
 
-                document.getElementById('changeChannel').addEventListener('click', () => {
-                    if (this.scheduledPlayTimeout) {
-                        clearTimeout(this.scheduledPlayTimeout);
-                    }
-                    this.currentVideoElement.pause();
-                    this.currentProgramIndex++;
-                    this.onScheduledVideoEnd();
-                });
-
-                document.getElementById('fullscreenToggle').addEventListener('click', () => {
-                    this.toggleFullscreen();
-                });
-
-                // Listen for fullscreen changes to update button state
-                document.addEventListener('fullscreenchange', () => {
-                    const fullscreenBtn = document.getElementById('fullscreenToggle');
-                    const fullscreenHint = document.getElementById('fullscreenHint');
-                    if (!document.fullscreenElement) {
-                        // Exited fullscreen
-                        fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> FULLSCREEN';
-                        fullscreenHint.style.display = 'none';
-                    }
-                });
-
-                // Escape key listener to exit fullscreen
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape' && document.fullscreenElement) {
-                        document.exitFullscreen();
-                    }
-                });
+                // All control event listeners removed for clean viewing experience
             }
         }
 
