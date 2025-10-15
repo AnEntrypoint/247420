@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>247420 TV Guide - Retro Schedule</title>
+    <link rel="icon" href="logo.gif" type="image/gif">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Browse the complete 247420 schedule - Retro TV guide interface with nostalgic CRT aesthetics">
+    <meta name="keywords" content="247420 tv guide, retro television, tv schedule, crt effects, vintage tv">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://247420.247247420.xyz/tv-guide.html">
+    <meta property="og:title" content="247420 TV Guide - Retro Schedule">
+    <meta property="og:description" content="Authentic retro TV guide with complete programming schedule">
+    <meta property="og:image" content="https://247420.247247420.xyz/logo.gif">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Fredoka:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Navigation -->
+    <link rel="stylesheet" href="navbar.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navigation-container">
+        <iframe src="navigation.html" frameborder="0" width="100%" height="60px"></iframe>
+    </div>
+
+    <!-- TV Guide Container - All content will be injected by 420kit -->
+    <div id="tv-guide-root"></div>
+
+    <!-- Load 420kit TV Guide -->
+    <script type="module">
+        import { createTVGuide } from '420kit-shared/tv-guide.js';
+
+        // Initialize TV Guide with 247420 branding
+        createTVGuide({
+            title: "247420 TV GUIDE",
+            subtitle: "Your Complete Retro Programming Schedule",
+            brandColor: "#ff6b35",
+            timezone: "UTC"
+        });
+    </script>
+</body>
+</html>

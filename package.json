@@ -27,8 +27,6 @@
   },
   "dependencies": {
     "express": "^4.21.2",
-    "@420kit/shared": "^1.0.0",
-    "@420kit/ui": "^1.0.0",
-    "@420kit/utils": "^1.0.0"
+    "420kit-shared": "file:../420kit"
   }
 }
