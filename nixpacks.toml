@@ -13,8 +13,8 @@ cmds = [
 
 [phases.build]
 cmds = [
-  "npm run build"
+  "npm run build:ssr"
 ]
 
 [start]
-cmd = "npx serve dist -p 3000"
+cmd = "npm start"
