@@ -1,0 +1,7 @@
+# Claude Code settings (project-specific, not to be committed)
+.claude/
+
+# Dependencies
+node_modules/
+*.log
+.DS_Store

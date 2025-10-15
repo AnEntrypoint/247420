@@ -683,6 +683,43 @@
             animation: glow 2s ease-in-out infinite;
         }
 
+        .back-button-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
+            color: var(--neon-sign);
+            border: 2px solid var(--neon-sign);
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'VT323', 'Press Start 2P', monospace;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            box-shadow:
+                0 6px 20px rgba(255, 107, 53, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), var(--dive-bar-dark));
+            border: 2px solid var(--neon-blue);
+            color: var(--beer-foam);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow:
+                0 10px 30px rgba(255, 107, 53, 0.5),
+                0 0 20px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
         .lore-card-mood {
             position: absolute;
             top: 15px;
@@ -817,6 +854,182 @@
     </div>
 
     <script>
+        // Simple Lore Engine Implementation
+        window.loreEngine = {
+            loreData: {
+                chapters: [
+                    {
+                        id: 'intro',
+                        title: 'Digital Stoner Den Chronicles',
+                        subtitle: 'Welcome to the Dive Bar',
+                        icon: '🌿',
+                        mood: 'chaotic',
+                        theme: 'terminal',
+                        content: [
+                            {
+                                type: 'text',
+                                text: 'Welcome to the Digital Stoner Den, where reality blurs and memes come alive. This sacred space exists at the intersection of chaos and creativity, where drunk hackers commune with digital spirits.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'Here, protocols are written in beer stains and firewalls run on pure chaos. Enter at your own risk, for what you find here may fundamentally alter your perception of digital reality.'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'protocols',
+                        title: 'Bar Rules & Protocols',
+                        subtitle: 'The Sacred Commandments',
+                        icon: '📜',
+                        mood: 'serious',
+                        theme: 'terminal',
+                        content: [
+                            {
+                                type: 'text',
+                                text: 'Protocol 1: Thou shalt not question the meme magic.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'Protocol 2: All bugs are features in disguise.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'Protocol 3: If it works, don\'t touch it. If it\'s broken, add more chaos.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'Protocol 4: The answer is always 42, unless it\'s 247420.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'Protocol 5: Leave your sanity at the door, collect it on exit if available.'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'alchemy',
+                        title: 'Creative Alchemy',
+                        subtitle: 'Transforming Chaos into Art',
+                        icon: '🔮',
+                        mood: 'mystical',
+                        theme: 'terminal',
+                        content: [
+                            {
+                                type: 'text',
+                                text: 'In the digital crucible of our stoner den, we practice the ancient art of creative alchemy. Taking the lead of chaos and transmuting it into pure, unadulterated digital gold.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'Every failed deployment becomes a learning opportunity. Every bug becomes a feature. Every moment of confusion sparks a moment of brilliance. This is the way of the digital alchemist.'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'network',
+                        title: 'Chaotic Network Architecture',
+                        subtitle: 'Building on Shaky Foundations',
+                        icon: '🕸️',
+                        mood: 'technical',
+                        theme: 'terminal',
+                        content: [
+                            {
+                                type: 'text',
+                                text: 'Our network architecture defies conventional wisdom. Where others see chaos, we see opportunity. Where others find risk, we discover potential.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'The digital dive bar operates on principles of quantum uncertainty and stochastic resonance. If you don\'t understand it, it\'s working correctly.'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'meme_magic',
+                        title: 'Meme Magic & Digital Spirits',
+                        subtitle: 'The Invisible Forces',
+                        icon: '👻',
+                        mood: 'ethereal',
+                        theme: 'terminal',
+                        content: [
+                            {
+                                type: 'text',
+                                text: 'Meme magic is real, and it flows through the digital veins of our underground network. Each meme carries with it the power to reshape reality itself.'
+                            },
+                            {
+                                type: 'text',
+                                text: 'The digital spirits that inhabit our servers communicate through error messages, random crashes, and inexplicable bugs. Learning to read their language is the first step toward enlightenment.'
+                            }
+                        ]
+                    }
+                ]
+            },
+
+            getAllChapters: function() {
+                return this.loreData.chapters;
+            },
+
+            getChapter: function(id) {
+                return this.loreData.chapters.find(chapter => chapter.id === id);
+            },
+
+            getThemeConfig: function(theme) {
+                const themes = {
+                    terminal: {
+                        primaryColor: '#00ff41',
+                        secondaryColor: '#ff6b35',
+                        backgroundColor: '#0d0d0d'
+                    },
+                    mystical: {
+                        primaryColor: '#9b59b6',
+                        secondaryColor: '#3498db',
+                        backgroundColor: '#1a1a2e'
+                    }
+                };
+                return themes[theme] || themes.terminal;
+            },
+
+            getRandomLoreSnippet: function() {
+                const snippets = [
+                    "In chaos, we find clarity. In confusion, we discover truth.",
+                    "The only constant in the digital dive bar is change.",
+                    "Every error message is a poem from the machine spirits.",
+                    "Debugging is like being a detective in a crime movie where you are also the murderer.",
+                    "The best code is no code at all, but beer-stained napkin sketches work too.",
+                    "In the beginning was the command line, and it was good.",
+                    "To err is human, but to really foul things up requires a computer.",
+                    "There are only 10 types of people: those who understand binary and those who don't.",
+                    "The Internet wasn\'t built on privacy—it was built on sharing.",
+                    "In the digital stoner den, even the bugs have bugs."
+                ];
+                return snippets[Math.floor(Math.random() * snippets.length)];
+            },
+
+            generateLoreHTML: function(chapterId) {
+                const chapter = this.getChapter(chapterId);
+                if (!chapter) return '<p>Chapter not found.</p>';
+
+                const contentHTML = chapter.content.map(section => {
+                    if (section.type === 'text') {
+                        return `<p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 20px; color: var(--beer-foam); text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);">${section.text}</p>`;
+                    }
+                    return '';
+                }).join('');
+
+                return `
+                    <div style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+                        <h2 style="font-size: 2.5rem; color: var(--neon-sign); margin-bottom: 20px; text-align: center; text-shadow: 0 0 10px var(--neon-sign), 2px 2px 4px rgba(0, 0, 0, 0.8);">
+                            ${chapter.icon} ${chapter.title}
+                        </h2>
+                        <p style="font-size: 1.4rem; color: var(--beer-foam); margin-bottom: 40px; text-align: center; font-style: italic;">
+                            ${chapter.subtitle}
+                        </p>
+                        <div style="background: linear-gradient(135deg, var(--dirty-wall), var(--dive-bar-dark)); border: 2px solid var(--rust-metal); border-radius: 15px; padding: 40px; backdrop-filter: blur(5px);">
+                            ${contentHTML}
+                        </div>
+                    </div>
+                `;
+            }
+        };
+
         // enterSite function is now defined globally above
 
         // Check if user is already verified

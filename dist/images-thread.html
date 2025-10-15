@@ -291,7 +291,8 @@
         .media-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            -o-object-fit: cover;
+               object-fit: cover;
             transition: transform 0.3s ease;
         }
         .media-item:hover .media-container img {
@@ -346,7 +347,8 @@
         .modal-content img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            -o-object-fit: contain;
+               object-fit: contain;
             border-radius: 10px;
         }
         .modal-close {
@@ -410,34 +412,13 @@
         }
     </style>
   <link rel="stylesheet" crossorigin href="/assets/style-ERVDcyL7.css">
-  <link rel="stylesheet" crossorigin href="/assets/navbar-Bdw0hUDl.css">
+  <link rel="stylesheet" href="/components/navbar.css">
 </head>
 <body>
     <div class="terminal-scanlines"></div>
     <div class="terminal-flicker"></div>
 
-    <nav class="navbar">
-        <a href="index.html">
-            <i class="fas fa-terminal"></i>
-            $ ./home.sh
-        </a>
-        <a href="lore.html">
-            <i class="fas fa-file-alt"></i>
-            $ cat lore.txt
-        </a>
-        <a href="images-thread.html" class="active">
-            <i class="fas fa-image"></i>
-            $ ls images/
-        </a>
-        <a href="videos-thread.html">
-            <i class="fas fa-play"></i>
-            $ ./media_player --tv
-        </a>
-        <a href="https://420360.xyz/" target="_blank">
-            <i class="fas fa-network-wired"></i>
-            $ ssh world@247420
-        </a>
-      </nav>
+    <div id="navbar-container"></div>
 
     <div class="terminal-window">
         <div class="terminal-header">
@@ -650,6 +631,13 @@
         }
 
         // Load shared navbar
+        const navbarScript = document.createElement('script');
+        navbarScript.src = '/components/navbar.js';
+        navbarScript.onload = () => {
+            const navbar = new SharedNavbar();
+            navbar.inject();
+        };
+        document.head.appendChild(navbarScript);
         // Initialize gallery when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             gallery = new ImagesGallery();

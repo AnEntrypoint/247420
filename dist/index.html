@@ -553,7 +553,9 @@
         .content-blurred {
             filter: blur(5px);
             pointer-events: none;
-            user-select: none;
+            -webkit-user-select: none;
+               -moz-user-select: none;
+                    user-select: none;
         }
         .glow-text {
             animation: glow 2s ease-in-out infinite;
@@ -601,7 +603,7 @@
             }
         }
     </style>
-  <link rel="stylesheet" crossorigin href="/assets/navbar-Bdw0hUDl.css">
+  <link rel="stylesheet" href="/components/navbar.css">
   <link rel="stylesheet" crossorigin href="/assets/style-ERVDcyL7.css">
   <link rel="stylesheet" crossorigin href="/assets/lore-D6iLehCu.css">
 </head>
@@ -633,28 +635,7 @@
         <div class="terminal-flicker"></div>
 
         <!-- Navigation -->
-        <nav class="navbar">
-            <a href="index.html" class="active">
-                <i class="fas fa-cannabis"></i>
-                🌿 ./home.sh
-            </a>
-            <a href="lore.html">
-                <i class="fas fa-scroll"></i>
-                📜 ./sacred_texts.txt
-            </a>
-            <a href="images-thread.html">
-                <i class="fas fa-images"></i>
-                🖼️ ./ls creations/
-            </a>
-            <a href="videos-thread.html">
-                <i class="fas fa-tv"></i>
-                📺 ./play_visuals.sh
-            </a>
-            <a href="https://420360.xyz/" target="_blank">
-                <i class="fas fa-gamepad"></i>
-                🎮 ./argcade.sh
-            </a>
-            </nav>
+        <div id="navbar-container"></div>
 
         <div class="container">
             <div class="header">
@@ -733,6 +714,15 @@
                 quoteElement.textContent = randomQuote;
             }
         }
+
+        // Load shared navbar
+        const navbarScript = document.createElement('script');
+        navbarScript.src = '/components/navbar.js';
+        navbarScript.onload = () => {
+            const navbar = new SharedNavbar();
+            navbar.inject();
+        };
+        document.head.appendChild(navbarScript);
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
