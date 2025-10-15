@@ -1,0 +1,12 @@
+{
+  "title": "Week 1 Programming",
+  "description": "247420 Digital Dive Bar TV Schedule",
+  "programs": [
+    {
+      "title": "Test Signal",
+      "description": "Broadcast test pattern",
+      "type": "test",
+      "duration": 60
+    }
+  ]
+}

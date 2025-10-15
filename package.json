@@ -1,14 +1,26 @@
 {
-  "name": "community-app",
+  "name": "247420-community-app",
   "private": true,
   "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
+    "dev:ssr": "NODE_ENV=development node server.js",
     "build": "vite build",
-    "preview": "vite preview"
+    "build:ssr": "node build-ssr.js",
+    "build:vite-only": "vite build",
+    "build:production": "npm run build:ssr",
+    "preview": "vite preview",
+    "preview:ssr": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node server.js",
+    "start:dev": "NODE_ENV=development node server.js",
+    "deploy:ssr": "npm run build:ssr && git add . && git commit -m 'build: SSR deployment build' && git push",
+    "deploy": "npm run build && git add . && git commit -m 'build: deployment build' && git push"
   },
   "devDependencies": {
     "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
   }
 }

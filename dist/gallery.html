@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>247420 - Digital Dive Bar Gallery 🍻 | Wall of Fame</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="247420 Digital Dive Bar Gallery - Wall of Fame featuring drunk hackers, meme culturists, and chaotic moments captured in dive bar glory.">
+    <meta name="keywords" content="247420 digital dive bar, gallery wall of fame, drunk hackers, meme culturists, chaotic moments, dive bar collection">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://247420.247247420.xyz/gallery.html">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://247420.247247420.xyz/gallery.html">
+    <meta property="og:title" content="247420 | Digital Dive Bar Gallery 🍻">
+    <meta property="og:description" content="Wall of Fame featuring drunk hackers, meme culturists, and chaotic moments captured in dive bar glory.">
+    <meta property="og:image" content="https://247420.247247420.xyz/247420/logo.gif">
+    <meta property="og:site_name" content="247420 Digital Dive Bar">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="247420 | Digital Dive Bar Gallery 🍻">
+    <meta name="twitter:description" content="Wall of Fame featuring drunk hackers, meme culturists, and chaotic moments.">
+    <meta name="twitter:image" content="https://247420.247247420.xyz/247420/logo.gif">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- 420kit Shared Library -->
+    <!-- Note: phrase-system now loaded from @420kit/shared npm package -->
+    <style>
+        /* Digital Dive Bar Theme Variables */
+        :root {
+            --dive-bar-bg: #1a1a1a;
+            --dive-bar-dark: #0d0d0d;
+            --beer-foam: #f5e6d3;
+            --dirty-wall: #2d2d2d;
+            --neon-sign: #ff6b35;
+            --neon-blue: #00d4ff;
+            --spilled-beer: #8b6914;
+            --graffiti-red: #ff1744;
+            --terminal-green: #00ff41;
+            --urine-stain: #c4b000;
+            --rust-metal: #8b4513;
+            --bar-stool: #4a3c28;
+            --vomit-green: #7a8c3a;
+            --dark-wood: #3e2723;
+            --smoke-haze: rgba(255, 255, 255, 0.05);
+            --beer-glass: rgba(255, 250, 240, 0.1);
+        }
+        /* Import Dive Bar Fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'VT323', 'Share Tech Mono', 'Press Start 2P', monospace;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(139, 105, 20, 0.08) 0%, transparent 50%),
+                linear-gradient(135deg, var(--dive-bar-bg) 0%, var(--dive-bar-dark) 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        /* Beer Stain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 10% 20%, rgba(139, 105, 20, 0.12) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 80%, rgba(196, 0, 0, 0.08) 0%, transparent 30%),
+                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--dive-bar-bg) 0%, var(--dive-bar-dark) 100%);
+            animation: barShift 15s ease-in-out infinite;
+        }
+        @keyframes barShift {
+            0%, 100% { background: linear-gradient(135deg, var(--dive-bar-bg) 0%, var(--dive-bar-dark) 100%); }
+            25% { background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, var(--dive-bar-dark) 100%); }
+            50% { background: linear-gradient(135deg, var(--dive-bar-bg) 0%, rgba(0, 212, 255, 0.1) 100%); }
+            75% { background: linear-gradient(135deg, rgba(139, 105, 20, 0.1) 0%, var(--dive-bar-dark) 100%); }
+        }
+        /* Terminal Scanlines */
+        .terminal-scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 107, 53, 0.03),
+                rgba(255, 107, 53, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+        .terminal-flicker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--dive-bar-bg);
+            animation: diveBarFlicker 0.2s infinite;
+            pointer-events: none;
+        }
+        @keyframes diveBarFlicker {
+            0% { opacity: 0.96; }
+            25% { opacity: 1; }
+            50% { opacity: 0.98; }
+            75% { opacity: 0.97; }
+            100% { opacity: 0.99; }
+        }
+        /* Beer Spill Drip Animation */
+        @keyframes beerDrip {
+            0% { transform: translateY(-10px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        .beer-drip {
+            position: fixed;
+            top: -10px;
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(to bottom, var(--beer-foam), var(--spilled-beer));
+            border-radius: 50%;
+            animation: beerDrip 8s infinite;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .beer-drip:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .beer-drip:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .beer-drip:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .beer-drip:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .beer-drip:nth-child(5) { left: 90%; animation-delay: 1s; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 140px 0 60px;
+            position: relative;
+        }
+        /* Dive Bar Navigation Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
+            border: 2px solid var(--neon-sign);
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin: 20px auto;
+            max-width: 900px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            box-shadow:
+                0 8px 32px rgba(255, 107, 53, 0.3),
+                0 0 20px rgba(0, 212, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            animation: navGlow 3s ease-in-out infinite;
+        }
+        @keyframes navGlow {
+            0%, 100% { box-shadow: 0 8px 32px rgba(255, 107, 53, 0.3), 0 0 20px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+            50% { box-shadow: 0 12px 40px rgba(255, 107, 53, 0.5), 0 0 30px rgba(0, 212, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2); }
+        }
+        .navbar a {
+            color: var(--beer-foam);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            border: 1px solid var(--rust-metal);
+            background: rgba(139, 69, 19, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: navBounce 3s ease-in-out infinite;
+        }
+        @keyframes navBounce {
+            0%, 80%, 100% { transform: translateY(0); }
+            85% { transform: translateY(-2px); }
+            90% { transform: translateY(-1px); }
+            95% { transform: translateY(-1.5px); }
+        }
+        .navbar a:nth-child(odd) { animation-delay: 0.1s; }
+        .navbar a:nth-child(even) { animation-delay: 0.2s; }
+        .navbar a:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(0, 212, 255, 0.2));
+            color: var(--neon-sign);
+            border: 2px solid var(--neon-blue);
+            box-shadow:
+                0 0 15px rgba(255, 107, 53, 0.6),
+                0 0 25px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px) scale(1.05);
+            animation: none;
+        }
+        .navbar a.active {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(0, 212, 255, 0.3));
+            color: var(--neon-sign);
+            border: 2px solid var(--neon-blue);
+            box-shadow:
+                0 0 20px rgba(255, 107, 53, 0.8),
+                0 0 30px rgba(0, 212, 255, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation: none;
+        }
+        .navbar i {
+            font-size: 16px;
+            color: var(--neon-sign);
+            animation: iconGlow 2s ease-in-out infinite;
+        }
+        @keyframes iconGlow {
+            0%, 100% { text-shadow: 0 0 5px var(--neon-sign); }
+            50% { text-shadow: 0 0 15px var(--neon-sign), 0 0 25px var(--neon-blue); }
+        }
+        .back-button {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, var(--dive-bar-dark), var(--dirty-wall));
+            border: 2px solid var(--neon-sign);
+            color: var(--beer-foam);
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'VT323', monospace;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            box-shadow:
+                0 8px 25px rgba(255, 107, 53, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+        .back-button:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), var(--dive-bar-dark));
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-sign);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow:
+                0 15px 40px rgba(255, 107, 53, 0.5),
+                0 0 30px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .gallery-title {
+            font-size: 4rem;
+            color: var(--neon-sign);
+            margin-bottom: 25px;
+            text-shadow:
+                0 0 15px var(--neon-sign),
+                2px 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 30px rgba(255, 107, 53, 0.5);
+            line-height: 1.1;
+            font-weight: 700;
+            font-family: 'Press Start 2P', 'VT323', monospace;
+            animation: titleGlitch 4s ease-in-out infinite;
+        }
+        @keyframes titleGlitch {
+            0%, 90%, 100% {
+                transform: translate(0);
+                filter: hue-rotate(0deg) brightness(1);
+                text-shadow: 0 0 15px var(--neon-sign), 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 107, 53, 0.5);
+            }
+            91% {
+                transform: translate(-2px, 2px);
+                filter: hue-rotate(90deg) brightness(1.2);
+                text-shadow: 2px 2px 0 var(--graffiti-red), -2px -2px 0 var(--neon-blue);
+            }
+            92% {
+                transform: translate(2px, -2px);
+                filter: hue-rotate(180deg) brightness(0.8);
+                text-shadow: -2px 2px 0 var(--terminal-green), 2px -2px 0 var(--urine-stain);
+            }
+            93% {
+                transform: translate(-1px, 1px);
+                filter: hue-rotate(270deg) brightness(1.1);
+                text-shadow: 1px -1px 0 var(--neon-blue), -1px 1px 0 var(--spilled-beer);
+            }
+        }
+        .gallery-subtitle {
+            font-size: 1.5rem;
+            color: var(--beer-foam);
+            margin-bottom: 50px;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: subtitleFlicker 3s ease-in-out infinite;
+        }
+        @keyframes subtitleFlicker {
+            0%, 100% { opacity: 0.9; }
+            50% { opacity: 1; }
+            75% { opacity: 0.95; }
+        }
+        .complete-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 50px 0;
+        }
+        .247420-card {
+            background: linear-gradient(135deg, var(--dirty-wall), var(--dive-bar-dark));
+            border: 2px solid var(--rust-metal);
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 8px 32px rgba(255, 107, 53, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        .247420-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            animation: cardScan 5s infinite;
+        }
+        @keyframes cardScan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .247420-card:hover {
+            border: 2px solid var(--neon-sign);
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), var(--dive-bar-dark));
+            box-shadow:
+                0 15px 45px rgba(255, 107, 53, 0.4),
+                0 0 30px rgba(0, 212, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px) rotate(0.5deg);
+        }
+        .247420-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+            border: 2px solid var(--rust-metal);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .247420-card:hover .247420-image {
+            transform: scale(1.05) rotate(0.5deg);
+            border-color: var(--neon-sign);
+            box-shadow:
+                0 8px 25px rgba(255, 107, 53, 0.4),
+                0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        .247420-title {
+            font-size: 1.8rem;
+            color: var(--neon-sign);
+            margin-bottom: 15px;
+            font-weight: 700;
+            font-family: 'VT323', monospace;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: titlePulse 4s ease-in-out infinite;
+        }
+        @keyframes titlePulse {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); }
+            50% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px var(--neon-sign); }
+        }
+        .247420-description {
+            color: var(--beer-foam);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        .special-card {
+            border: 2px solid var(--neon-sign) !important;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), var(--dive-bar-dark)) !important;
+            box-shadow:
+                0 12px 40px rgba(255, 107, 53, 0.4),
+                0 0 30px rgba(0, 212, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        }
+        .special-card::before {
+            content: '⭐ SPECIAL ⭐';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(0, 212, 255, 0.2));
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: var(--neon-sign);
+            border: 1px solid var(--rust-metal);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: specialPulse 2s ease-in-out infinite;
+        }
+        @keyframes specialPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        /* Corner Man Styles - Dive Bar Edition */
+        .corner-man {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 140px;
+            height: 140px;
+            z-index: 247420;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: scale(0) rotate(-15deg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow:
+                0 12px 35px rgba(255, 107, 53, 0.4),
+                0 0 25px rgba(0, 212, 255, 0.3);
+            border: 2px solid var(--neon-sign);
+            background: linear-gradient(135deg, var(--dirty-wall), var(--dive-bar-dark));
+        }
+        .corner-man.show {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+            animation: cornerManBounce 3s ease-in-out infinite;
+        }
+        @keyframes cornerManBounce {
+            0%, 80%, 100% { transform: scale(1) rotate(0deg); }
+            85% { transform: scale(1.05) rotate(-3deg); }
+            90% { transform: scale(0.95) rotate(3deg); }
+            95% { transform: scale(1.02) rotate(-1deg); }
+        }
+        .corner-man:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow:
+                0 18px 45px rgba(255, 107, 53, 0.6),
+                0 0 35px rgba(0, 212, 255, 0.5);
+            border-color: var(--neon-blue);
+        }
+        .corner-man img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: transparent;
+            filter: contrast(1.1) saturate(1.2);
+        }
+        /* Responsive Design - Dive Bar Edition */
+        @media (max-width: 768px) {
+            .complete-gallery {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .gallery-title {
+                font-size: 2.8rem;
+            }
+
+            .gallery-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .back-button {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 20px auto;
+                display: flex;
+                width: fit-content;
+                font-size: 0.9rem;
+                padding: 12px 18px;
+            }
+
+            .header {
+                padding: 100px 0 40px;
+            }
+
+            .navbar {
+                max-width: 100%;
+                margin: 15px auto;
+                padding: 12px 20px;
+                gap: 10px;
+            }
+
+            .navbar a {
+                padding: 8px 14px;
+                font-size: 0.9rem;
+                gap: 8px;
+            }
+
+            .corner-man {
+                width: 100px;
+                height: 100px;
+                bottom: 15px;
+                left: 15px;
+            }
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/navbar-Bdw0hUDl.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+    <div class="terminal-scanlines"></div>
+    <div class="terminal-flicker"></div>
+
+    <!-- Beer Drip Animations -->
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+    <div class="beer-drip"></div>
+
+    <div id="corner-man" class="corner-man">
+        <img src="cornermen/247420-corner-1.png" alt="Corner Man">
+    </div>
+
+    <a href="index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> 🍺 Back to Bar
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="gallery-title">🍻 Dive Bar Wall of Fame 🍻</h1>
+            <p class="gallery-subtitle">Every drunk hacker, every chaotic moment, every bar regular captured in dive bar glory 🐸</p>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html">
+                <i class="fas fa-beer"></i>
+                🍺 Bar
+            </a>
+            <a href="lore.html">
+                <i class="fas fa-scroll"></i>
+                📜 Stories
+            </a>
+            <a href="images-thread.html">
+                <i class="fas fa-images"></i>
+                🖼️ Memes
+            </a>
+            <a href="videos-thread.html">
+                <i class="fas fa-tv"></i>
+                📺 TV
+            </a>
+            <a href="https://420360.xyz/" target="_blank">
+                <i class="fas fa-wifi"></i>
+                🌐 World
+            </a>
+            <a href="https://thirdweb.com/somnia/0x1Fb25216baC410872CF548cc9A1D1B9B00F67A12" target="_blank">
+                <i class="fas fa-palette"></i>
+                💰 Beer
+            </a>
+        </nav>
+
+        <div class="complete-gallery" id="247420-gallery">
+            <!-- Gallery content will be loaded dynamically from 247420-descriptions.json -->
+        </div>
+    </div>
+
+    <script>
+
+        // Load gallery content from JSON
+        async function loadGalleryFromJSON() {
+            try {
+                const response = await fetch('247420-descriptions.json');
+                const descriptions = await response.json();
+
+                const galleryContainer = document.getElementById('247420-gallery');
+                galleryContainer.innerHTML = '';
+
+                // Add featured official 247420 first
+                const featuredCard = document.createElement('div');
+                featuredCard.className = '247420-card special-card';
+                featuredCard.innerHTML = `
+                    <img src="logo.gif" alt="Official 247420 Logo" class="247420-image">
+                    <h3 class="247420-title">Official $247420 Community</h3>
+                    <p class="247420-description">The official branding and identity of our beloved branding</p>
+                `;
+                galleryContainer.appendChild(featuredCard);
+
+                // Add all other 247420s
+                Object.entries(descriptions).forEach(([filename, data]) => {
+                    if (filename === 'logo.gif') return; // Skip the featured one
+
+                    const specialClass = data.special ? ' special-card' : '';
+                    const card = document.createElement('div');
+                    card.className = `247420-card${specialClass}`;
+                    card.innerHTML = `
+                        <img src="247420/${filename}" alt="${data.title}" class="247420-image">
+                        <h3 class="247420-title">${data.title}</h3>
+                        <p class="247420-description">${data.description}</p>
+                    `;
+
+                    // Add click interaction
+                    card.addEventListener('click', function() {
+                        this.style.animation = 'bounce 0.5s ease-in-out';
+                        setTimeout(() => {
+                            this.style.animation = '';
+                        }, 500);
+                    });
+
+                    galleryContainer.appendChild(card);
+                });
+
+                console.log('✅ Gallery loaded from JSON successfully');
+            } catch (error) {
+                console.error('❌ Error loading gallery from JSON:', error);
+                // Fallback: show error message
+                const galleryContainer = document.getElementById('247420-gallery');
+                galleryContainer.innerHTML = '<p style="color: white; text-align: center; padding: 40px;">Error loading gallery content. Please check back later.</p>';
+            }
+        }
+
+        // Corner Man functionality
+        let cornerManVisible = false;
+        let cornerManImages = [];
+
+        function # {
+            cornerManVisible = !cornerManVisible;
+            const cornerMan = document.getElementById('corner-man');
+            if (cornerManVisible) {
+                cornerMan.classList.add('show');
+                if (cornerManImages.length > 0) {
+                    loadRandomCornerImage();
+                }
+            } else {
+                cornerMan.classList.remove('show');
+            }
+        }
+
+        function loadCornerManImages() {
+            // Load corner man images from cornermen folder
+            cornerManImages = [
+                'cornermen/247420-corner-1.png',
+                'cornermen/247420-corner-2.png',
+                'cornermen/247420-corner-3.png',
+                'cornermen/247420-corner-4.png',
+                'cornermen/247420-corner-5.png'
+            ];
+        }
+
+        function loadRandomCornerImage() {
+            if (cornerManImages.length === 0) return;
+
+            const cornerMan = document.getElementById('corner-man');
+            const randomIndex = Math.floor(Math.random() * cornerManImages.length);
+            const img = cornerMan.querySelector('img');
+            img.src = cornerManImages[randomIndex];
+
+            // Preload next images
+            cornerManImages.forEach(imageSrc => {
+                const preloadImg = new Image();
+                preloadImg.src = imageSrc;
+            });
+        }
+
+        function showStats() {
+            alert('🍺 Bar Stats:\n\n' +
+                  '• Total Regulars: 28\n' +
+                  '• Drunk Regulars: 20\n' +
+                  '• Corner Men: 5\n' +
+                  '• Beer Consumed: 247247420%\n' +
+                  '• Chaos Level: MAXIMUM');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load gallery from JSON
+            loadGalleryFromJSON();
+
+            // Initialize corner man
+            loadCornerManImages();
+
+            // Change corner man image every 30 seconds when visible
+            setInterval(() => {
+                if (cornerManVisible) {
+                    loadRandomCornerImage();
+                }
+            }, 30000);
+        });
+    </script>
+</body>
+</html>
