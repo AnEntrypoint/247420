@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-15T19:44:34.434Z",
+  "timestamp": "2025-10-15T20:09:12.935Z",
   "summary": {
     "passed": 13,
     "failed": 0,
@@ -14,79 +14,79 @@
       "test": "File existence: components/scheduler.js",
       "status": "PASS",
       "details": "File exists",
-      "timestamp": "2025-10-15T19:44:34.402Z"
+      "timestamp": "2025-10-15T20:09:12.903Z"
     },
     {
       "test": "File existence: components/video-player-with-scheduler.js",
       "status": "PASS",
       "details": "File exists",
-      "timestamp": "2025-10-15T19:44:34.403Z"
+      "timestamp": "2025-10-15T20:09:12.904Z"
     },
     {
       "test": "File existence: saved_videos.json",
       "status": "PASS",
       "details": "File exists",
-      "timestamp": "2025-10-15T19:44:34.403Z"
+      "timestamp": "2025-10-15T20:09:12.905Z"
     },
     {
       "test": "File existence: public/schedule_weeks/week_1.json",
       "status": "PASS",
       "details": "File exists",
-      "timestamp": "2025-10-15T19:44:34.404Z"
+      "timestamp": "2025-10-15T20:09:12.906Z"
     },
     {
       "test": "File existence: static/video-schedule.json",
       "status": "PASS",
       "details": "File exists",
-      "timestamp": "2025-10-15T19:44:34.405Z"
+      "timestamp": "2025-10-15T20:09:12.907Z"
     },
     {
       "test": "Schedule format validation",
       "status": "PASS",
       "details": "v: true, s: true, m: 2025-10-11T00:00:00Z",
-      "timestamp": "2025-10-15T19:44:34.419Z"
+      "timestamp": "2025-10-15T20:09:12.920Z"
     },
     {
       "test": "Video list format validation",
       "status": "PASS",
       "details": "Object format: true, Has required fields: 30, Count: 335",
-      "timestamp": "2025-10-15T19:44:34.427Z"
-    },
-    {
-      "test": "420kit dependency",
-      "status": "PASS",
-      "details": "420kit-shared found in dependencies",
-      "timestamp": "2025-10-15T19:44:34.429Z"
+      "timestamp": "2025-10-15T20:09:12.928Z"
     },
     {
       "test": "Scheduler implementation files",
       "status": "PASS",
       "details": "scheduler.js: true, video-player-with-scheduler.js: true",
-      "timestamp": "2025-10-15T19:44:34.431Z"
+      "timestamp": "2025-10-15T20:09:12.931Z"
+    },
+    {
+      "test": "No 420kit dependencies",
+      "status": "PASS",
+      "details": "No 420kit dependencies - good",
+      "timestamp": "2025-10-15T20:09:12.932Z"
     },
     {
       "test": "Fallback source: Weekly schedule availability",
       "status": "PASS",
       "details": "Priority 1: Available",
-      "timestamp": "2025-10-15T19:44:34.432Z"
+      "timestamp": "2025-10-15T20:09:12.933Z"
     },
     {
       "test": "Fallback source: Saved videos availability",
       "status": "PASS",
       "details": "Priority 2: Available",
-      "timestamp": "2025-10-15T19:44:34.433Z"
+      "timestamp": "2025-10-15T20:09:12.934Z"
     },
     {
       "test": "Fallback source: Static schedule availability",
       "status": "PASS",
       "details": "Priority 3: Available",
-      "timestamp": "2025-10-15T19:44:34.434Z"
+      "timestamp": "2025-10-15T20:09:12.934Z"
     },
     {
       "test": "Fallback hierarchy logic",
       "status": "PASS",
       "details": "Available sources: 3, Hierarchy working: true",
-      "timestamp": "2025-10-15T19:44:34.434Z"
+      "timestamp": "2025-10-15T20:09:12.935Z"
     }
   ]
 }

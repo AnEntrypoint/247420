@@ -1,23 +1,12 @@
 /**
- * 247420 Video Scheduler with 420kit Integration
+ * 247420 Video Scheduler
  *
  * Implements schwepe-style scheduling with:
  * - Weekly scheduled programming override
  * - Clip dispersion as ads between scheduled content
  * - Fallback hierarchy: scheduled -> saved_videos -> static
- * - 420kit integration for advanced scheduling features
+ * - Standalone scheduling without external dependencies
  */
-
-// Import 420kit components
-let TVGuideRenderer, VideoScheduler;
-
-try {
-    const kit = await import('420kit-shared');
-    TVGuideRenderer = kit.TVGuideRenderer;
-    VideoScheduler = kit.VideoScheduler;
-} catch (error) {
-    console.warn('420kit not available, using fallback scheduling');
-}
 
 export class VideoScheduler {
     constructor(options = {}) {
@@ -74,11 +63,6 @@ export class VideoScheduler {
             await this.loadSavedVideos();
             await this.loadStaticSchedule();
             await this.loadWeeklySchedule();
-
-            // Initialize 420kit components if available
-            if (TVGuideRenderer && VideoScheduler) {
-                await this.initialize420Kit();
-            }
 
             console.log('✅ Video Scheduler initialized successfully');
             return true;
@@ -161,39 +145,7 @@ export class VideoScheduler {
         }
     }
 
-    /**
-     * Initialize 420kit components
-     */
-    async initialize420Kit() {
-        if (!TVGuideRenderer || !VideoScheduler) return;
-
-        try {
-            // Initialize TV Guide
-            const tvConfig = {
-                title: "247420 TV GUIDE",
-                subtitle: "Digital Dive Bar Programming",
-                brandColor: "#00ff41",
-                data: this.weeklySchedule
-            };
-
-            this.tvGuide = new TVGuideRenderer(tvConfig);
-            await this.tvGuide.initialize();
-
-            // Initialize Video Scheduler
-            this.kitScheduler = new VideoScheduler({
-                maxVideosPerDay: 24,
-                minGapBetweenVideos: 300,
-                maxDailyDuration: 86400,
-                strategy: 'aggressive',
-                optimizeForEngagement: true
-            });
-
-            console.log('🎛️ 420kit components initialized');
-        } catch (error) {
-            console.error('❌ Failed to initialize 420kit:', error);
-        }
-    }
-
+  
     /**
      * Get current scheduled video based on time
      */

@@ -28,7 +28,6 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "420kit-shared": "file:../420kit/420kit-shared-1.0.1.tgz",
     "express": "^4.21.2"
   }
 }
