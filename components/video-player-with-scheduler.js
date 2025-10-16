@@ -88,6 +88,37 @@ class EnhancedVideoPlayer {
         }
 
         console.log('✅ Enhanced Video Player initialized with 420kit Schwelevision');
+
+        // Start the video playback system
+        await this.startVideoSystem();
+    }
+
+    /**
+     * Start the complete video system
+     */
+    async startVideoSystem() {
+        try {
+            console.log('📺 Starting video system...');
+
+            // Setup video event listeners
+            this.setupVideoPlayer();
+
+            // Load videos and start hybrid broadcast
+            await this.loadVideos();
+            await this.startHybridBroadcast();
+
+            // Update loading text
+            if (this.loadingText) {
+                this.loadingText.textContent = 'QUANTUM STREAM ACTIVE';
+            }
+
+            console.log('✅ Video system started successfully');
+        } catch (error) {
+            console.error('❌ Error starting video system:', error);
+            if (this.loadingText) {
+                this.loadingText.textContent = 'QUANTUM STREAM ERROR';
+            }
+        }
     }
 
     /**
@@ -500,10 +531,16 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         window.videoPlayer = new EnhancedVideoPlayer();
         window.videoPlayer.initialize();
+
+        // Also create window.tv for backward compatibility
+        window.tv = window.videoPlayer;
     });
 } else {
     window.videoPlayer = new EnhancedVideoPlayer();
     window.videoPlayer.initialize();
+
+    // Also create window.tv for backward compatibility
+    window.tv = window.videoPlayer;
 }
 
 export default EnhancedVideoPlayer;
