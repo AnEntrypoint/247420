@@ -112,7 +112,7 @@ async function createServer() {
   }
 
   // Serve HTML files with SSR if available
-  const htmlFiles = ['index.html', 'images-thread.html', 'lore.html', 'videos-thread.html', 'gallery.html']
+  const htmlFiles = ['index.html', 'images-thread.html', 'lore.html', 'videos-thread.html', 'gallery.html', 'tv-guide.html']
 
   htmlFiles.forEach(file => {
     app.get(`/${file === 'index.html' ? '' : file.replace('.html', '')}`, async (req, res) => {
