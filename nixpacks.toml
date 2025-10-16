@@ -13,7 +13,7 @@ cmds = [
 
 [phases.build]
 cmds = [
-  "npm run build:ssr"
+  "npm run build"
 ]
 
 [start]
