@@ -51,7 +51,7 @@ test-*.png
 pepe2247420/
 
 # Scripts directory (optional)
-scripts/
+# scripts/ - commented out to allow build scripts in deployment
 
 # Large image collections
 cornermen-backup/
