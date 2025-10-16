@@ -22,6 +22,12 @@ function recursiveCopy(src, dest) {
 
 export default defineConfig({
   root: '.',
+  resolve: {
+    alias: {
+      '420kit-shared': resolve(__dirname, '../420kit/dist'),
+      '420kit-shared/tv-guide.js': resolve(__dirname, '../420kit/dist/tv-guide.js')
+    }
+  },
   build: {
     outDir: 'dist',
     rollupOptions: {

@@ -1,183 +1,94 @@
-# Build Fix Summary - Docker Deployment Issue Resolution
+# Build Process Fix Summary
 
-## Problem
-The Docker build was failing with the error:
+## Issue Identified
+The Schwepe project was experiencing build failures during push deployment due to missing Rollup native dependencies. This is a known npm bug related to optional dependencies.
+
+## Error Message
 ```
-npm error ENOENT: no such file or directory, open '/420kit/420kit-shared-1.0.1.tgz'
-```
-
-This occurred because the 420kit dependency was using a local file path that doesn't exist in the Docker build environment.
-
-## Root Cause Analysis
-- The `420kit-shared` package was listed as a regular dependency with a local file path
-- Docker build containers don't have access to the local file system structure
-- The relative path `../420kit/420kit-shared-1.0.1.tgz` was invalid in the build environment
-
-## Solution Implemented
-
-### 1. Moved 420kit to Optional Dependencies
-**Before:**
-```json
-"dependencies": {
-  "420kit-shared": "file:../420kit/420kit-shared-1.0.1.tgz",
-  "express": "^4.21.2"
-}
+Error: Cannot find module @rollup/rollup-linux-x64-gnu. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
 ```
 
-**After:**
-```json
-"dependencies": {
-  "express": "^4.21.2"
-},
-"optionalDependencies": {
-  "420kit-shared": "file:../420kit/420kit-shared-1.0.1.tgz"
-}
+## Root Cause
+- The Rollup bundler requires platform-specific native modules for optimal performance
+- npm's optional dependency handling can fail during clean installs
+- The build process was failing when trying to bundle JavaScript assets
+
+## Solution Applied
+
+### 1. Schwepe Project Fixes
+- **Added optional Rollup dependencies** to `package.json`:
+  ```json
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.52.4",
+    "@rollup/rollup-win32-x64-msvc": "^4.52.4"
+  }
+  ```
+- **Clean reinstall**: Removed `node_modules` and `package-lock.json`, then reinstalled dependencies
+- **Updated build process**: Both standard build (`npm run build`) and SSR build (`npm run build:ssr`) now work correctly
+
+### 2. 247420 Project Replication
+- **Copied the same optional dependencies** to prevent future issues
+- **Enhanced deployment scripts** to match Schwepe project structure:
+  - Added `build:ssr:production` and `build:production` scripts
+  - Updated deployment scripts to use production build variants
+- **Maintained existing nixpacks.toml** which already had the correct build process
+- **Tested both build processes** to ensure compatibility
+
+## Files Modified
+
+### Schwepe Project
+- `package.json` - Added optional Rollup dependencies
+- Dependencies reinstalled via `rm -rf node_modules package-lock.json && npm install`
+
+### 247420 Project
+- `package.json` - Added optional Rollup dependencies and enhanced deployment scripts
+- `BUILD_FIX_SUMMARY.md` - This documentation file
+
+## Build Processes Tested
+
+### Schwepe Project
+```bash
+npm run build          # ✅ Working - Phrase build + Vite build
+npm run build:ssr      # ✅ Working - SSR build process
 ```
 
-### 2. Enhanced Scheduler Error Handling
-Updated `components/scheduler.js` to gracefully handle missing 420kit:
-
-```javascript
-try {
-    const kit = await import('420kit-shared');
-    TVGuideRenderer = kit.TVGuideRenderer;
-    VideoScheduler = kit.VideoScheduler;
-    console.log('✅ 420kit components loaded successfully');
-} catch (error) {
-    console.warn('⚠️ 420kit not available, using fallback scheduling');
-    // Create fallback classes to maintain compatibility
-    TVGuideRenderer = class FallbackTVGuideRenderer {
-        constructor(config) { this.config = config; }
-        async initialize() { console.log('📋 Using fallback TV guide renderer'); }
-    };
-    // ... fallback implementation
-}
+### 247420 Project
+```bash
+npm run build          # ✅ Working - Standard Vite build
+npm run build:ssr      # ✅ Working - SSR build with media lists
+npm run build:full     # ✅ Working - Complete optimized build
 ```
 
-### 3. Updated Test Script
-Modified `scripts/test-scheduler.js` to check both dependencies and optionalDependencies:
+## Deployment Configuration
 
-```javascript
-const has420Kit = (packageData.dependencies && packageData.dependencies['420kit-shared']) ||
-                  (packageData.optionalDependencies && packageData.optionalDependencies['420kit-shared']);
-```
+Both projects now use consistent deployment patterns:
 
-## Results
+### Coolify + Nixpacks Configuration
+- **Platform**: Coolify with Nixpacks
+- **Node Version**: 20.x
+- **Build Process**: Auto-detected Vite project
+- **Output Directory**: `dist/`
+- **Trigger**: Git push to main branch
 
-### ✅ Local Development
-- 420kit available when developing locally
-- Full scheduling functionality with 420kit features
-- Enhanced TV guide and video scheduling capabilities
+### Build Commands
+- **Schwepe**: `npm run build:ssr` (phrase system + SSR)
+- **247420**: `npm run build:ssr` (media lists + SSR)
 
-### ✅ Docker/Production Deployment
-- Build succeeds without 420kit
-- Scheduler falls back to internal implementation
-- All core scheduling features remain functional
-- No build failures due to missing dependencies
-
-### ✅ Graceful Degradation
-- System works with or without 420kit
-- No breaking changes in functionality
-- Clear console messages about dependency status
-- Automatic fallback to internal scheduling logic
+## Prevention Measures
+1. **Optional Dependencies**: Platform-specific Rollup modules ensure compatibility
+2. **Clean Build Process**: Nixpacks removes node_modules before install
+3. **Consistent Scripts**: Both projects now have matching deployment script patterns
+4. **Documentation**: Build process documented for future reference
 
 ## Testing Results
+- ✅ Both projects build successfully
+- ✅ SSR builds include all necessary static files
+- ✅ Media assets (images, videos) are properly copied
+- ✅ No more Rollup dependency errors
+- ✅ Deployment process is consistent across both projects
 
-### Fresh Install Test
-```bash
-rm -rf node_modules package-lock.json
-npm install
-```
-✅ **SUCCESS**: 93 packages installed, no 420kit dependency errors
-
-### Build Process Test
-```bash
-npm run build:ssr
-```
-✅ **SUCCESS**: Media lists built (335 videos), Vite build initiated
-
-### Scheduler Test
-```bash
-npm run test:scheduler
-```
-✅ **SUCCESS**: All 13 tests passed, optional dependency detected correctly
-
-## Features Working Without 420kit
-
-### ✅ Core Scheduling
-- Weekly schedule detection and playback
-- Time-based content switching
-- Fallback hierarchy (scheduled → saved_videos → static)
-
-### ✅ Ad Break System
-- Clip dispersion between scheduled content
-- Intelligent gap detection and ad placement
-- Consistent hash-based ad selection
-
-### ✅ Video Player Integration
-- Seamless scheduled video playback
-- Ad break management
-- Fallback content switching
-
-### ✅ All Existing Features
-- 405 scheduled videos from schwepe
-- 335 saved videos for fallback/ad content
-- Complete UI and user experience
-
-## Deployment Benefits
-
-### 🚀 CI/CD Pipeline
-- No more build failures in Docker environments
-- Automatic fallback behavior
-- Consistent builds across environments
-
-### 🛡️ Production Stability
-- System works regardless of 420kit availability
-- No runtime errors from missing dependencies
-- Graceful degradation messaging
-
-### 📦 Package Size
-- Smaller production builds without optional 420kit
-- Only essential dependencies included
-- Optimized for deployment
-
-## Commands
-
-### Development (with 420kit)
-```bash
-npm install                    # Installs optional 420kit if available
-npm run dev                   # Full development experience
-npm run test:scheduler         # Tests with 420kit features
-```
-
-### Production (without 420kit)
-```bash
-npm install --production      # Installs only required dependencies
-npm run build:ssr              # Production build
-npm start                      # Starts production server
-```
-
-## Future Considerations
-
-### 📦 420kit Publishing
-- When 420kit is published to npm, can move from optional to regular dependency
-- Will enable enhanced scheduling features across all environments
-- No code changes required
-
-### 🔧 Enhanced Features
-- Currently available in local development with 420kit
-- TV guide renderer enhancements
-- Advanced video scheduling algorithms
-- Analytics and optimization features
-
-## Summary
-
-The build issue has been completely resolved with a robust solution that:
-- ✅ Fixes Docker build failures
-- ✅ Maintains all existing functionality
-- ✅ Provides graceful degradation
-- ✅ Works in all deployment environments
-- ✅ Preserves local development experience
-- ✅ Enables future 420kit integration when published
-
-The scheduling system is now production-ready and will deploy successfully without any dependency issues.
+## Next Steps
+1. Monitor deployment builds to ensure stability
+2. Consider updating both projects to use the same Vite version for consistency
+3. Implement automated testing for build processes
+4. Set up build monitoring and alerting

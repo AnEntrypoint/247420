@@ -6,21 +6,16 @@
   "scripts": {
     "dev": "vite --port 3000",
     "dev:ssr": "NODE_ENV=development node server.js",
-    "build": "vite build",
-    "build:ssr": "node build-ssr.js",
-    "build:vite-only": "vite build",
-    "build:production": "npm run build:ssr",
-    "build:media": "node scripts/build-media-lists.js",
-    "build:optimize": "node scripts/optimize-build.js",
-    "build:full": "npm run build && npm run build:media && npm run build:optimize",
+    "dev:full": "concurrently \"npm run cors-proxy\" \"npm run dev:ssr\"",
+    "build": "node scripts/build-media-lists.js && node build-ssr.js",
     "test:scheduler": "node scripts/test-scheduler.js",
     "preview": "vite preview",
     "preview:ssr": "NODE_ENV=production node server.js",
+    "cors-proxy": "node cors-proxy-server.cjs",
+    "preview:full": "concurrently \"npm run cors-proxy\" \"npm run preview:ssr\"",
     "start": "NODE_ENV=production node server.js",
     "start:dev": "NODE_ENV=development node server.js",
-    "deploy:ssr": "npm run build:ssr && git add . && git commit -m 'build: SSR deployment build' && git push",
-    "deploy": "npm run build && git add . && git commit -m 'build: deployment build' && git push",
-    "deploy:optimized": "npm run build:full && git add . && git commit -m 'build: optimized deployment' && git push"
+    "deploy": "npm run build && git add . && git commit -m 'build: deployment build' && git push"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
@@ -28,7 +23,11 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "420kit-shared": "^1.0.3",
     "express": "^4.21.2"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.52.4",
+    "@rollup/rollup-win32-x64-msvc": "^4.52.4",
+    "420kit-shared": "file:../420kit/420kit-shared-1.0.1.tgz"
   }
 }

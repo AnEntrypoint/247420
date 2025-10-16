@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>247420 TV Guide - Retro Schedule</title>
+    <link rel="icon" href="/assets/logo-CQg0ljZO.gif" type="image/gif">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Browse the complete 247420 schedule - Retro TV guide interface with nostalgic CRT aesthetics">
+    <meta name="keywords" content="247420 tv guide, retro television, tv schedule, crt effects, vintage tv">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://247420.xyz/tv-guide.html">
+    <meta property="og:title" content="247420 TV Guide - Retro Schedule">
+    <meta property="og:description" content="Authentic retro TV guide with complete programming schedule">
+    <meta property="og:image" content="https://247420.xyz/logo.gif">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="247420 TV Guide">
+    <meta name="twitter:description" content="Authentic retro TV guide with complete programming schedule">
+    <meta name="twitter:image" content="https://247420.xyz/logo.gif">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&family=Fredoka:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Navigation -->
+
+    <style>
+        /* CRT TV Theme Variables */
+        :root {
+            /* Primary CRT Colors */
+            --crt-green: #00ff41;
+            --crt-amber: #ffb000;
+            --crt-blue: #00d4ff;
+            --crt-white: #ffffff;
+
+            /* 80s TV Guide Colors */
+            --guide-primary: #1a237e;
+            --guide-secondary: #ff6b35;
+            --guide-accent: #f7b731;
+            --guide-background: #0d0221;
+            --guide-grid: #2a1a4e;
+            --guide-text: #ffffff;
+            --guide-text-muted: #cccccc;
+
+            /* TV Screen Effects */
+            --screen-glow: rgba(0, 245, 255, 0.1);
+            --scan-line: rgba(0, 0, 0, 0.3);
+            --static-noise: rgba(255, 255, 255, 0.02);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: var(--guide-background);
+            color: var(--guide-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* CRT Effects */
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .crt-scanlines {
+            background: linear-gradient(
+                transparent 50%,
+                var(--scan-line) 50%
+            );
+            background-size: 100% 4px;
+            animation: scanlines 8s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 10px; }
+        }
+
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.98; }
+        }
+
+        .crt-static {
+            opacity: var(--static-noise);
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    transparent 4px
+                );
+        }
+
+        .crt-curve {
+            border-radius: 20px;
+            box-shadow:
+                inset 0 0 40px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(0, 0, 0, 0.3);
+        }
+
+        /* TV Guide Container */
+        .tv-guide-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* TV Header */
+        .tv-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--guide-primary) 0%, var(--guide-secondary) 100%);
+            border-radius: 15px;
+            border: 2px solid var(--guide-accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tv-header::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--crt-green), var(--crt-amber), var(--crt-blue));
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.3;
+        }
+
+        .tv-title {
+            font-family: 'VT323', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--crt-white);
+            text-shadow:
+                0 0 10px var(--crt-green),
+                0 0 20px var(--crt-green),
+                0 0 30px var(--crt-green);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--crt-green), 0 0 20px var(--crt-green), 0 0 30px var(--crt-green); }
+            to { text-shadow: 0 0 10px var(--crt-amber), 0 0 20px var(--crt-amber), 0 0 30px var(--crt-amber); }
+        }
+
+        .tv-subtitle {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            color: var(--guide-text-muted);
+            letter-spacing: 2px;
+        }
+
+        /* Channel Grid */
+        .channel-grid {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1px;
+            background: var(--guide-grid);
+            border: 2px solid var(--guide-accent);
+            border-radius: 15px;
+            overflow: hidden;
+            flex: 1;
+            position: relative;
+        }
+
+        .channel-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--guide-primary), var(--guide-secondary));
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        /* Time Headers */
+        .time-headers {
+            display: grid;
+            grid-template-columns: 80px repeat(auto-fill, 150px);
+            background: var(--guide-primary);
+            border-bottom: 2px solid var(--guide-accent);
+        }
+
+        .time-slot {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            padding: 10px;
+            text-align: center;
+            color: var(--crt-amber);
+            border-right: 1px solid var(--guide-grid);
+            font-weight: 600;
+        }
+
+        .channel-label {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 10px;
+            text-align: center;
+            background: var(--guide-secondary);
+            color: var(--crt-white);
+            border-right: 2px solid var(--guide-accent);
+        }
+
+        /* Channel Row */
+        .channel-row {
+            display: contents;
+        }
+
+        .channel-row:hover .channel-header {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .channel-header {
+            background: var(--guide-primary);
+            border-right: 2px solid var(--guide-accent);
+            border-bottom: 1px solid var(--guide-grid);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .channel-info {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .channel-number {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--crt-amber);
+        }
+
+        .channel-name {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--guide-text);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Program Slot */
+        .program-slot {
+            background: var(--guide-background);
+            border-right: 1px solid var(--guide-grid);
+            border-bottom: 1px solid var(--guide-grid);
+            padding: 8px;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .program-slot:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .program-slot.current-program {
+            background: rgba(0, 255, 255, 0.2);
+            border: 1px solid var(--crt-green);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            animation: current-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes current-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); }
+        }
+
+        .program-slot.empty-slot {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .program-slot.empty-slot:hover {
+            transform: none;
+            box-shadow: none;
+            background: var(--guide-background);
+        }
+
+        .live-indicator {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: var(--crt-red);
+            color: var(--crt-white);
+            font-family: 'VT323', monospace;
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 700;
+            animation: live-pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes live-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .program-title {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--guide-text);
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .program-time {
+            font-family: 'VT323', monospace;
+            font-size: 0.6rem;
+            color: var(--crt-amber);
+            margin-bottom: 3px;
+        }
+
+        .program-details {
+            display: flex;
+            gap: 8px;
+            font-size: 0.5rem;
+        }
+
+        .program-genre {
+            color: var(--guide-text-muted);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1px 4px;
+            border-radius: 2px;
+        }
+
+        .program-rating {
+            color: var(--crt-amber);
+            background: rgba(255, 176, 0, 0.2);
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+
+        /* Loading State */
+        .loading-state {
+            text-align: center;
+            padding: 100px 20px;
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            color: var(--crt-green);
+        }
+
+        .tv-static-effect {
+            animation: static 0.1s infinite;
+        }
+
+        @keyframes static {
+            0%, 100% { opacity: 1; }
+            25% { opacity: 0.8; }
+            50% { opacity: 1; }
+            75% { opacity: 0.9; }
+        }
+
+        .loading-state i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .tv-guide-container {
+                padding: 10px;
+            }
+
+            .time-headers {
+                grid-template-columns: 80px repeat(auto-fill, 120px);
+            }
+
+            .time-slot {
+                font-size: 0.7rem;
+                padding: 8px 4px;
+            }
+
+            .program-slot {
+                min-height: 70px;
+                padding: 6px;
+            }
+
+            .program-title {
+                font-size: 0.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tv-title {
+                font-size: 1.8rem;
+            }
+
+            .channel-grid {
+                grid-template-columns: 60px 1fr;
+            }
+
+            .time-headers {
+                grid-template-columns: 60px repeat(auto-fill, 100px);
+            }
+
+            .channel-label {
+                font-size: 1rem;
+                padding: 8px;
+            }
+
+            .channel-number {
+                font-size: 1.2rem;
+            }
+
+            .channel-name {
+                font-size: 0.6rem;
+            }
+
+            .program-slot {
+                min-height: 60px;
+                padding: 4px;
+            }
+
+            .program-title {
+                font-size: 0.5rem;
+            }
+
+            .program-time {
+                font-size: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tv-guide-container {
+                padding: 5px;
+            }
+
+            .tv-title {
+                font-size: 1.5rem;
+            }
+
+            .tv-subtitle {
+                font-size: 0.8rem;
+            }
+
+            .channel-grid {
+                grid-template-columns: 50px 1fr;
+            }
+
+            .time-headers {
+                grid-template-columns: 50px repeat(auto-fill, 80px);
+            }
+
+            .channel-label {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            .channel-number {
+                font-size: 1rem;
+            }
+
+            .channel-name {
+                font-size: 0.5rem;
+            }
+
+            .program-slot {
+                min-height: 50px;
+                padding: 3px;
+            }
+
+            .program-title {
+                font-size: 0.4rem;
+            }
+
+            .program-time {
+                font-size: 0.4rem;
+            }
+
+            .program-details {
+                font-size: 0.4rem;
+            }
+
+            .live-indicator {
+                font-size: 0.5rem;
+                padding: 1px 3px;
+            }
+        }
+    </style>
+  <link rel="stylesheet" crossorigin href="/assets/navbar-BjVJGUxL.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="navigation-container">
+        <iframe src="navigation.html" frameborder="0" width="100%" height="60px"></iframe>
+    </div>
+
+    <!-- CRT Effects Overlay -->
+    <div class="crt-overlay crt-scanlines crt-static crt-flicker"></div>
+
+    <!-- TV Guide Container -->
+    <div class="tv-guide-container crt-curve">
+        <!-- TV Header -->
+        <header class="tv-header">
+            <h1 class="tv-title" id="tvTitle">247420 TV GUIDE</h1>
+            <p class="tv-subtitle" id="tvSubtitle">Your Complete Retro Programming Schedule</p>
+        </header>
+
+        <!-- Channel Grid -->
+        <div class="channel-grid" id="channelGrid">
+            <!-- Time Headers -->
+            <div class="time-headers" id="timeHeaders">
+                <!-- Time slots will be generated by JavaScript -->
+            </div>
+
+            <!-- Channel Rows -->
+            <div id="channelRows">
+                <!-- Channel content will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="loadingState">
+            <div class="tv-static-effect">
+                <i class="fas fa-tv"></i>
+                <p>Loading TV Guide...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TV Guide Client-Side JavaScript -->
+    <script>
+        // Client-side TV Guide implementation for 247420
+        class TVGuideConfig {
+            constructor(options = {}) {
+                this.title = options.title || "TV GUIDE";
+                this.subtitle = options.subtitle || "Your Complete Programming Schedule";
+                this.brandColor = options.brandColor || "#ff6b35";
+                this.timezone = options.timezone || "UTC";
+                this.data = options.data || null;
+            }
+        }
+
+        class TVGuideRenderer {
+            constructor(config) {
+                this.config = config;
+                this.currentSchedule = null;
+                this.refreshTimer = null;
+            }
+
+            async initialize() {
+                if (this.config.data) {
+                    this.currentSchedule = this.config.data;
+                } else {
+                    await this.loadDefaultData();
+                }
+
+                if (this.currentSchedule) {
+                    this.render();
+                    this.startAutoRefresh();
+                }
+            }
+
+            async loadDefaultData() {
+                // Sample TV schedule data for 247420
+                this.currentSchedule = {
+                    channels: [
+                        {
+                            id: "247420-main",
+                            number: 1,
+                            name: "247420 Main",
+                            logo: "/logo.gif",
+                            description: "Main 247420 entertainment channel",
+                            color: "#ff6b35"
+                        },
+                        {
+                            id: "retro-gaming",
+                            number: 2,
+                            name: "Retro Gaming",
+                            logo: "/retro-gaming.png",
+                            description: "Classic gaming content 24/7",
+                            color: "#00d4ff"
+                        },
+                        {
+                            id: "digital-art",
+                            number: 3,
+                            name: "Digital Art",
+                            logo: "/digital-art.png",
+                            description: "Digital art and graphics showcase",
+                            color: "#f7b731"
+                        },
+                        {
+                            id: "terminal-tv",
+                            number: 4,
+                            name: "Terminal TV",
+                            logo: "/terminal-tv.png",
+                            description: "Terminal and computer programming",
+                            color: "#00ff41"
+                        },
+                        {
+                            id: "music-station",
+                            number: 5,
+                            name: "Music Station",
+                            logo: "/music-station.png",
+                            description: "Underground and experimental music",
+                            color: "#ff1744"
+                        }
+                    ],
+                    programs: [
+                        {
+                            id: "main-morning",
+                            channelId: "247420-main",
+                            title: "247420 Morning Show",
+                            description: "Start your day with 247420 content",
+                            startTime: "06:00",
+                            endTime: "09:00",
+                            genre: "Talk Show",
+                            rating: "TV-PG",
+                            live: true
+                        },
+                        {
+                            id: "main-daytime",
+                            channelId: "247420-main",
+                            title: "247420 Programming",
+                            description: "Daily content and special features",
+                            startTime: "09:00",
+                            endTime: "17:00",
+                            genre: "Variety",
+                            rating: "TV-PG",
+                            live: false
+                        },
+                        {
+                            id: "main-evening",
+                            channelId: "247420-main",
+                            title: "Prime Time Special",
+                            description: "Evening entertainment and discussions",
+                            startTime: "17:00",
+                            endTime: "23:00",
+                            genre: "Entertainment",
+                            rating: "TV-14",
+                            live: true
+                        },
+                        {
+                            id: "main-late",
+                            channelId: "247420-main",
+                            title: "Late Night Stream",
+                            description: "Late night programming and community content",
+                            startTime: "23:00",
+                            endTime: "02:00",
+                            genre: "Live Stream",
+                            rating: "TV-14",
+                            live: true
+                        },
+                        {
+                            id: "gaming-morning",
+                            channelId: "retro-gaming",
+                            title: "Retro Gaming Marathon",
+                            description: "Classic games from 80s and 90s",
+                            startTime: "06:00",
+                            endTime: "12:00",
+                            genre: "Gaming",
+                            rating: "TV-G",
+                            live: false
+                        },
+                        {
+                            id: "gaming-afternoon",
+                            channelId: "retro-gaming",
+                            title: "Game Showcase",
+                            description: "Featured retro games and gameplay",
+                            startTime: "12:00",
+                            endTime: "18:00",
+                            genre: "Gaming",
+                            rating: "TV-PG",
+                            live: false
+                        },
+                        {
+                            id: "gaming-evening",
+                            channelId: "retro-gaming",
+                            title: "Tournament Night",
+                            description: "Retro gaming tournaments and competitions",
+                            startTime: "18:00",
+                            endTime: "23:00",
+                            genre: "Gaming",
+                            rating: "TV-PG",
+                            live: true
+                        },
+                        {
+                            id: "art-morning",
+                            channelId: "digital-art",
+                            title: "Digital Art Gallery",
+                            description: "Showcase of digital artwork and NFTs",
+                            startTime: "06:00",
+                            endTime: "12:00",
+                            genre: "Art",
+                            rating: "TV-PG",
+                            live: false
+                        },
+                        {
+                            id: "art-afternoon",
+                            channelId: "digital-art",
+                            title: "Creative Workshop",
+                            description: "Digital art creation and tutorials",
+                            startTime: "12:00",
+                            endTime: "18:00",
+                            genre: "Education",
+                            rating: "TV-G",
+                            live: false
+                        },
+                        {
+                            id: "art-evening",
+                            channelId: "digital-art",
+                            title: "Art Exhibition",
+                            description: "Evening digital art showcase",
+                            startTime: "18:00",
+                            endTime: "23:00",
+                            genre: "Art",
+                            rating: "TV-PG",
+                            live: true
+                        },
+                        {
+                            id: "terminal-morning",
+                            channelId: "terminal-tv",
+                            title: "Code & Coffee",
+                            description: "Programming tutorials and discussions",
+                            startTime: "06:00",
+                            endTime: "10:00",
+                            genre: "Education",
+                            rating: "TV-G",
+                            live: false
+                        },
+                        {
+                            id: "terminal-afternoon",
+                            channelId: "terminal-tv",
+                            title: "Terminal Sessions",
+                            description: "Advanced programming topics",
+                            startTime: "10:00",
+                            endTime: "16:00",
+                            genre: "Education",
+                            rating: "TV-PG",
+                            live: false
+                        },
+                        {
+                            id: "terminal-evening",
+                            channelId: "terminal-tv",
+                            title: "Hack Night",
+                            description: "Live coding and hacking sessions",
+                            startTime: "16:00",
+                            endTime: "22:00",
+                            genre: "Technology",
+                            rating: "TV-14",
+                            live: true
+                        },
+                        {
+                            id: "music-morning",
+                            channelId: "music-station",
+                            title: "Underground Mix",
+                            description: "Experimental and underground music",
+                            startTime: "06:00",
+                            endTime: "12:00",
+                            genre: "Music",
+                            rating: "TV-PG",
+                            live: false
+                        },
+                        {
+                            id: "music-afternoon",
+                            channelId: "music-station",
+                            title: "Electronic Beats",
+                            description: "Electronic and ambient music",
+                            startTime: "12:00",
+                            endTime: "18:00",
+                            genre: "Music",
+                            rating: "TV-PG",
+                            live: false
+                        },
+                        {
+                            id: "music-evening",
+                            channelId: "music-station",
+                            title: "Live Sessions",
+                            description: "Live music performances and DJ sets",
+                            startTime: "18:00",
+                            endTime: "23:00",
+                            genre: "Music",
+                            rating: "TV-14",
+                            live: true
+                        }
+                    ]
+                };
+            }
+
+            render() {
+                if (!this.currentSchedule) return;
+
+                this.renderTimeHeaders();
+                this.renderChannelRows();
+                this.updateCurrentTimeHighlight();
+            }
+
+            generateTimeHeaders() {
+                const headers = [];
+                const startHour = 6;
+                const endHour = 24;
+
+                for (let hour = startHour; hour <= endHour; hour++) {
+                    const time = `${hour.toString().padStart(2, '0')}:00`;
+                    headers.push(time);
+                }
+
+                return headers;
+            }
+
+            renderTimeHeaders() {
+                const timeHeadersEl = document.getElementById('timeHeaders');
+                if (!timeHeadersEl) return;
+
+                const timeHeaders = this.generateTimeHeaders();
+                let html = '<div class="channel-label">TIME</div>';
+
+                timeHeaders.forEach(time => {
+                    html += `<div class="time-slot">${time}</div>`;
+                });
+
+                timeHeadersEl.innerHTML = html;
+                timeHeadersEl.style.display = 'grid';
+                timeHeadersEl.style.gridTemplateColumns = '80px repeat(auto-fill, 150px)';
+            }
+
+            renderChannelRows() {
+                const channelRowsEl = document.getElementById('channelRows');
+                if (!channelRowsEl || !this.currentSchedule.channels) return;
+
+                let html = '';
+
+                this.currentSchedule.channels.forEach(channel => {
+                    html += this.renderChannelRow(channel);
+                });
+
+                channelRowsEl.innerHTML = html;
+            }
+
+            renderChannelRow(channel) {
+                const channelPrograms = this.currentSchedule.programs.filter(
+                    program => program.channelId === channel.id
+                );
+
+                let html = '<div class="channel-row">';
+
+                // Channel header
+                html += `
+                    <div class="channel-header">
+                        <div class="channel-info">
+                            <div class="channel-number">${channel.number}</div>
+                            <div class="channel-name">${channel.name}</div>
+                        </div>
+                    </div>
+                `;
+
+                // Program slots for the day
+                const timeHeaders = this.generateTimeHeaders();
+                timeHeaders.forEach(time => {
+                    const program = this.findProgramAtTime(channelPrograms, time);
+                    html += this.renderProgramSlot(program, time);
+                });
+
+                html += '</div>';
+                return html;
+            }
+
+            findProgramAtTime(programs, time) {
+                return programs.find(program => {
+                    return time >= program.startTime && time < program.endTime;
+                });
+            }
+
+            renderProgramSlot(program, time) {
+                if (!program) {
+                    return '<div class="program-slot empty-slot"></div>';
+                }
+
+                const isCurrentTime = this.isCurrentTime(time);
+                const isLive = program.live || false;
+
+                return `
+                    <div class="program-slot ${isCurrentTime ? 'current-program' : ''}"
+                         data-program-id="${program.id}">
+                        ${isLive ? '<div class="live-indicator">LIVE</div>' : ''}
+                        <div class="program-title">${program.title}</div>
+                        <div class="program-time">${program.startTime} - ${program.endTime}</div>
+                        <div class="program-details">
+                            <span class="program-genre">${program.genre}</span>
+                            ${program.rating ? `<span class="program-rating">${program.rating}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+
+            isCurrentTime(time) {
+                const now = new Date();
+                const currentTime = `${now.getHours().toString().padStart(2, '0')}:00`;
+                return time === currentTime;
+            }
+
+            updateCurrentTimeHighlight() {
+                document.querySelectorAll('.current-program').forEach(el => {
+                    el.classList.remove('current-program');
+                });
+
+                const timeHeaders = this.generateTimeHeaders();
+                timeHeaders.forEach(time => {
+                    if (this.isCurrentTime(time)) {
+                        const programSlots = document.querySelectorAll(`[data-time="${time}"]`);
+                        programSlots.forEach(slot => {
+                            slot.classList.add('current-program');
+                        });
+                    }
+                });
+            }
+
+            startAutoRefresh() {
+                if (this.refreshTimer) {
+                    clearInterval(this.refreshTimer);
+                }
+
+                this.refreshTimer = setInterval(() => {
+                    this.updateCurrentTimeHighlight();
+                }, 60000); // Update every minute
+            }
+
+            destroy() {
+                if (this.refreshTimer) {
+                    clearInterval(this.refreshTimer);
+                    this.refreshTimer = null;
+                }
+                this.currentSchedule = null;
+            }
+        }
+
+        // Factory function for easy initialization
+        function createTVGuide(options = {}) {
+            const config = new TVGuideConfig(options);
+            const renderer = new TVGuideRenderer(config);
+
+            // Expose globally for browser usage
+            if (typeof window !== 'undefined') {
+                window.tvGuide = renderer;
+                window.tvGuideConfig = config;
+            }
+
+            // Auto-initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    renderer.initialize();
+                });
+            } else {
+                renderer.initialize();
+            }
+
+            return renderer;
+        }
+
+        // Export for global usage
+        if (typeof window !== 'undefined') {
+            window.createTVGuide = createTVGuide;
+            window.TVGuideConfig = TVGuideConfig;
+            window.TVGuideRenderer = TVGuideRenderer;
+        }
+
+        // Initialize TV Guide with 247420 branding
+        window.addEventListener('DOMContentLoaded', function() {
+            createTVGuide({
+                title: "247420 TV GUIDE",
+                subtitle: "Your Complete Retro Programming Schedule",
+                brandColor: "#ff6b35",
+                timezone: "UTC"
+            });
+        });
+    </script>
+</body>
+</html>
