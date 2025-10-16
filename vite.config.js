@@ -29,7 +29,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         lore: resolve(__dirname, 'lore.html'),
         gallery: resolve(__dirname, 'images-thread.html'),
-        videosThread: resolve(__dirname, 'videos-thread.html')
+        videosThread: resolve(__dirname, 'videos-thread.html'),
+        tvGuide: resolve(__dirname, 'tv-guide.html')
       },
       output: {
         chunkFileNames: 'assets/js/[name]-[hash].js',
