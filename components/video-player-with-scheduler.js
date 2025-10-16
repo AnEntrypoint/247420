@@ -97,17 +97,28 @@ class EnhancedVideoPlayer {
      * Start the complete video system
      */
     async startVideoSystem() {
-        try {
-            console.log('📺 Starting video system...');
+        console.log('📺 Starting video system...');
 
+        // Update loading text to show we're starting
+        if (this.loadingText) {
+            this.loadingText.textContent = 'INITIALIZING QUANTUM STREAM...';
+        }
+
+        try {
             // Setup video event listeners
             this.setupVideoPlayer();
 
-            // Load videos and start hybrid broadcast
+            // Load videos
             await this.loadVideos();
+
+            if (this.videos.length === 0) {
+                throw new Error('No videos loaded');
+            }
+
+            // Start hybrid broadcast
             await this.startHybridBroadcast();
 
-            // Update loading text
+            // Update loading text to show success
             if (this.loadingText) {
                 this.loadingText.textContent = 'QUANTUM STREAM ACTIVE';
             }
@@ -115,8 +126,19 @@ class EnhancedVideoPlayer {
             console.log('✅ Video system started successfully');
         } catch (error) {
             console.error('❌ Error starting video system:', error);
-            if (this.loadingText) {
-                this.loadingText.textContent = 'QUANTUM STREAM ERROR';
+
+            // Try to start anyway with fallback
+            try {
+                await this.playNextVideo();
+                if (this.loadingText) {
+                    this.loadingText.textContent = 'QUANTUM STREAM ACTIVE';
+                }
+                console.log('✅ Video system started with fallback');
+            } catch (fallbackError) {
+                console.error('❌ Fallback also failed:', fallbackError);
+                if (this.loadingText) {
+                    this.loadingText.textContent = 'QUANTUM STREAM ERROR';
+                }
             }
         }
     }
@@ -217,17 +239,9 @@ class EnhancedVideoPlayer {
         console.log('📡 Starting hybrid broadcast...');
 
         try {
-            // Try to get scheduled video first
-            const scheduledVideo = await this.scheduler?.getNextVideo();
-
-            if (scheduledVideo && scheduledVideo.source === 'scheduled') {
-                console.log('📅 Playing scheduled content');
-                await this.playScheduledVideo(scheduledVideo);
-            } else {
-                // No scheduled content, play regular content
-                console.log('📺 No scheduled content, playing regular programming');
-                await this.playNextVideo();
-            }
+            // Since we're using fallback scheduler, just play regular content
+            console.log('📺 Playing regular programming with fallback scheduler');
+            await this.playNextVideo();
 
         } catch (error) {
             console.error('❌ Error starting broadcast:', error);
@@ -351,7 +365,7 @@ class EnhancedVideoPlayer {
      * Play a video
      */
     async playVideo(video) {
-        if (!video || !video.filename) {
+        if (!video || (!video.filename && !video.path)) {
             console.error('❌ Invalid video data');
             return;
         }
@@ -362,7 +376,8 @@ class EnhancedVideoPlayer {
             if (video.source === 'static') {
                 videoPath = '/static.mp4'; // Static/noise effect
             } else {
-                videoPath = `/saved_videos/${video.filename}`;
+                // Use path if available, otherwise construct from filename
+                videoPath = video.path || `/saved_videos/${video.filename}`;
             }
 
             this.videoElement.src = videoPath;
@@ -374,7 +389,8 @@ class EnhancedVideoPlayer {
             this.isPlaying = true;
             this.updateNowPlaying(video, video.source || 'regular');
 
-            console.log(`📺 Playing video: ${video.title || video.filename} from ${videoPath}`);
+            const videoTitle = video.title || video.filename || (video.path ? video.path.split('/').pop() : 'Unknown');
+            console.log(`📺 Playing video: ${videoTitle} from ${videoPath}`);
 
         } catch (error) {
             console.error('❌ Error playing video:', error);
