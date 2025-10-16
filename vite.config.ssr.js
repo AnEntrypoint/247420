@@ -12,7 +12,8 @@ export default defineConfig({
         gallery: resolve(__dirname, 'gallery.html'),
         lore: resolve(__dirname, 'lore.html'),
         videosThread: resolve(__dirname, 'videos-thread.html'),
-        imagesThread: resolve(__dirname, 'images-thread.html')
+        imagesThread: resolve(__dirname, 'images-thread.html'),
+        tvGuide: resolve(__dirname, 'tv-guide.html')
       }
     },
     emptyOutDir: false,
