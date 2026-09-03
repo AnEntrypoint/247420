@@ -1,0 +1,3558 @@
+{
+  "001": {
+    "code": "001",
+    "src": "https://anentrypoint.github.io/gm/",
+    "site": {
+      "title": "gm",
+      "tagline": "the comedown for vibe coding",
+      "description": "vibe coding ships fast and lies about being done. gm puts a deterministic SPECIFY, PROVE, EMIT, STATE, CONC, SEC, RES, DECIDE, COMPLETE pipeline around your coding agent, so the good vibe survives contact with a gate that actually checks. one skill, every harness. the orchestrator lives in rust as plugkit.wasm.",
+      "repo": "https://github.com/AnEntrypoint/gm",
+      "url": "https://anentrypoint.github.io/gm",
+      "year": 2026,
+      "keywords": [
+        "flagship",
+        "state-machine",
+        "discipline",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "g",
+      "code": "001",
+      "category": "gm"
+    },
+    "home": null,
+    "stars": 8,
+    "pushedAt": "2026-08-23T03:52:34Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "002": {
+    "code": "002",
+    "src": "https://anentrypoint.github.io/rs-exec/",
+    "site": {
+      "title": "rs-exec",
+      "tagline": "MCP code execution in Rust",
+      "description": "multi-language code execution (JS/TS, Go, Rust, Python, C/C++, bash) over MCP. the EXECUTE muscle of the gm package. fast because it's Rust.",
+      "repo": "https://github.com/AnEntrypoint/rs-exec",
+      "url": "https://anentrypoint.github.io/rs-exec",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "mcp",
+        "polyglot",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⚙",
+      "code": "002",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "rs-exec",
+        "subheading": "MCP code execution in Rust",
+        "body": "multi-language code execution (JS/TS, Go, Rust, Python, C/C++, bash) over MCP. the EXECUTE muscle of the gm package. fast because it's Rust.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "mcp"
+          },
+          {
+            "label": "polyglot"
+          },
+          {
+            "label": "gm"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/rs-exec",
+            "primary": true
+          },
+          {
+            "label": "Install",
+            "href": "https://github.com/AnEntrypoint/rs-exec#installation"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why rs-exec",
+        "items": [
+          {
+            "name": "rust",
+            "desc": "flagship trait of rs-exec."
+          },
+          {
+            "name": "mcp",
+            "desc": "core capability of rs-exec."
+          },
+          {
+            "name": "polyglot",
+            "desc": "core capability of rs-exec."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install"
+          },
+          {
+            "kind": "cmd",
+            "text": "cargo install rs-exec"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/rs-exec.git"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-07-12T08:57:35Z",
+    "archived": true,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "003": {
+    "code": "003",
+    "src": "https://anentrypoint.github.io/rs-search/",
+    "site": {
+      "title": "rs-search",
+      "tagline": "hybrid BM25 + vector codebase search over MCP",
+      "description": "hybrid BM25 + vector (nomic-embed-text-v1.5) code search over MCP, with PDF ingest and RRF fusion. how gm finds \"where X happens\" without burning context.",
+      "repo": "https://github.com/AnEntrypoint/rs-search",
+      "url": "https://anentrypoint.github.io/rs-search",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "search",
+        "mcp",
+        "bm25",
+        "vector",
+        "embeddings",
+        "rrf",
+        "pdf",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⌕",
+      "code": "003",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "rs-search",
+        "subheading": "hybrid BM25 + vector codebase search over MCP",
+        "body": "hybrid BM25 + vector (nomic-embed-text-v1.5) code search with RRF fusion, PDF ingest, and per-call project_root over MCP. how gm finds \"where X happens\" without burning context.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "bm25"
+          },
+          {
+            "label": "vector"
+          },
+          {
+            "label": "mcp"
+          },
+          {
+            "label": "pdf"
+          },
+          {
+            "label": "gm"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/rs-search",
+            "primary": true
+          },
+          {
+            "label": "Install",
+            "href": "https://github.com/AnEntrypoint/rs-search#installation"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why rs-search",
+        "items": [
+          {
+            "name": "hybrid ranking",
+            "desc": "BM25 + vector fused with reciprocal rank fusion (k=60); identifier queries get a 1.5x BM25 boost."
+          },
+          {
+            "name": "nomic embeddings",
+            "desc": "nomic-embed-text-v1.5 GGUF via candle-core. lazy-loaded, mean-pooled, L2-normalized, SIMD cosine, MRL truncation."
+          },
+          {
+            "name": "pdf ingest",
+            "desc": ".pdf is a first-class search target. pure-Rust pdf_extract splits on form-feed; hits render as doc.pdf:<page>."
+          },
+          {
+            "name": "mcp server",
+            "desc": "stdio MCP with panic-safe tools/call. per-call project_root, index, and discipline resolution — one server, many roots."
+          },
+          {
+            "name": "cli flags",
+            "desc": "--root, --index, --discipline override project root, index dir, and discipline at the CLI without touching env."
+          },
+          {
+            "name": "content-addressable cache",
+            "desc": "BLAKE3-keyed embedding cache on disk; skips re-embedding unchanged chunks across runs."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install (nightly toolchain required)"
+          },
+          {
+            "kind": "cmd",
+            "text": "cargo +nightly install --git https://github.com/AnEntrypoint/rs-search rs-search"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# one-shot search in current dir"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs-search search \"reciprocal rank fusion\""
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# explicit project root + index dir"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs-search --root ./repo --index ./.code-search search query"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# MCP stdio server"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs-search serve"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-08-01T15:26:06Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "004": {
+    "code": "004",
+    "src": "https://anentrypoint.github.io/rs-codeinsight/",
+    "site": {
+      "title": "rs-codeinsight",
+      "tagline": "tree-sitter codebase analyzer",
+      "description": "instant project understanding for AI coding tools. one binary, every language tree-sitter speaks. gm's situational-awareness layer.",
+      "repo": "https://github.com/AnEntrypoint/rs-codeinsight",
+      "url": "https://anentrypoint.github.io/rs-codeinsight",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "tree-sitter",
+        "analysis",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⌗",
+      "code": "004",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "rs-codeinsight",
+        "subheading": "tree-sitter codebase analyzer",
+        "body": "instant project understanding for AI coding tools. one binary, every language tree-sitter speaks. gm's situational-awareness layer.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "tree-sitter"
+          },
+          {
+            "label": "analysis"
+          },
+          {
+            "label": "gm"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/rs-codeinsight",
+            "primary": true
+          },
+          {
+            "label": "Install",
+            "href": "https://github.com/AnEntrypoint/rs-codeinsight#installation"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why rs-codeinsight",
+        "items": [
+          {
+            "name": "rust",
+            "desc": "flagship trait of rs-codeinsight."
+          },
+          {
+            "name": "tree-sitter",
+            "desc": "core capability of rs-codeinsight."
+          },
+          {
+            "name": "analysis",
+            "desc": "core capability of rs-codeinsight."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install"
+          },
+          {
+            "kind": "cmd",
+            "text": "cargo install rs-codeinsight"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/rs-codeinsight.git"
+          }
+        ]
+      }
+    },
+    "stars": 2,
+    "pushedAt": "2026-08-21T10:26:20Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 10
+  },
+  "005": {
+    "code": "005",
+    "src": "https://anentrypoint.github.io/rs-learn/",
+    "site": {
+      "title": "rs-learn",
+      "tagline": "continual-learning primitives · wasm cdylib · plugkit host",
+      "description": "continual-learning primitives for LLM agents, shipped as a small wasm cdylib: rank-2 hebbian microlora, ewc++ consolidation, bi-temporal knowledge graph with 8-head attention, and a fastgrnn router. the host owns io, scheduling, embedding, and agent transport.",
+      "repo": "https://github.com/AnEntrypoint/rs-learn",
+      "url": "https://anentrypoint.github.io/rs-learn",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "wasm",
+        "continual-learning",
+        "memory",
+        "router",
+        "ewc",
+        "lora",
+        "graph",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⌬",
+      "code": "005",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "home",
+      "hero": {
+        "heading": "rs-learn",
+        "subheading": "// continual-learning primitives · wasm cdylib · plugkit host",
+        "body": "continual-learning primitives for LLM agents, shipped as a small wasm cdylib that runs inside a host providing key-value storage and vector search via a handful of imports. this crate is the algorithm layer — the host owns io, scheduling, embedding, and agent transport.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "wasm32-wasip1"
+          },
+          {
+            "label": "libsql host"
+          },
+          {
+            "label": "fastgrnn"
+          },
+          {
+            "label": "ewc++"
+          },
+          {
+            "label": "lora"
+          },
+          {
+            "label": "bi-temporal graph"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "github",
+            "href": "https://github.com/AnEntrypoint/rs-learn",
+            "primary": true
+          },
+          {
+            "label": "npm",
+            "href": "https://www.npmjs.com/package/@anentrypoint/rs-learn-wasm"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "host contract",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "host imports (six functions)"
+          },
+          {
+            "kind": "cmd",
+            "text": "host_kv_get(ns, key) -> u64          // packed ptr+len"
+          },
+          {
+            "kind": "cmd",
+            "text": "host_kv_put(ns, key, val) -> u32      // nonzero = ok"
+          },
+          {
+            "kind": "cmd",
+            "text": "host_kv_query(ns, query) -> u64        // json array of matches"
+          },
+          {
+            "kind": "cmd",
+            "text": "host_vec_search(query, k) -> u64"
+          },
+          {
+            "kind": "cmd",
+            "text": "host_log(level, msg) -> u32"
+          },
+          {
+            "kind": "cmd",
+            "text": "host_now_ms() -> i64"
+          },
+          {
+            "kind": "cmt",
+            "text": "wasm exports"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs_learn_alloc(len) -> *mut u8"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs_learn_dispatch(ptr, len) -> u64     // packed json response"
+          },
+          {
+            "kind": "cmt",
+            "text": "build from source"
+          },
+          {
+            "kind": "cmd",
+            "text": "cargo build --target wasm32-wasip1 --release -p rs-learn"
+          }
+        ]
+      },
+      "features": {
+        "heading": "what's in the box",
+        "items": [
+          {
+            "name": "hebbian microlora",
+            "desc": "rank-2 hebbian adapter, norm-bound, lr floor, |scale|-weighted prioritized replay, optional ewc correction.",
+            "meta": "learn::instant_core"
+          },
+          {
+            "name": "ewc++ consolidation",
+            "desc": "online fisher ema (decay 0.999); z-score boundary detection over a sliding loss window.",
+            "meta": "learn::deep_core"
+          },
+          {
+            "name": "bi-temporal graph",
+            "desc": "valid_at/invalid_at/created_at/expired_at edge store; point-in-time query; invalidate-don't-delete contradiction handling.",
+            "meta": "graph::temporal_core"
+          },
+          {
+            "name": "graph attention",
+            "desc": "8-head attention with edge features: relation one-hot, recency decay, weight. per-head softmax weights.",
+            "meta": "graph::attention"
+          },
+          {
+            "name": "fastgrnn router",
+            "desc": "90% sparse + rank-8 low-rank; five heads (model, context bucket, temperature, top_p, confidence); epsilon-greedy exploration.",
+            "meta": "router::core"
+          },
+          {
+            "name": "single json dispatch surface",
+            "desc": "one verb table maps to all five cores; wasm export wires rs_learn_dispatch to a singleton LearnSession backed by the host's kv shim.",
+            "meta": "dispatch::LearnSession"
+          }
+        ]
+      },
+      "sections": [
+        {
+          "id": "dispatch",
+          "kind": "rows",
+          "label": "dispatch // verbs",
+          "heading": "one json surface, five cores.",
+          "body": "every call is { verb, body } in, { ok, verb, data?, error? } out. the host passes an in-buffer and reads the response from the packed return.",
+          "items": [
+            {
+              "code": "01",
+              "name": "health",
+              "sub": "reports core readiness, fisher key count, boundary count.",
+              "meta": "{}"
+            },
+            {
+              "code": "02",
+              "name": "init_instant · feedback · apply_adapter · reset_adapter",
+              "sub": "microlora lifecycle: initialize targets, hebbian update on feedback, forward pass, zero-reset.",
+              "meta": "instant"
+            },
+            {
+              "code": "03",
+              "name": "record_loss · consolidate · ewc_penalty",
+              "sub": "loss ring + z-score boundary fire, fisher ema update, penalty computation against a params snapshot.",
+              "meta": "deep"
+            },
+            {
+              "code": "04",
+              "name": "init_router · route · record_outcome",
+              "sub": "initialize fastgrnn, choose model + sampling params, ema-update per-target quality.",
+              "meta": "router"
+            },
+            {
+              "code": "05",
+              "name": "init_attention · attend",
+              "sub": "initialize 8-head attention, compute a multi-head attended context vector over a subgraph.",
+              "meta": "attention"
+            },
+            {
+              "code": "06",
+              "name": "insert_edge · query_at · invalidate_edge · contradict · get_edge",
+              "sub": "bi-temporal edge crud plus graphiti-style contradiction handling.",
+              "meta": "graph"
+            }
+          ]
+        },
+        {
+          "id": "bitemporal",
+          "kind": "quote",
+          "label": "graph // bi-temporal model",
+          "heading": "contradictions never delete history.",
+          "body": "edges carry four timestamps: valid_at/invalid_at (when the fact held in the world) and created_at/expired_at (when we knew it). a point-in-time query at t returns edges where valid_at <= t < invalid_at. when fact b contradicts fact a starting at t = b.valid_at, we set a.invalid_at = t and a.expired_at = now — a stays queryable for any time before t. the canonical test walks the alice@acme to alice@globex scenario and witnesses both edges retrievable at their respective historical windows."
+        },
+        {
+          "id": "lora",
+          "kind": "rows",
+          "label": "learn // hebbian microlora",
+          "heading": "rank-2 adapter, updated on every feedback call.",
+          "body": "instant_core::InstantCore keeps a rank-2 hebbian adapter (A: 2 x IN, B: 2 x n_targets). feedback(emb, model, {quality}) runs a five-step update.",
+          "items": [
+            {
+              "code": "01",
+              "name": "centered scale",
+              "sub": "quality [0,1] maps to scale = (q - 0.5) * 2. neutral feedback (q ~ 0.5) is a no-op.",
+              "meta": ""
+            },
+            {
+              "code": "02",
+              "name": "hebbian update",
+              "sub": "updates A and B for the chosen target, scaled by lr * scale.",
+              "meta": ""
+            },
+            {
+              "code": "03",
+              "name": "ewc correction",
+              "sub": "delta -= lr * lambda * fisher * (params - snapshot), when consolidation has run.",
+              "meta": "optional"
+            },
+            {
+              "code": "04",
+              "name": "lr decay + floor",
+              "sub": "lr decays by 0.995 per step, floored at RS_LEARN_LR_MIN (default 1e-3).",
+              "meta": ""
+            },
+            {
+              "code": "05",
+              "name": "norm clamp + replay",
+              "sub": "clamps ||A,B|| to 5.0; buffers (emb, idx, scale) for |scale|-weighted prioritized replay.",
+              "meta": ""
+            }
+          ]
+        },
+        {
+          "id": "ci",
+          "kind": "rows",
+          "label": "ci // wasm-check + publish",
+          "heading": "wasm check on every pr, wasm publish on every push to main.",
+          "body": "wasm-check.yml runs cargo check against wasm32-wasip1 plus a native cargo test pass on every pull request. publish.yml builds the release wasm, auto-bumps the crate patch version, publishes the binary to the plugkit-bin github release, and pushes the npm wasm wrapper.",
+          "items": [
+            {
+              "code": "01",
+              "name": "wasm32-wasip1 check",
+              "sub": "cargo check --target wasm32-wasip1 --no-default-features --features wasm --lib -p rs-learn",
+              "meta": "wasm-check.yml"
+            },
+            {
+              "code": "02",
+              "name": "native test",
+              "sub": "cargo test -p rs-learn — 65 tests covering every dispatch verb and algorithm invariant.",
+              "meta": "wasm-check.yml"
+            },
+            {
+              "code": "03",
+              "name": "release wasm build + publish",
+              "sub": "builds release wasm, uploads rs-learn.wasm + sha256 to the plugkit-bin gh release, publishes @anentrypoint/rs-learn-wasm to npm.",
+              "meta": "publish.yml"
+            }
+          ]
+        },
+        {
+          "id": "env",
+          "kind": "rows",
+          "label": "env // configuration",
+          "heading": "knobs the algorithm layer reads.",
+          "body": "the crate itself takes no environment configuration beyond the lr floor; everything else (backend selection, agent transport, scheduling) is the host's responsibility.",
+          "items": [
+            {
+              "code": "RS_LEARN_LR_MIN",
+              "name": "instant loop lr floor",
+              "sub": "prevents adapter decay freeze. default 1e-3.",
+              "meta": "1e-3"
+            }
+          ]
+        },
+        {
+          "id": "footnote",
+          "kind": "quote",
+          "label": "footnote // why",
+          "heading": "the algorithm layer, not the whole agent.",
+          "body": "rs-learn provides lora optimization over time (in the spirit of ruvnet's sona) and a temporal knowledge graph (in the spirit of getzep's graphiti), as a small wasm cdylib any host can embed. it does not own io, scheduling, embedding, or agent transport — that's the host's job."
+        }
+      ]
+    },
+    "stars": 2,
+    "pushedAt": "2026-07-07T20:10:55Z",
+    "archived": true,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "006": {
+    "code": "006",
+    "src": "https://anentrypoint.github.io/rs-plugkit/",
+    "site": {
+      "title": "rs-plugkit",
+      "tagline": "plugin scaffolding for the rs-* family",
+      "description": "shared scaffolding so every rs-* plug-in for gm looks and behaves the same.",
+      "repo": "https://github.com/AnEntrypoint/rs-plugkit",
+      "url": "https://anentrypoint.github.io/rs-plugkit",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "plugins",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⌘",
+      "code": "006",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "rs-plugkit",
+        "subheading": "plugin scaffolding for the rs-* family",
+        "body": "shared scaffolding so every rs-* plug-in for gm looks and behaves the same.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "plugins"
+          },
+          {
+            "label": "gm"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/rs-plugkit",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why rs-plugkit",
+        "items": [
+          {
+            "name": "rust",
+            "desc": "flagship trait of rs-plugkit."
+          },
+          {
+            "name": "plugins",
+            "desc": "core capability of rs-plugkit."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/rs-plugkit.git"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-08-21T17:41:47Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 76
+  },
+  "007": {
+    "code": "007",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-13T15:50:03Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 1
+  },
+  "009": {
+    "code": "009",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-21T16:54:57Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 64
+  },
+  "010": {
+    "code": "010",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-08-08T15:24:44Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "017": {
+    "code": "017",
+    "src": "https://anentrypoint.github.io/agentgui/",
+    "site": {
+      "title": "agentgui",
+      "tagline": "multi-agent GUI for AI coding assistants",
+      "description": "Claude Code, Gemini CLI, OpenCode and more — all in one window. one npx, every coding agent. if you run more than one, this is what you've been missing.",
+      "repo": "https://github.com/AnEntrypoint/agentgui",
+      "url": "https://anentrypoint.github.io/agentgui",
+      "year": 2026,
+      "keywords": [
+        "gui",
+        "agents",
+        "desktop",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#bc8cff",
+      "accent_to": "#d2a8ff",
+      "glyph": "▣",
+      "code": "017",
+      "category": "gm-tools"
+    },
+    "home": null,
+    "stars": 20,
+    "pushedAt": "2026-08-20T12:08:32Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 29
+  },
+  "018": {
+    "code": "018",
+    "missing": true,
+    "stars": 5,
+    "pushedAt": "2026-08-23T03:35:30Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "019": {
+    "code": "019",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-21T12:34:42Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 43
+  },
+  "020": {
+    "code": "020",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-16T05:33:20Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 2
+  },
+  "021": {
+    "code": "021",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-16T05:33:45Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "013": {
+    "code": "013",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-08-04T15:05:13Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "014": {
+    "code": "014",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-08-23T03:49:20Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "030": {
+    "code": "030",
+    "src": "https://anentrypoint.github.io/zellous/",
+    "site": {
+      "title": "zellous",
+      "tagline": "serverless push-to-talk",
+      "description": "hold the button. talk. someone on the other side hears you. Opus codec, dynamic rooms, 50-message replay. built in the open, iterated fast.",
+      "repo": "https://github.com/AnEntrypoint/zellous",
+      "url": "https://anentrypoint.github.io/zellous",
+      "year": 2026,
+      "keywords": [
+        "voice",
+        "opus",
+        "realtime",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#f97583",
+      "accent_to": "#ffa657",
+      "glyph": "Z",
+      "code": "030",
+      "category": "voice"
+    },
+    "home": null,
+    "stars": 5,
+    "pushedAt": "2026-08-20T14:21:44Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 24
+  },
+  "031": {
+    "code": "031",
+    "src": "https://anentrypoint.github.io/wireweave/",
+    "site": {
+      "title": "wireweave",
+      "tagline": "nostr + webrtc. the networking layer for 247420.",
+      "description": "wireweave is the networking layer pulled out of zellous. p2p voice, chat, channels, servers, ban/role/settings — every byte moves through public nostr relays. import, wire, ship.",
+      "repo": "https://github.com/AnEntrypoint/wireweave",
+      "url": "https://anentrypoint.github.io/wireweave/",
+      "year": 2026,
+      "accent_from": "#247420",
+      "accent_to": "#3A9A34",
+      "glyph": "W",
+      "code": "031",
+      "category": "voice"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "wireweave",
+        "subheading": "serverless nostr + WebRTC voice + binary-data SDK",
+        "body": "wireweave is the networking layer for 247420 projects. peer-to-peer voice, video, chat, channels, servers, ban/role/settings, and binary RTCDataChannel — every byte moves through public nostr relays. no backend required.",
+        "badges": [
+          {
+            "label": "nostr"
+          },
+          {
+            "label": "webrtc"
+          },
+          {
+            "label": "voice"
+          },
+          {
+            "label": "data"
+          },
+          {
+            "label": "sdk"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "view on npm",
+            "href": "https://www.npmjs.com/package/wireweave",
+            "primary": true
+          },
+          {
+            "label": "github",
+            "href": "https://github.com/AnEntrypoint/wireweave"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why wireweave",
+        "items": [
+          {
+            "name": "peer-to-peer over nostr",
+            "desc": "every byte signals through public nostr relays — no backend, no auth server, no rendezvous service to operate.",
+            "meta": "serverless"
+          },
+          {
+            "name": "every submodule is an EventTarget",
+            "desc": "subscribe to any surface with addEventListener — voice, chat, channels, servers, bans, roles, all uniform.",
+            "meta": "uniform api"
+          },
+          {
+            "name": "perfect-negotiation WebRTC voice",
+            "desc": "RFC 8840 perfect negotiation, ICE restart on disconnect, track-stall detection, exponential-backoff reconnect.",
+            "meta": "rfc 8840"
+          },
+          {
+            "name": "binary DataSession channels",
+            "desc": "ordered binary RTCDataChannel for game frames, file sync, anything ArrayBuffer-shaped — no media, no mic prompt, no SFU.",
+            "meta": "p2p binary"
+          },
+          {
+            "name": "capacity-weighted SFU hub election",
+            "desc": "mesh up to 3 peers, then deterministic election promotes the highest-capacity peer to SFU star — no central server.",
+            "meta": "mesh becomes star"
+          },
+          {
+            "name": "no backend required",
+            "desc": "ship a static page. wireweave talks to live public relays and live webrtc peers from the first line.",
+            "meta": "flatspace-friendly"
+          },
+          {
+            "name": "singleplayer mode",
+            "desc": "VoiceSession keyed by location.hash — people on the same URL voice-chat; game state stays in a Worker.",
+            "meta": "in-page"
+          },
+          {
+            "name": "webrtc host & join mode",
+            "desc": "DataSession for game frames + VoiceSession for voice, both signaled through the same nostr relays.",
+            "meta": "p2p"
+          },
+          {
+            "name": "self-hosted server mode",
+            "desc": "server runs its own transport for state; DataSession adds player-to-player p2p (voice + side-channel data) over nostr.",
+            "meta": "hybrid"
+          }
+        ]
+      },
+      "install": {
+        "heading": "Install",
+        "body": "wireweave ships as a single esm package. every subsystem is its own export so you tree-shake whatever you do not use. each module is also exported via subpath: wireweave/relay-pool, wireweave/voice, wireweave/data, wireweave/chat, etc.",
+        "code": [
+          {
+            "kind": "cmt",
+            "text": "# install"
+          },
+          {
+            "kind": "cmd",
+            "text": "npm i wireweave nostr-tools"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# one-liner setup (browser)"
+          },
+          {
+            "kind": "cmd",
+            "text": "import { createWireweave } from 'wireweave';"
+          },
+          {
+            "kind": "cmd",
+            "text": "import * as NostrTools from 'nostr-tools';"
+          },
+          {
+            "kind": "cmd",
+            "text": "import * as XState from 'xstate';"
+          },
+          {
+            "kind": "cmd",
+            "text": "const ww = createWireweave({ nostrTools: NostrTools, xstate: XState });"
+          },
+          {
+            "kind": "cmd",
+            "text": "ww.pool.connect();"
+          },
+          {
+            "kind": "cmd",
+            "text": "ww.auth.loadFromStorage() || ww.auth.generateKey();"
+          },
+          {
+            "kind": "cmd",
+            "text": "ww.servers.init();"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# named imports"
+          },
+          {
+            "kind": "cmd",
+            "text": "import { RelayPool, NostrAuth, VoiceSession, DataSession,"
+          },
+          {
+            "kind": "cmd",
+            "text": "  Chat, Channels, Servers, Bans, Roles, Settings, Media,"
+          },
+          {
+            "kind": "cmd",
+            "text": "  Pages, MessageBus, createFSM } from 'wireweave';"
+          }
+        ]
+      },
+      "api": {
+        "heading": "API",
+        "body": "no fake relays. no stubs. wireweave talks to live public nostr relays and live webrtc peers from the first line. the api is EventTarget all the way down. ww exposes: pool, auth, fsm, message, bans, roles, settings, pages, media, channels, servers, chat, voice (lazy via ensureVoice()), and setCurrentChannel().",
+        "code": [
+          {
+            "kind": "cmt",
+            "text": "# voice (webrtc mesh + sfu hub election)"
+          },
+          {
+            "kind": "cmd",
+            "text": "const voice = ww.ensureVoice({"
+          },
+          {
+            "kind": "cmd",
+            "text": "  serverId: 'abc:xyz',"
+          },
+          {
+            "kind": "cmd",
+            "text": "  displayName: 'you',"
+          },
+          {
+            "kind": "cmd",
+            "text": "  onAudioTrack: ({ peer, stream }) => {"
+          },
+          {
+            "kind": "cmd",
+            "text": "    const a = new Audio();"
+          },
+          {
+            "kind": "cmd",
+            "text": "    a.srcObject = stream; a.autoplay = true;"
+          },
+          {
+            "kind": "cmd",
+            "text": "    document.body.appendChild(a); peer.audioEl = a;"
+          },
+          {
+            "kind": "cmd",
+            "text": "  },"
+          },
+          {
+            "kind": "cmd",
+            "text": "  onVideoTrack: ({ peerPubkey, stream }) => { /* attach */ }"
+          },
+          {
+            "kind": "cmd",
+            "text": "});"
+          },
+          {
+            "kind": "cmd",
+            "text": "await voice.connect('general-voice', { displayName: 'you' });"
+          },
+          {
+            "kind": "cmd",
+            "text": "voice.toggleMic(); voice.toggleDeafen();"
+          },
+          {
+            "kind": "cmd",
+            "text": "voice.addEventListener('participants', e => console.log(e.detail.list));"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# DataSession (binary p2p) — ordered RTCDataChannel only"
+          },
+          {
+            "kind": "cmd",
+            "text": "import { createDataSession, createFSM, NostrAuth, RelayPool } from 'wireweave';"
+          },
+          {
+            "kind": "cmd",
+            "text": "const fsm = createFSM(xstate);"
+          },
+          {
+            "kind": "cmd",
+            "text": "const auth = new NostrAuth({ nostrTools });"
+          },
+          {
+            "kind": "cmd",
+            "text": "auth.loadFromStorage() || auth.generateKey();"
+          },
+          {
+            "kind": "cmd",
+            "text": "const pool = new RelayPool({ verifyEvent: nostrTools.verifyEvent });"
+          },
+          {
+            "kind": "cmd",
+            "text": "pool.connect();"
+          },
+          {
+            "kind": "cmd",
+            "text": "const session = createDataSession({ fsm, xstate, relayPool: pool, auth, namespace: 'mygame' });"
+          },
+          {
+            "kind": "cmd",
+            "text": "session.addEventListener('peer-open', e => console.log('peer up', e.detail.peerPubkey));"
+          },
+          {
+            "kind": "cmd",
+            "text": "session.addEventListener('data',      e => handleFrame(e.detail.peerPubkey, e.detail.data));"
+          },
+          {
+            "kind": "cmd",
+            "text": "session.addEventListener('peer-close', e => console.log('peer down', e.detail.peerPubkey));"
+          },
+          {
+            "kind": "cmd",
+            "text": "await session.connect('lobby-7');"
+          },
+          {
+            "kind": "cmd",
+            "text": "session.broadcast(new Uint8Array(payload));"
+          },
+          {
+            "kind": "cmd",
+            "text": "session.send(somePeerPubkey, new Uint8Array(p));"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# node usage (relay + auth only)"
+          },
+          {
+            "kind": "cmd",
+            "text": "import WebSocket from 'ws';"
+          },
+          {
+            "kind": "cmd",
+            "text": "import { RelayPool, NostrAuth } from 'wireweave';"
+          },
+          {
+            "kind": "cmd",
+            "text": "import * as NostrTools from 'nostr-tools';"
+          },
+          {
+            "kind": "cmd",
+            "text": "const pool = new RelayPool({"
+          },
+          {
+            "kind": "cmd",
+            "text": "  relays: ['wss://relay.damus.io'],"
+          },
+          {
+            "kind": "cmd",
+            "text": "  verifyEvent: NostrTools.verifyEvent,"
+          },
+          {
+            "kind": "cmd",
+            "text": "  WebSocketImpl: WebSocket"
+          },
+          {
+            "kind": "cmd",
+            "text": "});"
+          },
+          {
+            "kind": "cmd",
+            "text": "const auth = new NostrAuth({ nostrTools: NostrTools });"
+          }
+        ]
+      },
+      "modules": {
+        "heading": "Modules",
+        "items": [
+          {
+            "name": "voice",
+            "sub": "perfect negotiation, ice restart, track-stall detection, capacity-weighted hub election.",
+            "meta": "rtc + sfu",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/voice.js"
+          },
+          {
+            "name": "data",
+            "sub": "binary p2p RTCDataChannel — ordered, ArrayBuffer-shaped. game frames, file sync, no media, no mic.",
+            "meta": "p2p binary",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/data.js"
+          },
+          {
+            "name": "chat",
+            "sub": "public channels, replies, reactions. kinds 42 + 7.",
+            "meta": "nip-28",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/chat.js"
+          },
+          {
+            "name": "servers",
+            "sub": "community events, invite links, owner rename, delete.",
+            "meta": "nip-72",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/servers.js"
+          },
+          {
+            "name": "channels",
+            "sub": "parameterized replaceable channel list per server.",
+            "meta": "30078",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/channels.js"
+          },
+          {
+            "name": "roles",
+            "sub": "role events keyed by server id + pubkey.",
+            "meta": "owner / admin / mod",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/roles.js"
+          },
+          {
+            "name": "bans",
+            "sub": "signed ban events with expiry. kick-from-voice on top.",
+            "meta": "ban / timeout / kick",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/bans.js"
+          },
+          {
+            "name": "settings",
+            "sub": "bitrate, embed allowlist, arbitrary key/value.",
+            "meta": "per-server",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/settings.js"
+          },
+          {
+            "name": "media",
+            "sub": "nip-98 auth upload to any blossom server. cdn mirror list.",
+            "meta": "blossom",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/media.js"
+          },
+          {
+            "name": "auth",
+            "sub": "extension first, local nsec fallback, stored in provided storage.",
+            "meta": "nip-07 / nsec",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/auth.js"
+          },
+          {
+            "name": "relay-pool",
+            "sub": "multi-relay fallback, reconnect, verifyEvent hook, pluggable WebSocket.",
+            "meta": "transport",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/relay-pool.js"
+          },
+          {
+            "name": "fsm",
+            "sub": "voice, peer, relay, sfu, camera — every state machine exported.",
+            "meta": "xstate v5",
+            "href": "https://github.com/AnEntrypoint/wireweave/blob/master/src/fsm.js"
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install"
+          },
+          {
+            "kind": "cmd",
+            "text": "npm i wireweave nostr-tools"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/wireweave.git"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# test (real round-trip against public relays)"
+          },
+          {
+            "kind": "cmd",
+            "text": "npm test"
+          }
+        ]
+      },
+      "examples": {
+        "heading": "Examples",
+        "items": [
+          {
+            "name": "DataSession — binary p2p",
+            "desc": "ordered RTCDataChannel for game frames and ArrayBuffer payloads, signaled over nostr.",
+            "cta": "readme",
+            "href": "https://github.com/AnEntrypoint/wireweave#data-sessions-binary-p2p"
+          },
+          {
+            "name": "VoiceSession — ensureVoice()",
+            "desc": "perfect-negotiation mesh + capacity-weighted SFU hub election with audio + video tracks.",
+            "cta": "readme",
+            "href": "https://github.com/AnEntrypoint/wireweave#voice-webrtc-mesh--sfu-hub-election"
+          },
+          {
+            "name": "Node — relay + auth",
+            "desc": "RelayPool + NostrAuth in node with the ws package as WebSocketImpl.",
+            "cta": "readme",
+            "href": "https://github.com/AnEntrypoint/wireweave#node-usage-relay--auth-only"
+          },
+          {
+            "name": "3-mode game pattern",
+            "desc": "singleplayer (in-page) / webrtc host & join / self-hosted server — same SDK, three transport flavours.",
+            "cta": "readme",
+            "href": "https://github.com/AnEntrypoint/wireweave#game--3-mode-usage-pattern"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-08-16T05:40:16Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 1
+  },
+  "032": {
+    "code": "032",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-05-25T13:49:18Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "033": {
+    "code": "033",
+    "src": "https://anentrypoint.github.io/dialog-generator/",
+    "site": {
+      "title": "dialog-generator",
+      "tagline": "TTS + facial animation for VRM",
+      "description": "speak through a VRM avatar — text-to-speech plus driven facial animation server.",
+      "repo": "https://github.com/AnEntrypoint/dialog-generator",
+      "url": "https://anentrypoint.github.io/dialog-generator",
+      "year": 2026,
+      "keywords": [
+        "tts",
+        "vrm",
+        "animation",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#f97583",
+      "accent_to": "#ffa657",
+      "glyph": "◑",
+      "code": "033",
+      "category": "voice"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "dialog-generator",
+        "subheading": "TTS + facial animation for VRM",
+        "body": "speak through a VRM avatar — text-to-speech plus driven facial animation server.",
+        "badges": [
+          {
+            "label": "tts"
+          },
+          {
+            "label": "vrm"
+          },
+          {
+            "label": "animation"
+          },
+          {
+            "label": "voice"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/dialog-generator",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why dialog-generator",
+        "items": [
+          {
+            "name": "tts",
+            "desc": "flagship trait of dialog-generator."
+          },
+          {
+            "name": "vrm",
+            "desc": "core capability of dialog-generator."
+          },
+          {
+            "name": "animation",
+            "desc": "core capability of dialog-generator."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/dialog-generator.git"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-07-29T15:08:43Z",
+    "archived": true,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "034": {
+    "code": "034",
+    "src": "https://anentrypoint.github.io/lipsync-sdk/",
+    "site": {
+      "title": "lipsync-sdk",
+      "tagline": "avatar lipsync SDK",
+      "description": "drive a 3D avatar's mouth from audio in real time.",
+      "repo": "https://github.com/AnEntrypoint/lipsync-sdk",
+      "url": "https://anentrypoint.github.io/lipsync-sdk",
+      "year": 2026,
+      "keywords": [
+        "lipsync",
+        "sdk",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#f97583",
+      "accent_to": "#ffa657",
+      "glyph": "◒",
+      "code": "034",
+      "category": "voice"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "lipsync-sdk",
+        "subheading": "avatar lipsync SDK",
+        "body": "drive a 3D avatar's mouth from audio in real time.",
+        "badges": [
+          {
+            "label": "lipsync"
+          },
+          {
+            "label": "sdk"
+          },
+          {
+            "label": "voice"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/lipsync-sdk",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why lipsync-sdk",
+        "items": [
+          {
+            "name": "lipsync",
+            "desc": "flagship trait of lipsync-sdk."
+          },
+          {
+            "name": "sdk",
+            "desc": "core capability of lipsync-sdk."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/lipsync-sdk.git"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-08-20T14:20:43Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 1
+  },
+  "042": {
+    "code": "042",
+    "src": "https://anentrypoint.github.io/codebasesearch/",
+    "site": {
+      "title": "codebasesearch",
+      "tagline": "codebase-wide semantic search",
+      "description": "index a whole codebase, ask it questions in english. companion to rs-search for the JS side.",
+      "repo": "https://github.com/AnEntrypoint/codebasesearch",
+      "url": "https://anentrypoint.github.io/codebasesearch",
+      "year": 2026,
+      "keywords": [
+        "search",
+        "codebase",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#79c0ff",
+      "accent_to": "#bc8cff",
+      "glyph": "⌗",
+      "code": "042",
+      "category": "data"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "codebasesearch",
+        "subheading": "codebase-wide semantic search",
+        "body": "index a whole codebase, ask it questions in english. companion to rs-search for the JS side.",
+        "badges": [
+          {
+            "label": "search"
+          },
+          {
+            "label": "codebase"
+          },
+          {
+            "label": "data"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/codebasesearch",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why codebasesearch",
+        "items": [
+          {
+            "name": "search",
+            "desc": "flagship trait of codebasesearch."
+          },
+          {
+            "name": "codebase",
+            "desc": "core capability of codebasesearch."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/codebasesearch.git"
+          }
+        ]
+      }
+    },
+    "stars": 4,
+    "pushedAt": "2026-08-20T13:22:32Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 5
+  },
+  "043": {
+    "code": "043",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-07-19T09:42:09Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "044": {
+    "code": "044",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-08-06T12:33:01Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "045": {
+    "code": "045",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-16T05:38:53Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "050": {
+    "code": "050",
+    "src": "https://anentrypoint.github.io/ccsniff/",
+    "site": {
+      "title": "ccsniff",
+      "tagline": "Claude Code JSONL → events",
+      "description": "watch Claude Code's session JSONL files and emit structured events as a Node EventEmitter. observability for an opaque thing.",
+      "repo": "https://github.com/AnEntrypoint/ccsniff",
+      "url": "https://anentrypoint.github.io/ccsniff",
+      "year": 2026,
+      "keywords": [
+        "observability",
+        "events",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#ffa657",
+      "accent_to": "#f0883e",
+      "glyph": "§",
+      "code": "050",
+      "category": "tooling"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "ccsniff",
+        "subheading": "Claude Code JSONL → events",
+        "body": "watch Claude Code's session JSONL files and emit structured events as a Node EventEmitter. observability for an opaque thing.",
+        "badges": [
+          {
+            "label": "observability"
+          },
+          {
+            "label": "events"
+          },
+          {
+            "label": "tooling"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/ccsniff",
+            "primary": true
+          },
+          {
+            "label": "Install",
+            "href": "https://github.com/AnEntrypoint/ccsniff#installation"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why ccsniff",
+        "items": [
+          {
+            "name": "observability",
+            "desc": "flagship trait of ccsniff."
+          },
+          {
+            "name": "events",
+            "desc": "core capability of ccsniff."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install"
+          },
+          {
+            "kind": "cmd",
+            "text": "npm i ccsniff"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/ccsniff.git"
+          }
+        ]
+      }
+    },
+    "stars": 2,
+    "pushedAt": "2026-08-20T14:31:57Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 1
+  },
+  "051": {
+    "code": "051",
+    "src": "https://anentrypoint.github.io/acptoapi/",
+    "site": {
+      "title": "acptoapi",
+      "siteName": "acptoapi",
+      "tagline": "OpenAI-compat facade over ACP, Anthropic, OpenAI, and 17 brand providers",
+      "description": "OpenAI-compatible HTTP facade. Point any OpenAI SDK at it  - requests route to Kilo, opencode, Anthropic, Gemini, Ollama, Bedrock, Groq, OpenRouter, and 17 brand providers. Real token-by-token SSE, agentic tool calls preserved, multi-key rotation, per-provider backoff.",
+      "repo": "https://github.com/AnEntrypoint/acptoapi",
+      "url": "https://anentrypoint.github.io/acptoapi/",
+      "year": 2026,
+      "keywords": [
+        "acptoapi",
+        "openai",
+        "anthropic",
+        "acp",
+        "gemini",
+        "ollama",
+        "bedrock",
+        "groq",
+        "openrouter",
+        "anentrypoint",
+        "247420"
+      ],
+      "author": "AnEntrypoint",
+      "twitter": "@AnEntrypoint",
+      "glyph": "⇄",
+      "code": "051",
+      "category": "tooling",
+      "lang": "en",
+      "locale": "en_US"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "acptoapi",
+        "subheading": "OpenAI-compat facade over ACP + Anthropic + 17 brand providers",
+        "body": "Point any OpenAI SDK at it. Requests route by model prefix to Kilo, opencode, Anthropic, Gemini, Ollama, Bedrock, Groq, OpenRouter, Together, DeepSeek, xAI, Cerebras, Mistral, Fireworks, OpenAI, Sambanova, NVIDIA, Cloudflare, Z.AI, Qwen, Codestral, opencode-zen, Cohere, Perplexity. Real token-by-token SSE. Tool calls preserved. Multi-key per provider with rotation + exponential backoff.",
+        "badges": [
+          {
+            "label": "streaming"
+          },
+          {
+            "label": "tool_calls"
+          },
+          {
+            "label": "reasoning_content"
+          },
+          {
+            "label": "multi-key"
+          },
+          {
+            "label": "auto-chain"
+          },
+          {
+            "label": "openai-compat"
+          },
+          {
+            "label": "anthropic-compat"
+          },
+          {
+            "label": "gemini-compat"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/acptoapi",
+            "primary": true
+          },
+          {
+            "label": "npm",
+            "href": "https://www.npmjs.com/package/acptoapi"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "sidebar": {
+        "fab": {
+          "label": "install",
+          "glyph": "✦",
+          "href": "#install"
+        },
+        "bins": [
+          {
+            "glyph": "▣",
+            "label": "everything",
+            "href": "#all",
+            "count": 27,
+            "active": true
+          },
+          {
+            "glyph": "★",
+            "label": "endpoints",
+            "href": "#endpoints",
+            "count": 18
+          },
+          {
+            "glyph": "◐",
+            "label": "providers",
+            "href": "#models",
+            "count": 26
+          },
+          {
+            "glyph": "◌",
+            "label": "how",
+            "href": "#how"
+          }
+        ],
+        "labels_group": "labels",
+        "labels": [
+          {
+            "glyph": "●",
+            "label": "install",
+            "href": "#install",
+            "color": "var(--panel-accent)"
+          },
+          {
+            "glyph": "●",
+            "label": "models",
+            "href": "#models",
+            "color": "var(--mascot,#e0a200)"
+          },
+          {
+            "glyph": "●",
+            "label": "endpoints",
+            "href": "#endpoints",
+            "color": "var(--purple,#8856b3)"
+          },
+          {
+            "glyph": "●",
+            "label": "sdk",
+            "href": "#sdk",
+            "color": "var(--panel-text-3)"
+          }
+        ],
+        "more_group": "more",
+        "more": [
+          {
+            "glyph": "§",
+            "label": "readme",
+            "href": "https://github.com/AnEntrypoint/acptoapi/blob/main/README.md"
+          },
+          {
+            "glyph": "§",
+            "label": "agents",
+            "href": "https://github.com/AnEntrypoint/acptoapi/blob/main/AGENTS.md"
+          },
+          {
+            "glyph": "⌘",
+            "label": "npm",
+            "href": "https://www.npmjs.com/package/acptoapi"
+          },
+          {
+            "glyph": "↗",
+            "label": "source",
+            "href": "https://github.com/AnEntrypoint/acptoapi"
+          }
+        ]
+      },
+      "tabs": [
+        {
+          "glyph": "▣",
+          "label": "everything",
+          "href": "#all",
+          "active": true
+        },
+        {
+          "glyph": "◎",
+          "label": "models",
+          "href": "#models"
+        },
+        {
+          "glyph": "▰",
+          "label": "endpoints",
+          "href": "#endpoints"
+        },
+        {
+          "glyph": "§",
+          "label": "how",
+          "href": "#how"
+        }
+      ],
+      "quickstart": {
+        "heading": "install",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# zero install  - run via npx"
+          },
+          {
+            "kind": "cmd",
+            "text": "npx acptoapi"
+          },
+          {
+            "kind": "cmt",
+            "text": "# default ports: :4800 (api), :4780 (kilo), :4790 (opencode)"
+          },
+          {
+            "kind": "cmt",
+            "text": "# override flags: --port --kilo --opencode --claude-bin"
+          },
+          {
+            "kind": "cmt",
+            "text": "# refresh local npx cache after publish"
+          },
+          {
+            "kind": "cmd",
+            "text": "npx acptoapi --update"
+          },
+          {
+            "kind": "cmt",
+            "text": "# multi-key per provider  - works out of the box"
+          },
+          {
+            "kind": "cmd",
+            "text": "export GROQ_API_KEY=key-a   GROQ_API_KEY_2=key-b   GROQ_API_KEY_3=key-c"
+          }
+        ]
+      },
+      "kits": {
+        "heading": "model routing",
+        "count": "26 providers",
+        "items": [
+          {
+            "code": "01",
+            "title": "kilo/<model>",
+            "sub": "ACP daemon - port 4780",
+            "meta": "auto-spawn",
+            "href": "https://github.com/kilo-language/kilo-code"
+          },
+          {
+            "code": "02",
+            "title": "opencode/<model>",
+            "sub": "ACP daemon - port 4790",
+            "meta": "auto-spawn",
+            "href": "https://github.com/opencode-ai/opencode"
+          },
+          {
+            "code": "04",
+            "title": "qwen-code/<model>",
+            "sub": "ACP daemon - port 4820",
+            "meta": "QWEN_API_KEY",
+            "href": "https://github.com/QwenLM/qwen-code"
+          },
+          {
+            "code": "05",
+            "title": "codex-cli/<model>",
+            "sub": "ACP daemon - port 4830",
+            "meta": "OPENAI_API_KEY",
+            "href": "#"
+          },
+          {
+            "code": "06",
+            "title": "copilot-cli/<model>",
+            "sub": "ACP daemon - port 4840",
+            "meta": "GITHUB_TOKEN",
+            "href": "https://github.com/github/copilot-cli"
+          },
+          {
+            "code": "07",
+            "title": "cline/<model>",
+            "sub": "ACP daemon - port 4850",
+            "meta": "ANTHROPIC_API_KEY",
+            "href": "https://github.com/cline/cline"
+          },
+          {
+            "code": "08",
+            "title": "hermes-agent/<model>",
+            "sub": "ACP daemon - port 4860",
+            "meta": "auto-spawn",
+            "href": "https://github.com/NousResearch/hermes-agent"
+          },
+          {
+            "code": "09",
+            "title": "cursor-acp/<model>",
+            "sub": "ACP daemon - port 4870",
+            "meta": "auto-spawn",
+            "href": "https://github.com/roshan-c/cursor-acp"
+          },
+          {
+            "code": "10",
+            "title": "codeium-cli/<model>",
+            "sub": "ACP daemon - port 4880",
+            "meta": "CODEIUM_API_KEY",
+            "href": "https://help.codeium.com"
+          },
+          {
+            "code": "11",
+            "title": "acp-cli/<model>",
+            "sub": "ACP reference - port 4890",
+            "meta": "no key",
+            "href": "https://github.com/acp-protocol/acp-cli"
+          },
+          {
+            "code": "13",
+            "title": "anthropic/claude-*",
+            "sub": "Direct API",
+            "meta": "ANTHROPIC_API_KEY",
+            "href": "https://www.anthropic.com"
+          },
+          {
+            "code": "14",
+            "title": "gemini/gemini-*",
+            "sub": "Google AI",
+            "meta": "GEMINI_API_KEY",
+            "href": "https://ai.google.dev"
+          },
+          {
+            "code": "15",
+            "title": "ollama/<model>",
+            "sub": "Local - OLLAMA_URL",
+            "meta": "no key",
+            "href": "https://ollama.com"
+          },
+          {
+            "code": "16",
+            "title": "bedrock/<model>",
+            "sub": "AWS SigV4",
+            "meta": "AWS_ACCESS_KEY_ID",
+            "href": "https://aws.amazon.com/bedrock"
+          },
+          {
+            "code": "17",
+            "title": "groq/<model>",
+            "sub": "Groq OpenAI-compat",
+            "meta": "GROQ_API_KEY",
+            "href": "https://groq.com"
+          },
+          {
+            "code": "18",
+            "title": "openrouter/<model>",
+            "sub": "OpenRouter",
+            "meta": "OPENROUTER_API_KEY",
+            "href": "https://openrouter.ai"
+          },
+          {
+            "code": "19",
+            "title": "together/<model>",
+            "sub": "Together AI",
+            "meta": "TOGETHER_API_KEY",
+            "href": "https://together.ai"
+          },
+          {
+            "code": "20",
+            "title": "deepseek/<model>",
+            "sub": "DeepSeek API",
+            "meta": "DEEPSEEK_API_KEY",
+            "href": "https://deepseek.com"
+          },
+          {
+            "code": "21",
+            "title": "xai/grok-*",
+            "sub": "xAI",
+            "meta": "XAI_API_KEY",
+            "href": "https://x.ai"
+          },
+          {
+            "code": "22",
+            "title": "cerebras/<model>",
+            "sub": "Cerebras",
+            "meta": "CEREBRAS_API_KEY",
+            "href": "https://cerebras.ai"
+          },
+          {
+            "code": "23",
+            "title": "mistral/<model>",
+            "sub": "Mistral",
+            "meta": "MISTRAL_API_KEY",
+            "href": "https://mistral.ai"
+          },
+          {
+            "code": "24",
+            "title": "fireworks/<model>",
+            "sub": "Fireworks AI",
+            "meta": "FIREWORKS_API_KEY",
+            "href": "https://fireworks.ai"
+          },
+          {
+            "code": "25",
+            "title": "openai/gpt-*",
+            "sub": "OpenAI direct",
+            "meta": "OPENAI_API_KEY",
+            "href": "https://openai.com"
+          },
+          {
+            "code": "26",
+            "title": "perplexity/<model>",
+            "sub": "Perplexity",
+            "meta": "PERPLEXITY_API_KEY",
+            "href": "https://perplexity.ai"
+          }
+        ]
+      },
+      "api_exports": {
+        "heading": "endpoints",
+        "count": "18 routes",
+        "items": [
+          {
+            "code": "POST",
+            "title": "/v1/chat/completions",
+            "sub": "OpenAI chat  - streaming + non-streaming",
+            "meta": "openai-compat",
+            "href": "https://github.com/AnEntrypoint/acptoapi#endpoints"
+          },
+          {
+            "code": "GET",
+            "title": "/v1/models",
+            "sub": "live-probed model list with queues",
+            "meta": "openai-compat"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/messages",
+            "sub": "Anthropic Messages API drop-in",
+            "meta": "anthropic-compat"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/messages/count_tokens",
+            "sub": "heuristic token estimator",
+            "meta": "anthropic-compat"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/embeddings",
+            "sub": "prefix-routed embeddings",
+            "meta": "openai/cohere/voyage/mistral"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/images/generations",
+            "sub": "image generation passthrough",
+            "meta": "openai/together"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/moderations",
+            "sub": "moderation passthrough",
+            "meta": "openai"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/rerank",
+            "sub": "rerank passthrough",
+            "meta": "cohere/voyage/together"
+          },
+          {
+            "code": "POST",
+            "title": "/v1/audio/speech",
+            "sub": "TTS passthrough",
+            "meta": "openai/groq"
+          },
+          {
+            "code": "POST",
+            "title": "/v1beta/models/:m:streamGenerateContent",
+            "sub": "Gemini streaming",
+            "meta": "gemini-compat"
+          },
+          {
+            "code": "POST",
+            "title": "/v1beta/models/:m:generateContent",
+            "sub": "Gemini non-streaming",
+            "meta": "gemini-compat"
+          },
+          {
+            "code": "GET",
+            "title": "/v1/keyring/status",
+            "sub": "masked per-key state, rotation + backoff",
+            "meta": "ops"
+          },
+          {
+            "code": "GET",
+            "title": "/v1/sampler/status",
+            "sub": "per-provider backoff state",
+            "meta": "ops"
+          },
+          {
+            "code": "GET",
+            "title": "/v1/runs",
+            "sub": "chain run history",
+            "meta": "ops"
+          },
+          {
+            "code": "GET",
+            "title": "/v1/chains",
+            "sub": "named + runtime chains",
+            "meta": "ops"
+          },
+          {
+            "code": "GET",
+            "title": "/debug/providers",
+            "sub": "live backend probe",
+            "meta": "debug"
+          },
+          {
+            "code": "GET",
+            "title": "/debug/auto-chain",
+            "sub": "current resolved auto-fallback chain",
+            "meta": "debug"
+          },
+          {
+            "code": "GET",
+            "title": "/health",
+            "sub": "backend status",
+            "meta": "ops"
+          }
+        ]
+      },
+      "features": {
+        "heading": "how it works",
+        "items": [
+          {
+            "code": "01",
+            "name": "messages[] becomes backend native",
+            "desc": "OpenAI/Anthropic/Gemini bodies translated to ACP text parts",
+            "meta": "translate.js"
+          },
+          {
+            "code": "02",
+            "name": "text deltas become delta.content",
+            "desc": "one SSE frame per token, no buffering, no polling, first chunk in ms",
+            "meta": "stream"
+          },
+          {
+            "code": "03",
+            "name": "reasoning becomes reasoning_content",
+            "desc": "Anthropic thinking + OpenAI reasoning passed through as delta.reasoning_content",
+            "meta": "reasoning"
+          },
+          {
+            "code": "04",
+            "name": "tool_calls preserved",
+            "desc": "OpenAI delta.tool_calls with input JSON accumulated from streamed input_json_delta",
+            "meta": "tool-use"
+          },
+          {
+            "code": "05",
+            "name": "tool_results folded in",
+            "desc": "Anthropic tool_result blocks rendered into delta.content with marker",
+            "meta": "agentic"
+          },
+          {
+            "code": "06",
+            "name": "multi-key rotation",
+            "desc": "GROQ_API_KEY + GROQ_API_KEY_1..99, rotate inline on 401/429 before chain advances",
+            "meta": "keyring.js"
+          },
+          {
+            "code": "07",
+            "name": "per-provider backoff",
+            "desc": "sampler hourly probes; failed providers fall to the back of the chain with exp backoff",
+            "meta": "sampler.js"
+          },
+          {
+            "code": "08",
+            "name": "auto-fallback chain",
+            "desc": "model: 'auto' walks env-detected providers ranked by SWE-bench, then ACP daemons",
+            "meta": "auto-chain.js"
+          },
+          {
+            "code": "09",
+            "name": "named chains",
+            "desc": "fast, cheap, smart, reasoning, free, local  - model: 'fast' picks first available",
+            "meta": "chains"
+          },
+          {
+            "code": "11",
+            "name": "session end becomes finish_reason",
+            "desc": "stop | length | tool_calls then [DONE]",
+            "meta": "stream"
+          },
+          {
+            "code": "12",
+            "name": "ACP daemons auto-spawn",
+            "desc": "kilo, opencode, qwen-code, codex-cli, copilot-cli, cline, hermes, cursor, codeium, acp-cli, installless via npx/bunx",
+            "meta": "acp-launcher.js"
+          }
+        ]
+      },
+      "examples": {
+        "heading": "sdk drop-in",
+        "items": [
+          {
+            "code": "js",
+            "title": "OpenAI SDK",
+            "sub": "baseURL is :4800/v1, apiKey=none, stream:true",
+            "meta": "openai",
+            "href": "https://github.com/AnEntrypoint/acptoapi#sdk"
+          },
+          {
+            "code": "py",
+            "title": "Anthropic SDK",
+            "sub": "base_url is :4800, POST /v1/messages",
+            "meta": "anthropic",
+            "href": "https://github.com/AnEntrypoint/acptoapi#anthropic"
+          },
+          {
+            "code": "js",
+            "title": "Gemini SDK",
+            "sub": "POST /v1beta/models/:m:streamGenerateContent",
+            "meta": "gemini",
+            "href": "https://github.com/AnEntrypoint/acptoapi#gemini"
+          }
+        ]
+      },
+      "docs": {
+        "heading": "docs",
+        "items": [
+          {
+            "code": "md",
+            "title": "README",
+            "sub": "overview - install - routes - examples",
+            "meta": "start here",
+            "href": "https://github.com/AnEntrypoint/acptoapi/blob/main/README.md"
+          },
+          {
+            "code": "md",
+            "title": "AGENTS.md",
+            "sub": "non-obvious technical caveats for agents",
+            "meta": "deep dive",
+            "href": "https://github.com/AnEntrypoint/acptoapi/blob/main/AGENTS.md"
+          },
+          {
+            "code": "md",
+            "title": "CHANGELOG",
+            "sub": "version history",
+            "meta": "history",
+            "href": "https://github.com/AnEntrypoint/acptoapi/blob/main/CHANGELOG.md"
+          }
+        ]
+      },
+      "status_left": [
+        "main",
+        "- MIT",
+        "- node >=18"
+      ],
+      "status_right": [
+        "AnEntrypoint/acptoapi",
+        "- 247420"
+      ]
+    },
+    "stars": 7,
+    "pushedAt": "2026-08-21T10:23:22Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 28
+  },
+  "052": {
+    "code": "052",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-20T14:32:59Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 55
+  },
+  "053": {
+    "code": "053",
+    "src": "https://anentrypoint.github.io/research/",
+    "site": {
+      "title": "research",
+      "tagline": "CLI research via claude.ai",
+      "description": "fire research prompts at claude.ai through playwriter, wait for completion, download the results. CLI for deep-research workflows.",
+      "repo": "https://github.com/AnEntrypoint/research",
+      "url": "https://anentrypoint.github.io/research",
+      "year": 2026,
+      "keywords": [
+        "cli",
+        "research",
+        "playwright",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#ffa657",
+      "accent_to": "#f0883e",
+      "glyph": "⌘",
+      "code": "053",
+      "category": "tooling"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "research",
+        "subheading": "CLI research via claude.ai",
+        "body": "fire research prompts at claude.ai through playwriter, wait for completion, download the results. CLI for deep-research workflows.",
+        "badges": [
+          {
+            "label": "cli"
+          },
+          {
+            "label": "research"
+          },
+          {
+            "label": "playwright"
+          },
+          {
+            "label": "tooling"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/research",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why research",
+        "items": [
+          {
+            "name": "cli",
+            "desc": "flagship trait of research."
+          },
+          {
+            "name": "research",
+            "desc": "core capability of research."
+          },
+          {
+            "name": "playwright",
+            "desc": "core capability of research."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/research.git"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-08-09T23:10:53Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "054": {
+    "code": "054",
+    "src": "https://anentrypoint.github.io/agent-gsuite/",
+    "site": {
+      "title": "agent-gsuite",
+      "tagline": "gsuite tools for agents",
+      "description": "Google Workspace integrations packaged as agent tools. mail, docs, calendar.",
+      "repo": "https://github.com/AnEntrypoint/agent-gsuite",
+      "url": "https://anentrypoint.github.io/agent-gsuite",
+      "year": 2026,
+      "keywords": [
+        "agents",
+        "gsuite",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#ffa657",
+      "accent_to": "#f0883e",
+      "glyph": "⊙",
+      "code": "054",
+      "category": "tooling"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "agent-gsuite",
+        "subheading": "gsuite tools for agents",
+        "body": "Google Workspace integrations packaged as agent tools. mail, docs, calendar.",
+        "badges": [
+          {
+            "label": "agents"
+          },
+          {
+            "label": "gsuite"
+          },
+          {
+            "label": "tooling"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/agent-gsuite",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why agent-gsuite",
+        "items": [
+          {
+            "name": "agents",
+            "desc": "flagship trait of agent-gsuite."
+          },
+          {
+            "name": "gsuite",
+            "desc": "core capability of agent-gsuite."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/agent-gsuite.git"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-08-20T12:11:05Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "055": {
+    "code": "055",
+    "missing": true,
+    "stars": 2,
+    "pushedAt": "2026-08-09T23:03:49Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "056": {
+    "code": "056",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-21T14:27:04Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 90
+  },
+  "061": {
+    "code": "061",
+    "missing": true,
+    "stars": 2,
+    "pushedAt": "2026-08-21T18:58:23Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "070": {
+    "code": "070",
+    "missing": true,
+    "stars": 3,
+    "pushedAt": "2026-08-20T12:59:11Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 12
+  },
+  "071": {
+    "code": "071",
+    "missing": true,
+    "stars": 6,
+    "pushedAt": "2026-08-21T13:49:29Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 15
+  },
+  "072": {
+    "code": "072",
+    "src": "https://anentrypoint.github.io/design/",
+    "site": null,
+    "home": null,
+    "stars": 2,
+    "pushedAt": "2026-08-22T12:00:22Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 99
+  },
+  "075": {
+    "code": "075",
+    "src": "https://anentrypoint.github.io/showpick/",
+    "site": {
+      "title": "showpick",
+      "tagline": "WFGY video content processor",
+      "description": "AI-driven video filtering with the WFGY framework. the pipeline that picks what airs on the broadcast.",
+      "repo": "https://github.com/AnEntrypoint/showpick",
+      "url": "https://anentrypoint.github.io/showpick",
+      "year": 2026,
+      "keywords": [
+        "video",
+        "ai-curation",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#56d364",
+      "accent_to": "#79c0ff",
+      "glyph": "▶",
+      "code": "075",
+      "category": "web"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "showpick",
+        "subheading": "WFGY video content processor",
+        "body": "AI-driven video filtering with the WFGY framework. the pipeline that picks what airs on the broadcast.",
+        "badges": [
+          {
+            "label": "video"
+          },
+          {
+            "label": "ai-curation"
+          },
+          {
+            "label": "web"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/showpick",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why showpick",
+        "items": [
+          {
+            "name": "video",
+            "desc": "flagship trait of showpick."
+          },
+          {
+            "name": "ai-curation",
+            "desc": "core capability of showpick."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/showpick.git"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-08-16T05:38:45Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "076": {
+    "code": "076",
+    "src": "https://anentrypoint.github.io/floosie/",
+    "site": {
+      "title": "floosie",
+      "tagline": "universal stream pipeline",
+      "description": "pipe anything to anything. the stream-composition primitive under streamtts and friends.",
+      "repo": "https://github.com/AnEntrypoint/floosie",
+      "url": "https://anentrypoint.github.io/floosie",
+      "year": 2026,
+      "keywords": [
+        "streams",
+        "pipeline",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#56d364",
+      "accent_to": "#79c0ff",
+      "glyph": "≋",
+      "code": "076",
+      "category": "web"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "floosie",
+        "subheading": "pipe anything to anything",
+        "body": "98 typed chunks, 14 operators, one composable runtime. the stream-composition primitive under streamtts and friends — written so you can fuse mime-detected stdin, websockets, ACP agents, and ML tensors into a single pipe() chain without writing glue.",
+        "badges": [
+          {
+            "label": "98 chunk types"
+          },
+          {
+            "label": "14 operators"
+          },
+          {
+            "label": "ESM · TypeScript"
+          },
+          {
+            "label": "ACP · stdio · ws"
+          },
+          {
+            "label": "0 dep glue"
+          },
+          {
+            "label": "1 mental model"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/floosie",
+            "primary": true
+          },
+          {
+            "label": "npm i floosie",
+            "href": "https://www.npmjs.com/package/floosie"
+          },
+          {
+            "label": "docs",
+            "href": "https://github.com/AnEntrypoint/floosie#readme"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "stats": {
+        "heading": "by the numbers",
+        "intro": "the surface area, in four digits.",
+        "items": [
+          {
+            "value": "98",
+            "label": "chunk types",
+            "desc": "media, text, network, ml, crypto, scalars",
+            "cat": "kit"
+          },
+          {
+            "value": "14",
+            "label": "operators",
+            "desc": "mux split gate scan zip batch window throttle …",
+            "cat": "deck"
+          },
+          {
+            "value": "183",
+            "label": "mimes detected",
+            "desc": "via file-type magic-byte lookup",
+            "cat": "preview"
+          },
+          {
+            "value": "0",
+            "label": "glue code",
+            "desc": "framing autoselected by chunk type",
+            "cat": "doc"
+          }
+        ]
+      },
+      "flow": {
+        "heading": "anatomy of a pipeline",
+        "intro": "every floosie pipeline is the same shape. read top-to-bottom; the bytes flow the same way.",
+        "ascii": "┌──────────────┐\n│   source     │   stdin · ws · acp · file · iter\n└──────┬───────┘\n       ▼\n┌──────────────┐\n│ typed chunk  │   { type, data, meta:{mime} }\n└──────┬───────┘   ◌ 98 variants · auto-detected\n       ▼\n┌──────────────┐\n│  transform   │   .through(gate · parallel · scan · …)\n└──────┬───────┘   ◌ 14 operators · sflow under the hood\n       ▼\n┌──────────────┐\n│ processor    │   { name, status, chunksIn, chunksOut }\n└──────┬───────┘   ◌ idle → running → error|stopped\n       ▼\n┌──────────────┐\n│    sink      │   ndjson · ws · acp · file · iter\n└──────────────┘\n",
+        "legend": [
+          {
+            "glyph": "◌",
+            "text": "every stage is observed by the registry"
+          },
+          {
+            "glyph": "●",
+            "text": "framing chosen by chunk.type — you never write a parser"
+          },
+          {
+            "glyph": "↗",
+            "text": "swap source or sink without touching transform"
+          }
+        ]
+      },
+      "problem": {
+        "heading": "the pain you already know",
+        "intro": "every non-trivial stream pipeline drifts into the same swamp. floosie is the answer to a problem you've solved badly four times already.",
+        "items": [
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "untyped buffers",
+            "desc": "Buffer<unknown> flowing between stages. is this json? a frame? a tensor header? you'll find out at runtime."
+          },
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "framing-by-hand",
+            "desc": "newline-delimited here, length-prefixed there, websocket envelopes elsewhere. each new sink is a fresh parser."
+          },
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "no observability",
+            "desc": "console.log scattered through transforms. no per-stage counters, no lifecycle, no introspection."
+          },
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "transport coupling",
+            "desc": "rewriting a pipeline because you swapped stdio for a websocket. the logic was fine; the plumbing leaked."
+          }
+        ]
+      },
+      "compare": {
+        "heading": "before / after",
+        "intro": "the same job, written twice.",
+        "before": {
+          "label": "without floosie",
+          "code": "// read stdin → detect mime → maybe-parse json\n// → filter → maybe-reframe → write ndjson\nconst chunks = [];\nprocess.stdin.on('data', b => chunks.push(b));\nprocess.stdin.on('end', () => {\n  const buf = Buffer.concat(chunks);\n  const mime = sniffMimeSomehow(buf);          // ad-hoc\n  const parsed = mime === 'application/json'\n    ? JSON.parse(buf)                          // throws? oh well\n    : { raw: buf.toString() };\n  if (parsed.score > 0.9) {\n    const out = JSON.stringify(parsed) + '\\n'; // hand-framing\n    process.stdout.write(out);\n  }\n});\n"
+        },
+        "after": {
+          "label": "with floosie",
+          "code": "import { createProcessor, gate } from \"floosie\";\nimport { stdinTypedSource, ndjsonStdoutSink } from \"floosie/stdio\";\n\ncreateProcessor({\n  name: \"filter\",\n  input: stdinTypedSource(),                   // mime-detected chunks\n  transform: (f) => f.through(gate(c => c.data.score > 0.9)),\n  output: ndjsonStdoutSink(),                  // framed for you\n});\n"
+        }
+      },
+      "when": {
+        "heading": "when to reach for floosie",
+        "intro": "five shapes of problem where floosie pays for itself in the first hour.",
+        "items": [
+          {
+            "cat": "kit",
+            "name": "agent pipelines",
+            "desc": "an LLM emits tokens, your code routes by type — text vs tool-call vs error. ACP source/sink already wraps it.",
+            "meta": "acp"
+          },
+          {
+            "cat": "deck",
+            "name": "media transforms",
+            "desc": "image/video/audio/pdf flowing through detectors, encoders, sinks. file-type does the magic-byte work; you write the verbs.",
+            "meta": "media"
+          },
+          {
+            "cat": "preview",
+            "name": "ml inference fans",
+            "desc": "tensors and embeddings as first-class chunks. parallel(fn, n) caps concurrency without juggling promises.",
+            "meta": "ml"
+          },
+          {
+            "cat": "doc",
+            "name": "observability streams",
+            "desc": "metrics, spans, logs, events as typed chunks. mux N sources, batch by time, route by category.",
+            "meta": "telemetry"
+          },
+          {
+            "cat": "external",
+            "name": "websocket fan-in/out",
+            "desc": "muxWsClients() merges N upstreams into one chunk flow. wsBridge serves as a typed broadcast.",
+            "meta": "ws"
+          }
+        ]
+      },
+      "how": {
+        "heading": "how it actually works",
+        "intro": "three primitives. you'll have the mental model in the time it takes to read this panel.",
+        "steps": [
+          {
+            "rank": "01",
+            "glyph": "▣",
+            "name": "chunk",
+            "desc": "every value in a flow is { type, data, meta }. the type is one of 98, the codec round-trips it, mime is auto-detected on binary."
+          },
+          {
+            "rank": "02",
+            "glyph": "◎",
+            "name": "processor",
+            "desc": "createProcessor({ name, input, transform, output }) — the actor. transform is a sflow pipeline. lifecycle is idle/running/error/stopped, observed by the registry."
+          },
+          {
+            "rank": "03",
+            "glyph": "▰",
+            "name": "operator",
+            "desc": "mux/split/gate/scan/zip/batch/window/throttle/debounce/parallel — each is a typed StreamNode. fuse with .through(). nothing else."
+          }
+        ]
+      },
+      "recipes": {
+        "heading": "recipes you can paste",
+        "intro": "four real pipelines, each under 12 lines.",
+        "items": [
+          {
+            "cat": "kit",
+            "name": "stdin → typed chunks → ndjson stdout",
+            "desc": "the cli pipe. mime-sniffed, type-routed, framed for you.",
+            "code": "import { stdinTypedSource, ndjsonStdoutSink } from \"floosie/stdio\";\nimport { createProcessor } from \"floosie\";\ncreateProcessor({\n  name: \"passthrough\",\n  input: stdinTypedSource(),\n  transform: (f) => f,\n  output: ndjsonStdoutSink(),\n});\n"
+          },
+          {
+            "cat": "preview",
+            "name": "fan N websockets into one stream",
+            "desc": "muxWsClients with round-robin or hash routing.",
+            "code": "import { muxWsClients } from \"floosie\";\nconst fan = await muxWsClients([\"ws://a:7878\",\"ws://b:7878\"]);\nfor await (const c of fan.source()) console.log(c.type, c.meta?.mime);\n"
+          },
+          {
+            "cat": "deck",
+            "name": "concurrent classify with backpressure",
+            "desc": "parallel caps concurrency, gate filters on score, withBackpressure protects upstream.",
+            "code": "import { createProcessor, gate, parallel, withBackpressure } from \"floosie\";\ncreateProcessor({\n  name: \"classifier\",\n  transform: (f) => f\n    .through(withBackpressure(64))\n    .through(parallel(classify, 4))\n    .through(gate(c => c.data.score > 0.9)),\n});\n"
+          },
+          {
+            "cat": "doc",
+            "name": "ACP agent as a stream source",
+            "desc": "AgentClientProtocol → typed chunks. plug it into any operator chain.",
+            "code": "import { acpSource } from \"floosie/acp\";\nfor await (const c of acpSource(connection)) {\n  if (c.type === \"token\") write(c.data);\n  if (c.type === \"error\") report(c.data);\n}\n"
+          }
+        ]
+      },
+      "audience": {
+        "heading": "who this is for",
+        "intro": "three honest reads of fit.",
+        "items": [
+          {
+            "cat": "kit",
+            "name": "you ship agent runtimes",
+            "desc": "if streamtts, an LLM gateway, or any AgentClientProtocol consumer is on your roadmap, floosie is the layer you would have built."
+          },
+          {
+            "cat": "deck",
+            "name": "you do byte-level work",
+            "desc": "media transcoders, protocol bridges, telemetry routers. you spend more time on framing than logic. stop."
+          },
+          {
+            "cat": "preview",
+            "name": "you want one mental model",
+            "desc": "if you've written 'this is the third time i've reframed ndjson', the third time should be an import, not a parser."
+          }
+        ]
+      },
+      "proofs": {
+        "heading": "three things you get for free",
+        "intro": "the boring stuff that ate your last sprint.",
+        "items": [
+          {
+            "glyph": "●",
+            "cat": "kit",
+            "name": "typed end-to-end",
+            "desc": "every value carries its type at runtime. discriminated-union narrowing means no `as any` cast survives a code review."
+          },
+          {
+            "glyph": "●",
+            "cat": "deck",
+            "name": "mime detection",
+            "desc": "binary in → file-type magic-byte lookup → mimeToChunkType() → variant selected. you wrote zero of those lines."
+          },
+          {
+            "glyph": "●",
+            "cat": "preview",
+            "name": "observed by default",
+            "desc": "registry tracks every processor — chunksIn, chunksOut, errors, uptimeMs. setLogSink() forwards to your stack."
+          }
+        ]
+      },
+      "choose": {
+        "heading": "pick your stack",
+        "intro": "honest comparison. floosie is not always the answer.",
+        "rows": [
+          {
+            "what": "typed chunk discriminated union",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "○",
+            "note": "98 variants, mime-aware"
+          },
+          {
+            "what": "auto framing on stdin/ws/acp",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "○",
+            "note": "framing chosen by type"
+          },
+          {
+            "what": "operator algebra",
+            "floosie": "●",
+            "rxjs": "●",
+            "streams": "◐",
+            "note": "sflow under the hood"
+          },
+          {
+            "what": "AsyncIterable interop",
+            "floosie": "●",
+            "rxjs": "◐",
+            "streams": "●",
+            "note": "ReadableStream + AsyncIterable in one"
+          },
+          {
+            "what": "back-pressure",
+            "floosie": "●",
+            "rxjs": "◐",
+            "streams": "●",
+            "note": "withBackpressure(hwm)"
+          },
+          {
+            "what": "registry / observability",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "○",
+            "note": "out of the box"
+          },
+          {
+            "what": "browser/node parity",
+            "floosie": "●",
+            "rxjs": "●",
+            "streams": "●",
+            "note": "esm, no node-only deps in core"
+          },
+          {
+            "what": "small surface (no lifecycle gymnastics)",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "●",
+            "note": "4-state actor, no schedulers"
+          }
+        ],
+        "legend": [
+          {
+            "glyph": "●",
+            "text": "first-class"
+          },
+          {
+            "glyph": "◐",
+            "text": "possible with effort"
+          },
+          {
+            "glyph": "○",
+            "text": "you'd have to build it"
+          }
+        ]
+      },
+      "operators": {
+        "heading": "operators",
+        "intro": "all 14 are typed StreamNode factories. compose with pipe() / .through(). nothing else to learn.",
+        "items": [
+          {
+            "name": "mux(...sources)",
+            "desc": "merge N async sources into one interleaved flow"
+          },
+          {
+            "name": "split(flow, n)",
+            "desc": "fan-out one stream into N independent branches"
+          },
+          {
+            "name": "gate(pred)",
+            "desc": "async predicate filter — keep only items that pass"
+          },
+          {
+            "name": "scan(fn, seed)",
+            "desc": "running accumulator — emit state after each item"
+          },
+          {
+            "name": "zip(...sources)",
+            "desc": "combine N sources into tuples, stop at shortest"
+          },
+          {
+            "name": "withBackpressure(hwm)",
+            "desc": "pause upstream when in-flight count exceeds HWM"
+          },
+          {
+            "name": "batch(n)",
+            "desc": "collect items into fixed-size arrays"
+          },
+          {
+            "name": "window(ms)",
+            "desc": "collect items into time-bounded arrays"
+          },
+          {
+            "name": "throttle(ms)",
+            "desc": "pass at most one item per interval"
+          },
+          {
+            "name": "debounce(ms)",
+            "desc": "suppress items until quiet for ms"
+          },
+          {
+            "name": "take(n)",
+            "desc": "emit first N items then close"
+          },
+          {
+            "name": "drop(n)",
+            "desc": "skip first N items"
+          },
+          {
+            "name": "distinct(keyFn?)",
+            "desc": "deduplicate consecutive equal items"
+          },
+          {
+            "name": "parallel(fn, n)",
+            "desc": "concurrent async map with concurrency limit"
+          }
+        ]
+      },
+      "chunks": {
+        "heading": "the 98 chunk types",
+        "intro": "every value in a floosie stream is a typed chunk with a codec, a mime hint, and a place in the discriminated union. 98 built-ins span media, text, network protocols, ML tensors, cryptographic primitives, and numeric scalars — and you can register your own.",
+        "groups": [
+          {
+            "heading": "media & docs",
+            "items": [
+              "binary",
+              "image",
+              "video",
+              "audio",
+              "pdf",
+              "archive",
+              "wasm",
+              "font",
+              "onnx",
+              "safetensors",
+              "epub",
+              "docx",
+              "xlsx",
+              "pptx",
+              "gltf",
+              "qrcode"
+            ]
+          },
+          {
+            "heading": "text & markup",
+            "items": [
+              "text",
+              "json",
+              "ndjson",
+              "csv",
+              "xml",
+              "yaml",
+              "markdown",
+              "html",
+              "sql",
+              "toml",
+              "ini",
+              "jsonschema",
+              "avroschema",
+              "sourcemap",
+              "shader",
+              "obj",
+              "subtitle",
+              "playlist",
+              "graphml"
+            ]
+          },
+          {
+            "heading": "network & protocol",
+            "items": [
+              "http-request",
+              "http-response",
+              "websocket",
+              "sse",
+              "rpc",
+              "event",
+              "span",
+              "metric",
+              "log",
+              "command",
+              "socketio",
+              "webtransport",
+              "envelope",
+              "ack",
+              "nack"
+            ]
+          },
+          {
+            "heading": "observability",
+            "items": [
+              "error",
+              "signal",
+              "null",
+              "delta",
+              "token",
+              "embedding"
+            ]
+          },
+          {
+            "heading": "ml & data",
+            "items": [
+              "tensor",
+              "timeseries",
+              "ohlcv",
+              "adjacency",
+              "pointcloud",
+              "ast"
+            ]
+          },
+          {
+            "heading": "crypto & security",
+            "items": [
+              "hash",
+              "signature",
+              "hmac",
+              "keypair",
+              "certificate",
+              "ciphertext",
+              "dns",
+              "dhcp",
+              "icmp"
+            ]
+          },
+          {
+            "heading": "encodings",
+            "items": [
+              "protobuf",
+              "msgpack",
+              "cbor",
+              "arrow",
+              "parquet",
+              "geojson",
+              "jwt",
+              "graphql"
+            ]
+          },
+          {
+            "heading": "numeric & primitives",
+            "items": [
+              "uint8",
+              "int8",
+              "int16",
+              "uint16",
+              "int32",
+              "uint32",
+              "int64",
+              "uint64",
+              "float32",
+              "float64",
+              "complex64",
+              "complex128",
+              "bool",
+              "timestamp",
+              "uuid"
+            ]
+          },
+          {
+            "heading": "structured",
+            "items": [
+              "frame",
+              "patch",
+              "multipart"
+            ]
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "install"
+          },
+          {
+            "kind": "cmd",
+            "text": "npm i floosie"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "pipe anything → typed chunks → ndjson"
+          },
+          {
+            "kind": "cmd",
+            "text": "echo '{\"score\":0.97}' | npx floosie auto"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "or bridge a websocket"
+          },
+          {
+            "kind": "cmd",
+            "text": "npx floosie bridge --port 7878"
+          }
+        ]
+      },
+      "usage": {
+        "heading": "the 8-line tour",
+        "intro": "one createProcessor, one transform, framing handled.",
+        "code": "import { createProcessor, json, gate, parallel } from \"floosie\";\n\ncreateProcessor({\n  name: \"classifier\",\n  transform: (flow) =>\n    flow\n      .through(gate(c => c.data.score > 0.9))\n      .through(parallel(classify, 4))\n      .through(gate(c => c.data.label !== \"spam\"))\n});\n"
+      },
+      "glossary": {
+        "heading": "vocab — the four words that matter",
+        "intro": "if you know these, you know floosie.",
+        "items": [
+          {
+            "term": "chunk",
+            "def": "{ type, data, meta }. the atomic value in any flow. 98 built-in types; type narrows data."
+          },
+          {
+            "term": "codec",
+            "def": "encode/decode pair per chunk type. encodeChunk(c) → bytes, decodeChunk(type, bytes) → c. mime auto-populated on binary."
+          },
+          {
+            "term": "processor",
+            "def": "createProcessor({ name, input, transform, output }). the actor. lifecycle is idle → running → error | stopped."
+          },
+          {
+            "term": "operator",
+            "def": "a typed StreamNode factory you fuse with .through(). 14 of them. mux, gate, parallel, batch — that family."
+          }
+        ]
+      },
+      "examples": {
+        "heading": "go deeper",
+        "items": [
+          {
+            "name": "stdio auto-detect",
+            "desc": "stdin → mime detect → typed chunks → ndjson stdout.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/tree/main/docs/examples"
+          },
+          {
+            "name": "ACP agent bridge",
+            "desc": "AgentClientProtocol as a stream source/sink.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/acp.ts"
+          },
+          {
+            "name": "websocket mux",
+            "desc": "fan-in N websockets into one chunk stream.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/ws.ts"
+          },
+          {
+            "name": "operators reference",
+            "desc": "all 14 operators wired against sflow.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/operators.ts"
+          },
+          {
+            "name": "chunk registry",
+            "desc": "the 98-type discriminated union with codecs.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/chunk-types.ts"
+          },
+          {
+            "name": "buffer utilities",
+            "desc": "hex/base64/gzip/brotli/hexdump on the byte layer.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/buffer.ts"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-08-09T23:05:36Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "077": {
+    "code": "077",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-08-16T05:31:05Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "078": {
+    "code": "078",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-20T14:13:57Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "080": {
+    "code": "080",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-16T05:39:55Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 25
+  },
+  "081": {
+    "code": "081",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-09T23:10:38Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "082": {
+    "code": "082",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-20T14:32:57Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "083": {
+    "code": "083",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-08-09T23:04:48Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  }
+}

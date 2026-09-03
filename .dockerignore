@@ -1,0 +1,65 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+
+# Development files
+.claude/
+.git/
+.gitignore
+README.md
+
+# Cache directories
+.cache/
+.npm/
+.eslintcache
+
+# Test files
+coverage/
+.nyc_output
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+tmp/
+temp/
+
+# Source control
+.gitignore
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Development configuration
+tailwind.config.js
+postcss.config.js
+
+# Documentation
+docs/
+*.md
+
+# Test HTML files
+iframe-test.html
+
+# Build scripts that aren't needed in production
+generate-*
+code_search_index/

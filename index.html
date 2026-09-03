@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="ds-247420" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>247420 | the creative department of the internet</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- SEO -->
+  <meta name="description" content="247420 is a discord community and the tools it builds — a 1,300-strong room shipping rough drafts, a broadcast fed by what people drop, and the agent tooling behind it. the door is on discord.">
+  <meta name="keywords" content="247420, discord community, creative collective, agent tooling, gm, broadcast, AnEntrypoint">
+  <meta property="og:title" content="247420 | the creative department of the internet">
+  <meta property="og:description" content="a discord community that ships. 1,300+ in the room, a broadcast on a UTC clock, and the projects anyone can build. take your shoes off — the door is unlocked.">
+  <meta property="og:image" content="https://247420.xyz/logo.gif">
+  <meta property="og:url" content="https://247420.xyz">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="247420 | the creative department of the internet">
+  <meta name="twitter:description" content="a discord community that ships. 1,300+ in the room, a broadcast on a UTC clock, and the projects anyone can build.">
+  <meta name="twitter:image" content="https://247420.xyz/logo.gif">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Design SDK CSS — canonical tokens + .ds-247420-scoped components.
+       Local styles.css only carries site-specific surfaces (expo cards,
+       schedule slots, broadcast guide) the SDK doesn't ship.
+       Pinned to a commit SHA, not @main: jsDelivr caches a floating branch
+       ref for up to 12h regardless of push, so a real upstream fix could
+       serve stale to some visitors for hours after landing. A SHA-pinned
+       URL is marked immutable by jsDelivr and never goes stale — bump the
+       SHA here deliberately (scripts/bump-sdk-pin.mjs) whenever design
+       ships a fix this site needs. See AGENTS.md for the prior
+       jsDelivr/githack outage history this replaces. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AnEntrypoint/design@4349f3af01f163d846b7464b936e4538691c1be9/dist/247420.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <!-- Sits outside the SDK's #app mount so it survives every route render
+       untouched — one global control, not a per-page footer widget. -->
+  <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false" title="play background music">music: off</button>
+  <script type="module">
+    // SDK JS — components, mount, h, applyDiff, theme, ThemeToggle.
+    // Pages render via window.ds.* in lib/components.js.
+    import * as ds from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@4349f3af01f163d846b7464b936e4538691c1be9/dist/247420.js';
+    window.ds = ds;
+    if (ds.initTheme) ds.initTheme();
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

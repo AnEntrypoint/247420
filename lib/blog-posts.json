@@ -1,0 +1,3105 @@
+[
+  {
+    "slug": "week-2026-08-20",
+    "title": "Week of Aug 14-20, 2026: 370 commits across 11 repos",
+    "publishedAt": "2026-08-20T12:00:00.000Z",
+    "description": "",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "370 commits landed across 11 repositories this week. The heaviest activity was in gm (108 commits), followed by design (73)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 108 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "recreate AnEntrypoint/gm after local .git and remote repo were lost to AV quarantine"
+      },
+      {
+        "type": "paragraph",
+        "text": "ci: use built-in GITHUB_TOKEN instead of a PUBLISHER_TOKEN secret; drop cross-repo gm-skill mirror"
+      },
+      {
+        "type": "paragraph",
+        "text": "security: recreate AV-quarantined flatspace.config.mjs clean from trusted git history; sync skill auto-refresh"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(cdn): switch anentrypoint-design SDK source from unpkg to githack"
+      },
+      {
+        "type": "paragraph",
+        "text": "Bump gm-config and rs-plugkit pins: PROVE typed proof-obligation gate"
+      },
+      {
+        "type": "paragraph",
+        "text": "Bump gm-config and rs-plugkit pins: Lean-style dependency-DAG obligations"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 73 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(community): port for-web role/ban/invite moderation UI + webhooks/permissions/emoji/search"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(theme): add HCT tone-locked dynamic per-server accent (Material-You)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(community): split rail into server-icon strip + channel column"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(chat): mount chat page in WorkspaceShell with ConversationList + rail nav"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(shell): AppShell merged-chrome nested a duplicate <header> (two title bars)"
+      },
+      {
+        "type": "paragraph",
+        "text": "restyle: green/purple lead + neutral base, drop serif; fix 4 live bugs"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "spoint -- 39 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: real root cause of degenerate triangles surviving prior fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: MeshoptDecompressor read whole shared indices bufferView instead of per-primitive slice"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: ground-snap player spawn points, drop degenerate triangles from physics trimesh"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: progressive-bake cache key never invalidated on bake-pipeline code changes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(cdn): switch anentrypoint-design SDK source from jsDelivr to githack"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: TSL WebGPU port of SSAO + terrain-backdrop WebGPU fail-open guard"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "alarm -- 37 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "Re-enable PIR2 as alarm source after confirming GPIO_INTR_ANYEDGE was the actual root cause of the pulse artifact, not hardware"
+      },
+      {
+        "type": "paragraph",
+        "text": "Disable PIR2 as alarm/webhook trigger source: measured metronomic ~1100ms noise pulse continuously, including when covered and motionless, not filterable by duration/debounce"
+      },
+      {
+        "type": "paragraph",
+        "text": "Raise confirmation threshold to 3 events and add 2-minute per-sensor trigger cooldown to suppress runaway re-triggering from a noisy sensor"
+      },
+      {
+        "type": "paragraph",
+        "text": "Route each PIR sensor's alarm_triggered webhook to its own Discord channel"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix PIR motion polarity: standard PIR modules (AM312, HC-SR501) drive HIGH on motion, LOW when idle"
+      },
+      {
+        "type": "paragraph",
+        "text": "Support dual PIR sensors on GPIO4 and GPIO2, trigger alarm on either"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "traintai -- 32 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "round 53 real eval result: unlikelihood-training fine-tune beats round46 -- NEW campaign best (78.14%)"
+      },
+      {
+        "type": "paragraph",
+        "text": "add unlikelihood-training term for the direction-drill confused decision, verified locally"
+      },
+      {
+        "type": "paragraph",
+        "text": "round 46 real eval result: equal-share direction-drill fix gives another real new campaign best (75.99%)"
+      },
+      {
+        "type": "paragraph",
+        "text": "add balrog_direction_drill.py + BALROG_DIRECTION_DRILL_ONLY: dedicated fine-tune data targeting real vocabulary-confusion root cause found in rounds 38-42"
+      },
+      {
+        "type": "paragraph",
+        "text": "add liquid arm: Liquid Time-Constant (LTC/CfC) per-layer gate as a direct swap-in for PLE"
+      },
+      {
+        "type": "paragraph",
+        "text": "st_prepare.py: implement real token-balanced BALROG demo selection - fixes the token-length dilution gap the row-count fix left uncorrected"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 30 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "security: remove injected C2/backdoor payload from vite.browser.config.js"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: flow_runner reports stall as failure, preserves partial results, fixes decision-node crash"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: cron scheduler tick() rejections no longer surface as unhandled promise rejections"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: approval classifier fail-open on contradictory ALLOW/DENY verdict"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: tool-budget=0 silently uncapped instead of blocking; harden against NaN"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: switch composed anentrypoint deps and CDN refs from npm registry to GitHub-latest"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 18 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: strip live HiddenSpawn dropper from plugins/case-tools/plugin.js, extend scan-deps to cover own source"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: gitignore .env (holds live channel secrets, was untracked but unignored)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(case-tools): cap unbounded text on case_observe/case_split against thatcher writes"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore(deps): bump js-yaml floor to 4.3.1 (CVE-2026-59870 quadratic-CPU fix in omap resolution)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(lint): wire deps/design's token/inline-css gates over the dashboard SPA"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(dashboard): add tasteful motion using deps/design's existing tokens"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "goofedup -- 14 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: initial goofedup -- cross-platform structural-anomaly watcher"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add --scan-deps for JS hidden-unicode-escape identifier detection"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: correct Linux detectors for cached reads and multi-threaded interpreters"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add Windows tray GUI with toast notifications for goofedup"
+      },
+      {
+        "type": "paragraph",
+        "text": "merge: resolve Cargo.toml/lock conflict between GUI feature and scan-deps walkdir dep"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: close single-instance mutex handle to avoid leak"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "deoxidene -- 14 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "deoxidene: C++23 boilerplate closing the Rust ergonomics gap"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix CI: pin vcpkg builtin-baseline to a real commit, install ninja, stop tracking daemon state"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix signed-integer-overflow UB in example's int parser"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix arm64-linux CI: pin vcpkg baseline before a broken upstream portfile script"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix CI properly: pin vcpkg-tool to a real, self-consistent release tag"
+      },
+      {
+        "type": "paragraph",
+        "text": "close Rust-ergonomics gaps: cargo-add equivalent, actionable setup errors"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "zellous -- 4 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(theme): stoat-for-web palette re-theme, remove topbar chrome"
+      },
+      {
+        "type": "paragraph",
+        "text": "revert(theme): drop flat pink/purple palette re-theme, keep green brand"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 1 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(cdn): switch anentrypoint-design SDK source from unpkg to githack"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-08-13",
+    "title": "Week of Aug 7-13, 2026: 596 commits across 12 repos",
+    "publishedAt": "2026-08-13T12:00:00.000Z",
+    "description": "",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "596 commits landed across 12 repositories this week. The heaviest activity was in spoint (180 commits), followed by traintai (133)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "spoint -- 180 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(deploy): migrate gh-pages workflow off the legacy Jekyll-based Pages builder to actions/deploy-pages"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: sillos spawn point lands underwater, add live-deploy verification gate"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: singleplayer players fall through env-sillos into the void on spawn"
+      },
+      {
+        "type": "paragraph",
+        "text": "refactor: decompose SceneHierarchy/camera/ColliderStreamer complexity hotspots"
+      },
+      {
+        "type": "paragraph",
+        "text": "refactor: split src/sdk/server.js (502 lines) into server.js (factory) + ServerBoot.js, per 200-line vertical-slice doctrine"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: uncaught requestPointerLock() exception crashes the app to a full error screen"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "traintai -- 133 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "balrog_demo_convert.py: fix real per-game mixture starvation bug - wrap/cycle exhausted small games' rows instead of dropping out"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs: round 30's real eval result - format-aware self-play selection FIXES the second-hop regression, 48.45% vs round29's unweighted 24.46%"
+      },
+      {
+        "type": "paragraph",
+        "text": "balrog_selfplay_convert.py: add format-aware selection (--parse-rank-weight), targeting the real second-hop-flywheel regression found in rounds 27/29"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs: round 32's real eval result - THIRD consecutive positive flywheel hop, new campaign best at 58.65% parse-success"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs: round 26's real eval result - self-play flywheel compounds strongly at LR-tuned config, major new best at 55.46% parse-success"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs: round 38 launched - real test of the mixture-balance fix via fresh raw records.zip re-conversion"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thatcher -- 85 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "Add statistical predictive modeling: linear regression trend + z-score anomaly detection"
+      },
+      {
+        "type": "paragraph",
+        "text": "Add cohort-over-time trend analytics report"
+      },
+      {
+        "type": "paragraph",
+        "text": "Add generic outbound CRM-sync integration framework, fix encrypted-field render leak"
+      },
+      {
+        "type": "paragraph",
+        "text": "Add 2D pivot report cross-tabulating any two entity fields"
+      },
+      {
+        "type": "paragraph",
+        "text": "add formula fields with a safe expression grammar; fix a dead readOnly form-field exclusion bug"
+      },
+      {
+        "type": "paragraph",
+        "text": "add generic admin-driven custom entity/schema definition"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 61 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: submodule gm/design/freddie/acptoapi under vendor-src for local editing"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: 48-item audit sweep across interrupted-turn state, cron scheduling, dashboard sessions, and app tooling"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: AAA-quality audit fixes across GUI polish, agent tool-call correctness, boot perf, and robustness"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: UI/UX audit fixes -- workspaces app, window titles, browser empty state"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: page-scoped fetch shim answering freddie dashboard's /api/* routes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(sw-client,freddie-host,event-chain): CRITICAL undefined previewPrefix breaking SW registration, cron-scheduler leak/race, duplicate node-id double-fire"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 40 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(skills): load global Agent Skills directories, harden loader against malformed input"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: prevent freddie exec/run --print CLI hang after successful completion"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: bump gm-plugkit/gm-skill/plugsdk to latest, fix osv-scan-lockfile Windows shell-quoting bug"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: perfect-codebase pass -- split core-cli plugin.js, wire lint into CI, fix js-yaml audit"
+      },
+      {
+        "type": "paragraph",
+        "text": "refactor: split 18 over-200-line files into focused vertical slices"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: wire subagent fan-out into GUI/TUI/REPL surfaces"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 29 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: CSRF fail-closed on missing Sec-Fetch-Site, gate git.push behind confirm, use execFile array-args for git clone"
+      },
+      {
+        "type": "paragraph",
+        "text": "refactor: split lib/ws-handlers-util.js's 466-line register() closure into lib/ws-handlers/{agents,chat,git,misc,shared,terminal-state}.js"
+      },
+      {
+        "type": "paragraph",
+        "text": "refactor: extract lib/http-handler.js's ~500-line createHttpHandler route bodies into lib/http-routes/{shared,reads,mutations}.js"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add lib/acp-http-protocol.js, a verified SSE event normalizer for opencode's HTTP ACP transport"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: wire opencode's HTTP ACP transport into AgentRunner.runACP, fix 3 real bugs found while verifying it end-to-end"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: readBody's oversized-body path destroyed the socket before the caller's 413 response could be sent"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "zellous -- 27 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: delete dead chat.linkify() -- an unreachable but unescaped XSS-shaped code path"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: unbounded audioQueue/dmMessages growth, orphaned voice DOM elements, self-target moderation gap"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: keyboard equivalent (Alt+ArrowUp/Down) for channel/category drag-reorder"
+      },
+      {
+        "type": "paragraph",
+        "text": "refactor: drop npm/unpkg for AnEntrypoint deps, load wireweave+design live from GitHub via jsdelivr /gh/"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: restore focus on modal/menu close, wire Voice Settings a11y, real reconnect affordance, close silent catches"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(voice+security): wire force-relay/bitrate settings live, fix XSS gap in channel type label"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "obrowser -- 20 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: wasm32-wasip1 support for oxibrowser-core + agentplug plugin integration"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(network): stop wasm SSRF check from doing local DNS resolution"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: widen test_async_fetch_non_blocking timing margin for CI runner jitter"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: clippy needless_borrow + cargo fmt in wasm feature-gated code"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: widen test_async_fetch_non_blocking margin further after repeat CI flake"
+      },
+      {
+        "type": "paragraph",
+        "text": "renamed master to main per project convention"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 7 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey animal-disease surveillance orchestrator"
+      },
+      {
+        "type": "paragraph",
+        "text": "Add STEP 1-4 roadmap from herd health kickoff call"
+      },
+      {
+        "type": "paragraph",
+        "text": "Herd Health WhatsApp roadmap Phase 1-3: intake fields, secretary role/queue, closure metric"
+      },
+      {
+        "type": "paragraph",
+        "text": "Push toward AAA: fix false-confirmation gap, LLM-down false-positive, bulk-write race, WCAG AAA gaps; remove dead provenance tiers"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix scan-deps.mjs false positives, add scan-for-hack instructions"
+      },
+      {
+        "type": "paragraph",
+        "text": "Wire the secretary follow-up queue into the dashboard UI"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agent-memory -- 7 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: remove orphaned MemoryProxy/packages/cost-guard gitlink"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs: note fork publish location (AnEntrypoint/agent-memory) in README/README_CN"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs: changelog entry for seed-v2 build fix and agent-memory publish"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: ignore .agentplug/ plugkit runtime spool dir"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: ignore gm-plugkit spool/runtime state (.gm/, .agentplug-kv/)"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "flatspace -- 5 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "security: remove HiddenSpawn malware payload from tailwind.config.mjs"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(admin): strip all interactive admin scripts, write brand css relative to consumer cwd"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(build): resolve rippleui via node resolution, ship tailwind.config.mjs"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(build): configurable base path, move tailwind to dependencies"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "codebasesearch -- 2 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "Remove HiddenSpawn malware payload from flatspace.config.mjs"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-08-06",
+    "title": "Week of Jul 31-Aug 6, 2026: 553 commits across 7 repos",
+    "publishedAt": "2026-08-06T12:00:00.000Z",
+    "description": "553 commits across 7 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "553 commits landed across 7 repositories this week. The heaviest activity was in gm (365 commits), followed by design (86)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 365 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gm-plugkit): codeload.github.com git-based fallback for GitHub-API-restricted environments"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gm-plugkit): auto-install agentplug-runner on missing-loader spool boot"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(git): async pending-token protocol for gm git verbs (rs-plugkit 95797e8b6f)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(paper): mermaid lightbox+sizing, header-offset TOC sync, TOC heading grouping, SDK bump to 0.0.471"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(site): use SDK CliBlock for install command, bump design SDK for dark-mode contrast fix"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 86 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: theme toggle, marquee a11y fix, docs/DX expansion, responsive+consistency fixes (50-item audit closure)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie-chat): attach files to prompts (staged chips, upload via gui-agent files endpoint)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie-chat): session picker — switch/resume conversations in the workspace (rebuilds from wire replay)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie-chat): busy-send queues follow-ups (kimi 1.31 Enter channel) + queue.append rendering"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie-chat): wire-protocol WebSocket chat workspace + ApprovalNode"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 38 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(tui): kimi-cli parity pass — immediate steer, approval nav, git badge"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent): session fork/undo, checkpoint-revert, workspace upload + session picker"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent): approvals hardening + queue channel + live compaction + ACP bridge + classifier tier"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent): wire protocol — unified turn events, approvals, steering, live GUI workspace, REPL parity"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: split data-theme (body) from class=ds-247420 (html) per documented contract"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "zellous -- 26 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(pages): thread page author/timestamp through to PageView"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(security): key export/backup UI, honest delete copy, exact CDN pins"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: surface toasts on server/channel write-action failures instead of silent no-op"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(voice+security): wire force-relay/bitrate settings live, fix XSS gap in channel type label"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(mobile): add safe-area-inset support for notched devices"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 22 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: widen LLM reachability probe past its top-3-link blind spot"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(deps): freddie was pinned at ^0.0.245 on its 0.0.x line (caret never floats there) instead of latest like thatcher/anentrypoint-design"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: opt-back-in stonewall, assignee sentinel mismatch, CSV injection bypass, health-window poisoning, retry-map leak"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(reply-path): judge blanks/false-confirms retry with feedback; case_new rebinds the turn; cross-attempt side-effect dedupe"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix false-confirmation guard, sweep race, and two ownership gaps; drop dead dashboard code"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "wireweave -- 12 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(pages): store author pubkey alongside title/html/updatedAt"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(voice): add Opus in-band FEC toggle alongside existing DTX"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(auth): key export/backup; clear stale local key on extension login"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(voice): add setAudioConstraints/setForceRelay, enforce bans on already-connected peers"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(chat): message delete now survives reload; announcement channels admin-gated"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-07-30",
+    "title": "Week of Jul 24-Jul 30, 2026: 973 commits across 10 repos",
+    "publishedAt": "2026-07-30T12:00:00.000Z",
+    "description": "973 commits across 10 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "973 commits landed across 10 repositories this week. The heaviest activity was in gm (510 commits), followed by design (245)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 510 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(fsm): adopt the non-linear 8-stage pipeline; drop stale vendored overrides"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(config): submodule gm-config, allow remote hooks, add implicit default-repo tier"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(ste100): apply ASD-STE100 controlled-language discipline across gm prose"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(docs): README.md gm-config is edited directly and pulled from, not a regenerated snapshot; fix wrong poll-interval mechanism citation"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(docs): correct AGENTS.md stale 8-phase-prose-file list to real 11-file set"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 245 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(chat): wire message reactions to a real UI trigger (NIP-25 groundwork)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kits): adopt 4 recently-backfilled components into real kits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(theme): restyle to webjsx-toolkit look, backfill 9 missing primitives"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(terminal): replace the stub echo with a real command interpreter"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(site): group the nine flat panels into three reading tiers"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 67 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: pi-web GUI port — 13 new dashboard pages + real-time events"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(web): load anentrypoint-design SDK live from unpkg @latest"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: system prompt builder + cleanup"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: kimi-cli feature parity foundation — prior session work"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: kimi-cli feature parity — 17 new features + 30+ infrastructure improvements"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "zellous -- 44 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(forum): wire forum posts end-to-end, closing the last documented gap"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(mutes): wire personal mute list (NIP-51) into member menu"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(reactions): wire NIP-25 kind:7 reactions end-to-end; fix bans authz gap"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(wireweave): consume live from npm via esm.sh, remove vendored copy"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(pages): make the Pages feature reachable — create + real edit modal"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 44 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add 10 curveball adversarial archetypes for exhaustive edge-case testing"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: worker location history, check-in baseline, overdue flags on dashboard map"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add 5 worker-specific adversarial flow archetypes"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: case_idle tool, worker catch-up delivery, case change detection, check-in baseline"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: repoint casey-learnings at node_modules/acptoapi after submodule removal"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 21 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gm): wire real bge-small embedder via agentplug-bert, vendor slim plugkit.wasm same-origin"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(vendor): load anentrypoint-design's 247420.css live from unpkg @latest"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(sqlite-shim): send path:':memory:' on every sql_exec/sql_query/sql_serialize/sql_deserialize/sql_close dispatch, not just sql_open"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm): wire host_plugin_call so sql_* verbs work again after the slim-wasm swap"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(wm): paint min/max class on every open, not just snapshot restores"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-07-23",
+    "title": "Week of Jul 17-Jul 23, 2026: 941 commits across 9 repos",
+    "publishedAt": "2026-07-23T12:00:00.000Z",
+    "description": "941 commits across 9 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "941 commits landed across 9 repositories this week. The heaviest activity was in gm (552 commits), followed by freddie (103)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 552 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: select slim plugkit.wasm artifact on hosts with native host_vec_embed capability"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: install and prefer agentplug-runner over gm-runner in cli.js delegate chain -- verified live, cli.js --version now reports agentplug-runner 0.1.0"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix gm-plugkit SKILL.md auto-refresh silently excluding gm itself"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix stray node.exe terminal-window flash during npm-extract bootstrap on Windows"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix rs-plugkit submodule pointer: previous bump pointed at the wrong dangling commit (missing the actual gate/residual marker fix), corrected to 433b8c6"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 103 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui-git,gui-worktree): add git status/diff/log and worktree management API plugins"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(i18n): add translation-string catalog foundation + locale coverage debug provider"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(observability): xstate Mermaid diagram introspection + live current-state view"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(ci): auto-bump packages with CRITICAL OSV advisories via PR"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(ci): block builds on CRITICAL OSV vulnerabilities in package-lock.json"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "acptoapi -- 76 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(index): export recordModelSuccess/recordModelFailure/peekModelAvailability"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(readiness): register a caller's own explicit chain as always-probed candidates"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(readiness): auto-start preemptive prober for in-process consumers, feed sampler"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(readiness): preemptive smart-mapped model selection for near-zero fallback time"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(brand-catalog): dynamically enumerate every available model, staggered, smartest-first"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 74 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: barrel-export GitStatusPanel/GitDiffView/WorktreeSwitcher from components.js"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: Chip gains onRemove for dismissible tag/filter chips (docstudio cue, 51st run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie): add git dashboard page"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add git-status and worktree-switcher components"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add RateCell tone-colored table cell + wire up orphaned data-density barrel exports (50th docstudio-cue run)"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 56 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(selftest): add CASEY_SELFTEST_DEBUG event-timeline diagnostics"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(casey): track and map each contact's last-reported animal location, with drill-down"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(casey): guaranteed-response FSM + move Discord adapter mechanics to freddie"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: selftest never loaded .env, verifying against stale/default config"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: bump acptoapi floor to 1.0.188 for the thinking-model retry fix; selftest never exited"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 36 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(git): wire GitStatusPanel/GitDiffView/WorktreeSwitcher into Git tab"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: re-vendor design kit -- Chip onRemove for dismissible chips (51st run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(git): add git diff/log and worktree management WS handlers"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: re-vendor design kit -- SpreadsheetPreview component (49th run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: re-vendor design kit — withBusy double-fire guard (48th run)"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-07-16",
+    "title": "Week of Jul 10-Jul 16, 2026: 714 commits across 12 repos",
+    "publishedAt": "2026-07-16T12:00:00.000Z",
+    "description": "714 commits across 12 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "714 commits landed across 12 repositories this week. The heaviest activity was in gm (271 commits), followed by design (156)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 271 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(skills): add Polaris Protocol 4-skill tree (root + goal-compiler + fifth-dimension-engine) and update wfgy-method"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm-plugkit): guard shared ~/.gm-tools wrapper install from gm-repo-local overwrites"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm-plugkit): stop CLI spool command from blocking on network round-trips during watcher reboot"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix real, pre-existing bug: page.evaluateOnNewDocument -> page.addInitScript, and await both patch calls"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fix browser-verb argv truncation at & on Windows shell:true paths"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 156 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(i18n): add locale.js controller, fix bare toLocaleTimeString/toLocaleString calls"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(ui_kits): template-generate the 16 thin kit index.html shells"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(files): PromptDialog gains an optional roots-chip row for destination-path prompts with more than one allowed root"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): cwd practicality upgrade - inline browse popover, roots/recent chips, SessionMeta onAction, docstudio-cue token fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(sdk): per-component size API + density that reaches control internals"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 83 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(witness): consolidate app-matrix scripts into witness-manifest tagged runner"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(chat-config): surface acptoapi cache hit-rate in gateway status tooltip"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(witness): add witness-chat-seed-large.mjs and witness-ws-chat.mjs; confirms acptoapi has no ws route yet"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(witness): add witness-audit-log.mjs and witness-git-sync.mjs; record live-reload dynamic-import blocker decision"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(audit): wire masked audit trail into freddie-keys save/clear; record level-editor culling decision"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 82 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(cli): add freddie profile + heap-snapshot/heap-diff CDP tooling"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(cli): add freddie session-replay <id> conversation + trajectory replay"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(cli): add freddie debug REPL with live host introspection"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(flags): add per-project feature flags with gradual rollout + plugin kill switch"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(machines): add multi-stage-review + incident-response workflow templates"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 42 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): session-expired banner, offline retry button, History error prev/next nav, session header agent/model, rename/mkdir 409 name-suggest, bulk-move roots picker, truncation banner counts, cross-tab reload draft warning, mid-turn-drop error copy"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): cwd practicality upgrade - inline browse popover, roots/recent chips, relative-path resolution, single-press Escape fix, History use-as-cwd action; fix(server): confined routes use query params, fixing a real nginx URI-normalization bug that broke Files drill-down"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): maximal usability/negative-space/predictability sweep - ConfirmDialog danger fix, settings double-gap, mobile clip fixes, copy-tone unification, perf preload+optimistic-update, FileRow prop rename, kit docs"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui): 41st agentgui sweep - running-panel scope disclosure, indexing-title parity, live-dashboard sort freeze, agy continuity disclosure, ccsniff-sourced agent/model badge"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui): 40th agentgui sweep - clear-data Escape ladder, history header basename fallback, wsCall timeout, agy continuity wiring, visible upload feedback"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 41 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(core,engine,packs): additive ground-truth provenance subsystem"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(retention): data retention / right-to-erasure flow; verify thatcher subsystem-gating"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(dashboard): dispatch-from-map operator action"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(dashboard,auth,gateway): queue/webhook health visibility, session revocation, site visit-history, structural tool-refusal fix"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(voice-reply): commit the completed opt-in TTS voice-note reply feature"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-07-09",
+    "title": "Week of Jul 3-Jul 9, 2026: 950 commits across 12 repos",
+    "publishedAt": "2026-07-09T12:00:00.000Z",
+    "description": "950 commits across 12 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "950 commits landed across 12 repositories this week. The heaviest activity was in gm (776 commits), followed by design (49)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 776 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: dedicated gm-continue skill for the mandatory skill-to-skill handoff"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: self-respawn on plugkit-wasm registry drift, no manual bun x gm-plugkit@latest required"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(memory): untrack legacy flat-JSON stores -- md corpus is the sole tracked memory surface"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(memory): corpus rekey convergence + rs-learn.db retirement + docs sweep"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(memory): md-file memory store cutover, gm-side slice"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 49 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(sdk): JsonViewer highlight/tree/copyable modes + token CSS, tests, docs"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(shell): ArrowUp/ArrowDown/Home/End roving focus nav on sidebar links"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(sdk): add Pill/Pager/JsonViewer/ToolbarRow/PropertyGridRow/InlineEditableField, extend --space-* micro-tier scale, fix gm_inspector missing editor-primitives.css"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(sdk): add CliBlock helper for quickstart cli renderers"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(router): port generic hash-router from 247420 consumer repo into SDK"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 32 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: sampler-aware provider filtering + user model_preference order preservation"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(memory): commit remaining converged md corpus files"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: rank model_preference by real capability score, detect silent bash failures"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: dotenv wiring, tool cwd resolution, chat session continuity"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: WhatsApp and Discord adapters actually download media bytes"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "acptoapi -- 20 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: migrate SWE-Bench scores from Verified to Pro (July 2026)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: make ACP daemon auto-spawn opt-in via ACPTOAPI_ENABLE_ACP=1 env var"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: sampler-aware availability + time-based failure decay"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: extra-providers registry (file-driven OpenAI-compatible endpoints with probe cache) + keyring/auto-chain/server wiring + real-services test coverage (pre-existing WIP, load-smoke witnessed)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: correct Cerebras model ID from zai-org/glm-5.2 (nonexistent) to zai-glm-4.7"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 17 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: verbalised-location resolution + conversational curveball hardening"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: agent auto-prepares observability data (case_type, GPS)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: operator identity learning + case observability map"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(memories): converge memory md corpus, repair malformed gm.db from stale WASI journal"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: ruthless goal-optimize round 3 -- triage speed, conversation robustness, cross-repo debt"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "zellous -- 14 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(site): render Hero via SDK C.Hero grid, drop hand-rolled theme toggle"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(chat): wire reply/delete message actions end-to-end"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(nostr): converge legacy visitors into the shared public voice room"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(nostr): converge fresh visitors into a shared public room"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(theme): convert decorative unicode glyphs to ASCII"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-07-02",
+    "title": "Week of Jun 26-Jul 2, 2026: 332 commits across 11 repos",
+    "publishedAt": "2026-07-02T12:00:00.000Z",
+    "description": "332 commits across 11 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "332 commits landed across 11 repositories this week. The heaviest activity was in gm (113 commits), followed by casey (94)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 113 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(debug): structured result, screenshot/dom prefixes, heap/network/console polish across exec_js + browser"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(profile): wall-clock GPU tracing + mem/offcpu/topN across exec_js and browser"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(idempotency): document f.f=f contract + lock it with a real-services witness"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gm-plugkit): atomic blocking spool boot"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: enhance browser error reporting and add diagnostics tools"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 94 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: raise casey's default model tier from haiku to sonnet"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: case_get PII leak; sync docs to no-fallback reality; degraded turns visible"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: fallback question is now open-ended, never re-asks something just given"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: general repeat-outbound guard, varying fallback -- stop the parrot loop"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: fallback reply was a silent no-op, identical to the stock-ack it rejects"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "acptoapi -- 48 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add --missing-free CLI flag listing unconfigured free-tier providers"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: asymmetric availability scoring, boot-time probe, run-history rank snapshot"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: maximize fallback transparency and availability sampling out of the box"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: add Aion Labs, Cohere, LibreChat brand providers; opt-in free-tier auto-chain ranking"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: invisible chain fallback verification + live per-model availability tracking"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 13 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): per-row file move action (gui-completion #0)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): mid-thread retry with confirm gate (gui-completion #7, high)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui): 24th-run completion sweep - live deep-links, focus-trap, quick-copy"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui): 23rd-run perceived-performance sweep - preload, loading states"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui): 22nd-run ux-craft sweep - copy tone, theme-flash, search fallback"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 12 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): per-row file move action (gui-completion #0)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): mid-thread retry - offer retry on every assistant turn"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(kit): 22nd-run ux-craft sweep - accent-on-paper contrast, typography rhythm"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(kit): 21st-run cohesion sweep + inherited a11y/upload fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(os): jank sweep - dead code, a11y labels, stale comment, css fallback"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 12 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent): call acptoapi in-process, no listening port"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(plugins): application-agnostic case + worker-enquiry toolset"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent): thread an opaque per-turn toolCtx into tool handlers"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(agent): opt-in cwd note; tool_choice as per-iteration policy"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(cli): use dynamic import instead of require in ESM relaunch.js"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-06-25",
+    "title": "Week of Jun 19-Jun 25, 2026: 472 commits across 11 repos",
+    "publishedAt": "2026-06-25T12:00:00.000Z",
+    "description": "472 commits across 11 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "472 commits landed across 11 repositories this week. The heaviest activity was in gm (280 commits), followed by casey (67)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 280 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: rename skill dir gm-skill->gm (/gm command, npm id stays gm-skill); lib-free cross-platform installer (bin/install.js, interactive+non-interactive, sets autoCompact/effort/thinking settings with reasoning-in-code framing); terse-rewrite paper.html preserving every claim; test.js rename+installer guard; AGENTS.md Build dual-write + drain two single-platform mechanism paragraphs to rs-learn pointers; instruction prose implicit reasoning-in-code framing"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(profile): bottom-up CPU profile on both surfaces -- worst-20 culprits by file:line with capture timeframe across init+exec."
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(browser): open the session on the page the agent wants to test, not about:blank. plugkit-wasm-wrapper.js host_browser_exec gains a bare 'https://...' URL body (navigates + returns {url,title}) and a 'url=<url>\\\\n<expression>' prefix that prepends page.goto(url,{waitUntil:'load'}) to the script (mirrors timeout=/capture=; parse order timeout/url/capture so the goto rides inside the capture). Default path byte-unchanged. Witnessed live: goto-prefixed evalBody returned Example Domain in one dispatch. browser.md + synced rs-plugkit browser.rs document the shapes. Wrapper-only, ships via cascade wrapper-refresh"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(verbs): zero-boilerplate profile/debug affordances. host_exec_js returns duration_ms (free node wall-time, additive). host_browser_exec gains an opt-in 'capture'/'profile' body prefix that auto-wraps the script with page.on console/pageerror/network capture + navigation performance, returning {result, debug} (default path byte-unchanged = non-breaking; wrap string witnessed live out/browser-213). Instructions reinforced (browser.md capture\\\\n shape, SKILL.md + execute.md), rs-plugkit consts synced (0165d82). Ships via cascade wrapper-refresh, no wasm rebuild"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(profile-debug): witness + reinforce genuine node+browser profiling/debugging. Live-witnessed exec_js (hrtime/memoryUsage/stderr-stack) and browser verb (page.on console/pageerror + performance navigation timing + window globals) both profile+debug genuinely; caught+fixed a network-timing recipe bug (timing.responseEnd is already relative). Added Profile-and-debug recipes to browser.md, node+browser profiling clause to execute.md POE principle, and a profiling-encouragement rule to SKILL.md; synced rs-plugkit consts (af90e8a)"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 67 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: docs -- record the management/oversight surface and assisted-mode-now-real in CHANGELOG; add attn/format/thresholds/overview/clusters/geo/report to the AGENTS source map, CASEY_ALERT_WEBHOOK+CASEY_OPERATORS to the env table, and the live-thresholds + assisted-holds design principles"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: test.js oversight coverage -- live-tuned threshold flips /api/attention breach classification, validateConfig catches a broken workflow graph, rankAttention orders the open pool worst-first"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: test-triage-trust -- attn ranks needs-human over the page window, assisted draft held until approved, autonomy flip is an audited {from,to} event"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: test-alerting -- sweep pages notifyBreach on high-severity breach, routes escalated tier to notifyEscalation distinctly; observe-mode inbound flags needs-human + fires notifyHandoff once"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: pre-send jargon guard holds jargon-laden replies as drafts; re-fetch case after agent turn"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thatcher -- 32 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(a11y): tap-target heights, aria-sort labels, focus-visible on sortable headers"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(a11y): name the engagement filter selects (aria-label)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(a11y): theme-aware --ds-on-accent — accent buttons readable in dark mode"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(a11y): FlexUp Send button white text — was 3.17:1 contrast (fails AA)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(next-compat): NextRequest.headers supports .get()/.has() not just index access"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 28 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): load prior transcript on chat resume + drain 15th-run AGENTS.md detail"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): 17th-run gui-audit — 25 confirmed findings applied"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): 17th-run security hardening + app/kit quality fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(ws): close authenticated WS connections on unknown routes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(electron): run the server child as plain Node, drain readiness polls"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 25 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(prose): add gm article/toc/cli/card/callout surfaces + --panel-hover token"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(design): Acid Editorial reinvention — display type, electric lead, print texture, signature motion"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): 17th-run gui-audit kit fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): 17th-run a11y + CSS quality fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm-prose): clamp .ds-prose canvas to 300px to stop Chart.js infinite-grow on doc-site stats charts"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "wireweave -- 12 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(relay-pool): cancel reconnect timers on disconnect, jitter backoff, cap+TTL pending queue"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(compose)+test: ensureData/api.data; expand tests 19->24 covering servers, DM subscribe, pages, compose, relay-disconnect"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(multi-server): convert bans/roles/settings subscribe to Map pattern; chat.deleteMessage author+admin guard"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: release v0.3.27 [skip-publish]"
+      },
+      {
+        "type": "paragraph",
+        "text": "Netcode: publishAndWait ack tracking + offline-queue dedupe + CI"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-06-18",
+    "title": "Week of Jun 12-Jun 18, 2026: 264 commits across 6 repos",
+    "publishedAt": "2026-06-18T12:00:00.000Z",
+    "description": "264 commits across 6 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "264 commits landed across 6 repositories this week. The heaviest activity was in gm (234 commits), followed by design (10)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 234 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: no-surprise MO - transform memorized workarounds into positive predictable changes (user directive). Principle: we work USING gm, not ON it, so a memorized workaround / known-limitation / internal-advice is tribal knowledge that surprises a fresh user/LLM -- everything must be abundantly predictable at face value, no surprises ever. AGENTS.md Core Rule now codifies the transform discipline: a workaround-memo resolves one of three ways then is pruned -- (a) already in standing prose -> prune; (b) prose-worthy absent -> add to prose + prune; (c) genuine surprising behavior -> fix code + prune; recall carries project work-context, never tool-operation advice. Transforms applied this fire: codesearch cwd-scope -> SKILL.md search rule + gm-plugkit/instructions/entry.md inspection-routing prose clause (the limitation now predictable at face value; the search-reflex advice memo pruned); recurring CRLF/LF const-drift -> .gitattributes eol=lf pin on the prose surfaces (gm + rs-plugkit, ending the autocrlf churn). Memorized the governing principle (the lone recall-worthy meta-rule about recall hygiene)."
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(skill): enforce single-witness test rule in the skillfile + sync LF-normalization. skills/gm-skill/SKILL.md gains the standing guaranteed-read rule 'The test surface is a single real-services integration witness, not a unit suite' (one test.js at root, <=200 lines, real services/mock-free; a growing mock-heavy multi-file test/ directory is the conventional-testing tell-tale gm replaces, never a blessed gate beside the witness; test.js being capped does not exempt a parallel suite; more than the single witness is a re-scope to justify) -- the test discipline was VERIFY-phase-prose-only, so an agent writing tests in EXECUTE never saw it; 'move important rules into the skillfile'. gm-plugkit/instructions/verify.md clarified to match. gm-plugkit/scripts/sync-instruction-consts.mjs strips CRLF so the .md<->.rs consts stop recurringly drifting (the bundle .md is CRLF on Windows, local sync emitted CRLF consts vs CI's LF). Surfaced from a dstate agent rationalizing a 24-file mock unit suite as exempt from the single-file test rule; fixed the RULE so every agent applies it, did not touch foreign dstate's tests."
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gate): enforce search-discipline at dispatch (deviation.native-search-bash). The audit-loop workflow caught a search-discipline gate-miss: native grep -r in a gm cwd was only flagged post-hoc by ccsniff, never blocked at dispatch like bash-git-bypass. checkDispatchGates now blocks native tree-search Bash (grep -r/-R/-rl/-rn, --recursive, standalone rg) with a reason naming the codesearch verb, mirroring the spool-poll/bash-git-bypass gates. Conservative detector: pipe-filter (cmd|grep), grep --color, grep -E/-n on a named file, and rg --version all pass (tested 9/9 allow, 7/7 block). Makes the discipline structural - predictable regardless of which LLM drives the harness - not reliant on model compliance."
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(audit-loop): add supervisor upgrade-resilience health scan. The audit workflow checked cascade/gmsniff/ccsniff/version-source/residual but not supervisor health, despite supervisor.giving-up + version-drift crash-loops being the dominant gm operational defect of the last 3 fires. New 6th parallel Scan agent flags any supervisor stuck in giving-up state or churning version-drift, and verifies the two-layer resilience (restart-burst backoff + version-drift cooldown) is present in the running supervisor.js. Verdict broken on a dead/giving-up supervisor or a missing resilience layer."
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(prose-bundle): add bundle completeness check + document externalized prose architecture"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 10 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(design): 16th-run design-maturity sweep - 40 confirmed findings across 11 lenses"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(design): 15th-run design-maturity sweep - composer/chat/files/sessions/shell/tokens/a11y fixes + ShortcutList + Row detail prop + density icons + pane-toggle relocation"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(design): 14th-run design-maturity sweep - thinking/table/tick chat styling, file skeleton + controls + cell tints, session disc/stale/cost, resizer breakpoints + clamp + a11y, marketing.css .site-* family, base-surface + Panel/Heading class props"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(design): app-surfaces.css owns all consumer-app styling + 13th-run design-consolidation findings"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): screen-real-estate density - fluid columns, resize handles, sessions collapse, thin status, calm buttons, centered thread (11th agentgui run)"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 9 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): 16th-run design-maturity sweep + dead-code + secret-hardening"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): 15th-run design-maturity sweep + dead-code removal + server hardening"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): 14th-run design-maturity sweep - migrate site/theme.mjs into the kit + re-vendor"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): consolidate ALL design content into the ../design kit (13th run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): screen-real-estate layer - fluid columns, drag-resize handles, sessions collapse, thin status, calm buttons, centered thread"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gmweb -- 4 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix: allow agentgui /sync WebSocket through nginx without HTTP Basic auth"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: gitignore transient residual-scan marker and witness emissions"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: persist gm memory entry for /gm password-prompt root cause"
+      },
+      {
+        "type": "paragraph",
+        "text": "chore: track gm plugkit disciplines/instructions, ignore transient spool artifacts; CLAUDE.md references AGENTS.md"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 4 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gm): provision prose bundle into in-page fs so resolver serves editable prose"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gm): vendor agent-facing prose bundle via refresh-gm"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(eng-dna): 6th fan-out pass - 75 fixes, audit cover expanded 12->20 surfaces"
+      },
+      {
+        "type": "paragraph",
+        "text": "docs(AGENTS): drain eng-dna entry detail to rs-learn (gm back-pressure)"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "acptoapi -- 3 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "ci: bump version [skip ci]"
+      },
+      {
+        "type": "paragraph",
+        "text": "Merge branch 'main' of https://github.com/AnEntrypoint/acptoapi Authored by lanmower, assisted by gm"
+      },
+      {
+        "type": "paragraph",
+        "text": "Residual cleanup: .gm pw-sock gitignore and AGENTS.md reference"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-06-11",
+    "title": "Week of Jun 5-Jun 11, 2026: 377 commits across 10 repos",
+    "publishedAt": "2026-06-11T12:00:00.000Z",
+    "description": "377 commits across 10 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "377 commits landed across 10 repositories this week. The heaviest activity was in gm (258 commits), followed by design (36)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 258 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(workflow): audit-validation workflow - deviation scan, cascade coherence, live incremental-reembed reuse assertion"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(plugkit): export in-process createPlugkit() for host-driven memorize/recall"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm-plugkit): seed CLAUDE.md @AGENTS.md + next-step wiring in consumer-project boot path"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(auto-update): dead-supervisor self-respawn + CRLF-stable SKILL.md compare + admission-filter description echo"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm-plugkit): three watcher-lifecycle resilience fixes from witnessed failures"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 36 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): 12th agentgui run - UX-craft sweep (staged column yield, dense PageHeader, drag-only DropZone, stable keyed dashboard body, theme-tuned flame/amber/code tokens, control-metric unification, null-children + class-prefix lints, Workspace Surfaces docs)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(files): FileGrid multi-select + BulkBar + density modes; fix shipped row-layout jank (11th agentgui run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(kit): Claude-Code-web design-language parity (10th agentgui run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(logic): predictable interaction lifecycles - dialog error/busy + doc-level Escape, session stopping, composer IME/paste/drop/hint, windowed thread, upload actions, markdown retry, shared formatters"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(completion): file-manager affordances, deep-link primitives, oversight confirms"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 30 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(wm)+fix(shell): edge+corner window resize, larger assistant default, container-query sidebar drawer revendor"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(eng-dna): fan-out 12-principle audit workflow + ship 12 high-severity fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(responsive): perfect desk/tablet/mobile views via fan-out audit workflow"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie-host): wire in-page gm rs-learn bridge + BigInt-safe dispatch + memory browser"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(freddie-chat): dashboard chat runs the real in-page agent loop (gm tools, multi-step, live phase chip)"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 14 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): 12th run - UX-craft sweep + empirical witness (column-yield layout, content-first headers, /api/move + bulk move, copy-tone purge, perceived-perf boot/skeletons, error-density rails, kit re-vendor; PUNCHLIST-UX 40/40 + 18 witnessed janks landed)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): files multi-select/density wiring + PASSWORD-boot cookie fix (11th run)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): files toolbar up-a-directory button + grid keys in shortcuts overlay"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): Claude-Code-web parity sweep (10th run) - flat chat turns, calm composer, content gutter, tool cards, live command-center"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): logic+predictability sweep - interaction lifecycles (dialog error/busy, stop in-flight, upload queue, confirm arming), realtime truth (claudeSessionId join, cancelled broadcast, terminal replay, recency-derived status, cross-tab guard), input ergonomics (IME, Escape ladder, drop guard, hint), scale (windowed thread, persist trim, events limit shim), consistency/IA"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "freddie -- 14 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(platforms): Discord gateway receive + WhatsApp webhook hardening"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(learn): browser/gh-pages gm rs-learn path + BigInt-safe dispatch"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(learn): make gm rs-learn freddie's primary learning mechanism"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): dashboard key + conversation management endpoints"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent): recover text-format tool calls from weak models"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "casey -- 14 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: generic target-parameterized maximize-quality workflow (audited+fixed freddie + thatcher)"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: run engineering-DNA quality-maximiser (extended w/ ingress-trust + media-capture frontiers) and integrate 20 confirmed fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: engineering-DNA quality-maximiser workflow + integrate its 20 confirmed fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: case-lifecycle guardrails -- xstate machine + time-based health sweep so cases cannot go wrong over time"
+      },
+      {
+        "type": "paragraph",
+        "text": "casey: intelligent case correlation -- group same outbreaks, separate distinct ones, and post-fix wrong grouping (merge/split)"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-06-04",
+    "title": "Week of May 29-Jun 4, 2026: 753 commits across 10 repos",
+    "publishedAt": "2026-06-04T12:00:00.000Z",
+    "description": "753 commits across 10 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "753 commits landed across 10 repositories this week. The heaviest activity was in gm (337 commits), followed by webix (247)."
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "gm -- 337 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(supervisor): auto-recycle watcher on wrapper-sha drift so wrapper-only fixes go live without manual restart"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(watcher): periodic SKILL.md refresh on the update-check cadence"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(browser-witness): stop inferring client edits from verb-body path mentions"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(update): resolve plugkit version from npm plugkit-wasm, not GH releases/latest"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gm-plugkit): system-chromium fallback + correct kill-stale wrapper path"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "webix -- 247 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(apk): export ./alpine-apk + add X-stack feasibility probe"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat: in-guest GUI app (xappdemo) + bundler-ignore glue import"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(blink-core): make runElf re-entrant in-browser via worker-slot path"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(fb): assemble framebuffer page-by-page via spy_address (fixes >4KB reads going black)"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(xappdemo): naked _start for reliable argv + mmap-err guard + self-readback diag"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "design -- 68 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent-chat): GUI-audit kit batch - streaming md perf, responsive, a11y"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agent-chat): structured tool cards, empty state, composer stop, working tail; Row/EventList rail; skip-link focus"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(row): render rail tones + rank alias; harden AgentChat picker/empty-msg"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(editor-primitives): floating non-occluding editor docks (translucent, blurred, collapsible)"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(editor): docked toast routing, unified dense app-prop fields, themed scrollbars, sized color/checkbox inputs, tree drag-over highlight, vec3 .row-collision fix"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thatcher -- 56 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(db): retire better-sqlite3 — busybase Lucia adapter + final cleanup"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(db): migrate audit-logger-enhanced to busybase; delete dead sqlite modules"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(db): migrate audit read/write endpoints to busybase"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(db): migrate password-reset route to busybase; guard metrics db-stats"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(db): migrate email receive/allocate/allocate-batch routes to busybase"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "agentgui -- 11 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): structured tool cards, multi-turn resume, hardened image/CORS, predictable presentation sweep"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): move chat GUI into the anentrypoint-design kit, load from unpkg"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(agents): orchestrate Antigravity (agy) + fix flagship availability, glyph sweep, spawn-injection"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui): GUI-audit closure - vendored kit batch, CSP font allowance, non-resume warning"
+      },
+      {
+        "type": "paragraph",
+        "text": "fix(gui+sec): audit fan-out batch 1 - SSE unwrap, resume-state hygiene, security headers"
+      },
+      {
+        "type": "heading",
+        "tag": "h3",
+        "text": "thebird -- 11 commits"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(gui): maximum-effort GUI audit — glyph-free, brand-correct, predictable, accessible"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(chat+docs): tool_choice:auto in callLLM + just-works onboarding"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(vendor): refresh kits/components for dashboard chat <ds-chat> refactor"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(vendor): refresh chat.js + theme.css with freddie agent chrome + jank pass 2"
+      },
+      {
+        "type": "paragraph",
+        "text": "feat(refresh): scripts/refresh-{freddie,gm}.mjs + CDN wasm fallback"
+      },
+      {
+        "type": "quote",
+        "text": "the collective ships weekly, not on a schedule -- this is what actually moved, pulled straight from git history."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-05-28",
+    "title": "Week of May 22-May 28, 2026: 1374 commits across 9 repos",
+    "publishedAt": "2026-05-28T12:00:00.000Z",
+    "description": "1374 commits across 9 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "1374 commits across 9 repositories: gm (1111), thebird (83), design (64), webix (30), 247420 (27), freddie (27), acptoapi (13), agentgui (11), zellous (8)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat(skill): forbid graphical symbols, convert to industry-standard text on sight; feat(skill): jank-sweep, pliable-architecture, tell-tale-AI full-sweep, caveman-terse rules; feat(git): host_git argv-array + exe-resolution, bash-git JS gate, docs"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat(gui-a11y): modal focus-trap+restore, aria-live status, prefers-contrast + print stylesheets; feat(xstate): terminal bg-job ledger persist + worker job descriptor + trailing-& fix + docs; feat(xstate): persistent-compute level — browser-pane, worker, chat, app viewState, registry"
+      },
+      {
+        "type": "paragraph",
+        "text": "design: feat(glyph): adopt concurrent Glyph accessible-label improvement; feat(icons): replace color-emoji chrome with monochrome SVG Icon set; feat(freddie): real FREDDIE_PAGES renderers + chrome look-and-feel fixes"
+      },
+      {
+        "type": "paragraph",
+        "text": "webix: feat: host input bridge (pushInput) + CI input smoke; export input symbols; feat(ux): redesign the demo as a Linux terminal product; feat(apk-repo): add wranger self-hosted worker as fourth CORS proxy fallback"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-05-21",
+    "title": "Week of May 15-May 21, 2026: 1212 commits across 8 repos",
+    "publishedAt": "2026-05-21T12:00:00.000Z",
+    "description": "1212 commits across 8 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "1212 commits across 8 repositories: gm (1000), thebird (57), design (51), acptoapi (45), freddie (28), zellous (20), agentgui (6), 247420 (5)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat(skill): boot-probe-first + Write+Read dispatch shape against cold-start fabrication; feat(observability): forward wasm evt: lines to plugkit.jsonl; gmsniff walks up to project root; feat(browser): graceful close → SingletonLock purge; marker-driven shutdown; accurate boot-state recognition"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat(demo): pre-baked penguin research page for autonomous-agent preview demo; feat(freddie-host,freddie-chat): wire acptoapi gateway chain for in-browser callLLM; feat(sw): fs-fallback route serves per-instance files at /preview/<path>"
+      },
+      {
+        "type": "paragraph",
+        "text": "design: feat(ux): add form/overlay/interaction primitives, fix WCAG AA contrast, add motion guard; feat(a11y): keyboard nav + focus-visible coverage across components (v0.0.129); feat: add editor primitives (v0.0.127) — ResizeHandle/SplitPanel/ContextMenu/Drawer/Dialog/FocusTrap/Toast/useMediaQuery"
+      },
+      {
+        "type": "paragraph",
+        "text": "acptoapi: feat(server): non-streaming /v1/chat/completions always runs through xstate fallback chain; feat: chatjimmy ultimate-backup provider + harden acp bunx/npx fallback; feat(embed): local ollama fallback + suppress remaining .cmd-shim popups"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-05-14",
+    "title": "Week of May 8-May 14, 2026: 1199 commits across 8 repos",
+    "publishedAt": "2026-05-14T12:00:00.000Z",
+    "description": "1199 commits across 8 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "1199 commits across 8 repositories: gm (809), acptoapi (138), freddie (85), design (77), thebird (47), zellous (22), wireweave (16), thatcher (5)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: implement option B hook elimination strategy; feat: add learning, codeinsight, browser modules to gm-skill/lib for socket-based daemon access; feat: flatten SKILL.md files for bun x skills CLI discovery"
+      },
+      {
+        "type": "paragraph",
+        "text": "acptoapi: feat: implement model sampling with exponential backoff on hourly schedule; feat: prioritize 'bun x' and npx for installless ACP daemon spawning; feat: skip ACP spawn attempts for commands that don't exist to reduce startup noise"
+      },
+      {
+        "type": "paragraph",
+        "text": "freddie: feat: migrate freddie LLM provider to acptoapi primary with Anthropic SDK fallback; feat: wire gm plugsdk hooks into freddie agent loop; feat(gui): /api/acptoapi/* bridge — freddie proxies acptoapi chain mgmt for thebird"
+      },
+      {
+        "type": "paragraph",
+        "text": "design: feat(ui_kits): long-tail prose chrome strip + tool-gutter migration (v0.0.101); feat(rhythm): prose/tool tokens, .ds-prose surface, panel-head asymmetry (v0.0.97); feat(config): surface providers.freddie.baseUrl + providers.openai.baseUrl as first-class fields"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-05-07",
+    "title": "Week of May 1-May 7, 2026: 825 commits across 10 repos",
+    "publishedAt": "2026-05-07T12:00:00.000Z",
+    "description": "825 commits across 10 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "825 commits across 10 repositories: gm (487), freddie (104), design (83), thebird (48), acptoapi (33), zellous (22), agentgui (18), 247420 (16), webix (12), wireweave (2)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat(skills/gm): CI-is-build + parallel-all-remaining rules; feat(skills,agents,prompts): propagate @<discipline> sigil + disciplines core rule; feat(skills): add textprocessing skill + agent; document gm-subagent gate equivalence and session-end task kill"
+      },
+      {
+        "type": "paragraph",
+        "text": "freddie: feat(projects): per-project encapsulation with arbitrary filesystem paths; feat(host): honor FREDDIE_EXTRA_CC_ROOTS env var for cc-plugin discovery; feat: vendor anentrypoint-design dist into package for reliable npm publish"
+      },
+      {
+        "type": "paragraph",
+        "text": "design: feat(desktop/freddie-dashboard): render through bible components; feat(desktop): freddie-dashboard.css + osSurfaces injection (v0.0.62); feat(desktop): add freddie-dashboard.js as host-agnostic factory"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat(os-shell): eagerly boot freddie host on every instance creation; feat(freddie-dashboard): render through anentrypoint-design components; feat(freddie-dashboard): wire osSurfaces + link upstream CSS"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-04-30",
+    "title": "Week of Apr 24-Apr 30, 2026: 1112 commits across 8 repos",
+    "publishedAt": "2026-04-30T12:00:00.000Z",
+    "description": "1112 commits across 8 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "1112 commits across 8 repositories: gm (757), thebird (99), design (70), acptoapi (63), wireweave (36), agentgui (35), zellous (27), 247420 (25)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat(antigravity): scaffold .agent/{rules,workflows} on first workspace open; feat(antigravity): bundle bin/install.js + real bunx install path; feat(site): live stars + npm downloads in flatspace home Hero, ⭐ Star CTA"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat(hermes-acptoapi): hermes runs real Claude tasks via acptoapi in the browser; feat(hermes-acptoapi): wire local acptoapi as Hermes provider via [wire-acp]; feat(site): rebuild live app natively in SDK chrome — no more legacy iframe"
+      },
+      {
+        "type": "paragraph",
+        "text": "design: feat(site): flatspace + anentrypoint-design gh-pages; feat(sdk): publish 247420 npm package — single-file webjsx + ripple-ui SDK; feat(surface): all-sans + neutral-grey dark + color-coded rows"
+      },
+      {
+        "type": "paragraph",
+        "text": "acptoapi: feat(site): flatspace + anentrypoint-design gh-pages; feat(chain): xstate-driven fallback chains with named chains and observability; feat(sdk): chat/stream/chain SDK with model-prefix resolver, fix demo button contrast"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-04-23",
+    "title": "Week of Apr 17-Apr 23, 2026: 425 commits across 7 repos",
+    "publishedAt": "2026-04-23T12:00:00.000Z",
+    "description": "425 commits across 7 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "425 commits across 7 repositories: gm (281), thebird (68), wireweave (20), agentgui (18), acptoapi (15), design (13), zellous (10)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: add ccsniff-gm-lint compliance analyzer for gm skillset; feat(prd-hook): regression detection + circuit breaker + baseline tracking; feat(hooks): enforce @AGENTS.md reference in CLAUDE.md on session start"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat(docs): add popular providers (together, fireworks, perplexity, sambanova, hyperbolic, nvidia, ollama, lmstudio, deepinfra, novita, moonshot, zhipu, lambda, github, vercel, cohere); feat(docs): add OpenRouter provider to chat UI; feat(docs): add acp2openai provider (OpenAI-compat facade over kilo/opencode)"
+      },
+      {
+        "type": "paragraph",
+        "text": "wireweave: feat(site): flatspace-backed GH Pages site with 247420 design; feat(bans): add ban/timeout/kickFromVoice methods. feat(servers): add rename. wire bans<-auth+roles; feat(sdk): full ES-module SDK — voice/chat/channels/servers/bans/roles/settings/media/pages/message. remove legacy/"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat(ui): Gmail-styled RippleUI skin + CI screenshot pipeline; feat(agents): register Hermes Agent (Nous Research) as ACP agent; feat: consolidate client __debug registry + fix workflow-plugin regression"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-04-16",
+    "title": "Week of Apr 10-Apr 16, 2026: 738 commits across 6 repos",
+    "publishedAt": "2026-04-16T12:00:00.000Z",
+    "description": "738 commits across 6 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "738 commits across 6 repositories: agentgui (211), gm (194), thebird (168), zellous (86), 247420 (75), gmweb (4)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: comprehensive visual redesign inspired by LibreChat/Claude.ai; fix: resolve JS syntax errors in client-cache, client-scroll, client-utils; add codec.js; fix: ownsRemote always true when GITHUB_USER unset; sort merged conv list"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: gm-complete checks for GH Pages setup, invokes pages skill if absent; feat: add pages skill for buildless GH Pages sites with webjsx, rippleui, flatspace; feat: restyle site to match Claude Code terminal aesthetic"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat: split defaults.json and match xterm theme to Claude Code; feat: flesh out browser Node.js polyfills — path, fs, events, Buffer, process, console, express; feat: restyle GitHub Pages to TUI aesthetic — monospace, green-on-black, ASCII art, scanlines"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: feat: Add 13 GUI improvements to Flow UI - command palette, reactions, animations, accessibility, observability; feat: Add Flow UI - modern, content-first redesign; feat: Add long-press context popup for chat messages (mobile accessibility)"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-04-09",
+    "title": "Week of Apr 3-Apr 9, 2026: 179 commits across 4 repos",
+    "publishedAt": "2026-04-09T12:00:00.000Z",
+    "description": "179 commits across 4 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "179 commits across 4 repositories: gm (135), 247420 (37), thebird (4), zellous (3)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: browser tasks serialize within project, never parallel; feat: enforce mandatory dev workflow rules across all skill phases; feat: add fail-loud no-fallback constraint to gm and gm-emit skills"
+      },
+      {
+        "type": "paragraph",
+        "text": "247420: feat: gallery IntersectionObserver lazy loading, 40 images per batch; feat: use npx flatspace aggregate in CI build to generate static data files; feat: base 247420 on flatload library"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat: add CCR-compatible routing, multi-provider support, and transformer pipeline; Add multi-provider router with transformers and OpenAI-compatible support; chore: add .codeinsight and .gitignore"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: Fix lib/index.js default export and remove comments from js/files.js; Refactor server.js from 1051-line monolith to 98-line orchestrator; Add Playwright to devDependencies for testing"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-04-02",
+    "title": "Week of Mar 27-Apr 2, 2026: 197 commits across 3 repos",
+    "publishedAt": "2026-04-02T12:00:00.000Z",
+    "description": "197 commits across 3 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "197 commits across 3 repositories: gm (183), agentgui (12), thebird (2)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: replace gm-exec npm package with rs-exec binary; feat: split agent-browser — agent-browser: for CLI, exec:agent-browser for JS eval; Fix Codex plugin dir (gm → gm-codex), add assets support, update build outputs"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: fix: skip blocking VACUUM in auto_vacuum migration to prevent startup hang; fix: skip blocking VACUUM in auto_vacuum migration to prevent startup hang; fix: comprehensive DB housekeeping to prevent unbounded growth"
+      },
+      {
+        "type": "paragraph",
+        "text": "thebird: feat: expand with TypeScript types, vision support, non-streaming mode, examples, and comprehensive docs; Initial release — Anthropic SDK to Gemini streaming bridge"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-03-26",
+    "title": "Week of Mar 20-Mar 26, 2026: 460 commits across 5 repos",
+    "publishedAt": "2026-03-26T12:00:00.000Z",
+    "description": "460 commits across 5 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "460 commits across 5 repositories: agentgui (328), gm (110), zellous (16), 247420 (5), gmweb (1)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: add client-side XState machines for recording and terminal; feat: add client-side XState machines for recording and terminal; feat: add XState machines for rate-limit, script, and model-download"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: add .agent-browser.json profile support to exec:agent-browser handler; feat: improve agent-browser tab tracking and exec:agent-browser docs; feat: ssh plugin background tasks + longer timeouts"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: feat: pluggable server/channel types — page, game, forum support; feat: adopt fast-stack — Bun runtime, XState connection lifecycle; fix: enable external IP for LiveKit dev mode to allow cross-internet audio"
+      },
+      {
+        "type": "paragraph",
+        "text": "247420: fix: remove line-number decorations corrupting schwepe-tv-scheduler.js; refactor: strip build pipeline, go pure static, fix relative paths; ci: remove npm cache (no lock file in repo)"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-03-19",
+    "title": "Week of Mar 13-Mar 19, 2026: 533 commits across 4 repos",
+    "publishedAt": "2026-03-19T12:00:00.000Z",
+    "description": "533 commits across 4 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "533 commits across 4 repositories: agentgui (336), gm (141), zellous (43), gmweb (13)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: enforce HTTP Basic Auth when PASSWORD env var is set; feat: enforce HTTP Basic Auth when PASSWORD env var is set; feat: stream live content from external Claude Code sessions via JSONL watcher"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: skill-first prompt hook + entry chain context in all phase skills; feat: exec interception with full multi-lang support and agent-browser mode; feat: add exec:agent-browser lang for direct browser JS execution via eval --stdin"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: feat: Nostr mode feature parity — fix all identified gaps vs self-hosted; feat: sync Nostr UI to full Discord-style app with validated relay list; feat: nostr mode adapter"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: fix: chown .gitconfig and .git-credentials after git config --global in rest-of-startup.sh; fix: enforce HTTP Basic Auth on all routes except /desk/; fix: add explicit chown for .gitconfig, .claude, and other key dotfiles in Phase 0.5"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-03-12",
+    "title": "Week of Mar 6-Mar 12, 2026: 765 commits across 3 repos",
+    "publishedAt": "2026-03-12T12:00:00.000Z",
+    "description": "765 commits across 3 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "765 commits across 3 repositories: agentgui (648), gm (109), gmweb (8)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: ACP over msgpackr+tokenizer codec, remove SSE; feat: ACP over msgpackr+tokenizer codec, remove SSE; feat: Add /api/version endpoint and client auto-refresh on server update"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: allow bun x codebasesearch in bash hook; feat: register plugin, marketplace, and enabledPlugins in cli.js installer; feat: bundle skills inside gm-cc plugin instead of external install"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: fix: remove ANTHROPIC_API_KEY injection, let claude handle its own auth; fix: inject ANTHROPIC_API_KEY from OAuth token into agentgui env; fix: add /config/.local/bin and other tool paths to agentgui spawn env so claude binary is found"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-03-05",
+    "title": "Week of Feb 27-Mar 5, 2026: 506 commits across 4 repos",
+    "publishedAt": "2026-03-05T12:00:00.000Z",
+    "description": "506 commits across 4 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "506 commits across 4 repositories: agentgui (386), gm (112), zellous (6), gmweb (2)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: move speech clarity instructions from TTS call to user prompt; feat: move speech clarity instructions from TTS call to user prompt; feat: detect and render base64 images in file read blocks"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: add platform-specific postinstall scripts for kilo and opencode; feat: preinstall bun x packages at postinstall, remove @latest from hook invocations; feat: consolidate gm.md checklist and invariants with Wave 2 improvements"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: feat: Discord-like GUI overhaul with thread management, voice turn UI, and channel organization; feat: Discord UI overhaul - message hover actions, voice turn indicator, thread panel, forum view, SVG icons; fix: LiveKit WS proxy, validate 401, channel PATCH, AudioWorklet, server drag-drop"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: fix: kill port 9897 occupants before restart to prevent bind failure; cleanup: remove temporary script and completed PRD file"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-02-26",
+    "title": "Week of Feb 20-Feb 26, 2026: 674 commits across 3 repos",
+    "publishedAt": "2026-02-26T12:00:00.000Z",
+    "description": "674 commits across 3 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "674 commits across 3 repositories: agentgui (598), gm (64), gmweb (12)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: bundle gemini-cli, kilo-code, and opencode-ai as npm dependencies; feat: bundle gemini-cli, kilo-code, and opencode-ai as npm dependencies; feat: complete WebSocket migration - replace all fetch() with wsClient.rpc()"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: agent tooling improvements and planning infrastructure; feat: Block Claude Code plan mode - enforce GM agent planning; feat: Add npm postinstall scripts for all CLI platforms (gc, codex, oc, kilo)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: remove CLI install steps for tools bundled in agentgui; fix: update github url and service name to gm-oc in opencode service; fix: detect abc user UID/GID dynamically instead of hardcoding to 1000"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-02-19",
+    "title": "Week of Feb 13-Feb 19, 2026: 619 commits across 4 repos",
+    "publishedAt": "2026-02-19T12:00:00.000Z",
+    "description": "619 commits across 4 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "619 commits across 4 repositories: agentgui (562), gmweb (23), gm (17), zellous (17)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: convert voice selector from HTTP polling to WebSocket subscription; feat: convert voice selector from HTTP polling to WebSocket subscription; feat: Add STT progress indicators via WebSocket"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: add gmweb-headless CI/CD and separate compose file; feat: add kilo-cli and glootie-kilo services for Kilo Code agent support; feat: Add npx skills add for agent-browser in background installs"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: add semantic code search to UserPromptSubmit hook; feat: add blocked tool patterns and required tool mapping to CHARTER 2; feat: refactor tool policy and add git enforcement charter to gm agent"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: feat: message editing, LiveKit proxy, and OS.js removal; feat: Embedded LiveKit server with auto-download and zero-config startup; feat: Per-channel messages - store, filter, and display messages by channel"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-02-12",
+    "title": "Week of Feb 6-Feb 12, 2026: 310 commits across 4 repos",
+    "publishedAt": "2026-02-12T12:00:00.000Z",
+    "description": "310 commits across 4 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "310 commits across 4 repositories: agentgui (250), gmweb (46), gm (13), zellous (1)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: rebuild Voice tab with native STT/TTS UI matching Chat tab; feat: rebuild Voice tab with native STT/TTS UI matching Chat tab; feat: add lazy-loaded Voice tab with realtime-whisper-webgpu STT/TTS"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: Add cron service with user-editable crontab at /config/crontab; feat: AgentGUI running with bunx agentgui@latest and automatic version checking; fix: Proxy root-level webtalk paths to agentgui for voice SDK loading"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: Add WFGY-inspired behavioral patterns to gm.md from deep EventHorizon study; feat: Update CC README template with comprehensive marketplace-first installation guide; feat: Forbid find tool, redirect users to semantic code-search"
+      },
+      {
+        "type": "paragraph",
+        "text": "zellous: feat: Implement buildless reactive state with @preact/signals and CDN imports"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-02-05",
+    "title": "Week of Jan 30-Feb 5, 2026: 942 commits across 3 repos",
+    "publishedAt": "2026-02-05T12:00:00.000Z",
+    "description": "942 commits across 3 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "942 commits across 3 repositories: agentgui (620), gmweb (216), gm (106)"
+      },
+      {
+        "type": "paragraph",
+        "text": "agentgui: feat: Render HTML code blocks as actual HTML elements instead of escaped text; feat: Render HTML code blocks as actual HTML elements instead of escaped text; feat: Add conversation message display and improve routing"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: enhance RippleUI cards with full-width layout and responsive styling; feat: implement direct Claude Code CLI with streaming and hot-reload; feat: enable agentgui with proper BASE_URL configuration"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: Enforce .prd location and strengthen search tool blocking; feat: Restore marketplace.json generation for Claude Code plugin mode; feat: Add GitHub Actions npm publishing workflow to all platforms"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-01-29",
+    "title": "Week of Jan 23-Jan 29, 2026: 155 commits across 2 repos",
+    "publishedAt": "2026-01-29T12:00:00.000Z",
+    "description": "155 commits across 2 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "155 commits across 2 repositories: gmweb (122), gm (33)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: opencode acp + qwen-code, codex, cursor CLI installs; feat: Clear logs directory on every boot for fresh diagnostics; feat: Persist all installations to /config for multi-boot survival"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: feat: Implement .prd plan file workflow and update stop hook to check plan instead of verification file; feat: Extract gm patterns into specialized skills; feat: Implement proper Claude Code skills for web-search and code-search"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-01-22",
+    "title": "Week of Jan 16-Jan 22, 2026: 375 commits across 2 repos",
+    "publishedAt": "2026-01-22T12:00:00.000Z",
+    "description": "375 commits across 2 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "375 commits across 2 repositories: gmweb (326), gm (49)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: Install/update NHFS and Glootie-OC on every container boot; feat: Add NHFS (file manager with drag & drop uploads) to gmweb; feat: Add Playwriter relay server as managed supervisor service"
+      },
+      {
+        "type": "paragraph",
+        "text": "gm: Fix: Ensure dist/ folders are removed in GitHub Actions workflow; Fix Gemini CLI hooks format and environment variables; Fix: Remove template creation that was truncating agent files"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-01-15",
+    "title": "Week of Jan 9-Jan 15, 2026: 76 commits across 1 repo",
+    "publishedAt": "2026-01-15T12:00:00.000Z",
+    "description": "76 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "76 commits across 1 repositories: gmweb (76)"
+      },
+      {
+        "type": "paragraph",
+        "text": "gmweb: feat: add Traefik labels for Coolify domain routing; feat: include original Dockerfile for local builds; Fix XFCE autostart file creation - ensure proper kasm-user ownership"
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-01-08-quiet",
+    "title": "Week of Jan 2-Jan 8, 2026: quiet stretch",
+    "publishedAt": "2026-01-08T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2026-01-01-quiet",
+    "title": "Week of Dec 26-Jan 1, 2026: quiet stretch",
+    "publishedAt": "2026-01-01T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-12-25",
+    "title": "Week of Dec 19-Dec 25, 2025: 4 commits across 1 repo",
+    "publishedAt": "2025-12-25T12:00:00.000Z",
+    "description": "4 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "4 commits this week across: zellous (4)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: fix: Prevent users from getting stuck in live audio state"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-12-18-quiet",
+    "title": "Week of Dec 12-Dec 18, 2025: quiet stretch",
+    "publishedAt": "2025-12-18T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-12-11",
+    "title": "Week of Dec 5-Dec 11, 2025: 2 commits across 1 repo",
+    "publishedAt": "2025-12-11T12:00:00.000Z",
+    "description": "2 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "2 commits this week across: zellous (2)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: chore: Update zellous server files"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-12-04",
+    "title": "Week of Nov 28-Dec 4, 2025: 10 commits across 1 repo",
+    "publishedAt": "2025-12-04T12:00:00.000Z",
+    "description": "10 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "10 commits this week across: zellous (10)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: fix: Phase 4 - Convert zellous-core and default-handlers to named exports"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-11-27",
+    "title": "Week of Nov 21-Nov 27, 2025: 28 commits across 1 repo",
+    "publishedAt": "2025-11-27T12:00:00.000Z",
+    "description": "28 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "28 commits this week across: zellous (28)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: feat: Integrate with external OS.js GUI at os.247420.xyz"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-11-20",
+    "title": "Week of Nov 14-Nov 20, 2025: 10 commits across 1 repo",
+    "publishedAt": "2025-11-20T12:00:00.000Z",
+    "description": "10 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "10 commits this week across: zellous (10)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: feat: Add sound queue visualization and intelligent audio queueing"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-11-13",
+    "title": "Week of Nov 7-Nov 13, 2025: 3 commits across 1 repo",
+    "publishedAt": "2025-11-13T12:00:00.000Z",
+    "description": "3 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "3 commits this week across: zellous (3)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: docs: Update CLAUDE.md with comprehensive test coverage and v1.5.1"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-11-06-quiet",
+    "title": "Week of Oct 31-Nov 6, 2025: quiet stretch",
+    "publishedAt": "2025-11-06T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-10-30-quiet",
+    "title": "Week of Oct 24-Oct 30, 2025: quiet stretch",
+    "publishedAt": "2025-10-30T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-10-23",
+    "title": "Week of Oct 17-Oct 23, 2025: 1 commits across 1 repo",
+    "publishedAt": "2025-10-23T12:00:00.000Z",
+    "description": "1 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "1 commits this week across: 247420 (1)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: done"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-10-16",
+    "title": "Week of Oct 10-Oct 16, 2025: 52 commits across 1 repo",
+    "publishedAt": "2025-10-16T12:00:00.000Z",
+    "description": "52 commits across 1 AnEntrypoint repos",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "52 commits this week across: 247420 (52)."
+      },
+      {
+        "type": "paragraph",
+        "text": "Notable: feat: Implement working video scheduler with external URL support"
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-10-09-quiet",
+    "title": "Week of Oct 3-Oct 9, 2025: quiet stretch",
+    "publishedAt": "2025-10-09T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-10-02-quiet",
+    "title": "Week of Sep 26-Oct 2, 2025: quiet stretch",
+    "publishedAt": "2025-10-02T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-09-25-quiet",
+    "title": "Week of Sep 19-Sep 25, 2025: quiet stretch",
+    "publishedAt": "2025-09-25T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-09-18-quiet",
+    "title": "Week of Sep 12-Sep 18, 2025: quiet stretch",
+    "publishedAt": "2025-09-18T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-09-11-quiet",
+    "title": "Week of Sep 5-Sep 11, 2025: quiet stretch",
+    "publishedAt": "2025-09-11T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-09-04-quiet",
+    "title": "Week of Aug 29-Sep 4, 2025: quiet stretch",
+    "publishedAt": "2025-09-04T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-08-28-quiet",
+    "title": "Week of Aug 22-Aug 28, 2025: quiet stretch",
+    "publishedAt": "2025-08-28T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-08-21-quiet",
+    "title": "Week of Aug 15-Aug 21, 2025: quiet stretch",
+    "publishedAt": "2025-08-21T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-08-14-quiet",
+    "title": "Week of Aug 8-Aug 14, 2025: quiet stretch",
+    "publishedAt": "2025-08-14T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-08-07-quiet",
+    "title": "Week of Aug 1-Aug 7, 2025: quiet stretch",
+    "publishedAt": "2025-08-07T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  },
+  {
+    "slug": "week-2025-07-31-quiet",
+    "title": "Week of Jul 25-Jul 31, 2025: quiet stretch",
+    "publishedAt": "2025-07-31T12:00:00.000Z",
+    "description": "a quiet week across the AnEntrypoint org",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "No commit activity surfaced across the AnEntrypoint repositories this session tracked for this window. Either the work happened somewhere not locally mirrored at the time of writing, or it was a genuinely quiet week -- the org runs on real momentum, not a content calendar, so some weeks are just quiet."
+      }
+    ]
+  }
+]

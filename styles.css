@@ -1,0 +1,289 @@
+/* 247420 site-only extensions on top of the design SDK CSS.
+   The SDK (dist/247420.css) owns tokens, typography, theme switching,
+   chrome (.app, .app-topbar, .app-crumb, .app-status, .app-side),
+   and content primitives (.panel, .row, .cli, .ds-prose, .ds-manifesto,
+   .kv, .chip, .btn, .stamp). Nothing here should reimplement those.
+
+   What lives here:
+     1. Site-specific glyph color helpers (categories use SDK token vars)
+     2. Small kit-extension classes used by HomePage/OrgPage rows
+     3. TV broadcast stage (no SDK kit covers video)
+     4. Responsive overrides for the same
+*/
+
+/* Site-only colour helpers (glyphs in row titles + group heads) */
+.g-green  { color: var(--green); }
+.g-purple { color: var(--purple); }
+.g-mascot { color: var(--mascot); }
+.g-sun    { color: var(--sun); }
+.g-flame  { color: var(--flame); }
+.g-sky    { color: var(--sky); }
+.g-acid   { color: var(--acid); }
+.mono-green { color: var(--green); }
+
+/* Activity tag in a home work-row title: small uppercase word ("active" /
+   "archived") that marks which projects are actually-active. Word-only, no glyph. */
+.ds-247420 .row-status {
+  font-size: var(--fs-xs, 0.72rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-left: 6px;
+}
+.ds-247420 .row-status.g-green { color: var(--green); }
+
+/* Hero block on home now renders via the SDK's C().Hero (.ds-hero
+   asymmetric grid) — no local hero-specific rules needed. */
+
+/* Connected row list */
+   SDK gives each .row its own 14px border-radius, so a stack of rows reads
+   as detached pills with notched corners where they meet. Make them a single
+   joined list: square the middles, separate with a hairline divider, and
+   round only the group's OUTER corners — top of the first row, bottom of the
+   last row — so the stack reads as one block with rounded edges. */
+.ds-247420 .panel .row { border-radius: 0; }
+/* Hairline divider between consecutive rows. Home/lore wrap each row in an
+   unclassed <div>, so the rows are not adjacent siblings — put the divider on
+   the wrapper-or-row pairs as well as the direct-sibling org/project case. */
+.ds-247420 .panel-body > * + * .row,
+.ds-247420 .panel-body > .row + .row,
+.ds-247420 .panel .row + .row { border-top: 1px solid var(--panel-2); }
+/* Round only the GROUP's outer corners — top of the first row, bottom of the
+   last row — middles stay square. Covers both the wrapped (home/lore) and the
+   direct (org/project) row layouts. */
+.ds-247420 .panel-body > *:first-child .row,
+.ds-247420 .panel-body > .row:first-child,
+.ds-247420 .panel-body > :not(.row):first-child + .row {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.ds-247420 .panel-body > *:last-child .row,
+.ds-247420 .panel-body > .row:last-child {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* Kit row extensions used across home/org/project */
+.panel-head-link { color: var(--panel-accent); text-decoration: none; font-family: var(--ff-mono); font-size: var(--fs-xs); }
+.panel-head-link:hover { text-decoration: underline; }
+
+.work-detail-chips { display: flex; gap: 10px; row-gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+
+
+/* Project page hero (replaces .project-hero block) */
+.project-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+.project-eyebrow {
+  display: block;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-text-2);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  margin-bottom: 2px;
+}
+.project-body { max-width: 64ch; margin: var(--space-3) 0 var(--space-4) 0; }
+.project-chips { display: flex; gap: 10px; row-gap: 10px; flex-wrap: wrap; margin-bottom: var(--space-5); }
+
+/* .cli-line / .cli-cmt now ship in the SDK (app-shell.css .cli:has(.cli-line)). */
+
+/* Crumb extras */
+.crumb-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+.app-crumb .crumb-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+/* Community surface + site-wide Discord CTAs */
+/* The Discord is the loudest thing on the community page and a persistent
+   invite everywhere else. All scoped, all SDK tokens, no inline styles. */
+.ds-247420 .community-hero { margin-bottom: var(--space-5); }
+.ds-247420 .community-eyebrow {
+  display: block;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  margin-bottom: var(--space-2);
+}
+.ds-247420 .community-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+.ds-247420 .community-join { font-size: 1.05rem; padding: 0.7em 1.4em; }
+.ds-247420 .community-count {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-text-2);
+}
+.ds-247420 .community-row .sub { display: block; margin-top: 2px; }
+.ds-247420 .community-second-cta {
+  margin: var(--space-5) 0;
+  padding: var(--space-4);
+  border: 1px solid var(--panel-2);
+  border-radius: 12px;
+  background: var(--panel-1);
+}
+.ds-247420 .community-cta-row,
+.ds-247420 .tv-tiein-actions,
+.ds-247420 .home-join-actions,
+.ds-247420 .project-contribute-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+/* Home front-door join banner — sits between hero and works. */
+.ds-247420 .home-join {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin: var(--space-4) 0 var(--space-5);
+  padding: var(--space-4);
+  border: 1px solid var(--panel-accent);
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--panel-accent) 8%, var(--panel-1));
+}
+.ds-247420 .home-join-eyebrow {
+  display: block;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  margin-bottom: 4px;
+}
+.ds-247420 .home-join-line { max-width: 56ch; margin: 0; }
+.ds-247420 .home-join-actions { margin-top: 0; }
+
+/* Project-page contribute invite. */
+.ds-247420 .project-contribute {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--panel-2);
+}
+
+/* TV broadcast (no SDK kit; truly custom surface) */
+.tv-stage { position: relative; flex: 1; min-height: 0; }
+
+/* Always-visible now-playing + up-next strip (features the broadcast). */
+.ds-247420 .tv-nownext {
+  display: flex;
+  gap: var(--space-5);
+  align-items: baseline;
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+}
+.ds-247420 .tv-nownext-now,
+.ds-247420 .tv-nownext-next { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.ds-247420 .tv-nownext-label {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+  color: var(--panel-text-3);
+}
+.ds-247420 .tv-nownext-title {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  color: var(--panel-text);
+  overflow-wrap: anywhere;
+}
+.tv-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.tv-guide-overlay {
+  position: absolute; inset: 0;
+  background: color-mix(in oklab, var(--panel-0) 88%, transparent);
+  overflow-y: auto;
+  z-index: 10;
+}
+.tv-guide-overlay.hidden { display: none; }
+.tv-controls-right { display: flex; align-items: center; gap: var(--space-3); margin-left: auto; }
+.tv-vol-label {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-text-3);
+}
+.tv-volume-input {
+  width: 80px;
+  accent-color: var(--green);
+}
+#tv-status {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-text-3);
+  text-transform: uppercase;
+  letter-spacing: var(--tr-label);
+}
+.schedule-slot {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-sm);
+  color: var(--panel-text);
+  border-top: 1px solid var(--panel-2);
+}
+.schedule-slot:first-child { border-top: none; }
+.schedule-slot .time { color: var(--green); min-width: 80px; }
+.schedule-slot .title { color: var(--panel-text); }
+
+/* Background-music toggle — lives outside the SDK's #app mount (index.html)
+   so it never re-renders with a route and never competes for room in the
+   topbar/crumb band that already broke once from a second control there. */
+.music-toggle {
+  position: fixed;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  z-index: 20;
+  padding: 0.45em 0.9em;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-xs);
+  color: var(--panel-text-2);
+  background: var(--panel-1);
+  border: 1px solid var(--panel-2);
+  border-radius: var(--r-pill, 999px);
+  cursor: pointer;
+}
+.music-toggle:hover { color: var(--panel-text); border-color: var(--panel-accent); }
+.music-toggle.on { color: var(--panel-accent); border-color: var(--panel-accent); }
+
+/* Responsive — site-only surfaces */
+/* Removed: @media 900px app-shell overrides — SDK now handles mobile layout
+   for .app, .app-body, .app-main, .app-side-shell via app-shell.css.
+   Kept: .kv overflow-wrap, .cmd overflow-wrap for 247420-specific content */
+@media (max-width: 900px) {
+  /* SDK Receipt (.kv) and long URLs can push past the narrowest phones; let
+     values break and the grid shrink so nothing overflows at 320px. */
+  .ds-247420 .kv { min-width: 0; }
+  .ds-247420 .kv > * { min-width: 0; overflow-wrap: anywhere; word-break: break-word; }
+  .ds-247420 .app-main a, .ds-247420 .app-main .cmd { overflow-wrap: anywhere; }
+}
+
+@media (max-width: 720px) {
+  .ds-247420 .project-head { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+  /* WCAG 2.5.5 tap-target floor on SDK chrome controls, scoped to our root */
+  .ds-247420 .app-topbar nav a { min-height: 44px; display: inline-flex; align-items: center; padding-left: 12px; padding-right: 12px; }
+  .ds-247420 .ds-seg-btn { min-height: 44px; min-width: 44px; padding-left: 10px; padding-right: 10px; }
+  .ds-247420 .ds-theme-toggle { flex-wrap: wrap; }
+  .ds-247420 aside.app-side a { min-height: 44px; display: flex; align-items: center; }
+  .ds-247420 .panel-head-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0 8px; }
+  .ds-247420 .project-chips a, .ds-247420 .project-chips .chip { min-height: 44px; display: inline-flex; align-items: center; }
+  .tv-volume-input { height: 44px; width: 120px; }
+  .schedule-slot { padding: var(--space-3) var(--space-4); min-height: 44px; align-items: center; }
+}
