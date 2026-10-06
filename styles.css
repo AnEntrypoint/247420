@@ -70,7 +70,9 @@
   text-decoration: none;
   border-bottom: 1px dotted currentColor;
 }
-.app-crumb .crumb-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+/* Right-slot pair (chip + theme toggle): the SDK ships .crumb-right with
+   margin-left:auto itself, so only the flex composition is site-only. */
+.ds-247420 .app-crumb .crumb-right { display: flex; gap: 8px; align-items: center; }
 
 /* Community surface + site-wide Discord CTAs */
 /* The Discord is the loudest thing on the community page and a persistent
