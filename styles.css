@@ -35,39 +35,12 @@
 /* Hero block on home now renders via the SDK's C().Hero (.ds-hero
    asymmetric grid) — no local hero-specific rules needed. */
 
-/* Connected row list */
-   SDK gives each .row its own 14px border-radius, so a stack of rows reads
-   as detached pills with notched corners where they meet. Make them a single
-   joined list: square the middles, separate with a hairline divider, and
-   round only the group's OUTER corners — top of the first row, bottom of the
-   last row — so the stack reads as one block with rounded edges. */
-.ds-247420 .panel .row { border-radius: 0; }
-/* Hairline divider between consecutive rows. Home/lore wrap each row in an
-   unclassed <div>, so the rows are not adjacent siblings — put the divider on
-   the wrapper-or-row pairs as well as the direct-sibling org/project case. */
-.ds-247420 .panel-body > * + * .row,
-.ds-247420 .panel-body > .row + .row,
-.ds-247420 .panel .row + .row { border-top: 1px solid var(--panel-2); }
-/* Round only the GROUP's outer corners — top of the first row, bottom of the
-   last row — middles stay square. Covers both the wrapped (home/lore) and the
-   direct (org/project) row layouts. */
-.ds-247420 .panel-body > *:first-child .row,
-.ds-247420 .panel-body > .row:first-child,
-.ds-247420 .panel-body > :not(.row):first-child + .row {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.ds-247420 .panel-body > *:last-child .row,
-.ds-247420 .panel-body > .row:last-child {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
+/* Row stacks join into one list through the SDK's .row-list (hairline dividers,
+   rounded outer corners, --r-1) — see lib/components.js. No local row geometry. */
 
 /* Kit row extensions used across home/org/project */
 .panel-head-link { color: var(--panel-accent); text-decoration: none; font-family: var(--ff-mono); font-size: var(--fs-xs); }
 .panel-head-link:hover { text-decoration: underline; }
-
-.work-detail-chips { display: flex; gap: 10px; row-gap: 10px; flex-wrap: wrap; margin: 12px 0; }
 
 
 /* Project page hero (replaces .project-hero block) */
@@ -277,11 +250,11 @@
 
 @media (max-width: 720px) {
   .ds-247420 .project-head { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
-  /* WCAG 2.5.5 tap-target floor on SDK chrome controls, scoped to our root */
-  .ds-247420 .app-topbar nav a { min-height: 44px; display: inline-flex; align-items: center; padding-left: 12px; padding-right: 12px; }
-  .ds-247420 .ds-seg-btn { min-height: 44px; min-width: 44px; padding-left: 10px; padding-right: 10px; }
+  /* WCAG 2.5.5 tap-target floors the SDK does not itself provide: the kit
+     ships min-height:44px for .app-topbar nav a, .ds-seg-btn and .app-side a
+     (1.0.34), so those are not re-declared here. .chip has no such floor —
+     it measures 26px — and ships as a link in .project-chips, so it needs one. */
   .ds-247420 .ds-theme-toggle { flex-wrap: wrap; }
-  .ds-247420 aside.app-side a { min-height: 44px; display: flex; align-items: center; }
   .ds-247420 .panel-head-link { min-height: 44px; display: inline-flex; align-items: center; padding: 0 8px; }
   .ds-247420 .project-chips a, .ds-247420 .project-chips .chip { min-height: 44px; display: inline-flex; align-items: center; }
   .tv-volume-input { height: 44px; width: 120px; }
