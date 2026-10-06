@@ -1,0 +1,6 @@
+node_modules/
+_site/
+.gm/
+.agentplug-kv/
+rs-learn.db
+sh.exe.stackdump

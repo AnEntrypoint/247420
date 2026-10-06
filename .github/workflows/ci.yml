@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Guard pipeline presence
+        run: node scripts/check-pipeline.mjs
+
+      - name: Live verification
+        run: node verify.mjs
+
+      - name: Decorative glyph guard
+        run: node scripts/lint-glyphs.mjs
