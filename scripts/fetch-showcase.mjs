@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SWEEP_COMMIT_RE } from './lib/sweep.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '..');
@@ -25,12 +26,6 @@ const SITE_RE = /<script[^>]*id="__site__"[^>]*>([\s\S]*?)<\/script>/;
 // still keeps a rate-limited run from breaking the deploy.
 const GH_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const GH_HEADERS = { 'User-Agent': 'fetch-showcase', ...(GH_TOKEN ? { Authorization: `Bearer ${GH_TOKEN}` } : {}) };
-
-// Mechanical org-wide sweeps (malware-payload removal, .gm state cleanup,
-// showcase regen, etc.) touch every repo on the same day and inflate
-// pushed_at uniformly, masking which projects are actually being worked on.
-// Excluded from the real-work commit count below.
-const SWEEP_MSG_RE = /HiddenSpawn|malicious injection|malware payload|supply-chain compromise|remove vendored .*\.gm|org-wide gm cleanup|declaudeify|regenerate showcase\.json|sync config-source|track claim-audit/i;
 
 async function fetchRepoMeta(owner, repo) {
   try {
@@ -60,7 +55,7 @@ async function fetchRealCommits14d(owner, repo) {
     if (!r.ok) return 0;
     const data = await r.json();
     if (!Array.isArray(data)) return 0;
-    return data.filter(c => !SWEEP_MSG_RE.test((c.commit?.message || '').split('\n')[0])).length;
+    return data.filter(c => !SWEEP_COMMIT_RE.test((c.commit?.message || '').split('\n')[0])).length;
   } catch (e) { return 0; }
 }
 
