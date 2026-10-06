@@ -100,7 +100,6 @@
   font-size: var(--fs-xs);
   color: var(--panel-text-2);
 }
-.ds-247420 .community-row .sub { display: block; margin-top: 2px; }
 .ds-247420 .community-second-cta {
   margin: var(--space-5) 0;
   padding: var(--space-4);
