@@ -29,10 +29,12 @@
        ref for up to 12h regardless of push, so a real upstream fix could
        serve stale to some visitors for hours after landing. A SHA-pinned
        URL is marked immutable by jsDelivr and never goes stale — bump the
-       SHA here deliberately (scripts/bump-sdk-pin.mjs) whenever design
-       ships a fix this site needs. See AGENTS.md for the prior
+       SHA deliberately across all three URLs (this CSS, the JS below, and
+       the Router import in main.js) whenever design ships a fix this site
+       needs. The previous pin (4349f3a) was orphaned: it no longer exists
+       in the design repo and survived only on jsDelivr's cache. See AGENTS.md for the prior
        jsDelivr/githack outage history this replaces. -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AnEntrypoint/design@4349f3af01f163d846b7464b936e4538691c1be9/dist/247420.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,7 +45,7 @@
   <script type="module">
     // SDK JS — components, mount, h, applyDiff, theme, ThemeToggle.
     // Pages render via window.ds.* in lib/components.js.
-    import * as ds from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@4349f3af01f163d846b7464b936e4538691c1be9/dist/247420.js';
+    import * as ds from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.js';
     window.ds = ds;
     if (ds.initTheme) ds.initTheme();
   </script>

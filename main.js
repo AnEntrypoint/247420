@@ -3,7 +3,7 @@
 
 // jsDelivr, not raw.githack — see index.html for why (githack outage 2026-08-17).
 // SHA-pinned, not @main — see index.html for why (12h floating-tag staleness).
-import { Router } from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@4349f3af01f163d846b7464b936e4538691c1be9/dist/247420.js';
+import { Router } from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.js';
 import { pages } from './lib/components.js';
 import { loadShowcase } from './lib/projects.js';
 import { loadBlogPosts } from './lib/community.js';
