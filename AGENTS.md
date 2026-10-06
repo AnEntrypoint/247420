@@ -1,274 +1,148 @@
 # 247420 Technical Documentation
 
-## CI/CD Pipeline — How 247420.xyz Gets Built and Deployed
+## Stack & Constraints
 
-### Workflow: `.github/workflows/ci.yml`
+SPA with hash routing (`#/home` `#/community` `#/lore` `#/tv` `#/org` `#/blog` `#/p/<code>`). Pure ES6 modules, no build step, no bundler, no polyfills, no external framework deps — runs as-is in modern browsers.
 
-Triggers on every `push` and `pull_request`. Single job: `test`. Runs the live
-verification witness (`node verify.mjs`) and the decorative-glyph guard
-(`node scripts/lint-glyphs.mjs`) so a regression is caught before it can reach
-the deploy workflow. No build step, no test suite, no mock data — `verify.mjs`
-loads real project modules (`lib/projects.js`) against the real `lib/showcase.json`
-and inspects the actual runtime output (see Architecture below); it is not a
-test file and asserts no fixed suite cases, only live-derived facts. `verify.mjs`
-and `scripts/fetch-showcase.mjs` resolve paths against their own dir (`__dirname` /
-`fileURLToPath`), so they run in any checkout, not just `/dev/247420`.
+- **Error-first**: errors throw with context. No silent failures, no fallbacks.
+- **No test files, ever.** Verification is live execution against real data: `node verify.mjs` loads the real `lib/projects.js` against the real `lib/showcase.json` and asserts on actual output. An assertion written next to its own fix can encode that fix's misreading, so "tests pass" only proves the code agrees with itself. Re-read the request's literal words and exercise the real system instead. Never create `*.test.js`/`*.spec.js`/`test/` or pull in jest/mocha/vitest/pytest.
+- **`window.__debug`**: the SDK pre-defines it **read-only** — never reassign it, set properties (`window.__debug.foo = x`). It carries router/scheduler/video/player state.
+- **Content authenticity**: scrub LLM giveaways (buzzwords, clichés) from site copy, but preserve em dashes, the stoner-aesthetic branding, jargon, and frozen git history.
 
-### Workflow: `.github/workflows/deploy.yml`
+## Modules
 
-Triggers on push to `main` (or `workflow_dispatch`). Single job: `deploy`.
+| File | Role |
+|---|---|
+| `lib/components.js` | All pages as pure functions rendering via the SDK kit (`window.ds.components`). Exposes `window.__topbar`/`window.__themeToggle` so `community.js` reuses chrome without a circular import. Router comes from the SDK (`lib/router.js` was dropped). |
+| `lib/community.js` | CommunityPage + `JoinLink` + the single-source `DISCORD_INVITE`. Every join button points at that one constant. |
+| `lib/projects.js` | Catalog (SSOT) + showcase enrichment + `activityFor`/`rankByActivity`. |
+| `lib/scheduler.js` | Time parsing, slot calc, UTC sync. `getCurrentSlot`/`getUpcomingSlots` feed the TV now/next strip. |
+| `lib/video.js` | Native HTML5 `<video>` player abstraction (replaced the Schwelevision orchestrator), sub-second slot precision. |
+| `main.js` | SPA entry, route registration, `renderNowNext`/`renderTv`. Enforced `<= 200` lines by verify.mjs. |
+| `styles.css` | Site-only surfaces on top of SDK CSS (~143L). |
+| `schedule.json` | Sub-hourly broadcast montage. |
+| `verify.mjs` | Live-execution verification (see above). |
+| `scripts/fetch-showcase.mjs` | Pulls `__site__` JSON from each project's gh-pages + GitHub stars/`pushed_at`/`archived`/`commits14d` → `lib/showcase.json`. Path-resolved off its own `__dirname`, so it runs in any checkout. Authenticates via `GITHUB_TOKEN` (60 → 5000 req/hr). |
+| `scripts/lib/sweep.mjs` | SSOT for what does **not** count as work. See "Meaningful Update" below. |
+| `scripts/sync-catalog.mjs` | **Report-only** catalog drift detector. Never edits the catalog. |
+| `scripts/check-pipeline.mjs` | Exits non-zero if either workflow file is missing. |
+| `scripts/lint-glyphs.mjs` | Decorative-glyph guard. |
 
-**Step 1 — Prepare `_site`**
+Schedule format — array of `{ t: "H:MM AM/PM", v: "string | 'static'", d: number, title: "string" }` (GMT wall-clock). Same-time entries play sequentially; gaps show static.
+
+## CI/CD — how 247420.xyz gets built and deployed
+
+`ci.yml` (on push + PR): `node scripts/check-pipeline.mjs`, `node verify.mjs`, `node scripts/lint-glyphs.mjs`. No build step, no suite.
+
+`deploy.yml` (on push to `main` + `workflow_dispatch`): refresh showcase (`continue-on-error: true`) → pipeline guard → build `_site` → Pages deploy.
+
 ```bash
 mkdir -p _site
-rsync -a --exclude='_site' --exclude='.git' --exclude='saved_videos' --exclude='node_modules' --exclude='.github' . _site/
+rsync -a --exclude='_site' --exclude='.git' --exclude='.gm' --exclude='saved_videos' --exclude='node_modules' --exclude='.github' . _site/
 touch _site/.nojekyll
 ```
-- Everything in repo root (minus exclusions) lands in `_site/`
-- `CNAME` file (containing `247420.xyz`) in repo root → copied to `_site/` → tells GitHub Pages the custom domain
-- `.nojekyll` disables Jekyll processing
-
-**Step 2 — Deploy**
-- `actions/configure-pages` + `actions/upload-pages-artifact` + `actions/deploy-pages`
-- Deploys `_site/` to GitHub Pages at `https://247420.xyz`
-
-### Custom Domain: 247420.xyz
-
-**DNS (gen.xyz registrar)**
-- Four A records: `@` → `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`
-- CNAME record: `www` → `anentrypoint.github.io`
-
-**Domain verification — personal account (lanmower)**
-- TXT record: `_github-pages-challenge-lanmower.247420.xyz` = `7fd255132d4991c2fdd208aea097d1`
-
-**Domain verification — AnEntrypoint org (required — org owns the repo)**
-- TXT record: `_github-pages-challenge-AnEntrypoint.247420.xyz` = `4c2cad18b03f67d1b764f1ab404330`
-- Critical: domain must be verified under the org that owns the repo
 
-**Repo Pages settings**
-- https://github.com/AnEntrypoint/247420/settings/pages → Custom domain → `247420.xyz`
-- HTTPS enforced after TLS cert approved
+`CNAME` (containing `247420.xyz`) in repo root tells Pages the custom domain; `.nojekyll` disables Jekyll. `.gm` is excluded so orchestrator state never reaches a public site.
 
-**Why domain was initially "taken"**: GitHub stale binding. Fix: verify under AnEntrypoint org → releases it.
+### DNS (gen.xyz registrar)
 
----
+- Four A records `@` → `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`
+- CNAME `www` → `anentrypoint.github.io`
+- TXT `_github-pages-challenge-lanmower.247420.xyz` = `7fd255132d4991c2fdd208aea097d1`
+- TXT `_github-pages-challenge-AnEntrypoint.247420.xyz` = `4c2cad18b03f67d1b764f1ab404330` (org owns the repo, so org-side verification is required)
+- **Outstanding:** no AAAA records. GitHub's current set is `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`. Needs registrar access nobody holds in-repo. Site works without them — this is forward-compat hardening, not an outage.
 
-## Architecture: SPA with Hash-Based Routing
+### A "certificate error" means Pages is off, not TLS
 
-247420 is a single-page application (SPA) with no build tools, no external framework dependencies, and pure ES6 modules.
+GitHub serves its shared `*.github.io` cert for any hostname with no Pages site bound, so `SEC_E_WRONG_PRINCIPAL` / "certificate doesn't match" almost always means nothing is published. Witnessed 2026-10-06: DNS and both challenge TXTs were correct the whole time, yet `has_pages` was `false` and remote `main` had been reset to one squashed `Initial commit` (c2a7513) that dropped `.github/`.
 
-### Core Modules
-- `lib/components.js` — All pages (home, community, lore, tv, org, p) as pure functions rendering via the SDK kit (`window.ds.components`). Exposes `window.__topbar`/`window.__themeToggle` so `community.js` reuses identical chrome without a circular import. (Router now comes from the SDK — the private `lib/router.js` was dropped.)
-- `lib/community.js` — CommunityPage + `JoinLink` + the single-source `DISCORD_INVITE` constant. Every join button on the site points at this one constant; a swap is one edit here.
-- `lib/projects.js` — Project catalog (single source of truth) + showcase enrichment + `activityFor`/`rankByActivity` (features actually-active repos first).
-- `lib/scheduler.js` — Time parsing, slot calculation, UTC synchronization, validation. `getCurrentSlot`/`getUpcomingSlots` feed the TV now-playing strip.
-- `lib/video.js` — Native HTML5 video player abstraction with volume control and playback tracking.
-- `main.js` — SPA entry, page registration, router init, `renderNowNext`/`renderTv` for the always-visible TV now/next strip (deterministic from scheduler state + a 15s tick while on `/#/tv`). Enforced `<= 200` lines by verify.mjs.
-- `styles.css` — Site-specific surfaces on top of the SDK CSS: glyph helpers, connected-row list, community + Discord-CTA surfaces, TV broadcast stage + now/next strip, responsive overrides.
-- `schedule.json` — Sub-hourly broadcast montage with video IDs, durations, and titles.
-- `verify.mjs` — Live-execution verification: loads real modules (`lib/projects.js`) against real data (`lib/showcase.json`) and inspects the actual output — routes, schedule shape, ranking behavior, module structure, observability. Not a test file; no fixed suite cases, no mocks.
+Diagnose in this order — each step isolates one cause:
 
-### Architectural Constraints
-- **Error-first philosophy**: All errors throw with context. No silent failures, no fallbacks.
-- **Client-side observability**: `window.__debug` object exposes router, scheduler, video, and player state permanently for inspection.
-- **Pure ES6 modules**: No build step, no bundler, no polyfills. Runs as-is in modern browsers.
-- **No external dependencies**: No webjsx, htm, Tailwind, RippleUI, or CDN imports.
-- **No test files, ever.** Verification is live execution against real data (`verify.mjs`), not a test suite — an assertion authored alongside its own fix can encode the same misreading the fix does, so "tests pass" only proves the code agrees with itself. When checking a fix, re-read the original request's literal words and exercise the real system, don't just confirm the diff matches its own test.
+1. `openssl s_client -connect 247420.xyz:443 -servername 247420.xyz </dev/null | openssl x509 -noout -ext subjectAltName` — a SAN covering `247420.xyz` means the cert is fine; only `*.github.io` means nothing is bound.
+2. `curl -sS http://247420.xyz/` — GitHub's "Site not found" body confirms no Pages site.
+3. `gh api repos/AnEntrypoint/247420/pages` — a 404 here is the smoking gun.
+4. Only then DNS.
 
-### Video System
-Native HTML5 `<video>` API replaces the previous Schwelevision orchestrator. Playback, volume, and montage control via `lib/video.js`. Sub-second precision for scheduled slots.
+Recovery: `gh api -X POST repos/AnEntrypoint/247420/pages -f build_type=workflow`, restore both workflows, push, then `gh api -X PUT repos/AnEntrypoint/247420/pages -f cname=247420.xyz`. `https_enforced` flips to `false` on its own while the cert provisions — re-set it to `true` after (~10 min to `approved`, covers apex + www).
 
-### Schedule Format
-`schedule.json` exports an array of objects mapping slot times (GMT wall-clock) to video IDs and durations:
-```js
-{
-  t: "H:MM AM/PM",
-  v: "string | 'static'",
-  d: number,
-  title: "string"
-}
-```
-Multiple entries at same time slot play sequentially (montage). Gaps show static/off-air.
+`.gitignore` (`node_modules/`, `_site/`, `.gm/`, `.agentplug-kv/`) is load-bearing: without it, deep `.gm/browser-*` paths exceed Windows MAX_PATH and crash tooling.
 
-### Navigation
-All navigation via hash-based routing in `lib/router.js`. Pages available: `#/home`, `#/lore`, `#/tv`, `#/org`, `#/p/<project-code>`.
+## Design SDK — use the kit, never a local reimplementation
 
----
+`anentrypoint-design` ships chrome + content components on `window.ds.components` (alias `C`): `Topbar`, `Crumb`, `Side`, `Status`, `AppShell`, `Brand`, `ThemeToggle`, `Btn`, `Chip`, `Glyph`, `Dot`, `Rail`, `Heading`, `Lede`, `Panel`, `Row`, `RowLink`, `Section`, `Hero`, `Install`, `Receipt`, `Changelog`, `WorksList`, `WritingList`, `Manifesto`, `Kpi`, `Table`, `Form`, `HomeView`, `ProjectView`, plus `applyTheme`/`getTheme`/`resolvedTheme`/`initTheme` (`auto | paper | ink`).
 
-## Organization Page: 247420 as Proof-of-Concept
+Rules:
 
-### Purpose
-`/#/org` (rendered by `OrgPage()` in `lib/components.js`, part of the SPA — there
-is no standalone `organization.html`) showcases the AnEntrypoint organization
-as a collection of creative projects, live off `lib/projects.js` +
-`lib/showcase.json`. 247420 is both a standalone creative project and an
-exposition of the AnEntrypoint org's broader work.
+1. **No reinvention.** Don't hand-roll a local `Topbar()`, `.expo-card`, or `.project-hero` where the SDK ships one.
+2. **Class names are the SDK's** — `.row`/`.code`/`.title`/`.sub`/`.meta`, `.panel-head`, `.cli`/`.prompt`/`.cmd`, `.ds-prose`, `.ds-manifesto`.
+3. **Allowed local CSS** (~143L): glyph color helpers (`.g-*`), `.row-glyph`, `.panel-head-link`, `.work-detail-chips`, `.project-head/.project-glyph/.project-eyebrow/.project-body/.project-chips`, `.cli-line/.cli-cmt`, `.crumb-link/.app-crumb .crumb-right`, all `.tv-*`.
+4. **Forbidden:** inline `style="..."` on SDK-rendered elements (`.panel`, `.row`, `.app-*`). SDK changelog v0.0.99 + this file ban it — use a class.
 
-### Narrative (Professional Standards)
-Mission statement: "Building Claude workflows that are rigorous, deterministic, and production-grade. No guessing. No compromises."
+**Theme:** `<html class="ds-247420" data-theme="auto">` is canonical; the SDK auto-inits and writes `data-theme` back. Don't override `html`/`body` background or color.
 
-Core thesis: "Reproducible AI workflows start with explicit state machines. gm proves the pattern at scale."
+**SDK CDN** is `raw.githack.com/AnEntrypoint/design/main/...` in `index.html` + `main.js`. unpkg's npm package went stale when npm publishing stopped; jsDelivr caches a `@main` branch reference for up to 12h *regardless of purge* (a purge forces a Cloudflare MISS, but jsDelivr's backend re-serves its own stale commit resolution), so the purge doesn't help. githack fetches straight from GitHub with `max-age=60`.
 
-### Core Infrastructure Section
-Each tool is presented with specific value:
-- **gm**: Reproducible Claude workflows via explicit state machines (SPECIFY, PROVE, EMIT, STATE, and onward through DECIDE). Same input, convergent output, every execution. No variance, no randomness, no faith-based engineering.
-- **agentplug**: the wasm plugin runtime gm actually runs on — one native host, N shared wasm plugins, no per-host JS wrapper.
-- **247420**: Production proof of concept. SPA with deterministic scheduling, sub-second precision broadcasts. Built with identical rigor as the tooling. Demonstrates scalable reproducibility in practice.
+### Kit mapping
 
-### Why This Exists
-247420 is production validation. Every gm pattern gets tested at scale with real timing constraints and user traffic — not in labs. The broadcast system and scheduler aren't theoretical claims — they're measurable properties of shipping code.
+| Page | Kit | Grammar |
+|---|---|---|
+| `#/home` | `homepage` | `C.Hero` + "Currently shipping" Panel + "Works · N of N" Panel with click-to-expand `.row`/`.work-detail` + Manifesto |
+| `#/p/<code>` | `project_page` | `C.Side` rail + h1/Lede/chips + `// install` + `C.Install` + `// metadata` + `C.Receipt` |
+| `#/community` | `project_page` narrow | Heading+Lede, loudest `JoinLink` on the site, Panels of `.row`s, second CTA, `// house voice` Manifesto |
+| `#/lore` | `homepage` Writing | single Panel of numbered `.row`s + `// chronicles` Manifesto |
+| `#/org` | `gallery` + `homepage` | `C.Side` jump-nav + hero Panel + one Panel per category |
+| `#/tv` | none | `AppShell` chrome + `.tv-stage` + `.tv-nownext` strip + `.tv-guide-overlay` + community tie-in Panel |
 
-### Features
-- **Featured projects**: activity-ranked (real 14-day commit count, not stars — see `rankByActivity` below), catalog count is live off `lib/projects.js`, not a fixed number pasted into this doc
-- **Recent work**: the `#/blog` route (`lib/blog-posts.json`, sourced from `AnEntrypoint/247420-blog`) carries real weekly-progress posts generated from actual commit history — not meta-work about the page
-- **Dark theme**: CSS custom properties, no external framework
-- **Professional tone**: Authentic technical voice, specific context, measurable claims
+Discord is site-wide: `Community` is a top-level nav item, every page's `Status` footer right slot carries a join link, home has a `.home-join` banner, project pages end with `.project-contribute`. All route through `DISCORD_INVITE`.
 
-### Exposition Strategy
+### Caveats that cost someone a session
 
-**Lead with problems solved, not features:**
-- Each tool description starts with explicit problem statement
-- Format: "The problem: X. Solution: Y."
-- 247420 serves as proof-of-concept exemplar, not side project
-- Shows integration of ideas, not isolated features
+- **Mobile viewport-height clamp**: SDK `.app` is `100vh`/`overflow:clip` with inner-scrolled `.app-main` below desktop width, trapping mobile content. Fix: `@media(max-width:900px)` overrides scoped to `.ds-247420` release the clamp. Cap at 900px so desktop inner-scroll survives.
+- **`.app-main` flex-column shrink**: children default to `flex-shrink:1`, so a tall panel gets squashed and later siblings overlap. Fix: `.ds-247420 .app-main > * { flex: none }`.
+- **Connected row list**: stacked `.row`s (14px radius) read as detached pills — round only the outer corners via `.panel-body`-anchored selectors (rows are wrapped in unclassed `<div>`s on home/lore). Project crumb leaf must be `p.code`, not `p.title`, or it duplicates the h1.
+- **Merged chrome bar**: `AppShell` folds `topbar`+`crumb` into one `.app-chrome` band (~63px) when both are passed; either alone renders standalone. Its bug shape is two stacked `<header role="banner">` — assert `headerCount === 1`, and don't diagnose a minified bundle by substring count (use a structural regex against known-good source).
 
-**What to preserve:**
-- Original page authenticity baseline—don't over-edit
-- Technical rigor in problem/solution framing
-- 247420's role as proof that philosophy works in practice
+## Featured = actually active, and "meaningful" is a commit-message judgment
 
----
+Home works-list and the org "reach for first" rail rank by GitHub **activity**, not stale stars. `fetch-showcase.mjs` captures `pushed_at`/`archived`/`commits14d`; `lib/projects.js` exports `activityFor(code)` (tier 2 active / 1 dormant / 0 archived) and `rankByActivity()` (tier → recency → stars). `activityFor` reads the **raw** showcase entry — `showcaseFor()` hides `missing` ones.
 
-## Content Authenticity: LLM-Generated Speech Patterns
+The page filters are `tier === 2`, not `tier !== 0`: dormant must be **excluded**, not merely deprioritized. `tier !== 0` let months-dormant repos render unranked — that recurred at least four times (2026-05-01, 06-04, 06-21, 08-13, 10-06) because each round re-fixed ranking without re-deriving "what counts as active" from the user's literal words.
 
-When editing site copy, scrub LLM giveaways (buzzwords, clichés) but preserve em dashes, stoner-aesthetic branding, jargon, and frozen git history. Detail in rs-learn (recall "content authenticity LLM speech patterns").
+**`pushed_at` is polluted** by mechanical org-wide sweeps (malware-payload removal, `.gm` cleanup) that touch every repo the same day. So the add/remove rule — add repos with meaningful work in 14 days, drop catalog entries with none in 60 — cannot be decided from `pushed_at` or a raw commit count. `awesome-github` showed 47 commits in-window, every one `chore: refresh trending tree`.
 
----
+`scripts/lib/sweep.mjs` is the SSOT for what does **not** count:
 
-## window.__debug: Read-Only Property Set by Design SDK
-
-SDK pre-defines `window.__debug` read-only; never reassign it, set properties directly (`window.__debug.myProp = value`). Detail in rs-learn (recall "window.__debug read-only").
-
----
-
-## Pro-Rata Kit Usage — Every Page Slot Maps to an SDK Kit
-
-`anentrypoint-design/ui_kits/` ships reference apps demonstrating canonical compositions of the SDK primitives. Each 247420 page maps onto one of those kits and inherits its grammar — no bespoke per-page CSS surface where a kit already covers it.
-
-**Current mapping:**
-
-| Page | Kit | Grammar used |
-|------|-----|--------------|
-| `/#/home` | `ui_kits/homepage` | `C.Hero` (asymmetric `.ds-hero` grid) + `Currently shipping` Panel + `Works · N of N` Panel with click-to-expand `.row` + `.work-detail` chips/buttons + `Manifesto` block |
-| `/#/p/<slug>` | `ui_kits/project_page` | `C.Side` rail (project/reference/links) + narrow main + h1+Lede+chip strip + `// install` + `C.Install` + `// metadata` + `C.Receipt` rows |
-| `/#/community` | `ui_kits/project_page` narrow pattern | `Heading`+`Lede` hero with the loudest `JoinLink` on the site + `Panel`s of `.row`s ("what goes on in there", "how to show up") + a second-CTA block + `// house voice` Manifesto. The Discord is the through-line — invite is the loudest element, repeated 3×. |
-| `/#/lore` | `ui_kits/homepage` Writing pattern | Single Panel of numbered `.row`s, click-to-expand `.work-detail`, `// chronicles` Manifesto below |
-| `/#/org` | `ui_kits/gallery` + `ui_kits/homepage` hybrid | `C.Side` jump-nav (links group leads with `discord`) + hero Panel + one Panel per category with `.row` catalog |
-| `/#/tv` | none (no SDK kit covers video broadcast) | `AppShell` chrome + `.tv-stage` + an always-visible `.tv-nownext` now-playing/up-next strip (fed by `main.js renderNowNext` from scheduler state) + `.tv-guide-overlay` (full guide, secondary) + a `this channel is fed by the room` community tie-in Panel with a join CTA. |
-
-**Site-wide Discord presence:** `Community` is a top-level nav item (`NAV_ITEMS` in `components.js`); every page's `Status` footer right slot carries a persistent `discord` join link; the home page has a `.home-join` banner between hero and works; project pages end with a `.project-contribute` invite. All point at `DISCORD_INVITE` in `lib/community.js` (single source).
-
-**Rules:**
-
-1. **No reinvention.** If the SDK ships `C.Topbar`, `C.AppShell`, `C.Crumb`, `C.Status`, `C.Side`, `C.Panel`, `C.Install`, `C.Receipt`, `C.Chip`, `C.Heading`, `C.Lede`, `C.Manifesto`, `C.Dot` — use them. Do not write a local `Topbar()` or `.expo-card` or `.project-hero` block.
-2. **Class names are the SDK's.** Catalog rows use `.row`/`.code`/`.title`/`.sub`/`.meta`. Panel headers use `.panel-head`. CLI blocks use `.cli`/`.prompt`/`.cmd`. Prose uses `.ds-prose`. Manifestos use `.ds-manifesto`. Site-specific class names are reserved for surfaces the SDK has no equivalent for.
-3. **Allowed local CSS** (currently in `styles.css`, ~120L total): glyph color helpers (`.g-green` etc.), `.row-glyph`, `.panel-head-link`, `.work-detail-chips`, `.project-head/.project-glyph/.project-eyebrow/.project-body/.project-chips` (project-page-kit's local hero block), `.cli-line/.cli-cmt` (SDK ships `.cli` shell but not the per-line elements), `.crumb-link/.app-crumb .crumb-right`, all `.tv-*` (the one truly custom surface). The homepage hero has no local CSS — it renders entirely via the SDK's `C.Hero`.
-4. **Forbidden:** inline `style="..."` strings on SDK-rendered elements (`.panel`, `.row`, `.app-*`). Site changelog v0.0.99 + AGENTS.md ban this. Use a class.
-
-## Design SDK Components — Use the Kit, Not Local Reimplementations
-
-`anentrypoint-design` ≥ v0.0.113 ships the full chrome and content component family on `window.ds.components` (alias `C`). Confirmed exports include:
-
-- **Chrome**: `Topbar`, `Crumb`, `Side`, `Status`, `AppShell`, `Brand`, `ThemeToggle`
-- **Primitives**: `Btn`, `Chip`, `Glyph`, `Dot`, `Rail`, `Heading`, `Lede`
-- **Content**: `Panel`, `Row`, `RowLink`, `Section`, `Hero`, `Install`, `Receipt`, `Changelog`, `WorksList`, `WritingList`, `Manifesto`, `Kpi`, `Table`, `Form`
-- **Composites**: `HomeView`, `ProjectView`
-- **Theme**: `applyTheme(mode)`, `getTheme()`, `resolvedTheme()`, `initTheme()` where `mode` ∈ `auto | paper | ink`
-
-**Use the kit; do not hand-roll equivalents.** `lib/components.js` delegates to `C.Topbar`, `C.AppShell`, `C.Crumb`, `C.Status`, `C.Panel`, `C.Section`, `C.Chip`, `C.Heading`, `C.Lede`, `C.ThemeToggle` for chrome and standard content. Site-specific surfaces (`.expo-card`, `.expo-hero`, `.tv-*`, `.lore-rule`, `.project-hero`, `.org-*`) live in `styles.css` and have no SDK equivalent — that's the only kind of CSS that belongs locally.
-
-**Theme:** `<html class="ds-247420" data-theme="auto">` is the canonical root. The SDK auto-inits on import and writes `data-theme` back to `<html>`. Don't override `html`/`body` background or color — the SDK's `.app` paint and theme tokens cascade through.
-
-**Reference:** `C:\dev\anentrypoint-update\app.html` is the canonical look. When in doubt, check what `C.AppShell({topbar, crumb, side, main, status, narrow})` produces there.
-
-### Non-Obvious Caveat — Inline Styles
-
-SDK changelog v0.0.99 banned inline `style="..."` strings on SDK-rendered elements. The site enforces the same rule: prefer CSS classes in `styles.css` over inline styles for anything that survives more than one page.
-
-### Non-Obvious Caveat — SDK Mobile Viewport-Height Clamp
-
-SDK app-shell clamps `.app` to `100vh`/`overflow:clip` + inner-scrolls `.app-main` below desktop width, trapping mobile content. Fix: `styles.css` `@media(max-width:900px)` overrides scoped to `.ds-247420` release the clamp (`height:auto`/`overflow:visible`); cap at 900px so desktop inner-scroll is preserved. Detail in rs-learn (recall "SDK mobile viewport-height clamp").
-
-### Non-Obvious Caveat — `.app-main` Flex-Column Shrink (desktop)
-
-`.app-main` is a flex column; its children default to `flex-shrink:1`, so a tall panel gets squashed below its content height (clipped rows) and later siblings overlap it. Fix: `styles.css` `.ds-247420 .app-main > * { flex: none }` pins each child to content height so `.app-main` scrolls through them. Detail in rs-learn (recall "app-main flex-column shrink").
-
-### Non-Obvious Caveat — Connected Row List + Project Title Echo
-
-Stacked SDK `.row`s (14px radius) read as detached pills — join them into one list with rounded outer corners only, using `.panel-body`-anchored structural selectors (rows are wrapped in unclassed `<div>`s on home/lore). Project crumb leaf must be `p.code` not `p.title` (else the leaf duplicates the h1). Detail in rs-learn (recall "row group outer radius").
-
-### Non-Obvious — Featured Projects = Actually-Active (not stars)
-
-The home work-list and org "reach for first" rail feature projects by GitHub **activity**, not stale stars. `scripts/fetch-showcase.mjs` captures `pushed_at`+`archived` into `lib/showcase.json` (deploy.yml re-runs it every deploy + weekly cron); `lib/projects.js` exports `activityFor(code)` (tier 2=active≤30d / 1=dormant / 0=archived) and `rankByActivity()` (tier, then recency, then stars tie-break). `activityFor` reads the RAW showcase entry — `showcaseFor()` hides `missing` ones. Reach-for-first must only point at non-archived catalog projects (gm-cc was archived + uncatalogued → 404). Detail in rs-learn (recall "featured actually-active project ranking").
-
-### Non-Obvious Caveat — Merged Chrome Bar (single header, not stacked)
-
-SDK `AppShell` folds `topbar`+`crumb` into ONE `.app-chrome` flex band when both are passed (was two stacked bars / "double title bar"); either prop alone renders standalone so other consumers are unaffected. Chrome drops from 88px to ~63px; responsive nav scrolls not clips; site `.crumb-link`/`.app-crumb .crumb-right` overrides still apply. Note `dist/` is tracked-but-gitignored (`git add -f` to commit a rebuild); `npm publish` needs auth the agent may not hold. Detail in rs-learn (recall "merged chrome bar single header").
-
----
-
-## Non-Obvious Caveat — A "Certificate Error" on 247420.xyz Means Pages Is Off, Not TLS
-
-A TLS failure on the apex is almost never a DNS or certificate misconfiguration. GitHub serves its shared `*.github.io` Let's Encrypt certificate for any hostname it has no Pages site bound to, so the browser reports `SEC_E_WRONG_PRINCIPAL` / "certificate doesn't match" while the real fault is that nothing is published at all. Witnessed 2026-10-06: the four A records and both `_github-pages-challenge-{lanmower,AnEntrypoint}` TXT records were correct the whole time, yet `has_pages` was `false` and the remote had no `.github/` — remote `main` had been reset to a single squashed `Initial commit` (c2a7513, 2026-09-03) that dropped the workflows. GitHub served the fallback cert plus a 404 "Site not found" page.
-
-Diagnose in this order; each step separates one real cause from the next:
-
-1. `openssl s_client -connect 247420.xyz:443 -servername 247420.xyz </dev/null | openssl x509 -noout -ext subjectAltName` — SAN covering `247420.xyz` means the cert is fine and the fault lies elsewhere; SAN showing only `*.github.io` means no site is bound.
-2. `curl -sS http://247420.xyz/` — GitHub's "Site not found · GitHub Pages" body confirms "no Pages site", not "bad cert".
-3. `gh api repos/AnEntrypoint/247420/pages` — a 404 here is the smoking gun; also check `has_pages` on the repo object.
-4. Only then DNS (`https://dns.google/resolve?name=247420.xyz&type=A`) and the challenge TXT records.
-
-Recovery: `gh api -X POST repos/AnEntrypoint/247420/pages -f build_type=workflow`, restore `.github/workflows/{ci,deploy}.yml`, push, then `gh api -X PUT repos/AnEntrypoint/247420/pages -f cname=247420.xyz`. `https_enforced` flips to `false` on its own while the certificate provisions and must be re-set to `true` afterwards; provisioning reached `state: approved` in about ten minutes and covers `247420.xyz` and `www.247420.xyz`.
-
-Guard: `scripts/check-pipeline.mjs` runs in both `ci.yml` and `deploy.yml` and exits non-zero when either workflow file is absent, so a squashed re-init can no longer silently deploy nothing.
-
----
-
-## Non-Obvious — "Meaningful Update" Is a Commit-Message Judgment, Not a Commit Count
-
-The catalog rule the site actually runs on — add org repos with meaningful work in the last 14 days, drop catalog entries with none in 60 — cannot be decided from `pushed_at`, a raw commit count, or `commits14d` alone. Automated commits outnumber real ones org-wide: `awesome-github` showed 47 commits in the window and every one was `chore: refresh trending tree`.
-
-`scripts/lib/sweep.mjs` is the single source of truth for what does **not** count as work:
-
-- `SWEEP_COMMIT_RE` — mechanical org-wide sweeps (malware-payload removal, vendored `.gm` removal, `declaudeify`, showcase regeneration)
+- `SWEEP_COMMIT_RE` — org-wide sweeps (malware removal, vendored `.gm` removal, `declaudeify`, showcase regen)
 - `RELEASE_BUMP_RE` — `chore: release v1.3.10 [skip ci]`, version bumps
 - `METADATA_ONLY_RE` — `Initial commit`, LICENSE adds
 - `AUTO_REFRESH_RE` — `chore: refresh …`
 
-`isSubstantive()` is their conjunction. `scripts/fetch-showcase.mjs` imports `SWEEP_COMMIT_RE` for `commits14d`; `scripts/sync-catalog.mjs` imports `isSubstantive` for its verdict. Neither keeps a local copy of the regex — a divergence between the two is how the same dormancy bug keeps recurring.
+`isSubstantive()` is their conjunction. Both `fetch-showcase.mjs` and `sync-catalog.mjs` import from it — neither keeps a local copy, because a divergence between them is exactly how this bug keeps recurring.
 
-`scripts/sync-catalog.mjs` is **report-only**: it prints ADD / REMOVE and the resulting catalog size and never edits `lib/projects.js`. Knobs: `ADD_WINDOW_DAYS` (14), `REMOVE_WINDOW_DAYS` (60), `MIN_SUBSTANTIVE` (2), `ORG`. Adding an entry still needs a hand-written `sub`/`body` — the script will not invent project prose.
+`scripts/sync-catalog.mjs` prints ADD / REMOVE / resulting size and **never edits** `lib/projects.js`; adding an entry still needs a hand-written `sub`/`body`. Knobs: `ADD_WINDOW_DAYS` (14), `REMOVE_WINDOW_DAYS` (60), `MIN_SUBSTANTIVE` (2), `ORG`.
 
-**Lost-evidence caveat:** the 2026-09-03 squash reset several org repos to a lone `Initial commit`, so anything they did before that date is invisible to a commit-window scan. A repo whose only visible commit is `Initial commit` is indistinguishable from a dormant one by this method; that is absent evidence, not evidence of inactivity. Removing such a repo is a judgment call, not a measurement.
+**Lost-evidence caveat:** the 2026-09-03 squash reset several org repos to a lone `Initial commit`, so pre-squash work is invisible to any commit-window scan. A repo showing only `Initial commit` is indistinguishable from a dormant one — that's absent evidence, not evidence of inactivity. Removing it is a judgment call, not a measurement.
 
----
+## Org page (`#/org`)
 
-## Learning Audit
+Rendered by `OrgPage()` in `lib/components.js` — part of the SPA, no standalone `organization.html`. Mission: "Building Claude workflows that are rigorous, deterministic, and production-grade. No guessing. No compromises." Thesis: "Reproducible AI workflows start with explicit state machines. gm proves the pattern at scale." 247420 is both a creative project and the org's proof-of-concept. Lead with problems solved ("The problem: X. Solution: Y."), not features. Preserve authenticity — don't over-edit.
 
-| Date | Items Checked | Migrated to rs-learn | Retained in AGENTS.md | Notes |
-|------|---------------|----------------------|-----------------------|-------|
-| 2026-05-01 | 5 | 0 | 5 | CI pipeline, DNS, module gate, video system, routing. rs-learn store empty; all items retained. design-sdk caveat (new) ingested to rs-learn. |
-| 2026-05-01 | 5 | 0 | 6 | Audit: CI pipeline, DNS config, 200L gate, design-sdk components, video system. exec:recall unavailable this run; all retained. window.__debug readonly caveat added. |
-| 2026-05-01 | 2 | 0 | 2 | Test assertions: guide page removed (added p), schedule format (127 sub-hourly entries not 24-hourly), main.js 137L, styles.css 245L. Core modules and schedule sections updated. |
-| 2026-05-19 | 7 | 0 | 7 | Design refresh against anentrypoint-design ≥ v0.0.113 + anentrypoint-update reference. lib/components.js now delegates Topbar/Crumb/Status/AppShell/Panel/Section/Chip/Heading/Lede/ThemeToggle to SDK. styles.css trimmed to genuine site-only surfaces (expo, tv, lore, project, org). index.html sets `<html class="ds-247420" data-theme="auto">`, calls initTheme(). Browser-witnessed: home/lore/tv/org/project routes render, paper bg `rgb(246,245,241)`, ink bg `rgb(19,19,24)`, no console errors. Stale v0.0.29 "components not exported" caveat removed. |
-| 2026-05-19 (pm) | 9 | 0 | 9 | Pro-rata kit migration. All 5 pages mapped onto SDK kits per the table above: home→homepage, project→project_page, lore→homepage Writing, org→gallery+homepage hybrid, tv→chrome-only. Deleted `.expo-card/.expo-hero/.expo-grid/.expo-detail-*/.expo-group-*` (~140L CSS), `.lore-rule/.lore-intro/.lore-emph` (~25L), `.project-hero/.project-detail-grid/.project-feature*/.project-meta-grid` (~70L), `.org-block/.org-grid/.org-card-*/.org-pinned/.org-cat-*` (~50L) — total ~285L CSS deleted; styles.css now 143L. components.js renders via `.row`/`.panel`/`.cli`/`.ds-prose`/`C.Install`/`C.Receipt`/`C.Manifesto`/`C.Side`/`C.Dot`. Test 10 enforces no-`.expo-*`/`.lore-rule`/`.org-block` regression. Browser-witnessed: 33 rows on home (kit-hero ✓), 6 commandment rows on lore, 36 rows + 11-item Side rail on org, project page with Side rail + Install + Receipt + 7 chips, all themes (paper/ink). |
-| 2026-06-04 | 14 | 1 | 1 | Merged chrome bar GUI audit (max-effort). SDK `AppShell` folds `topbar`+`crumb` into one `.app-chrome` band (`shell.js:238`) instead of two stacked bars; `app-shell.css` lays one ~56px row, hides duplicate brand, responsive nav scroll. Rebuilt SDK dist, bumped 0.0.186 to 0.0.187 (remote concurrent writer had taken 0.0.186), pushed AnEntrypoint/design. npm publish blocked (no local auth) but merge already live: unpkg @0.0.186 carries `.app-chrome`. Browser-witnessed live 247420.xyz all 5 routes: `hasChrome=true sameRow=true chromeH=63 brandHidden=true`, mobile 390px no overflow/overlap; screenshots in `.gm/witness/merged-bar-*`. New "Merged Chrome Bar" caveat added; resolved-mutable memo persisted to rs-learn. Earlier `all-symbols-everywhere` glyph sweep confirms rendered surfaces glyph-clean (build lint-glyphs gate OK). |
-| 2026-06-04 (pm) | 15 | 2 | 1 | Featured = actually-active. fetch-showcase.mjs now captures pushed_at/archived into showcase.json (deploy re-runs it + weekly cron added); projects.js gains activityFor()+rankByActivity(); HomePage ranks by activity tier then recency, stars tie-break, gm leads; home rows show active/archived word label. Fixed org reach-for-first gm-cc (ARCHIVED + uncatalogued, 404) became thebird. Added freddie to catalog (code 018). test.js made count-agnostic + asserts activity fields, rankByActivity, no gm-cc, reach slugs resolve non-archived. Converted leftover U+2212 minus glyph converted to ASCII. Browser-witnessed local: home top rows 0-3d active, 20 active tags, thebird resolves, gm-cc 404s. Drained Connected-Row-List caveat to rs-learn pointer; added Featured=active caveat + memo. commits 0888865, f676320. |
-| 2026-06-21 | 12 | 1 | 1 | New work sync + CI + portability. Added .github/workflows/ci.yml (push/PR: node test.js + node scripts/lint-glyphs.mjs). Fixed two portability bugs: test.js hardcoded `/dev/247420` became `__dirname`-relative ROOT; fetch-showcase.mjs leading-slash strip became `fileURLToPath` (was building doubled path); also added GITHUB_TOKEN auth (60 to 5000 req/hr) wired in deploy.yml. Catalog 27 to 40: added plugsdk(007) casey(019) gmweb(020) adaptogen(043) busybase(044) statekit(045) audit-cc-tail(055) thatcher(056) mux(078) + new `sandbox` category webix(080)/portabox(081)/portacastle(082)/cors(083). Refreshed stale fallback stars (gm 9 to 14, agentgui 13 to 15, design 0 to 1); regenerated showcase.json to 40 entries w/ live activity. Full-source glyph sweep: U+2500 box dividers + U+2212 minus + U+2026 ellipsis converted to ASCII, guarded by new lint-glyphs.mjs. Reverted stray `@.gm/next-step.md` AGENTS.md import. Browser-witnessed (chromium no-sandbox shim): import('/lib/projects.js') yields 40 projects, 13 new codes, sandbox cat, rankByActivity fn; served assets glyph-clean. SDK full-render blocked by env CDN policy (unpkg unreachable from headless; prod fine), see rs-learn 247420-browser-witness-env. |
-| 2026-08-12 | 4 | 0 | 4 | HomePage now drops archived projects from the works list entirely (was showing all with an inline "archived" label) — `projects.filter(p => activityFor(p.code).tier !== 0)` gates entry before gm-lead + rankByActivity. OrgPage's "reach for first" second slot is now activity-derived (`rankByActivity` over non-archived, excluding gm) instead of a hardcoded `['gm','thebird']` pair, so a future archival can't silently strand a stale link the way gm-cc once did. SDK CDN switched from unpkg's npm package (`unpkg.com/anentrypoint-design@latest`, now stale — npm publishing stopped) to jsDelivr's GitHub source (`cdn.jsdelivr.net/gh/AnEntrypoint/design@main`); unpkg's own `gh:` shorthand 404'd on `dist/`, jsDelivr serves it directly (confirmed 200 + real JS/CSS bytes, no eval/child_process in the fetched bundle). Merged a concurrent upstream blog feature (#/blog route, `lib/blog-posts.json`) mid-session after a rebase conflict; resolved by hand-merging .gitignore, regenerating showcase.json live post-merge, and dropping the retired `.gm/memories/.flat-export-done` sentinel to match origin's own memory-corpus untracking. `test.js` 12/12 green post-merge; CI green on pushed HEAD. |
-| 2026-08-13 | 6 | 0 | 6 | Featured-projects bug found live: `tier !== 0` only excluded archived repos, so months-dormant ones (portacastle, showpick, assets — real last commit 2.5mo/no real commits) still rendered on the homepage, just unranked-active. This was the 4th+ recurrence of the same class of bug across the project history (see 2026-05-01/2026-06-04/2026-06-21 rows above), each time re-fixing ranking without fixing the exclusion bar. Root cause: `pushed_at` from GitHub is polluted by mechanical org-wide sweeps (malware-payload removal, `.gm` cleanup) that touch every repo the same day, and no session had ever re-derived "what counts as active" from the user's literal words at closeout — only checked "is there an open PRD row." Fixed: `scripts/fetch-showcase.mjs` now also captures `commits14d` (real GitHub commits in the last 14 days, excluding known sweep-commit messages); `activityFor`/`rankByActivity` in `lib/projects.js` key off it; HomePage/OrgPage filters changed `tier !== 0` to `tier === 2` (dormant is now excluded, not just deprioritized). Deleted `test.js` (198L of source-text-echoing assertions — e.g. `components.includes("const live = ...")`, which can only fail if the string changes, never if the behavior is wrong) and replaced with `verify.mjs`: loads the real `lib/projects.js` module against the real `lib/showcase.json`, runs the actual `activityFor`/`rankByActivity` functions, and asserts on the live output (deliberately-broken-then-restored to confirm it actually catches the regression — old test.js could not have). Root-caused upstream in `../gm`'s own SKILL.md: added an absolute "no test files, ever" invariant (Section 1) plus a mandatory `gm-continue` closeout check (3a) that re-reads the user's literal words and exercises the live system before declaring done, since a fix and its own self-written test sharing the same misreading was the actual defect class, not this specific ranking bug. |
-| 2026-08-13 (pm) | 3 | 0 | 3 | Double title bar found live on 247420.xyz. Root cause in `anentrypoint-design`'s `AppShell` (not this repo): merging `topbar`+`crumb` into one `.app-chrome` band nested `Topbar()`'s own self-wrapped `<header class="app-topbar" role="banner">` as a child of a second `<header class="app-chrome" role="banner">` instead of unwrapping it — two stacked `<header>`/`role="banner"` landmarks. Fixed upstream (`src/components/shell/app-shell.js`, commit e351d866), live-witnessed via a real `applyDiff` render (`headerCount` 2 to 1). SDK CDN then switched from jsDelivr (`cdn.jsdelivr.net/gh/.../design@main`) to `raw.githack.com/AnEntrypoint/design/main/...` in `index.html`+`main.js`: confirmed by direct investigation that jsDelivr caches a GitHub branch (`@main`) reference for up to 12h *regardless of purge* — a `purge.jsdelivr.net` call correctly forces a Cloudflare-edge cache MISS, but jsDelivr's own backend then re-serves its still-stale internal resolution of what commit `main` points to, so the purge doesn't actually help. githack fetches straight from GitHub with `max-age=60`; confirmed byte-identical to the GitHub Contents API blob via md5sum immediately after the fix landed. Correction logged: an earlier same-session claim that githack was "still stale" was wrong — caused by comparing raw `grep -c "app-topbar"` occurrence counts between builds, which isn't a reliable fixed-vs-unfixed signal in a minified bundle; the real check is a structural regex/diff against known-good source, not a substring count. Confirmed post-switch via a real local browser render against the actual repo files (not a CDN): `headerCount:1, banners:1`. |
-| 2026-10-06 | 12 | 0 | 1 | Site-down reported as a "certificate issue". Root cause was NOT TLS: remote `main` reset to one squashed `Initial commit` (c2a7513, 2026-09-03) dropped `.github/` entirely, so no deploy workflow existed and Pages was disabled (`has_pages:false`, Pages API 404) — GitHub served its shared `*.github.io` cert + a 404 page, which presents in a browser as `SEC_E_WRONG_PRINCIPAL`. DNS A records and both `_github-pages-challenge-{lanmower,AnEntrypoint}` TXT records were correct throughout, so DNS was never at fault. Fixed: enabled Pages (`build_type: workflow`), re-authored `.github/workflows/{ci,deploy}.yml`, added `.gitignore` (none existed; `.gm/browser-*` deep paths crashed gm's own `git_status` with Windows `os error 206`, which also made `git_finalize` refuse to push), added `scripts/check-pipeline.mjs` guard (proven: exit 1 with deploy.yml moved aside, exit 0 restored), set `cname=247420.xyz`, re-set `https_enforced=true` after provisioning flipped it false. Witnessed: CI + deploy runs green, cert `CN=247420.xyz` with SAN `247420.xyz, www.247420.xyz` valid to 2027-01-04, apex HTTPS 200 with real `<title>`, www + http both 301 to https, all 5 routes 200. Outstanding (boundary, needs registrar): no AAAA records — GitHub's current set is 2606:50c0:8000::153 through 2606:50c0:8003::153. New "certificate error means Pages is off" caveat added. commit b23ec4e153. |
-| 2026-10-06 (catalog) | 8 | 0 | 1 | Applied the user's stated activity rule to the catalog: added 15 repos with ≥2 substantive commits in 14d (codes 084–098 — litebox, obrowser, gm-mcp, gm-config, sembrowse, agentplug-{bert,crux,treesitter,libsql}, uhh, mc-420, goofedup, livedesign, npc, liqology) and removed 22 (16 first pass, then lipsync-sdk/plugsdk/thebird/webix/flatspace/portacastle), 44 → 37. The second pass of 6 only appeared once `scripts/sync-catalog.mjs` ran a filter that also excluded release bumps, metadata-only commits and automated refreshes — the first pass excluded sweeps only, which is the same under-exclusion behind every prior recurrence of this bug class. `awesome-github` (47 commits, all `chore: refresh trending tree`) was the false positive proving `AUTO_REFRESH_RE` was needed; with it, ADD reconciled to 0, matching the ≥2-substantive threshold the user picked. User chose to remove all 6, including the 5 squash-artifact repos, on the reasoning that 40+ siblings resumed work post-squash while those did not. Regexes extracted to `scripts/lib/sweep.mjs` so `fetch-showcase.mjs` and `sync-catalog.mjs` cannot diverge again; `sync-catalog.mjs` is report-only by design (hand-written `sub`/`body` is still required to add an entry). verify.mjs ALL CHECKS PASSED — 22 featured led by agentplug/mc-420/rs-plugkit, no zero-commit project in the featured set; lint-glyphs clean; showcase regenerated 6/37 enriched. New "Meaningful Update" caveat added. Separately, gm's own `git_status` os-error-206 failure was root-caused and fixed in `c:\dev\gm` (rs-plugkit 761e96f4db, gm 9f713f920f): `porcelain_or_dirty()` laundered any git failure into a synthetic `?? git-status-failed` porcelain line, which every consumer read as a dirty worktree, so `git_finalize` was refusing to push over git's own error. |
+## Audit log
+
+Compacted per INVARIANT 3 (this file exceeded 30kb on 2026-10-06). One line per session; detail lives in git history.
+
+| Date | Notes |
+|---|---|
+| 2026-05-01 | CI/DNS/200L-gate/video/routing baseline verified. `window.__debug` read-only caveat added. |
+| 2026-05-19 | Design refresh to SDK ≥ v0.0.113; components.js delegates chrome+content to `C.*`; styles.css trimmed to site-only surfaces. |
+| 2026-05-19 pm | Pro-rata kit migration: all pages mapped to SDK kits (~285L local CSS deleted). Browser-witnessed all routes + themes. |
+| 2026-06-04 | Merged chrome bar; SDK rebuild + push (npm publish blocked, no auth). Browser-witnessed live, mobile 390px clean. |
+| 2026-06-04 pm | Activity ranking introduced (`commits14d`, `activityFor`/`rankByActivity`); gm-cc archival 404 fixed. |
+| 2026-06-21 | CI added; two portability bugs fixed (`__dirname`/`fileURLToPath`); catalog 27→40; glyph sweep + `lint-glyphs.mjs` added. |
+| 2026-08-12 | Archive exclusion tightened; org reach-for-first made activity-derived (was hardcoded `['gm','thebird']`); CDN switched unpkg → jsDelivr; blog route merged. |
+| 2026-08-13 | `tier !== 0` bug fixed → `tier === 2`; `test.js` (198L of source-text-echo assertions) deleted in favour of `verify.mjs`; upstream `gm` SKILL.md given a "no test files, ever" invariant + `gm-continue` closeout check. |
+| 2026-08-13 pm | Double title bar root-caused in SDK `AppShell`; CDN switched jsDelivr → raw.githack. |
+| 2026-10-06 | "Certificate error" was Pages-off: squashed `Initial commit` (c2a7513) had dropped `.github/`. Pages re-enabled, workflows re-authored, `.gitignore` added, `check-pipeline.mjs` guard added, cert re-issued to 2027-01-04. |
+| 2026-10-06 catalog | Catalog 44→37: +15 repos with ≥2 substantive commits in 14d (codes 084–098), −22 stale. Sweep filters extracted to `scripts/lib/sweep.mjs`; `sync-catalog.mjs` added (report-only). Browser-witnessed live: 1 header/1 banner, 0 removed titles present, all added present, no console errors. gm's own `git_status` os-error-206 bug fixed in `c:\dev\gm` (rs-plugkit `761e96f4db`, gm `9f713f920f`). |
 
 @.gm/next-step.md
