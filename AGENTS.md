@@ -2,7 +2,7 @@
 
 ## Stack & Constraints
 
-SPA with hash routing (`#/home` `#/community` `#/lore` `#/tv` `#/org` `#/blog` `#/p/<code>`). Pure ES6 modules, no build step, no bundler, no polyfills, no external framework deps — runs as-is in modern browsers.
+SPA with hash routing (`#/home` `#/skills` `#/skills/<id>` `#/community` `#/lore` `#/tv` `#/org` `#/blog` `#/p/<code>`). Pure ES6 modules, no build step, no bundler, no polyfills, no external framework deps — runs as-is in modern browsers.
 
 - **Error-first**: errors throw with context. No silent failures, no fallbacks.
 - **No test files, ever.** Verification is live execution against real data: `node verify.mjs` loads the real `lib/projects.js` against the real `lib/showcase.json` and asserts on actual output. An assertion written next to its own fix can encode that fix's misreading, so "tests pass" only proves the code agrees with itself. Re-read the request's literal words and exercise the real system instead. Never create `*.test.js`/`*.spec.js`/`test/` or pull in jest/mocha/vitest/pytest.
@@ -14,7 +14,9 @@ SPA with hash routing (`#/home` `#/community` `#/lore` `#/tv` `#/org` `#/blog` `
 | File | Role |
 |---|---|
 | `lib/components.js` | All pages as pure functions rendering via the SDK kit (`window.ds.components`). Exposes `window.__topbar`/`window.__themeToggle` so `community.js` reuses chrome without a circular import. Router comes from the SDK (`lib/router.js` was dropped). |
-| `lib/community.js` | CommunityPage + `JoinLink` + the single-source `DISCORD_INVITE`. Every join button points at that one constant. |
+| `lib/community.js` | CommunityPage + `JoinLink` + the single-source `DISCORD_INVITE`; blog cache loader. Every join button points at that one constant. |
+| `lib/music.js` | Persistent background audio loop, user-toggleable and paused while TV is active. The `#music-toggle` button stays outside the SDK `#app` mount across route renders. |
+| `lib/skills.js` | Curated public skills/disciplines; source-backed copy, skill/prompt CTAs, and optional projectCode for separating disciplines from general works. |
 | `lib/projects.js` | Catalog (SSOT) + showcase enrichment + `activityFor`/`rankByActivity`. |
 | `lib/scheduler.js` | Time parsing, slot calc, UTC sync. `getCurrentSlot`/`getUpcomingSlots` feed the TV now/next strip. |
 | `lib/video.js` | Native HTML5 `<video>` player abstraction (replaced the Schwelevision orchestrator), sub-second slot precision. |
@@ -26,9 +28,10 @@ SPA with hash routing (`#/home` `#/community` `#/lore` `#/tv` `#/org` `#/blog` `
 | `scripts/lib/sweep.mjs` | SSOT for what does **not** count as work. See "Meaningful Update" below. |
 | `scripts/sync-catalog.mjs` | **Report-only** catalog drift detector. Never edits the catalog. |
 | `scripts/check-pipeline.mjs` | Exits non-zero if either workflow file is missing. |
-| `scripts/lint-glyphs.mjs` | Decorative-glyph guard. |
+| `scripts/lint-glyphs.mjs` | Decorative-glyph guard; em dash is allowed branding. |
+| `scripts/fetch-blog-posts.mjs` | Caches YAML post metadata and Lexical paragraph/heading/quote blocks from `AnEntrypoint/247420-blog/content/posts` into `lib/blog-posts.json`; `#/blog/<slug>` renders posts internally. Missing cache currently renders the unavailable-posts state. |
 
-Schedule format — array of `{ t: "H:MM AM/PM", v: "string | 'static'", d: number, title: "string" }` (GMT wall-clock). Same-time entries play sequentially; gaps show static.
+Schedule format — flat array of `{ t: number, v: string, d: number, title: string, url?: string, kind?: string, seek?: number }`; `t` is seconds since UTC day start. A slot runs from its `t` to the next entry’s `t` (last ends at 86400), with playback offset `(seek || 0) + elapsed`; ads use only elapsed. Missing URLs and explicit `static` entries play static.
 
 ## CI/CD — how 247420.xyz gets built and deployed
 
@@ -80,14 +83,19 @@ Rules:
 
 **Theme:** `<html class="ds-247420" data-theme="auto">` is canonical; the SDK auto-inits and writes `data-theme` back. Don't override `html`/`body` background or color.
 
-**SDK CDN**: `index.html` (line 35 CSS, line 46 JS) and `main.js` (line 6, `Router`) load `dist/247420.{css,js}` from jsDelivr **pinned to a commit SHA**, not a branch: `https://cdn.jsdelivr.net/gh/AnEntrypoint/design@<sha>/dist/...`. A floating `@main` is unusable — jsDelivr caches a branch ref for up to 12h *regardless of purge* (a purge forces a Cloudflare MISS, but jsDelivr's backend re-serves its own still-stale resolution of what `main` points to). SHA-pinned URLs come back `cache-control: immutable`, so they never go stale — and never advance, so bumping the pin is a deliberate act. unpkg's npm package is dead: `registry.npmjs.org/anentrypoint-design/latest` is unavailable, so npm is not a source. Note `scripts/bump-sdk-pin.mjs` is referenced in the `index.html` comment but **does not exist** — bumping is currently a hand edit of three URLs.
+**SDK CDN**: `index.html` (CSS and JS) and `main.js` (`Router`) load `dist/247420.{css,js}` from jsDelivr **pinned to a commit SHA**, not a branch: `https://cdn.jsdelivr.net/gh/AnEntrypoint/design@<sha>/dist/...`. A floating `@main` is unusable — jsDelivr caches a branch ref for up to 12h *regardless of purge* (a purge forces a Cloudflare MISS, but jsDelivr's backend re-serves its own still-stale resolution of what `main` points to). SHA-pinned URLs come back `cache-control: immutable`, so they never go stale — and never advance, so bumping the pin is a deliberate act. unpkg's npm package is dead: `registry.npmjs.org/anentrypoint-design/latest` is unavailable, so npm is not a source. `scripts/bump-sdk-pin.mjs` does not exist — bump the three URLs by hand.
 
 **Current pin: `f53a1125b894623994ca8001caca6855922013b8`** — design `main`, **v1.0.34**, 2026-10-06; dist is JS 582,445 B / CSS 580,420 B. It replaced `4349f3af…`, an *orphaned* pin: that SHA no longer exists in `AnEntrypoint/design` (commits API 422 "No commit found for SHA"), yet jsDelivr served it 200/`immutable` from cache alone — the site's styling depended on a CDN cache entry, and an eviction would have dropped all SDK CSS/JS at once. Check a pin still resolves upstream before trusting it; "it loads" is not evidence. The 1.0.x jump was browser-witnessed and moves two things any visual check will notice: hero `h1` is **56px** (was 116px — `--hero-title-size` replaced `--fs-hero-2xl`) and ink `body` background is **rgb(15,15,15)** (was rgb(26,26,26)).
+
+### Agentic skills & disciplines
+
+`lib/skills.js` is the curated SSOT for lean, dada, engage, gm, faiku, and pimpmyskill. `#/skills` lists the disciplines; `#/skills/<id>` opens an individual entry with use guidance and source links. Skills is a top-level navigation item; home and org use the shared SkillsPanel. Curation is independent of commit activity. Existing catalog entries gm/lean retain their project routes and showcase data, but their projectCodes exclude them from general works and org category panels. The other four remain independent of showcase collection. Faiku and pimpmyskill are copyable prompts at their public Pages sites, not packaged skill files. Do not expose private skill repositories through public CTAs. Keep all summary rows directly inside `.row-list`; no new CSS is needed.
 
 ### Kit mapping
 
 | Page | Kit | Grammar |
 |---|---|---|
+| `#/skills` / `#/skills/<id>` | `project_page` narrow | Heading+Lede, SDK Panels with discipline types, use guidance, skill/prompt + source actions |
 | `#/home` | `homepage` | `C.Hero` + "Currently shipping" Panel + "Works · N of N" Panel with click-to-expand `.row`/`.work-detail` + Manifesto |
 | `#/p/<code>` | `project_page` | `C.Side` rail + h1/Lede/chips + `// install` + `C.Install` + `// metadata` + `C.Receipt` |
 | `#/community` | `project_page` narrow | Heading+Lede, loudest `JoinLink` on the site, Panels of `.row`s, second CTA, `// house voice` Manifesto |
@@ -124,7 +132,7 @@ The page filters are `tier === 2`, not `tier !== 0`: dormant must be **excluded*
 - `METADATA_ONLY_RE` — `Initial commit`, LICENSE adds
 - `AUTO_REFRESH_RE` — `chore: refresh …`
 
-`isSubstantive()` is their conjunction. Both `fetch-showcase.mjs` and `sync-catalog.mjs` import from it — neither keeps a local copy, because a divergence between them is exactly how this bug keeps recurring.
+`isSubstantive()` combines all four exclusions and is used by `sync-catalog.mjs`. `fetch-showcase.mjs` currently imports only `SWEEP_COMMIT_RE`, so its `commits14d` still counts release bumps, metadata-only commits and auto-refreshes; keep this known discrepancy visible until the collector is aligned.
 
 `scripts/sync-catalog.mjs` prints ADD / REMOVE / resulting size and **never edits** `lib/projects.js`; adding an entry still needs a hand-written `sub`/`body`. Knobs: `ADD_WINDOW_DAYS` (14), `REMOVE_WINDOW_DAYS` (60), `MIN_SUBSTANTIVE` (2), `ORG`.
 
@@ -140,6 +148,7 @@ Compacted per INVARIANT 3 (this file exceeded 30kb on 2026-10-06). One line per 
 
 | Date | Notes |
 |---|---|
+| 2026-10-07 skills | Separate curated Skills navigation/list/detail routes for lean, dada, engage, gm, faiku, pimpmyskill; shared home/org feature panel; gm/lean omitted from general works/categories while legacy project routes remain. Public sources and prompt Pages verified; browser DOM witnessed 15 routes at 390px, themes + nav/row clicks at 1536px, 1 header/banner, zero overflow/loose rows. Required first-party comment sweep completed; verified missing operational notes compacted here. |
 | 2026-05-01 | CI/DNS/200L-gate/video/routing baseline verified. `window.__debug` read-only caveat added. |
 | 2026-05-19 | Design refresh to SDK ≥ v0.0.113; components.js delegates chrome+content to `C.*`; styles.css trimmed to site-only surfaces. |
 | 2026-05-19 pm | Pro-rata kit migration: all pages mapped to SDK kits (~285L local CSS deleted). Browser-witnessed all routes + themes. |
@@ -157,6 +166,8 @@ Compacted per INVARIANT 3 (this file exceeded 30kb on 2026-10-06). One line per 
 
 | 2026-10-06 pro-rata 3 | Adversarial review found three false statements in the `pro-rata 2` notes; all three re-verified against the pin and corrected here. (1) `C().Row({ detail })` **does** emit `<pre class="ds-row-detail">` — rendered both forms live via `ds.applyDiff` (`kitVsHand: false`, kit `…<pre class="ds-row-detail"><p class="ds-work-body">`, hand `…<div class="ds-row-detail">`), corroborated by bundle `Qe("pre",{class:"ds-row-detail"},pe)`. The sentence it replaced was right and is restored. (2) `margin-left: 0` comes from `@container (max-width: 900px)` — a container query on `.app`, not a mobile media query and not the merged chrome band. (3) `.ds-247420` scoping is not universal: `styles.css` carries 32 unscoped rules. The `styles.css` edit itself survives: it is functionally inert (the old unscoped rule is (0,2,0), the kit's is (0,3,0), so the removed `margin-left: auto` was dead either way) and scoping is still correct. No code changed. |
 | 2026-10-06 pro-rata 4 | Confirming pass. `styles.css`: deleted `.ds-247420 .community-row .sub` — it duplicated the kit's `.ds-247420 .panel .row .title .sub` (`display:block`, `margin-top: var(--space-1-75)`) and lost the cascade (0,3,0 vs 0,5,0): the live element measured `margin-top: 6px`, the SDK value, not the local 2px. A comment-stripped, rightmost-class sweep of both sheets reports 6 local/SDK property overlaps; the other 5 are different elements (`.tv-guide-overlay.hidden` vs `.ds-ep-dock-body.hidden`, `.schedule-slot .title` vs `.row.active .title` / `.ds-file-row.is-restricted .title`). Deployed CSS confirmed byte-identical to the tree before the edit. |
+| 2026-10-07 comment sweep | Removed source documentation comments while preserving executable code, strings, shebangs and SDK CSS rules; kept verified music/blog/schedule behavior here and corrected the documented showcase-filter discrepancy. |
+
 **Witnessing a client-side change locally:** `python -m http.server` lets the browser cache the module graph, so an edit looks like it did nothing — serve with `Cache-Control: no-store`. And prefer the `cdp` verb over `browser` when a run must be trusted: `browser` was seen evaluating against a stale/blank document and swallowing the real `pageErrors`, and it hung past a 300s caller timeout twice. |
 
 @.gm/next-step.md

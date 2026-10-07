@@ -1,8 +1,3 @@
-// Main application entry — single SPA rendered via the anentrypoint-design
-// SDK (window.ds.applyDiff). Page components live in lib/components.js.
-
-// jsDelivr, not raw.githack — see index.html for why (githack outage 2026-08-17).
-// SHA-pinned, not @main — see index.html for why (12h floating-tag staleness).
 import { Router } from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.js';
 import { pages } from './lib/components.js';
 import { loadShowcase } from './lib/projects.js';
@@ -14,10 +9,6 @@ const router = new Router({ fallback: pages.home });
 window.__router = router;
 
 window.__music = new Music();
-
-// Standalone toggle outside the SDK's #app mount (see index.html) — one
-// global control that never re-renders with the route, instead of a
-// per-page footer widget.
 const musicToggleEl = document.getElementById('music-toggle');
 function syncMusicToggle() {
     if (!musicToggleEl) return;
@@ -42,9 +33,6 @@ const player = new VideoPlayer();
 window.__debug.videoPlayer = player;
 window.__debug.video = player.state;
 window.__debug.scheduler = player.scheduler.state;
-
-// entry.t is seconds-since-UTC-day-start; render it as a wall-clock HH:MM (UTC)
-// so the guide reads like a TV listing instead of a raw offset.
 function slotClock(t) {
     const hh = Math.floor(t / 3600) % 24;
     const mm = Math.floor((t % 3600) / 60);
@@ -66,9 +54,6 @@ function renderSchedule() {
         </div>
     `).join('');
 }
-
-// Now-playing + up-next, rendered onto the always-visible TV strip (not the
-// hidden guide). Deterministic from scheduler state — no setTimeout race.
 function renderNowNext() {
     const nowEl = document.getElementById('tv-now');
     const nextEl = document.getElementById('tv-next');
@@ -111,9 +96,6 @@ window.__tvGuideToggle = () => {
     overlay.classList.toggle('hidden', !hidden);
     if (hidden) renderSchedule();
 };
-
-// While the TV page is open, keep now/next honest against the broadcast clock.
-// Cleared whenever we leave the route (no #tv-now in the DOM).
 let tvTick = null;
 function startTvTick() {
     if (tvTick) return;
@@ -134,7 +116,6 @@ function handleRouteChange() {
     }
     player.scheduler.getUpcomingSlots();
     if (tvPlayerEl) { startTvTick(); }
-    // Render once the schedule is present; if it is still loading, render after.
     if (player.scheduler.schedule.length) renderTv();
     else player.loadSchedule().then(() => renderTv()).catch(() => {});
 }

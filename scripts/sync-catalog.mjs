@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// sync-catalog.mjs — report which org repos should enter or leave lib/projects.js.
-// Reports only: it never edits the catalog.
 
 import fs from 'node:fs';
 import path from 'node:path';

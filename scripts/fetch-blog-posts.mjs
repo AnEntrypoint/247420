@@ -1,11 +1,4 @@
 #!/usr/bin/env node
-// fetch-blog-posts.mjs — pull the weekly-progress post YAML files from
-// AnEntrypoint/247420-blog's content/posts/ via the GitHub Contents API,
-// extract the scalar fields plus the flattened Lexical body (paragraph/h3/quote
-// text nodes only — the only three node types any post actually uses) the
-// in-site #/blog and #/blog/<slug> routes need, cache to lib/blog-posts.json.
-// Failures fall back to an empty list — BlogPage() renders an honest
-// "couldn't load posts" state, never a crash.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -30,13 +23,6 @@ async function listPostFiles() {
   const entries = await r.json();
   return entries.filter(e => e.name.endsWith('.yaml')).map(e => e.name);
 }
-
-// The content body is Lexical JSON expressed as YAML block scalars. Every
-// post in this repo uses only three node types (confirmed via a full scan of
-// all 54 files: 427 paragraph, 60 heading[h3], 10 quote) so a targeted line
-// scan for `type: paragraph|heading|quote` followed by its nearest `text:`
-// line is exact for the corpus that exists, without pulling in a YAML parser
-// for a static site that otherwise ships zero npm dependencies.
 function extractBody(yaml) {
   const lines = yaml.split('\n');
   const blocks = [];

@@ -1,9 +1,4 @@
 #!/usr/bin/env node
-// verify.mjs — live-execution witness for 247420. Not a test suite: every
-// check here runs real code against real data and inspects the real result.
-// No assertion may string-match this repo's own source text as its evidence
-// (that only proves the code exists, never that it behaves correctly) — see
-// AGENTS.md "No test files" / gm SKILL.md Section 1.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -24,8 +19,6 @@ function check(name, fn) {
 function assert(cond, msg) { if (!cond) throw new Error(msg); }
 
 console.log('247420 live verification\n');
-
-// structural facts: parse real files, check real shape, not source text
 
 console.log('index.html + main.js');
 const html = fs.readFileSync(ROOT + '/index.html', 'utf8');
@@ -51,8 +44,6 @@ check('blog posts are well-shaped and sorted newest-first', () => {
   assert(dates.every((d, i) => i === 0 || d <= dates[i - 1]), 'not sorted newest-first');
   assert(blogPosts.every(p => Array.isArray(p.body) && p.body.length > 0), 'empty body');
 });
-
-// real ranking behavior: load the actual modules, run the actual logic
 
 console.log('\nlive project ranking (loads real lib/projects.js + lib/showcase.json)');
 const showcase = JSON.parse(fs.readFileSync(ROOT + '/lib/showcase.json', 'utf8'));
@@ -90,8 +81,6 @@ check('projects with zero real 14-day commits are absent from the featured set e
 
 console.log('\n  featured (' + ranked.length + '): ' + ranked.slice(0, 8).map(p => p.title).join(', ') + (ranked.length > 8 ? ', …' : ''));
 
-// catalog/showcase consistency (real data, real counts, not string echoes)
-
 console.log('\ncatalog + showcase consistency');
 check('every catalog project has a showcase entry with numeric stars', () => {
   const missing = projMod.projects.filter(p => !(p.code in showcase));
@@ -103,13 +92,6 @@ check('showcase entries carry activity fields needed by activityFor', () => {
   const bad = Object.values(showcase).filter(s => !('pushedAt' in s) || !('archived' in s) || !('commits14d' in s));
   assert(bad.length === 0, bad.length + ' entries missing pushedAt/archived/commits14d');
 });
-
-// components.js must actually call the tier===2 filter, not just have it
-// available in projects.js. This can't be run headless (no DOM/browser here),
-// so the check inspects what filter components.js WIRES to activityFor by
-// tracing its literal call, then cross-checks that call against real data —
-// this is a real gap between "the right function exists" and "the page uses
-// it correctly," which is exactly the class of bug that shipped last round.
 console.log('\ncomponents.js wiring (does the homepage actually use tier===2?)');
 const componentsSrc = fs.readFileSync(ROOT + '/lib/components.js', 'utf8');
 check('HomePage works-list filter is tier===2 (excludes dormant), not merely tier!==0 (excludes only archived)', () => {

@@ -6,7 +6,7 @@
   <title>247420 | the creative department of the internet</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- SEO -->
+  
   <meta name="description" content="247420 is a discord community and the tools it builds — a 1,300-strong room shipping rough drafts, a broadcast fed by what people drop, and the agent tooling behind it. the door is on discord.">
   <meta name="keywords" content="247420, discord community, creative collective, agent tooling, gm, broadcast, AnEntrypoint">
   <meta property="og:title" content="247420 | the creative department of the internet">
@@ -18,33 +18,19 @@
   <meta name="twitter:description" content="a discord community that ships. 1,300+ in the room, a broadcast on a UTC clock, and the projects anyone can build.">
   <meta name="twitter:image" content="https://247420.xyz/logo.gif">
 
-  <!-- Fonts -->
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Design SDK CSS — canonical tokens + .ds-247420-scoped components.
-       Local styles.css only carries site-specific surfaces (expo cards,
-       schedule slots, broadcast guide) the SDK doesn't ship.
-       Pinned to a commit SHA, not @main: jsDelivr caches a floating branch
-       ref for up to 12h regardless of push, so a real upstream fix could
-       serve stale to some visitors for hours after landing. A SHA-pinned
-       URL is marked immutable by jsDelivr and never goes stale — bump the
-       SHA deliberately across all three URLs (this CSS, the JS below, and
-       the Router import in main.js) whenever design ships a fix this site
-       needs. The previous pin (4349f3a) was orphaned: it no longer exists
-       in the design repo and survived only on jsDelivr's cache. See AGENTS.md for the prior
-       jsDelivr/githack outage history this replaces. -->
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div id="app"></div>
-  <!-- Sits outside the SDK's #app mount so it survives every route render
-       untouched — one global control, not a per-page footer widget. -->
+  
   <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false" title="play background music">music: off</button>
   <script type="module">
-    // SDK JS — components, mount, h, applyDiff, theme, ThemeToggle.
-    // Pages render via window.ds.* in lib/components.js.
     import * as ds from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.js';
     window.ds = ds;
     if (ds.initTheme) ds.initTheme();

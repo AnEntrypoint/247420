@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-// fetch-showcase.mjs — pull __site__ JSON from each project's gh-pages,
-// cache to lib/showcase.json. failures fall back to projects.js blurb.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,18 +10,9 @@ const root = path.resolve(here, '..');
 const projectsSrc = fs.readFileSync(path.join(root, 'lib/projects.js'), 'utf-8');
 const m = projectsSrc.match(/export const projects = (\[[\s\S]*?\n\];)/);
 if (!m) { console.error('cannot parse projects.js'); process.exit(1); }
-// eval the literal as JS (trusted source, our own file)
 const projects = (new Function('return ' + m[1].replace(/\];$/, ']')))();
 
 const SITE_RE = /<script[^>]*id="__site__"[^>]*>([\s\S]*?)<\/script>/;
-
-// Pull the repo's star count AND activity signal (pushed_at, archived) so the
-// client can feature the actually-active projects instead of ranking on stale
-// stars alone. Returns null on any failure so callers fall back to projects.js.
-// Authenticate when a token is present (GITHUB_TOKEN is injected for free in
-// Actions). Unauthenticated the GitHub API caps at 60 req/hr, which the catalog
-// will outgrow; with a token it is 5000/hr. continue-on-error in deploy.yml
-// still keeps a rate-limited run from breaking the deploy.
 const GH_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || '';
 const GH_HEADERS = { 'User-Agent': 'fetch-showcase', ...(GH_TOKEN ? { Authorization: `Bearer ${GH_TOKEN}` } : {}) };
 
@@ -42,10 +31,6 @@ async function fetchRepoMeta(owner, repo) {
     };
   } catch (e) { return null; }
 }
-
-// Real work signal: commits in the last 14 days, excluding mechanical
-// org-wide sweeps. This is what actually distinguishes "we've been working
-// on this" from "an unrelated bot commit touched every repo."
 async function fetchRealCommits14d(owner, repo) {
   const since = new Date(Date.now() - 14 * 86400000).toISOString();
   try {
@@ -62,10 +47,6 @@ async function fetchRealCommits14d(owner, repo) {
 async function fetchOne(p) {
   if (!p.url?.includes('github.com')) return { code: p.code, missing: true, stars: p.stars ?? 0, pushedAt: null, archived: false, disabled: false, commits14d: 0 };
   const [owner, repo] = p.url.split('github.com/')[1].split('/').slice(0, 2);
-
-  // Activity metadata is independent of the gh-pages showcase HTML, so fetch it
-  // once up front — even a project with no __site__ block still gets ranked by
-  // how recently it was pushed.
   const [meta, commits14d] = await Promise.all([fetchRepoMeta(owner, repo), fetchRealCommits14d(owner, repo)]);
   const stars = meta?.stars ?? p.stars ?? 0;
   const activity = { pushedAt: meta?.pushedAt ?? null, archived: meta?.archived ?? false, disabled: meta?.disabled ?? false, commits14d };
