@@ -2,6 +2,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -27,11 +28,73 @@ check('index.html has #app root and loads main.js', () => {
   assert(html.includes('main.js'), 'main.js not loaded');
 });
 
-console.log('\nschedule.json');
+console.log('\nlegacy one-day schedule.json (kept as data, not loaded by TV)');
 const schedule = JSON.parse(fs.readFileSync(ROOT + '/schedule.json', 'utf8'));
 check('schedule.json parses to a non-empty array of well-shaped slots', () => {
   assert(Array.isArray(schedule) && schedule.length > 0, 'empty or not an array');
   assert(schedule.every(s => typeof s.t === 'number' && s.v && typeof s.d === 'number'), 'malformed slot');
+});
+
+console.log('\nfull TV week rotation (real module + real brotli archive)');
+const weekModule = await import('file://' + ROOT.replace(/\\/g, '/') + '/lib/week-schedules.js');
+const weeks = weekModule.WEEKS;
+const archiveDir = ROOT + '/tv/schedule_weeks/station_1';
+const weekManifest = JSON.parse(fs.readFileSync(archiveDir + '/manifest.json', 'utf8'));
+const weekArchive = zlib.brotliDecompressSync(fs.readFileSync(archiveDir + '/' + weekManifest.archive));
+
+check('week archive is one indexed brotli concatenation of every original week', () => {
+  assert(weekManifest.format === '247420-week-schedules-v2', 'unexpected archive format: ' + weekManifest.format);
+  assert(weekArchive.length === weekManifest.rawBytes, 'archive decoded to ' + weekArchive.length + ', expected ' + weekManifest.rawBytes);
+  assert(weekManifest.files.length === weekManifest.count, 'manifest count mismatch');
+  let offset = 0;
+  for (const entry of weekManifest.files) {
+    assert(entry.offset === offset, 'non-contiguous archive entry: ' + entry.name);
+    assert(weekArchive.subarray(entry.offset, entry.offset + entry.bytes).length === entry.bytes, 'truncated week: ' + entry.name);
+    offset += entry.bytes;
+  }
+  assert(offset === weekArchive.length, 'archive has trailing bytes');
+});
+
+check('runtime module carries all 183 weeks and 7,800 playable slots from the archive', () => {
+  assert(Array.isArray(weeks) && weeks.length === weekManifest.count, 'module has ' + (weeks && weeks.length) + ' weeks, archive has ' + weekManifest.count);
+  let runtimeSlots = 0;
+  for (let i = 0; i < weeks.length; i++) {
+    const week = weeks[i];
+    assert(week.week === i + 1, 'week number out of sequence at index ' + i + ': ' + week.week);
+    assert(Date.parse(week.start) === Date.parse('2025-10-11T00:00:00Z'), 'week ' + week.week + ' has unexpected epoch ' + week.start);
+    assert(Array.isArray(week.days) && week.days.length === 7, 'week ' + week.week + ' lacks 7 days');
+    assert(Array.isArray(week.s) && week.s.length > 0, 'week ' + week.week + ' has no slots');
+    runtimeSlots += week.s.length;
+    const originalBytes = weekArchive.subarray(weekManifest.files[i].offset, weekManifest.files[i].offset + weekManifest.files[i].bytes);
+    const original = JSON.parse(originalBytes.toString('utf8'));
+    assert(week.s.length === original.s.length, 'week ' + week.week + ' slot count differs from archive');
+    assert(Object.keys(week.v).length === Object.keys(original.v).length, 'week ' + week.week + ' video catalog differs from archive');
+    for (const slot of week.s) {
+      const [day, clock, videoId, duration] = slot;
+      assert(week.days.includes(day), 'week ' + week.week + ' has unknown day ' + day);
+      assert(/^\d{1,2}:\d{2} (AM|PM)$/.test(clock), 'week ' + week.week + ' has bad clock ' + clock);
+      const video = week.v[videoId];
+      assert(Array.isArray(video) && /^https:\/\//.test(video[2]), 'week ' + week.week + ' slot ' + videoId + ' has no playable URL');
+      assert(Number(duration) > 0, 'week ' + week.week + ' slot ' + videoId + ' has no duration');
+    }
+  }
+  assert(runtimeSlots === 7800, 'runtime has ' + runtimeSlots + ' slots, expected 7800');
+});
+
+check('current UTC time resolves to a playable slot in the full rotation', () => {
+  global.window = { __debug: {} };
+  return import('file://' + ROOT.replace(/\\/g, '/') + '/lib/video.js').then(async ({ default: VideoPlayer }) => {
+    const player = new VideoPlayer();
+    const now = new Date();
+    const schedule = await player.loadSchedule(now);
+    assert(schedule.length > 0, 'selected week has no slots');
+    const weekNumber = player.scheduler.getCurrentWeek(now);
+    assert(weeks[weekNumber - 1].week === weekNumber, 'scheduler picked an absent week: ' + weekNumber);
+    const slot = player.scheduler.getCurrentSlot(now);
+    assert(!slot || /^https:\/\//.test(slot.entry.url), 'current slot is not a playable URL');
+    const upcoming = player.scheduler.getUpcomingSlots(1, now);
+    assert(!upcoming.length || /^https:\/\//.test(upcoming[0].entry.url), 'upcoming slot is not a playable URL');
+  });
 });
 
 console.log('\nblog-posts.json');

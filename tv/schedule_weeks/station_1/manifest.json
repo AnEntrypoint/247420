@@ -1,0 +1,1109 @@
+{
+  "format": "247420-week-schedules-v2",
+  "compression": "brotli",
+  "archive": "weeks.br",
+  "count": 183,
+  "rawBytes": 41190905,
+  "brotliBytes": 98942,
+  "sha256": "41a927a658c64d5b49fe1115b43c5dcfd6c8d2b08bb53dce93d71b8b287fa15a",
+  "files": [
+    {
+      "name": "week_1.json",
+      "offset": 0,
+      "bytes": 702008,
+      "sha256": "0f5edc3b1748bbaa73fe1d16c623e6d52b2993f5f5359406bedefe90b6c358b1"
+    },
+    {
+      "name": "week_2.json",
+      "offset": 702008,
+      "bytes": 702022,
+      "sha256": "e5a9e52ad1aef2ba0575ecb4e9f26c9006342e0a5f7efcf6f60429fb91c9f45d"
+    },
+    {
+      "name": "week_3.json",
+      "offset": 1404030,
+      "bytes": 701988,
+      "sha256": "17c3358cd30df640a92f0f8ceb7f7ebebfcb6f1b8fb02f8e163e17e4fadf0283"
+    },
+    {
+      "name": "week_4.json",
+      "offset": 2106018,
+      "bytes": 701901,
+      "sha256": "4716964de4d11166055f15eeca4b757cf392483adf6db12d897cc6b30edc592a"
+    },
+    {
+      "name": "week_5.json",
+      "offset": 2807919,
+      "bytes": 701899,
+      "sha256": "ec41c40e0a67e42cef13d8da9577f26bf4d8c123a82a0430d48d35af4a419b35"
+    },
+    {
+      "name": "week_6.json",
+      "offset": 3509818,
+      "bytes": 701997,
+      "sha256": "d71447e861525115796a5d1d21db92e2e9de30e67c4c260a3d4d03f9f5d142a1"
+    },
+    {
+      "name": "week_7.json",
+      "offset": 4211815,
+      "bytes": 701912,
+      "sha256": "39cd20075bf92096605a60fd272e85323d8d9455ff9f499781776185bfefdc4c"
+    },
+    {
+      "name": "week_8.json",
+      "offset": 4913727,
+      "bytes": 701956,
+      "sha256": "87e4f67242911ef8601f3d424346e124e4001a05ee3b6f25513794bdbf0e04a6"
+    },
+    {
+      "name": "week_9.json",
+      "offset": 5615683,
+      "bytes": 702083,
+      "sha256": "7302d6240f8ab6aaacffd56a8363fee9766466d6024007ec4f2710754f15ae39"
+    },
+    {
+      "name": "week_10.json",
+      "offset": 6317766,
+      "bytes": 702068,
+      "sha256": "652e634f7f1ccd07663c67d6687b6597197c12effc75221bf246e171cfa9f0e5"
+    },
+    {
+      "name": "week_11.json",
+      "offset": 7019834,
+      "bytes": 701930,
+      "sha256": "ba13df7cf9055c383979c1b8ac668b9790a640a7a2e7a83115e46a4c3eadd397"
+    },
+    {
+      "name": "week_12.json",
+      "offset": 7721764,
+      "bytes": 701961,
+      "sha256": "b993a356fdd50e0d03d773471c7d789424f3e8742f2d561def7424ae41416281"
+    },
+    {
+      "name": "week_13.json",
+      "offset": 8423725,
+      "bytes": 702041,
+      "sha256": "636b4e68fa4c9c8ef37c4b4636e5a1a561e56dc47238098a4c1a1956cd7dd3ce"
+    },
+    {
+      "name": "week_14.json",
+      "offset": 9125766,
+      "bytes": 701998,
+      "sha256": "44602048ac52d5c1a7314c1c84d9bd10c3c30d528c8c32da7f5c78f1ac010973"
+    },
+    {
+      "name": "week_15.json",
+      "offset": 9827764,
+      "bytes": 332671,
+      "sha256": "e4dd93eafc9023c5cf2122aa1a87fd5d17e49dc56ab1274602618b17881ae4c7"
+    },
+    {
+      "name": "week_16.json",
+      "offset": 10160435,
+      "bytes": 184898,
+      "sha256": "4e68dbb65a4fcc7e31b5098d8d4430fadf1eae21465899cf59745e05af9eb373"
+    },
+    {
+      "name": "week_17.json",
+      "offset": 10345333,
+      "bytes": 184815,
+      "sha256": "684aab504212f9c733fc5f905558124f66719f75a7ffd7ae629d822eebc48a94"
+    },
+    {
+      "name": "week_18.json",
+      "offset": 10530148,
+      "bytes": 184766,
+      "sha256": "84c799a8dc66a81a7cd2bfa686ffb23f5f66121ed722bf01647bc80e2cddca3f"
+    },
+    {
+      "name": "week_19.json",
+      "offset": 10714914,
+      "bytes": 184825,
+      "sha256": "90466abc57ea38003a65f69da01b81359e1842fe92465b3c583b4a167572a9fa"
+    },
+    {
+      "name": "week_20.json",
+      "offset": 10899739,
+      "bytes": 184913,
+      "sha256": "89b4e3f8e5aa8cb3fe58c60af31b10eb14993ace3e216fb592d8b14699e90f21"
+    },
+    {
+      "name": "week_21.json",
+      "offset": 11084652,
+      "bytes": 184801,
+      "sha256": "0071f821eb8e4a41c080be3dd7356e559ba614364221038201617f313a3e033d"
+    },
+    {
+      "name": "week_22.json",
+      "offset": 11269453,
+      "bytes": 184855,
+      "sha256": "54ac738bd5a16752fdf78c4bfe0be08011b86d6f9168ea558f9a61c7f8b83d9b"
+    },
+    {
+      "name": "week_23.json",
+      "offset": 11454308,
+      "bytes": 184911,
+      "sha256": "5d6234858490ecd5af45bad9495eda847c454d81cf2a6a61e937d153ab78dede"
+    },
+    {
+      "name": "week_24.json",
+      "offset": 11639219,
+      "bytes": 184925,
+      "sha256": "4cf7b6ff5a444a2f0e101e048df48968e3e6450a3e425d32a87726c14712eec0"
+    },
+    {
+      "name": "week_25.json",
+      "offset": 11824144,
+      "bytes": 184833,
+      "sha256": "0399ad71d6985ad741ce680b3c182f00451032662f2dfb864f1392a37a77f346"
+    },
+    {
+      "name": "week_26.json",
+      "offset": 12008977,
+      "bytes": 184863,
+      "sha256": "ce903bac70b1e5cfcb59b8a119331ba1767fd13c9ae6ece75c4d94d2dc09b595"
+    },
+    {
+      "name": "week_27.json",
+      "offset": 12193840,
+      "bytes": 184810,
+      "sha256": "71c8d10fd444039025f00682edb411635e7b8460604acba133973bdf0fa4a263"
+    },
+    {
+      "name": "week_28.json",
+      "offset": 12378650,
+      "bytes": 184753,
+      "sha256": "efd5b24207474e92b93ed35a9d83f732f458d4095734290d74b53c6ac09bb278"
+    },
+    {
+      "name": "week_29.json",
+      "offset": 12563403,
+      "bytes": 184968,
+      "sha256": "a4dbd5f6eb88bb12f6b581135cd07ae63dc673f0651c6c4042ee6a48ddc51754"
+    },
+    {
+      "name": "week_30.json",
+      "offset": 12748371,
+      "bytes": 184833,
+      "sha256": "7e04a35163677899259683236f248f67ccef51a437998d2e21caf629929f2134"
+    },
+    {
+      "name": "week_31.json",
+      "offset": 12933204,
+      "bytes": 184920,
+      "sha256": "36163849966506bb31235b5b7873b68690568899b98727a8e2ba9f4296615db8"
+    },
+    {
+      "name": "week_32.json",
+      "offset": 13118124,
+      "bytes": 184806,
+      "sha256": "79fd6f25a1cb62f200f7d827a053f946275f78e3956c062262d1ba7e07d62ac6"
+    },
+    {
+      "name": "week_33.json",
+      "offset": 13302930,
+      "bytes": 184877,
+      "sha256": "7dad48c5c81c6aded667af97530a05ce1bac357931332f9e449ef69e937be3b6"
+    },
+    {
+      "name": "week_34.json",
+      "offset": 13487807,
+      "bytes": 184916,
+      "sha256": "338e8754dfa7c7bc53aea332edffce24737987cb8c39ffa6b5723b3efdeae813"
+    },
+    {
+      "name": "week_35.json",
+      "offset": 13672723,
+      "bytes": 184882,
+      "sha256": "f2d522e233fb43d678bcc3f5b601fb237508137a1ab516e619d750953c5c89ba"
+    },
+    {
+      "name": "week_36.json",
+      "offset": 13857605,
+      "bytes": 184783,
+      "sha256": "2035c7e1387bb1183d45058682580f4f1d64fef4701e8dc9be0f48aa51a63a67"
+    },
+    {
+      "name": "week_37.json",
+      "offset": 14042388,
+      "bytes": 184913,
+      "sha256": "6e00ea9eea3553c3feb0c58d37014710d3ab1b5a122065bf70d6cea66db9f77b"
+    },
+    {
+      "name": "week_38.json",
+      "offset": 14227301,
+      "bytes": 184938,
+      "sha256": "fd41bf4d8147ed5082353c3b1dcecf9ecc1371957f22bccbeaa9d4d64c584571"
+    },
+    {
+      "name": "week_39.json",
+      "offset": 14412239,
+      "bytes": 184893,
+      "sha256": "06222ee79055832d92e0d09946dd1f82cd0591c171f7bf4b9e4f86f3bb2ed616"
+    },
+    {
+      "name": "week_40.json",
+      "offset": 14597132,
+      "bytes": 184877,
+      "sha256": "f77ce6deac6b3a4748650486f2e0bb1e5aa9f2ff111e62ee7e330c99532dd552"
+    },
+    {
+      "name": "week_41.json",
+      "offset": 14782009,
+      "bytes": 184781,
+      "sha256": "a4fc64528c85e5ae01d9f753179339dc459bace8512c86d6cce6bc3f90b35e63"
+    },
+    {
+      "name": "week_42.json",
+      "offset": 14966790,
+      "bytes": 184835,
+      "sha256": "1e135b9cba3ea5ee531f702aa07cb70536e2cfbd012a34e3928e45a919446e01"
+    },
+    {
+      "name": "week_43.json",
+      "offset": 15151625,
+      "bytes": 184896,
+      "sha256": "64a601e08c95562e1cf2b9eb88982972945776e02e48b36c17048dd4e96e8a48"
+    },
+    {
+      "name": "week_44.json",
+      "offset": 15336521,
+      "bytes": 184831,
+      "sha256": "ed677610850ff8220bad3331b70e6c5f06c4e166ab3faa46dfedde3eefe813e2"
+    },
+    {
+      "name": "week_45.json",
+      "offset": 15521352,
+      "bytes": 184949,
+      "sha256": "e477f176cfe5fcd3625dead22491fc282db22cbc806d0f3845a87835b555dee3"
+    },
+    {
+      "name": "week_46.json",
+      "offset": 15706301,
+      "bytes": 184919,
+      "sha256": "643298a3620cd66bf184e4742303423a744dcfb552cc5c29190a16899df6a39e"
+    },
+    {
+      "name": "week_47.json",
+      "offset": 15891220,
+      "bytes": 184772,
+      "sha256": "7bbfffb45de1305f8dabac90cac6a4e3231877db1beb954a880c7ca2bf3a3bca"
+    },
+    {
+      "name": "week_48.json",
+      "offset": 16075992,
+      "bytes": 184872,
+      "sha256": "2727d6ae6f28a334a2d9c6869387674fb070f41e02ad5ab1b6c3af9b74735fa5"
+    },
+    {
+      "name": "week_49.json",
+      "offset": 16260864,
+      "bytes": 184912,
+      "sha256": "16cfd534fe8a953407e85882ac40d5538982d30b9b3b76db6c81eb9cdc89f205"
+    },
+    {
+      "name": "week_50.json",
+      "offset": 16445776,
+      "bytes": 184758,
+      "sha256": "71d0164f418b08f0a9af946f9dd4f07eed157b786d95466dc6186c212baecd66"
+    },
+    {
+      "name": "week_51.json",
+      "offset": 16630534,
+      "bytes": 184787,
+      "sha256": "b36770dc4483cef90804be3d6e2229c7e0ea45a4d0e6533605ccd1aaff0b1804"
+    },
+    {
+      "name": "week_52.json",
+      "offset": 16815321,
+      "bytes": 184796,
+      "sha256": "72b510bd96f16d5db3efd410d7bee7c93476a66991edda7c6a235dcca0133b22"
+    },
+    {
+      "name": "week_53.json",
+      "offset": 17000117,
+      "bytes": 184842,
+      "sha256": "9ef280143e78e417795e6f8dbe7f6d2bbb6a70bd5b4a3e629ba1be72b9abcf35"
+    },
+    {
+      "name": "week_54.json",
+      "offset": 17184959,
+      "bytes": 184839,
+      "sha256": "a2ffceb3aa07528356a80f8b2e4cbf3cea87eb220a5a6d5df803913a975ea8ce"
+    },
+    {
+      "name": "week_55.json",
+      "offset": 17369798,
+      "bytes": 184855,
+      "sha256": "947cb6925fb6e90877d078416b6ead3ccfaf17138ba919e508e05ab7adf73081"
+    },
+    {
+      "name": "week_56.json",
+      "offset": 17554653,
+      "bytes": 184834,
+      "sha256": "932e6d73f3a871aaf0d052d9355d30329168d61455932bf5af6efbd950977251"
+    },
+    {
+      "name": "week_57.json",
+      "offset": 17739487,
+      "bytes": 184806,
+      "sha256": "c359ffbce8556a477158b5a25b843ffaae3d840ebe22f4c9c81ac61804519651"
+    },
+    {
+      "name": "week_58.json",
+      "offset": 17924293,
+      "bytes": 184854,
+      "sha256": "5a6b67ddd1936738027b2c2029ff034705b611926d00c6486903ee9e352d908a"
+    },
+    {
+      "name": "week_59.json",
+      "offset": 18109147,
+      "bytes": 184911,
+      "sha256": "95b0ce4405be0b39b9cedd0bafd4ec1386fed37e8caf00c3d86c0f5329088f5a"
+    },
+    {
+      "name": "week_60.json",
+      "offset": 18294058,
+      "bytes": 184810,
+      "sha256": "640f4dfd2bd817aa0cd78d83b43505c383201da2e1295f3029495b007d960227"
+    },
+    {
+      "name": "week_61.json",
+      "offset": 18478868,
+      "bytes": 184847,
+      "sha256": "04e55f9d5abd8ff8019f462d7ca896a8ca26661f49bc9d4c400f784e726d7478"
+    },
+    {
+      "name": "week_62.json",
+      "offset": 18663715,
+      "bytes": 184768,
+      "sha256": "ac9202ebe42480e5edd798a8bfbc7b17a3f6352830db655a436f52ef7a57e460"
+    },
+    {
+      "name": "week_63.json",
+      "offset": 18848483,
+      "bytes": 184813,
+      "sha256": "9638cb8627e766af01079a8b9f290a6b73a29a8f68bb5a4ba5b9fd14ca940962"
+    },
+    {
+      "name": "week_64.json",
+      "offset": 19033296,
+      "bytes": 184752,
+      "sha256": "2a074a426132cd864f70c00c4e95e154812624bcffe1d348596f84f71ef103c4"
+    },
+    {
+      "name": "week_65.json",
+      "offset": 19218048,
+      "bytes": 184792,
+      "sha256": "cd524bac37f8df9ae895908fad3f2e60e24bfc05313a4ad5c3379bc6768a4100"
+    },
+    {
+      "name": "week_66.json",
+      "offset": 19402840,
+      "bytes": 184963,
+      "sha256": "085e85eb8abc49dae9c86a149abcc00f469050413c038acd8c5ed43eefd9d6b8"
+    },
+    {
+      "name": "week_67.json",
+      "offset": 19587803,
+      "bytes": 184895,
+      "sha256": "0a2c9cb6df426bda917db79fa7d52e15fa489a1521020ec242fccebf001c4bdc"
+    },
+    {
+      "name": "week_68.json",
+      "offset": 19772698,
+      "bytes": 184845,
+      "sha256": "15448c8938a51faf06605bc7fc2187c24e79b03f8da0ae2e3fbfbe9e1aec521a"
+    },
+    {
+      "name": "week_69.json",
+      "offset": 19957543,
+      "bytes": 184837,
+      "sha256": "906274d749c6dfafa230e37b01c3b02be20003e260d117eab4420c2f694a494f"
+    },
+    {
+      "name": "week_70.json",
+      "offset": 20142380,
+      "bytes": 184895,
+      "sha256": "67f374a4eb953e5ac04f418444edb6e884cdb0606d6fc8682137ce336b78ec0a"
+    },
+    {
+      "name": "week_71.json",
+      "offset": 20327275,
+      "bytes": 184754,
+      "sha256": "707796ccedd7c390befa11b374fce86a190957575d39671272c1beb2b4700ca8"
+    },
+    {
+      "name": "week_72.json",
+      "offset": 20512029,
+      "bytes": 184798,
+      "sha256": "928e5164b74bbc8419267543757b39b63c3b525393afb27abb6a224d3185651a"
+    },
+    {
+      "name": "week_73.json",
+      "offset": 20696827,
+      "bytes": 184902,
+      "sha256": "d691766ef5a0ca14fc0f380e4213bdbfadafe5d001684d06987bf957fe5506ac"
+    },
+    {
+      "name": "week_74.json",
+      "offset": 20881729,
+      "bytes": 184918,
+      "sha256": "75710bbab693b88ecba7e100b0a7e7ea8557b86eb55197e14b610d40e5327167"
+    },
+    {
+      "name": "week_75.json",
+      "offset": 21066647,
+      "bytes": 184874,
+      "sha256": "b404e6779016d9c0341df4867a39787d82ffe410219dab6f9a34649df418dc40"
+    },
+    {
+      "name": "week_76.json",
+      "offset": 21251521,
+      "bytes": 184774,
+      "sha256": "13dca2a3dc9709d77799922bb2352b547ef64ae5ef46aaf3044489cca538fcec"
+    },
+    {
+      "name": "week_77.json",
+      "offset": 21436295,
+      "bytes": 184860,
+      "sha256": "8fb69014576580f9a30b14435a4a4e929f6c70a6cddaafb0615ca06bb240d60e"
+    },
+    {
+      "name": "week_78.json",
+      "offset": 21621155,
+      "bytes": 184798,
+      "sha256": "5457d7414a9ba3912189c8b4bef03054c46ddca34a631c91ac4eed1da701f166"
+    },
+    {
+      "name": "week_79.json",
+      "offset": 21805953,
+      "bytes": 184837,
+      "sha256": "483b6a7edf2ca8599c7899e7f66692aaa8de50be3a1aa2518107e57b9012e971"
+    },
+    {
+      "name": "week_80.json",
+      "offset": 21990790,
+      "bytes": 184817,
+      "sha256": "da0d51076fc8020166986aeb925eded84196f5691d2c8c1e79afa96c35f6ba5f"
+    },
+    {
+      "name": "week_81.json",
+      "offset": 22175607,
+      "bytes": 184861,
+      "sha256": "4e616291bf486c66bea9e58b8ea2ee57bf5282a2cab2d45d787f53036a5a74a7"
+    },
+    {
+      "name": "week_82.json",
+      "offset": 22360468,
+      "bytes": 184940,
+      "sha256": "a86ad92c8a255ddc9b317206af29da862a02f18bff826c994dde94d7b337f0d4"
+    },
+    {
+      "name": "week_83.json",
+      "offset": 22545408,
+      "bytes": 184822,
+      "sha256": "c1d5a1f6eabb7e2943cb192bbd8ea7d3eaf3d367bf76775b736ac2e8514ddd9d"
+    },
+    {
+      "name": "week_84.json",
+      "offset": 22730230,
+      "bytes": 184841,
+      "sha256": "2c1b4f6f5dcd0d5fc6ed1cc15672cc5b99087d6dbbceaf714da83698d2c717da"
+    },
+    {
+      "name": "week_85.json",
+      "offset": 22915071,
+      "bytes": 184788,
+      "sha256": "58d2922ef35aa192d414342222bff8410538b087f09ea59682ed3a87efdb69e0"
+    },
+    {
+      "name": "week_86.json",
+      "offset": 23099859,
+      "bytes": 184822,
+      "sha256": "9642089101e14c3895a1f157d1a61e9980b1de945f989ef44e659f6fda9808d7"
+    },
+    {
+      "name": "week_87.json",
+      "offset": 23284681,
+      "bytes": 184819,
+      "sha256": "7af47316e6d85fe7042d278d251c5f0dc3aed9c42b5ce05a0f8b23a63b9e669b"
+    },
+    {
+      "name": "week_88.json",
+      "offset": 23469500,
+      "bytes": 184766,
+      "sha256": "1dbcda9a72380ba7cda7e122bf3a7d4220ed9c399dabcd0ea1ffc295a0a542f4"
+    },
+    {
+      "name": "week_89.json",
+      "offset": 23654266,
+      "bytes": 184828,
+      "sha256": "2e3e50d923f0e759150f2704264c9f984d8b4079d3c138fbb5581ee2f7012980"
+    },
+    {
+      "name": "week_90.json",
+      "offset": 23839094,
+      "bytes": 184834,
+      "sha256": "5dd8da176b820309ddb8803ce9787f3a4129822e22ce063eb9a4b8a0c50357cc"
+    },
+    {
+      "name": "week_91.json",
+      "offset": 24023928,
+      "bytes": 184899,
+      "sha256": "0051184f2411d9d8840aa4f8cdfa3b6f071e46a71f6caf3d3fa148968f272aa3"
+    },
+    {
+      "name": "week_92.json",
+      "offset": 24208827,
+      "bytes": 184776,
+      "sha256": "f82478b88adbd47387060fd59c35ce198b46e19e7a3b2afa73e6e70c67220f4c"
+    },
+    {
+      "name": "week_93.json",
+      "offset": 24393603,
+      "bytes": 184865,
+      "sha256": "38222a23482766de6515b7b5cbfc59037beb21da1808a77687584d092ca789db"
+    },
+    {
+      "name": "week_94.json",
+      "offset": 24578468,
+      "bytes": 184833,
+      "sha256": "2ca78b3beaeae908d6736b13da8e9df211d0bd7598a02315b685803e8f5e5291"
+    },
+    {
+      "name": "week_95.json",
+      "offset": 24763301,
+      "bytes": 184754,
+      "sha256": "50446194fdbd0ef19d1b342e0e39c37e17b550d834264ad12e28191f16fe12d7"
+    },
+    {
+      "name": "week_96.json",
+      "offset": 24948055,
+      "bytes": 184847,
+      "sha256": "bd7f8dcc03987e525795b3701ab1046fba3b941b767a9de6f36f0543c261882a"
+    },
+    {
+      "name": "week_97.json",
+      "offset": 25132902,
+      "bytes": 184838,
+      "sha256": "f3aa384213bf75474038fd074efbab03668dcd555bb17daa2dfd03ae25284c5b"
+    },
+    {
+      "name": "week_98.json",
+      "offset": 25317740,
+      "bytes": 184852,
+      "sha256": "4e833fda2631ff81cc48a6cb176512a6b908b23d7f105db519301679b7f1a7d7"
+    },
+    {
+      "name": "week_99.json",
+      "offset": 25502592,
+      "bytes": 184754,
+      "sha256": "ac760e17b33ee302db9aaff1e8ecd0949c8e11977486aa518df81c0688b8f7b8"
+    },
+    {
+      "name": "week_100.json",
+      "offset": 25687346,
+      "bytes": 184915,
+      "sha256": "ddea9936d48323da2241ab9199366488ad53821edbbd4dfa5c04b485365eeca9"
+    },
+    {
+      "name": "week_101.json",
+      "offset": 25872261,
+      "bytes": 184981,
+      "sha256": "95eebc07233d4b996b1c5e09a5712997ee031727de5d24b70b52a73bc2604747"
+    },
+    {
+      "name": "week_102.json",
+      "offset": 26057242,
+      "bytes": 184832,
+      "sha256": "a79ff54e7d1f918cb6278e75091b759ad7001c62b0e9e8b169c2aed77e0c0f3a"
+    },
+    {
+      "name": "week_103.json",
+      "offset": 26242074,
+      "bytes": 184896,
+      "sha256": "ac01084bbe4a57d4c24f5f018c8874c4f27b42649d99337474e0c64b22c65d82"
+    },
+    {
+      "name": "week_104.json",
+      "offset": 26426970,
+      "bytes": 184850,
+      "sha256": "14dc11d77e7e1a3815fd559478a51d115ac66e9dcddeaa682ebe3fafd6fc3963"
+    },
+    {
+      "name": "week_105.json",
+      "offset": 26611820,
+      "bytes": 184768,
+      "sha256": "bbf36e489c955d417e5b0eee4aac95c055736dd7f0fa1a60cef741ac74edca96"
+    },
+    {
+      "name": "week_106.json",
+      "offset": 26796588,
+      "bytes": 184905,
+      "sha256": "de467dfdbc5b0814b1499529076d2753255a74801df92cabbf99a4f2ce892676"
+    },
+    {
+      "name": "week_107.json",
+      "offset": 26981493,
+      "bytes": 184886,
+      "sha256": "1afd8a0b9bf0087d7726528b781499892a8911537105614e95c1bad0f7e107df"
+    },
+    {
+      "name": "week_108.json",
+      "offset": 27166379,
+      "bytes": 184832,
+      "sha256": "e96e72fa7ea96df97b1eab6535f12db85db76acc545e9df5300aa258784d4d01"
+    },
+    {
+      "name": "week_109.json",
+      "offset": 27351211,
+      "bytes": 184961,
+      "sha256": "2643e207defdd9270c2e40b1526946ce6be0f5ad89818ac1f0c17b9ba94d152f"
+    },
+    {
+      "name": "week_110.json",
+      "offset": 27536172,
+      "bytes": 184787,
+      "sha256": "49a3142390380b296fed849bc082baf99e3ee269cd48594263b3fb6be73e035f"
+    },
+    {
+      "name": "week_111.json",
+      "offset": 27720959,
+      "bytes": 184916,
+      "sha256": "7242535fee4b39d0cc2a6afa7768a75f03cc1a99b4def6d534222cc18e352155"
+    },
+    {
+      "name": "week_112.json",
+      "offset": 27905875,
+      "bytes": 184905,
+      "sha256": "2983a55f1dbfd78b973734edec1fae6da8c04cd505c041585d5f87260aa79dae"
+    },
+    {
+      "name": "week_113.json",
+      "offset": 28090780,
+      "bytes": 184901,
+      "sha256": "b59bdd54d2a304677102cbfd1931d9ff8b681f5c803e21021f1292510e605ead"
+    },
+    {
+      "name": "week_114.json",
+      "offset": 28275681,
+      "bytes": 184898,
+      "sha256": "4dcd0d68702ae690b68499a5d8c44217d720658190c7b5506c2780716fd0200a"
+    },
+    {
+      "name": "week_115.json",
+      "offset": 28460579,
+      "bytes": 184828,
+      "sha256": "ebf8f7871e34adfa211ae0f633599d2f03ede6566135841b03a1c6a4a1f2f07d"
+    },
+    {
+      "name": "week_116.json",
+      "offset": 28645407,
+      "bytes": 184910,
+      "sha256": "73c405953c9c5455e0cc3b8840318c400eeb9f408409cf21e8afd7ece6ea3582"
+    },
+    {
+      "name": "week_117.json",
+      "offset": 28830317,
+      "bytes": 184919,
+      "sha256": "09d738a552219a6aaa1f3d2b8d6d1db898673839b0acbf7debcd4542a728c070"
+    },
+    {
+      "name": "week_118.json",
+      "offset": 29015236,
+      "bytes": 184845,
+      "sha256": "26511a8a1a4ff21e2303075da6f000c47568e87f06d99580223b72d6d6f4218b"
+    },
+    {
+      "name": "week_119.json",
+      "offset": 29200081,
+      "bytes": 184834,
+      "sha256": "8f1c12dcd063888b7d1e8ec3a17d43f7373f7111dd3e402cad798a5cbd7723c6"
+    },
+    {
+      "name": "week_120.json",
+      "offset": 29384915,
+      "bytes": 184885,
+      "sha256": "cae1622a8e66df48891ae44a2b05edb6b156a85193fc5acc6deb757f658d6b15"
+    },
+    {
+      "name": "week_121.json",
+      "offset": 29569800,
+      "bytes": 184829,
+      "sha256": "dc31d69af7b0f067eef91321bddc070c394c79b558d352c66281372b14d849a4"
+    },
+    {
+      "name": "week_122.json",
+      "offset": 29754629,
+      "bytes": 184868,
+      "sha256": "da51240ba2b285034650cbe79ebef7d130f794a7fd1e92b41d471943d16c8c08"
+    },
+    {
+      "name": "week_123.json",
+      "offset": 29939497,
+      "bytes": 184973,
+      "sha256": "9035b88566017964b15431f1f07f348760340265c46c43b1400eaf1b5a8ec68c"
+    },
+    {
+      "name": "week_124.json",
+      "offset": 30124470,
+      "bytes": 184891,
+      "sha256": "6662a55c53e238f0c0cabb6f8419b63e3fc6b56cee5ddce82888bb33800a4d9e"
+    },
+    {
+      "name": "week_125.json",
+      "offset": 30309361,
+      "bytes": 184894,
+      "sha256": "803606e4f003c181c35772aa43ed7f544fedab1f4e5c797f7cae20c71c3e4f5c"
+    },
+    {
+      "name": "week_126.json",
+      "offset": 30494255,
+      "bytes": 184896,
+      "sha256": "4432b116203e9a19525d88e7bb6b7e5af52213b499ad8fea297e3c9d42cd8afb"
+    },
+    {
+      "name": "week_127.json",
+      "offset": 30679151,
+      "bytes": 184932,
+      "sha256": "4ff199e2def933113f77c2bc91662c900577fdb5631e566b106dcc896288ed41"
+    },
+    {
+      "name": "week_128.json",
+      "offset": 30864083,
+      "bytes": 184869,
+      "sha256": "364cd555b9fccdbdbc7524a3b565a7684ff1045a8eff96d0a90f31386319cd83"
+    },
+    {
+      "name": "week_129.json",
+      "offset": 31048952,
+      "bytes": 184815,
+      "sha256": "5e9dd2a9c658c77a0aab09d418e8b4efb92538100cdccc0c883c5010b27788ec"
+    },
+    {
+      "name": "week_130.json",
+      "offset": 31233767,
+      "bytes": 184865,
+      "sha256": "17ba11d30638ad1f640cf52a761a6355f3597522950a944f0ea093c99a7f9034"
+    },
+    {
+      "name": "week_131.json",
+      "offset": 31418632,
+      "bytes": 184914,
+      "sha256": "b0db7fb6cd7a4b25cbde01ace248f0fbfd11f963c288d2350f69bead9d0c5466"
+    },
+    {
+      "name": "week_132.json",
+      "offset": 31603546,
+      "bytes": 184928,
+      "sha256": "e946c07dfbe36e982ad5fe00330157518f5c58ca3c5a4f4ab3602ce24d632f9c"
+    },
+    {
+      "name": "week_133.json",
+      "offset": 31788474,
+      "bytes": 184918,
+      "sha256": "8267598254dbefa85011307ddf8759d46fee5b767b4c1b6be3938ac42430de53"
+    },
+    {
+      "name": "week_134.json",
+      "offset": 31973392,
+      "bytes": 184899,
+      "sha256": "9e0eae09e59f42bceb29cb79c47099262d38a34edf6ec19dd47ca19572a3e65a"
+    },
+    {
+      "name": "week_135.json",
+      "offset": 32158291,
+      "bytes": 184994,
+      "sha256": "7fe75ff1db144ea3e18e6173caf7a8f8022d6e5208ee2cc2b0719916c94841cd"
+    },
+    {
+      "name": "week_136.json",
+      "offset": 32343285,
+      "bytes": 184924,
+      "sha256": "12ad279b2e5ca431273126dda3dc3267b8b2bb21e5a386369ba98d1d903972c5"
+    },
+    {
+      "name": "week_137.json",
+      "offset": 32528209,
+      "bytes": 184842,
+      "sha256": "e521dddaf3208ea8e2c010a2b7e556656f29a3427b8907bfd3534b136893f925"
+    },
+    {
+      "name": "week_138.json",
+      "offset": 32713051,
+      "bytes": 184855,
+      "sha256": "44c57794c403fbdcf09619a5ecff63120d70a4a91253aab55f58d6605f8bfe8e"
+    },
+    {
+      "name": "week_139.json",
+      "offset": 32897906,
+      "bytes": 184930,
+      "sha256": "b8c777976829dc229d56c19f88a10121eb4bf1b240de2e21c6f1d40a128eb291"
+    },
+    {
+      "name": "week_140.json",
+      "offset": 33082836,
+      "bytes": 184835,
+      "sha256": "c3bea8b9d05b88d0088e92c7a2e1c9a8f4864b447222cefbacf74f9dddd8a181"
+    },
+    {
+      "name": "week_141.json",
+      "offset": 33267671,
+      "bytes": 184850,
+      "sha256": "835da7a5e08edb53c3e6324dbdc911a4259524c88ca2caf59891b8ad8b20dffd"
+    },
+    {
+      "name": "week_142.json",
+      "offset": 33452521,
+      "bytes": 184860,
+      "sha256": "6f1185b97d236e8fe27da8c4d85ceedaf6e928dc66eb2c8b5a1172ee4f5ac23a"
+    },
+    {
+      "name": "week_143.json",
+      "offset": 33637381,
+      "bytes": 184899,
+      "sha256": "646bc8054d68e7204182e1fabefd953459006913a2ddc23df01b82aaf035f834"
+    },
+    {
+      "name": "week_144.json",
+      "offset": 33822280,
+      "bytes": 184827,
+      "sha256": "5227868b2dee825f604c3b27d16ca694173f962072463bbfcbf933ef7c48bd70"
+    },
+    {
+      "name": "week_145.json",
+      "offset": 34007107,
+      "bytes": 184915,
+      "sha256": "3a3003b95ebec5597c25095f504a54c398beaf4dbc7206c5eb17c3d85f6b54a1"
+    },
+    {
+      "name": "week_146.json",
+      "offset": 34192022,
+      "bytes": 184929,
+      "sha256": "5f84edafb9d5723e1935dbc7df5dbf5c661c5e2d805814f55332c0c44cef2a3f"
+    },
+    {
+      "name": "week_147.json",
+      "offset": 34376951,
+      "bytes": 184819,
+      "sha256": "bcd574bb448f38c5dfa7e12fcae5bc20aa53edff9067a5342243f0814bf41b3d"
+    },
+    {
+      "name": "week_148.json",
+      "offset": 34561770,
+      "bytes": 184868,
+      "sha256": "b2fb4d19d64049b2ed3f7fd50974a26ec6d923bbb3181f351ed5b5d4d89f4291"
+    },
+    {
+      "name": "week_149.json",
+      "offset": 34746638,
+      "bytes": 184857,
+      "sha256": "58b318f0e8a9678bf07f20fa008d6898b2aecfc02d8fc38aaf4efc3fb21c9bb8"
+    },
+    {
+      "name": "week_150.json",
+      "offset": 34931495,
+      "bytes": 184869,
+      "sha256": "208195ed645bcf6c1d7be2b5491703a9c948de344a648c6fc9078e78f1517f2f"
+    },
+    {
+      "name": "week_151.json",
+      "offset": 35116364,
+      "bytes": 184856,
+      "sha256": "78e8dc1dcd71976ac8a18ef835aee015a5b3cb06a983a5789b5533cff84c9991"
+    },
+    {
+      "name": "week_152.json",
+      "offset": 35301220,
+      "bytes": 184909,
+      "sha256": "05da6088d8575f65103a70055b45a8570c289c44a8609cebf679d4853e818eae"
+    },
+    {
+      "name": "week_153.json",
+      "offset": 35486129,
+      "bytes": 184890,
+      "sha256": "15092671d5fc02c55a34d5887137fc0fc9aa10b7721466612c0ff27522c749af"
+    },
+    {
+      "name": "week_154.json",
+      "offset": 35671019,
+      "bytes": 184887,
+      "sha256": "612abb952a9c76697636af51d831e5c593ca1acccabea56768ee74e94ca73f03"
+    },
+    {
+      "name": "week_155.json",
+      "offset": 35855906,
+      "bytes": 184872,
+      "sha256": "d94eaa5d17e441573adb3b0d5d51a3b922ae256a3512b1564171a69131a5457c"
+    },
+    {
+      "name": "week_156.json",
+      "offset": 36040778,
+      "bytes": 184920,
+      "sha256": "666460827fc2fe4ad5d235970a1872b625fc72383f0bd785b6150cff15206ee4"
+    },
+    {
+      "name": "week_157.json",
+      "offset": 36225698,
+      "bytes": 184909,
+      "sha256": "268a1015bcc7f75ed90ab720341e0f92371a2248a07c92b703503380968b2e53"
+    },
+    {
+      "name": "week_158.json",
+      "offset": 36410607,
+      "bytes": 184869,
+      "sha256": "432a4c26852ec9d6af7590b1e90d84f91a7efff37cb1665f46be66586d1e3117"
+    },
+    {
+      "name": "week_159.json",
+      "offset": 36595476,
+      "bytes": 184801,
+      "sha256": "37fe5aa99fd00ec591580008e09af3fabefd813717fe751bcc8840c87e21ec37"
+    },
+    {
+      "name": "week_160.json",
+      "offset": 36780277,
+      "bytes": 184776,
+      "sha256": "ab0b5e9501bd17fd7a48605bbaad3754354e3fb9a640a85f9e1c23ae03fe255b"
+    },
+    {
+      "name": "week_161.json",
+      "offset": 36965053,
+      "bytes": 184943,
+      "sha256": "18993962fce35cbacd641e761e09f320364474f8b6ddff0f0b990601833d2225"
+    },
+    {
+      "name": "week_162.json",
+      "offset": 37149996,
+      "bytes": 184942,
+      "sha256": "3b0d80ca17f264bcbfe13d90ce57090c00d7e1be6b18cace7d2949da0282387c"
+    },
+    {
+      "name": "week_163.json",
+      "offset": 37334938,
+      "bytes": 184805,
+      "sha256": "cddc191b65878af32a8ea28a13e45053f2e5a04c4ae4894391991ba19509ae9d"
+    },
+    {
+      "name": "week_164.json",
+      "offset": 37519743,
+      "bytes": 184902,
+      "sha256": "0a794afde184f91905bf3946104be777242c1ad3b4075c6ecfc747acfcc49429"
+    },
+    {
+      "name": "week_165.json",
+      "offset": 37704645,
+      "bytes": 184896,
+      "sha256": "496f6b9c69de105c6df36cbf64b876cd691fd76414bffcfc06ddd902287af392"
+    },
+    {
+      "name": "week_166.json",
+      "offset": 37889541,
+      "bytes": 184974,
+      "sha256": "549ef3cc019731450023cb256b90825c97329708116e7d6c3facdded246d0299"
+    },
+    {
+      "name": "week_167.json",
+      "offset": 38074515,
+      "bytes": 184880,
+      "sha256": "97f53e4230e44e3ed4b7fab8d46aba41388f923650467dad71826d9c7f4dee9b"
+    },
+    {
+      "name": "week_168.json",
+      "offset": 38259395,
+      "bytes": 184816,
+      "sha256": "2eb58ae52800b87d415c9911ca0e37065d04fb945d58f361272faba90bfe2317"
+    },
+    {
+      "name": "week_169.json",
+      "offset": 38444211,
+      "bytes": 184781,
+      "sha256": "e8f6cb92072bcaf04d7080a52be713f09b205a006f687e9a4e8b7768706a4dc2"
+    },
+    {
+      "name": "week_170.json",
+      "offset": 38628992,
+      "bytes": 184918,
+      "sha256": "c2ffcc25734a279f79934927436d3ebf69a650d6e0403f5627e8c3b0b22d08a2"
+    },
+    {
+      "name": "week_171.json",
+      "offset": 38813910,
+      "bytes": 184796,
+      "sha256": "13ca45b7537047407296bf0c6bef66e7cd5d0002c9717ddf09c433e41b259959"
+    },
+    {
+      "name": "week_172.json",
+      "offset": 38998706,
+      "bytes": 184814,
+      "sha256": "05bf2a680d7f3b2c8b32da718352e50be1598a2a65df692f4b0cba32164ebf35"
+    },
+    {
+      "name": "week_173.json",
+      "offset": 39183520,
+      "bytes": 184909,
+      "sha256": "e226b08c251f34efa590f9b1c1282f89da9beb593903da247121f5ba4f05212a"
+    },
+    {
+      "name": "week_174.json",
+      "offset": 39368429,
+      "bytes": 184889,
+      "sha256": "c0b7745b0f5aeec8de085c4cb35edf28ffec7b98fa61526e7a722ffad8153f05"
+    },
+    {
+      "name": "week_175.json",
+      "offset": 39553318,
+      "bytes": 184842,
+      "sha256": "09481c8e62deade2528444f0cb7b427f7091e1a39bba295433b3dbe7eafd1db0"
+    },
+    {
+      "name": "week_176.json",
+      "offset": 39738160,
+      "bytes": 184883,
+      "sha256": "4598c9c972bf5ded439cc9c5eb7a4fd7d1af33118e13d65b9748a6865c4f2df0"
+    },
+    {
+      "name": "week_177.json",
+      "offset": 39923043,
+      "bytes": 184831,
+      "sha256": "db488edbfe389b04206f13f2f7a0884fdc44110a34ff25bb06ae65c7a8e96267"
+    },
+    {
+      "name": "week_178.json",
+      "offset": 40107874,
+      "bytes": 184909,
+      "sha256": "badc8bdc1f3acf805887e90cd0dc431c2839170e7a9170114b7df73fb21ff0c6"
+    },
+    {
+      "name": "week_179.json",
+      "offset": 40292783,
+      "bytes": 184856,
+      "sha256": "e3d642820f3ead82e7c56460b4b716b942b6e60d99f23d784d1713c4edd81094"
+    },
+    {
+      "name": "week_180.json",
+      "offset": 40477639,
+      "bytes": 184972,
+      "sha256": "7466d1934c2d882719a466e6cf67954178d457600936c8df301f02530b61051b"
+    },
+    {
+      "name": "week_181.json",
+      "offset": 40662611,
+      "bytes": 184910,
+      "sha256": "8e0c75c4eeaeca9b0d70ff75611bcc0f4ea8462fb335f7000d171702f2a26762"
+    },
+    {
+      "name": "week_182.json",
+      "offset": 40847521,
+      "bytes": 184956,
+      "sha256": "d47cb4d7cb733efffb3ac28203313ff5b0729ec6897b7f076b7670b309cc4145"
+    },
+    {
+      "name": "week_183.json",
+      "offset": 41032477,
+      "bytes": 158428,
+      "sha256": "693a7ce3a44cba17b5f754dc61fd1fba49eabc817aced7dd81c847c6e7e924ca"
+    }
+  ]
+}

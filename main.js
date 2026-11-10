@@ -34,9 +34,12 @@ window.__debug.videoPlayer = player;
 window.__debug.video = player.state;
 window.__debug.scheduler = player.scheduler.state;
 function slotClock(t) {
-    const hh = Math.floor(t / 3600) % 24;
-    const mm = Math.floor((t % 3600) / 60);
-    return String(hh).padStart(2, '0') + ':' + String(mm).padStart(2, '0');
+    const day = Math.floor(t / 86400);
+    const sec = t % 86400;
+    const hh = Math.floor(sec / 3600) % 24;
+    const mm = Math.floor((sec % 3600) / 60);
+    const dayName = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'][day] || 'day ' + day;
+    return dayName + ' ' + String(hh).padStart(2, '0') + ':' + String(mm).padStart(2, '0');
 }
 
 function renderSchedule() {
@@ -74,12 +77,12 @@ function renderNowNext() {
     if (nextEl) {
         if (upcoming.length) {
             const u = upcoming[0];
-            const secs = player.scheduler.secondsSinceUtcDayStart(new Date());
+            const secs = player.scheduler.secondsSinceWeekStart(new Date());
             const mins = Math.max(0, Math.round((u.time - secs) / 60));
-            const when = mins <= 0 ? 'any second' : (mins === 1 ? 'in 1 min' : `in ${mins} min`);
+            const when = mins <= 0 ? 'any second' : (mins >= 1440 ? 'in ' + Math.round(mins / 1440) + ' day' + (Math.round(mins / 1440) === 1 ? '' : 's') : mins === 1 ? 'in 1 min' : 'in ' + mins + ' min');
             nextEl.textContent = `${u.entry.title || u.entry.v} — ${when}`;
         } else {
-            nextEl.textContent = 'wraps to the top of the schedule';
+            nextEl.textContent = 'wraps to next week';
         }
     }
 }

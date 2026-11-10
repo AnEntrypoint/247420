@@ -19,7 +19,8 @@ SPA with hash routing (`#/home` `#/skills` `#/skills/<id>` `#/community` `#/lore
 | `lib/skills.js` | Curated public skills/disciplines; source-backed copy, skill/prompt CTAs, and optional projectCode for separating disciplines from general works. |
 | `lib/projects.js` | Catalog (SSOT) + showcase enrichment + `activityFor`/`rankByActivity`. |
 | `lib/scheduler.js` | Time parsing, slot calc, UTC sync. `getCurrentSlot`/`getUpcomingSlots` feed the TV now/next strip. |
-| `lib/video.js` | Native HTML5 `<video>` player abstraction (replaced the Schwelevision orchestrator), sub-second slot precision. |
+| `lib/video.js` | Native HTML5 `<video>` player abstraction (replaced the Schwelevision orchestrator). Loads the full 183-week rotation from `lib/week-schedules.js`, flattens the selected week's 7-day slots into absolute week seconds, and plays with sub-hourly seek precision. |
+| `lib/week-schedules.js` | Generated compact runtime module: 183 weeks, 7,800 slots, all playable URLs, no descriptions. Source archive is `tv/schedule_weeks/station_1/weeks.br` + `manifest.json`; restore with `node scripts/restore-week-schedules.mjs --write`. |
 | `main.js` | SPA entry, route registration, `renderNowNext`/`renderTv`. Enforced `<= 200` lines by verify.mjs. |
 | `styles.css` | Site-only surfaces on top of SDK CSS (~143L). |
 | `schedule.json` | Sub-hourly broadcast montage. |
@@ -32,6 +33,8 @@ SPA with hash routing (`#/home` `#/skills` `#/skills/<id>` `#/community` `#/lore
 | `scripts/fetch-blog-posts.mjs` | Caches YAML post metadata and Lexical paragraph/heading/quote blocks from `AnEntrypoint/247420-blog/content/posts` into `lib/blog-posts.json`; `#/blog/<slug>` renders posts internally. Missing cache currently renders the unavailable-posts state. |
 
 Schedule format — flat array of `{ t: number, v: string, d: number, title: string, url?: string, kind?: string, seek?: number }`; `t` is seconds since UTC day start. A slot runs from its `t` to the next entry’s `t` (last ends at 86400), with playback offset `(seek || 0) + elapsed`; ads use only elapsed. Missing URLs and explicit `static` entries play static.
+
+Full TV rotation — the live player uses the 183-week archive, not `schedule.json`. `tv/schedule_weeks/station_1/weeks.br` is one Brotli-compressed concatenation of all original week JSON files; `manifest.json` records offsets, sizes and SHA-256 hashes. `lib/week-schedules.js` is generated from that archive with descriptions stripped, and imports directly as an ES6 module so Pages needs no Brotli decoder. Week 1 starts `2025-10-11T00:00:00Z`; `getCurrentWeek()` rotates modulo 183. Each week has a 7-day clock (`monday`…`sunday`) with sparse hourly slots; slots are flattened to `dayIndex * 86400 + clock`, clipped at the next slot, and played with elapsed seek. Gaps fall back to `/static.mp4`. `schedule.json` remains in the tree as a separate legacy one-day montage but is not loaded by the player.
 
 ## CI/CD — how 247420.xyz gets built and deployed
 
