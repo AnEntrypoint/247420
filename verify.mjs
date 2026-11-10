@@ -28,6 +28,26 @@ check('index.html has #app root and loads main.js', () => {
   assert(html.includes('main.js'), 'main.js not loaded');
 });
 
+console.log('\noscraft page + TV fullscreen wiring');
+const componentsSource = fs.readFileSync(ROOT + '/lib/components.js', 'utf8');
+const mainSource = fs.readFileSync(ROOT + '/main.js', 'utf8');
+const stylesSource = fs.readFileSync(ROOT + '/styles.css', 'utf8');
+check('oscraft route links directly to the live published Pages client', () => {
+  assert(/oscraft:\s*OscraftPage/.test(componentsSource), 'oscraft route is not registered');
+  assert(componentsSource.includes("const playUrl = 'https://lanmower.github.io/oscraft/js/client/play.html'"), 'oscraft page does not use the live Pages client URL');
+  assert(/href: playUrl/.test(componentsSource), 'oscraft page has no direct link to the client');
+  assert(!/h\('iframe'/.test(componentsSource.slice(componentsSource.indexOf('function OscraftPage'), componentsSource.indexOf('function TvPage'))), 'oscraft page still embeds an iframe');
+  assert(!stylesSource.includes('.oscraft-frame'), 'unused oscraft iframe CSS is still present');
+  assert(!fs.existsSync(ROOT + '/scripts/fetch-oscraft-pages.mjs'), 'unused oscraft asset fetch script is still present');
+});
+check('TV stage has a native fullscreen control and state sync', () => {
+  assert(componentsSource.includes("id: 'tv-fullscreen'"), 'TV fullscreen button missing');
+  assert(mainSource.includes('window.__tvFullscreenToggle'), 'TV fullscreen handler missing');
+  assert(mainSource.includes('requestFullscreen()'), 'TV fullscreen does not call requestFullscreen');
+  assert(mainSource.includes('fullscreenchange'), 'TV fullscreen label does not sync on fullscreenchange');
+  assert(stylesSource.includes('.tv-stage:fullscreen'), 'fullscreen TV stage CSS missing');
+});
+
 console.log('\nlegacy one-day schedule.json (kept as data, not loaded by TV)');
 const schedule = JSON.parse(fs.readFileSync(ROOT + '/schedule.json', 'utf8'));
 check('schedule.json parses to a non-empty array of well-shaped slots', () => {

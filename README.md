@@ -25,7 +25,8 @@ SDK. hash-based routing, a 183-week broadcast archive pinned to one UTC week
 clock, and a project catalog that puts the org's actually-active work first.
 
 routes: `#/home` (projects) · `#/community` · `#/lore` · `#/tv` (broadcast) ·
-`#/org` (index) · `#/p/<slug>` (project pages).
+`#/oscraft` (direct link to the live client) · `#/org` (index) · `#/p/<slug>`
+(project pages).
 
 ## run it
 

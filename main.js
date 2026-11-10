@@ -99,6 +99,21 @@ window.__tvGuideToggle = () => {
     overlay.classList.toggle('hidden', !hidden);
     if (hidden) renderSchedule();
 };
+window.__tvFullscreenToggle = async () => {
+    const stage = document.querySelector('.tv-stage');
+    if (!stage) throw new Error('TV fullscreen requested without a .tv-stage element');
+    if (document.fullscreenElement === stage) {
+        await document.exitFullscreen();
+        return;
+    }
+    if (document.fullscreenElement) throw new Error('another element is already fullscreen: ' + document.fullscreenElement.className);
+    await stage.requestFullscreen();
+};
+function syncTvFullscreenLabel() {
+    const button = document.getElementById('tv-fullscreen');
+    if (button) button.textContent = document.fullscreenElement ? 'exit fullscreen' : 'fullscreen';
+}
+document.addEventListener('fullscreenchange', syncTvFullscreenLabel);
 let tvTick = null;
 function startTvTick() {
     if (tvTick) return;

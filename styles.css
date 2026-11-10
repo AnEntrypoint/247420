@@ -116,6 +116,9 @@
 }
 
 .tv-stage { position: relative; flex: 1; min-height: 0; }
+.tv-stage:fullscreen { width: 100vw; height: 100vh; background: #000; }
+.tv-stage:fullscreen .tv-video { width: 100%; height: 100%; object-fit: contain; }
+.tv-stage:fullscreen .tv-guide-overlay { background: color-mix(in oklab, var(--panel-0) 92%, transparent); }
 
 .ds-247420 .tv-nownext {
   display: flex;

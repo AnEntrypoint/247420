@@ -2,7 +2,7 @@
 
 ## Stack & Constraints
 
-SPA with hash routing (`#/home` `#/skills` `#/skills/<id>` `#/community` `#/lore` `#/tv` `#/org` `#/blog` `#/p/<code>`). Pure ES6 modules, no build step, no bundler, no polyfills, no external framework deps — runs as-is in modern browsers.
+SPA with hash routing (`#/home` `#/skills` `#/skills/<id>` `#/community` `#/lore` `#/tv` `#/oscraft` `#/org` `#/blog` `#/p/<code>`). Pure ES6 modules, no build step, no bundler, no polyfills, no external framework deps — runs as-is in modern browsers.
 
 - **Error-first**: errors throw with context. No silent failures, no fallbacks.
 - **No test files, ever.** Verification is live execution against real data: `node verify.mjs` loads the real `lib/projects.js` against the real `lib/showcase.json` and asserts on actual output. An assertion written next to its own fix can encode that fix's misreading, so "tests pass" only proves the code agrees with itself. Re-read the request's literal words and exercise the real system instead. Never create `*.test.js`/`*.spec.js`/`test/` or pull in jest/mocha/vitest/pytest.
@@ -104,7 +104,8 @@ Rules:
 | `#/community` | `project_page` narrow | Heading+Lede, loudest `JoinLink` on the site, Panels of `.row`s, second CTA, `// house voice` Manifesto |
 | `#/lore` | `homepage` Writing | single Panel of numbered `.row`s + `// chronicles` Manifesto |
 | `#/org` | `gallery` + `homepage` | `C.Side` jump-nav + hero Panel + one Panel per category |
-| `#/tv` | none | `AppShell` chrome + `.tv-stage` + `.tv-nownext` strip + `.tv-guide-overlay` + community tie-in Panel |
+| `#/tv` | none | `AppShell` chrome + `.tv-stage` + `.tv-nownext` strip + `.tv-guide-overlay` + community tie-in Panel; fullscreen button calls `requestFullscreen()` on `.tv-stage` |
+| `#/oscraft` | `project_page` narrow | Heading+Lede+Panel linking directly to `https://lanmower.github.io/oscraft/js/client/play.html` and the source repo; no iframe and no Pages-build asset import |
 
 Discord is site-wide: `Community` is a top-level nav item, every page's `Status` footer right slot carries a join link, home has a `.home-join` banner, project pages end with `.project-contribute`. All route through `DISCORD_INVITE`.
 
