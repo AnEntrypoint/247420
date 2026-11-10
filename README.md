@@ -21,9 +21,8 @@ the whole onboarding.
 
 a single-page app with no build tools, no bundler, no framework — pure ES6 modules
 rendering through the [anentrypoint-design](https://github.com/AnEntrypoint/design)
-SDK. hash-based routing, a broadcast synced to a UTC clock so every viewer sees the
-same frame at the same second, and a project catalog that features the org's
-actually-active work first.
+SDK. hash-based routing, a 183-week broadcast archive pinned to one UTC week
+clock, and a project catalog that puts the org's actually-active work first.
 
 routes: `#/home` (projects) · `#/community` · `#/lore` · `#/tv` (broadcast) ·
 `#/org` (index) · `#/p/<slug>` (project pages).
@@ -45,8 +44,9 @@ CI on every push.
 ## the projects
 
 everything in the catalog is built, broken, and argued about in the open — no
-whitepapers, more PRs. the agent tooling (gm and the rs-* rust services), the
-voice + avatar stack, the browser sandboxes, the data and memory layers: browse
+whitepapers, more PRs. right now that means gm-family runtimes and installed-build
+checks, jayzee/spoint frame witnesses, ccv/lk voice prosody, mc-420's shared audio
+clock, WebGPU bundles, and the small CLIs that make those pieces reachable. browse
 them at [247420.xyz/#/org](https://247420.xyz/#/org) or straight on
 [github.com/AnEntrypoint](https://github.com/AnEntrypoint).
 

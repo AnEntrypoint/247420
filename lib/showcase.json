@@ -1,14 +1,67 @@
 {
-  "001": {
-    "code": "001",
-    "src": "https://anentrypoint.github.io/gm/",
+  "100": {
+    "code": "100",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-10T09:02:33Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "101": {
+    "code": "101",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-10T08:30:36Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "102": {
+    "code": "102",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-10T07:12:46Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "103": {
+    "code": "103",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T09:13:07Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "104": {
+    "code": "104",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-08T14:47:28Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "105": {
+    "code": "105",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-05T07:51:11Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "106": {
+    "code": "106",
+    "src": "https://anentrypoint.github.io/gm-agentplug/",
     "site": {
       "title": "gm",
       "tagline": "the comedown for vibe coding",
-      "description": "vibe coding ships fast and lies about being done. gm puts a deterministic SPECIFY, PROVE, EMIT, STATE, CONC, SEC, RES, DECIDE, COMPLETE pipeline around your coding agent, so the good vibe survives contact with a gate that actually checks. one skill, every harness. the orchestrator lives in rust as plugkit.wasm.",
+      "description": "vibe coding ship fast, then claim work done. gm add checkable walk around coding agent. Walk = one run through gm state machine: 146 states (129 principles, disciplines subagent apply) joined by 376 edges. Gates on edge decide each move. Graph has 26 gate predicates: 24 block move, name failed condition; 2 only report. Pool of subagents work discipline graph parallel. One skill for Claude Code, Cursor, Gemini CLI, Codex. Orchestrator, runs walk, written in rust, compiled to WebAssembly (wasm).",
       "repo": "https://github.com/AnEntrypoint/gm",
       "url": "https://anentrypoint.github.io/gm",
-      "year": 2026,
       "keywords": [
         "flagship",
         "state-machine",
@@ -23,11 +76,977 @@
       "category": "gm"
     },
     "home": null,
-    "stars": 4,
-    "pushedAt": "2026-10-06T17:54:46Z",
+    "stars": 6,
+    "pushedAt": "2026-11-06T12:13:50Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 98
+    "commits14d": 100
+  },
+  "107": {
+    "code": "107",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-07T02:01:55Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 39
+  },
+  "108": {
+    "code": "108",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T02:01:58Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 32
+  },
+  "109": {
+    "code": "109",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-09T20:08:14Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 24
+  },
+  "110": {
+    "code": "110",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T02:04:30Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 23
+  },
+  "111": {
+    "code": "111",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-07T13:06:54Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 20
+  },
+  "112": {
+    "code": "112",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-07T01:54:35Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 16
+  },
+  "113": {
+    "code": "113",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-08T14:02:35Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 14
+  },
+  "114": {
+    "code": "114",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-04T15:56:37Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 13
+  },
+  "115": {
+    "code": "115",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-03T23:01:55Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 11
+  },
+  "116": {
+    "code": "116",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T01:54:44Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 8
+  },
+  "117": {
+    "code": "117",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T02:03:50Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 7
+  },
+  "118": {
+    "code": "118",
+    "src": "https://anentrypoint.github.io/research/",
+    "site": {
+      "title": "research",
+      "tagline": "CLI research via claude.ai",
+      "description": "fire research prompts at claude.ai through playwriter, wait for completion, download the results. CLI for deep-research workflows.",
+      "repo": "https://github.com/AnEntrypoint/research",
+      "url": "https://anentrypoint.github.io/research",
+      "year": 2026,
+      "keywords": [
+        "cli",
+        "research",
+        "playwright",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#ffa657",
+      "accent_to": "#f0883e",
+      "glyph": "⌘",
+      "code": "053",
+      "category": "tooling"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "research",
+        "subheading": "CLI research via claude.ai",
+        "body": "fire research prompts at claude.ai through playwriter, wait for completion, download the results. CLI for deep-research workflows.",
+        "badges": [
+          {
+            "label": "cli"
+          },
+          {
+            "label": "research"
+          },
+          {
+            "label": "playwright"
+          },
+          {
+            "label": "tooling"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/research",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why research",
+        "items": [
+          {
+            "name": "cli",
+            "desc": "flagship trait of research."
+          },
+          {
+            "name": "research",
+            "desc": "core capability of research."
+          },
+          {
+            "name": "playwright",
+            "desc": "core capability of research."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/research.git"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-11-07T02:02:49Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 7
+  },
+  "119": {
+    "code": "119",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-08T14:49:50Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 6
+  },
+  "120": {
+    "code": "120",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-29T11:43:00Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 4
+  },
+  "121": {
+    "code": "121",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-10-28T13:40:15Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 4
+  },
+  "122": {
+    "code": "122",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-03T10:29:07Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 6
+  },
+  "123": {
+    "code": "123",
+    "src": "https://anentrypoint.github.io/floosie/",
+    "site": {
+      "title": "floosie",
+      "tagline": "universal stream pipeline",
+      "description": "pipe anything to anything. the stream-composition primitive under streamtts and friends.",
+      "repo": "https://github.com/AnEntrypoint/floosie",
+      "url": "https://anentrypoint.github.io/floosie",
+      "year": 2026,
+      "keywords": [
+        "streams",
+        "pipeline",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#56d364",
+      "accent_to": "#79c0ff",
+      "glyph": "≋",
+      "code": "076",
+      "category": "web"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "floosie",
+        "subheading": "pipe anything to anything",
+        "body": "98 typed chunks, 14 operators, one composable runtime. the stream-composition primitive under streamtts and friends — written so you can fuse mime-detected stdin, websockets, ACP agents, and ML tensors into a single pipe() chain without writing glue.",
+        "badges": [
+          {
+            "label": "98 chunk types"
+          },
+          {
+            "label": "14 operators"
+          },
+          {
+            "label": "ESM · TypeScript"
+          },
+          {
+            "label": "ACP · stdio · ws"
+          },
+          {
+            "label": "0 dep glue"
+          },
+          {
+            "label": "1 mental model"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/floosie",
+            "primary": true
+          },
+          {
+            "label": "npm i floosie",
+            "href": "https://www.npmjs.com/package/floosie"
+          },
+          {
+            "label": "docs",
+            "href": "https://github.com/AnEntrypoint/floosie#readme"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "stats": {
+        "heading": "by the numbers",
+        "intro": "the surface area, in four digits.",
+        "items": [
+          {
+            "value": "98",
+            "label": "chunk types",
+            "desc": "media, text, network, ml, crypto, scalars",
+            "cat": "kit"
+          },
+          {
+            "value": "14",
+            "label": "operators",
+            "desc": "mux split gate scan zip batch window throttle …",
+            "cat": "deck"
+          },
+          {
+            "value": "183",
+            "label": "mimes detected",
+            "desc": "via file-type magic-byte lookup",
+            "cat": "preview"
+          },
+          {
+            "value": "0",
+            "label": "glue code",
+            "desc": "framing autoselected by chunk type",
+            "cat": "doc"
+          }
+        ]
+      },
+      "flow": {
+        "heading": "anatomy of a pipeline",
+        "intro": "every floosie pipeline is the same shape. read top-to-bottom; the bytes flow the same way.",
+        "ascii": "┌──────────────┐\n│   source     │   stdin · ws · acp · file · iter\n└──────┬───────┘\n       ▼\n┌──────────────┐\n│ typed chunk  │   { type, data, meta:{mime} }\n└──────┬───────┘   ◌ 98 variants · auto-detected\n       ▼\n┌──────────────┐\n│  transform   │   .through(gate · parallel · scan · …)\n└──────┬───────┘   ◌ 14 operators · sflow under the hood\n       ▼\n┌──────────────┐\n│ processor    │   { name, status, chunksIn, chunksOut }\n└──────┬───────┘   ◌ idle → running → error|stopped\n       ▼\n┌──────────────┐\n│    sink      │   ndjson · ws · acp · file · iter\n└──────────────┘\n",
+        "legend": [
+          {
+            "glyph": "◌",
+            "text": "every stage is observed by the registry"
+          },
+          {
+            "glyph": "●",
+            "text": "framing chosen by chunk.type — you never write a parser"
+          },
+          {
+            "glyph": "↗",
+            "text": "swap source or sink without touching transform"
+          }
+        ]
+      },
+      "problem": {
+        "heading": "the pain you already know",
+        "intro": "every non-trivial stream pipeline drifts into the same swamp. floosie is the answer to a problem you've solved badly four times already.",
+        "items": [
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "untyped buffers",
+            "desc": "Buffer<unknown> flowing between stages. is this json? a frame? a tensor header? you'll find out at runtime."
+          },
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "framing-by-hand",
+            "desc": "newline-delimited here, length-prefixed there, websocket envelopes elsewhere. each new sink is a fresh parser."
+          },
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "no observability",
+            "desc": "console.log scattered through transforms. no per-stage counters, no lifecycle, no introspection."
+          },
+          {
+            "cat": "flame",
+            "glyph": "◌",
+            "name": "transport coupling",
+            "desc": "rewriting a pipeline because you swapped stdio for a websocket. the logic was fine; the plumbing leaked."
+          }
+        ]
+      },
+      "compare": {
+        "heading": "before / after",
+        "intro": "the same job, written twice.",
+        "before": {
+          "label": "without floosie",
+          "code": "// read stdin → detect mime → maybe-parse json\n// → filter → maybe-reframe → write ndjson\nconst chunks = [];\nprocess.stdin.on('data', b => chunks.push(b));\nprocess.stdin.on('end', () => {\n  const buf = Buffer.concat(chunks);\n  const mime = sniffMimeSomehow(buf);          // ad-hoc\n  const parsed = mime === 'application/json'\n    ? JSON.parse(buf)                          // throws? oh well\n    : { raw: buf.toString() };\n  if (parsed.score > 0.9) {\n    const out = JSON.stringify(parsed) + '\\n'; // hand-framing\n    process.stdout.write(out);\n  }\n});\n"
+        },
+        "after": {
+          "label": "with floosie",
+          "code": "import { createProcessor, gate } from \"floosie\";\nimport { stdinTypedSource, ndjsonStdoutSink } from \"floosie/stdio\";\n\ncreateProcessor({\n  name: \"filter\",\n  input: stdinTypedSource(),                   // mime-detected chunks\n  transform: (f) => f.through(gate(c => c.data.score > 0.9)),\n  output: ndjsonStdoutSink(),                  // framed for you\n});\n"
+        }
+      },
+      "when": {
+        "heading": "when to reach for floosie",
+        "intro": "five shapes of problem where floosie pays for itself in the first hour.",
+        "items": [
+          {
+            "cat": "kit",
+            "name": "agent pipelines",
+            "desc": "an LLM emits tokens, your code routes by type — text vs tool-call vs error. ACP source/sink already wraps it.",
+            "meta": "acp"
+          },
+          {
+            "cat": "deck",
+            "name": "media transforms",
+            "desc": "image/video/audio/pdf flowing through detectors, encoders, sinks. file-type does the magic-byte work; you write the verbs.",
+            "meta": "media"
+          },
+          {
+            "cat": "preview",
+            "name": "ml inference fans",
+            "desc": "tensors and embeddings as first-class chunks. parallel(fn, n) caps concurrency without juggling promises.",
+            "meta": "ml"
+          },
+          {
+            "cat": "doc",
+            "name": "observability streams",
+            "desc": "metrics, spans, logs, events as typed chunks. mux N sources, batch by time, route by category.",
+            "meta": "telemetry"
+          },
+          {
+            "cat": "external",
+            "name": "websocket fan-in/out",
+            "desc": "muxWsClients() merges N upstreams into one chunk flow. wsBridge serves as a typed broadcast.",
+            "meta": "ws"
+          }
+        ]
+      },
+      "how": {
+        "heading": "how it actually works",
+        "intro": "three primitives. you'll have the mental model in the time it takes to read this panel.",
+        "steps": [
+          {
+            "rank": "01",
+            "glyph": "▣",
+            "name": "chunk",
+            "desc": "every value in a flow is { type, data, meta }. the type is one of 98, the codec round-trips it, mime is auto-detected on binary."
+          },
+          {
+            "rank": "02",
+            "glyph": "◎",
+            "name": "processor",
+            "desc": "createProcessor({ name, input, transform, output }) — the actor. transform is a sflow pipeline. lifecycle is idle/running/error/stopped, observed by the registry."
+          },
+          {
+            "rank": "03",
+            "glyph": "▰",
+            "name": "operator",
+            "desc": "mux/split/gate/scan/zip/batch/window/throttle/debounce/parallel — each is a typed StreamNode. fuse with .through(). nothing else."
+          }
+        ]
+      },
+      "recipes": {
+        "heading": "recipes you can paste",
+        "intro": "four real pipelines, each under 12 lines.",
+        "items": [
+          {
+            "cat": "kit",
+            "name": "stdin → typed chunks → ndjson stdout",
+            "desc": "the cli pipe. mime-sniffed, type-routed, framed for you.",
+            "code": "import { stdinTypedSource, ndjsonStdoutSink } from \"floosie/stdio\";\nimport { createProcessor } from \"floosie\";\ncreateProcessor({\n  name: \"passthrough\",\n  input: stdinTypedSource(),\n  transform: (f) => f,\n  output: ndjsonStdoutSink(),\n});\n"
+          },
+          {
+            "cat": "preview",
+            "name": "fan N websockets into one stream",
+            "desc": "muxWsClients with round-robin or hash routing.",
+            "code": "import { muxWsClients } from \"floosie\";\nconst fan = await muxWsClients([\"ws://a:7878\",\"ws://b:7878\"]);\nfor await (const c of fan.source()) console.log(c.type, c.meta?.mime);\n"
+          },
+          {
+            "cat": "deck",
+            "name": "concurrent classify with backpressure",
+            "desc": "parallel caps concurrency, gate filters on score, withBackpressure protects upstream.",
+            "code": "import { createProcessor, gate, parallel, withBackpressure } from \"floosie\";\ncreateProcessor({\n  name: \"classifier\",\n  transform: (f) => f\n    .through(withBackpressure(64))\n    .through(parallel(classify, 4))\n    .through(gate(c => c.data.score > 0.9)),\n});\n"
+          },
+          {
+            "cat": "doc",
+            "name": "ACP agent as a stream source",
+            "desc": "AgentClientProtocol → typed chunks. plug it into any operator chain.",
+            "code": "import { acpSource } from \"floosie/acp\";\nfor await (const c of acpSource(connection)) {\n  if (c.type === \"token\") write(c.data);\n  if (c.type === \"error\") report(c.data);\n}\n"
+          }
+        ]
+      },
+      "audience": {
+        "heading": "who this is for",
+        "intro": "three honest reads of fit.",
+        "items": [
+          {
+            "cat": "kit",
+            "name": "you ship agent runtimes",
+            "desc": "if streamtts, an LLM gateway, or any AgentClientProtocol consumer is on your roadmap, floosie is the layer you would have built."
+          },
+          {
+            "cat": "deck",
+            "name": "you do byte-level work",
+            "desc": "media transcoders, protocol bridges, telemetry routers. you spend more time on framing than logic. stop."
+          },
+          {
+            "cat": "preview",
+            "name": "you want one mental model",
+            "desc": "if you've written 'this is the third time i've reframed ndjson', the third time should be an import, not a parser."
+          }
+        ]
+      },
+      "proofs": {
+        "heading": "three things you get for free",
+        "intro": "the boring stuff that ate your last sprint.",
+        "items": [
+          {
+            "glyph": "●",
+            "cat": "kit",
+            "name": "typed end-to-end",
+            "desc": "every value carries its type at runtime. discriminated-union narrowing means no `as any` cast survives a code review."
+          },
+          {
+            "glyph": "●",
+            "cat": "deck",
+            "name": "mime detection",
+            "desc": "binary in → file-type magic-byte lookup → mimeToChunkType() → variant selected. you wrote zero of those lines."
+          },
+          {
+            "glyph": "●",
+            "cat": "preview",
+            "name": "observed by default",
+            "desc": "registry tracks every processor — chunksIn, chunksOut, errors, uptimeMs. setLogSink() forwards to your stack."
+          }
+        ]
+      },
+      "choose": {
+        "heading": "pick your stack",
+        "intro": "honest comparison. floosie is not always the answer.",
+        "rows": [
+          {
+            "what": "typed chunk discriminated union",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "○",
+            "note": "98 variants, mime-aware"
+          },
+          {
+            "what": "auto framing on stdin/ws/acp",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "○",
+            "note": "framing chosen by type"
+          },
+          {
+            "what": "operator algebra",
+            "floosie": "●",
+            "rxjs": "●",
+            "streams": "◐",
+            "note": "sflow under the hood"
+          },
+          {
+            "what": "AsyncIterable interop",
+            "floosie": "●",
+            "rxjs": "◐",
+            "streams": "●",
+            "note": "ReadableStream + AsyncIterable in one"
+          },
+          {
+            "what": "back-pressure",
+            "floosie": "●",
+            "rxjs": "◐",
+            "streams": "●",
+            "note": "withBackpressure(hwm)"
+          },
+          {
+            "what": "registry / observability",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "○",
+            "note": "out of the box"
+          },
+          {
+            "what": "browser/node parity",
+            "floosie": "●",
+            "rxjs": "●",
+            "streams": "●",
+            "note": "esm, no node-only deps in core"
+          },
+          {
+            "what": "small surface (no lifecycle gymnastics)",
+            "floosie": "●",
+            "rxjs": "○",
+            "streams": "●",
+            "note": "4-state actor, no schedulers"
+          }
+        ],
+        "legend": [
+          {
+            "glyph": "●",
+            "text": "first-class"
+          },
+          {
+            "glyph": "◐",
+            "text": "possible with effort"
+          },
+          {
+            "glyph": "○",
+            "text": "you'd have to build it"
+          }
+        ]
+      },
+      "operators": {
+        "heading": "operators",
+        "intro": "all 14 are typed StreamNode factories. compose with pipe() / .through(). nothing else to learn.",
+        "items": [
+          {
+            "name": "mux(...sources)",
+            "desc": "merge N async sources into one interleaved flow"
+          },
+          {
+            "name": "split(flow, n)",
+            "desc": "fan-out one stream into N independent branches"
+          },
+          {
+            "name": "gate(pred)",
+            "desc": "async predicate filter — keep only items that pass"
+          },
+          {
+            "name": "scan(fn, seed)",
+            "desc": "running accumulator — emit state after each item"
+          },
+          {
+            "name": "zip(...sources)",
+            "desc": "combine N sources into tuples, stop at shortest"
+          },
+          {
+            "name": "withBackpressure(hwm)",
+            "desc": "pause upstream when in-flight count exceeds HWM"
+          },
+          {
+            "name": "batch(n)",
+            "desc": "collect items into fixed-size arrays"
+          },
+          {
+            "name": "window(ms)",
+            "desc": "collect items into time-bounded arrays"
+          },
+          {
+            "name": "throttle(ms)",
+            "desc": "pass at most one item per interval"
+          },
+          {
+            "name": "debounce(ms)",
+            "desc": "suppress items until quiet for ms"
+          },
+          {
+            "name": "take(n)",
+            "desc": "emit first N items then close"
+          },
+          {
+            "name": "drop(n)",
+            "desc": "skip first N items"
+          },
+          {
+            "name": "distinct(keyFn?)",
+            "desc": "deduplicate consecutive equal items"
+          },
+          {
+            "name": "parallel(fn, n)",
+            "desc": "concurrent async map with concurrency limit"
+          }
+        ]
+      },
+      "chunks": {
+        "heading": "the 98 chunk types",
+        "intro": "every value in a floosie stream is a typed chunk with a codec, a mime hint, and a place in the discriminated union. 98 built-ins span media, text, network protocols, ML tensors, cryptographic primitives, and numeric scalars — and you can register your own.",
+        "groups": [
+          {
+            "heading": "media & docs",
+            "items": [
+              "binary",
+              "image",
+              "video",
+              "audio",
+              "pdf",
+              "archive",
+              "wasm",
+              "font",
+              "onnx",
+              "safetensors",
+              "epub",
+              "docx",
+              "xlsx",
+              "pptx",
+              "gltf",
+              "qrcode"
+            ]
+          },
+          {
+            "heading": "text & markup",
+            "items": [
+              "text",
+              "json",
+              "ndjson",
+              "csv",
+              "xml",
+              "yaml",
+              "markdown",
+              "html",
+              "sql",
+              "toml",
+              "ini",
+              "jsonschema",
+              "avroschema",
+              "sourcemap",
+              "shader",
+              "obj",
+              "subtitle",
+              "playlist",
+              "graphml"
+            ]
+          },
+          {
+            "heading": "network & protocol",
+            "items": [
+              "http-request",
+              "http-response",
+              "websocket",
+              "sse",
+              "rpc",
+              "event",
+              "span",
+              "metric",
+              "log",
+              "command",
+              "socketio",
+              "webtransport",
+              "envelope",
+              "ack",
+              "nack"
+            ]
+          },
+          {
+            "heading": "observability",
+            "items": [
+              "error",
+              "signal",
+              "null",
+              "delta",
+              "token",
+              "embedding"
+            ]
+          },
+          {
+            "heading": "ml & data",
+            "items": [
+              "tensor",
+              "timeseries",
+              "ohlcv",
+              "adjacency",
+              "pointcloud",
+              "ast"
+            ]
+          },
+          {
+            "heading": "crypto & security",
+            "items": [
+              "hash",
+              "signature",
+              "hmac",
+              "keypair",
+              "certificate",
+              "ciphertext",
+              "dns",
+              "dhcp",
+              "icmp"
+            ]
+          },
+          {
+            "heading": "encodings",
+            "items": [
+              "protobuf",
+              "msgpack",
+              "cbor",
+              "arrow",
+              "parquet",
+              "geojson",
+              "jwt",
+              "graphql"
+            ]
+          },
+          {
+            "heading": "numeric & primitives",
+            "items": [
+              "uint8",
+              "int8",
+              "int16",
+              "uint16",
+              "int32",
+              "uint32",
+              "int64",
+              "uint64",
+              "float32",
+              "float64",
+              "complex64",
+              "complex128",
+              "bool",
+              "timestamp",
+              "uuid"
+            ]
+          },
+          {
+            "heading": "structured",
+            "items": [
+              "frame",
+              "patch",
+              "multipart"
+            ]
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "install"
+          },
+          {
+            "kind": "cmd",
+            "text": "npm i floosie"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "pipe anything → typed chunks → ndjson"
+          },
+          {
+            "kind": "cmd",
+            "text": "echo '{\"score\":0.97}' | npx floosie auto"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "or bridge a websocket"
+          },
+          {
+            "kind": "cmd",
+            "text": "npx floosie bridge --port 7878"
+          }
+        ]
+      },
+      "usage": {
+        "heading": "the 8-line tour",
+        "intro": "one createProcessor, one transform, framing handled.",
+        "code": "import { createProcessor, json, gate, parallel } from \"floosie\";\n\ncreateProcessor({\n  name: \"classifier\",\n  transform: (flow) =>\n    flow\n      .through(gate(c => c.data.score > 0.9))\n      .through(parallel(classify, 4))\n      .through(gate(c => c.data.label !== \"spam\"))\n});\n"
+      },
+      "glossary": {
+        "heading": "vocab — the four words that matter",
+        "intro": "if you know these, you know floosie.",
+        "items": [
+          {
+            "term": "chunk",
+            "def": "{ type, data, meta }. the atomic value in any flow. 98 built-in types; type narrows data."
+          },
+          {
+            "term": "codec",
+            "def": "encode/decode pair per chunk type. encodeChunk(c) → bytes, decodeChunk(type, bytes) → c. mime auto-populated on binary."
+          },
+          {
+            "term": "processor",
+            "def": "createProcessor({ name, input, transform, output }). the actor. lifecycle is idle → running → error | stopped."
+          },
+          {
+            "term": "operator",
+            "def": "a typed StreamNode factory you fuse with .through(). 14 of them. mux, gate, parallel, batch — that family."
+          }
+        ]
+      },
+      "examples": {
+        "heading": "go deeper",
+        "items": [
+          {
+            "name": "stdio auto-detect",
+            "desc": "stdin → mime detect → typed chunks → ndjson stdout.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/tree/main/docs/examples"
+          },
+          {
+            "name": "ACP agent bridge",
+            "desc": "AgentClientProtocol as a stream source/sink.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/acp.ts"
+          },
+          {
+            "name": "websocket mux",
+            "desc": "fan-in N websockets into one chunk stream.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/ws.ts"
+          },
+          {
+            "name": "operators reference",
+            "desc": "all 14 operators wired against sflow.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/operators.ts"
+          },
+          {
+            "name": "chunk registry",
+            "desc": "the 98-type discriminated union with codecs.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/chunk-types.ts"
+          },
+          {
+            "name": "buffer utilities",
+            "desc": "hex/base64/gzip/brotli/hexdump on the byte layer.",
+            "cta": "view ↗",
+            "href": "https://github.com/AnEntrypoint/floosie/blob/main/src/buffer.ts"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-11-10T01:45:36Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 4
+  },
+  "124": {
+    "code": "124",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T02:04:37Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 2
+  },
+  "125": {
+    "code": "125",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-07T02:16:49Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 2
+  },
+  "126": {
+    "code": "126",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-11-07T02:03:16Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 4
+  },
+  "127": {
+    "code": "127",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-07T02:03:53Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 2
+  },
+  "001": {
+    "code": "001",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-10T09:01:08Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
   },
   "003": {
     "code": "003",
@@ -180,37 +1199,137 @@
       }
     },
     "stars": 0,
-    "pushedAt": "2026-10-05T21:10:33Z",
+    "pushedAt": "2026-11-01T10:33:52Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 5
+    "commits14d": 1
   },
   "004": {
     "code": "004",
-    "missing": true,
+    "src": "https://anentrypoint.github.io/rs-codeinsight/",
+    "site": {
+      "title": "rs-codeinsight",
+      "tagline": "tree-sitter codebase analyzer",
+      "description": "instant project understanding for AI coding tools. one binary, every language tree-sitter speaks. gm's situational-awareness layer.",
+      "repo": "https://github.com/AnEntrypoint/rs-codeinsight",
+      "url": "https://anentrypoint.github.io/rs-codeinsight",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "tree-sitter",
+        "analysis",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⌗",
+      "code": "004",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "rs-codeinsight",
+        "subheading": "tree-sitter codebase analyzer",
+        "body": "instant project understanding for AI coding tools. one binary, every language tree-sitter speaks. gm's situational-awareness layer.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "tree-sitter"
+          },
+          {
+            "label": "analysis"
+          },
+          {
+            "label": "gm"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/rs-codeinsight",
+            "primary": true
+          },
+          {
+            "label": "Install",
+            "href": "https://github.com/AnEntrypoint/rs-codeinsight#installation"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why rs-codeinsight",
+        "items": [
+          {
+            "name": "rust",
+            "desc": "flagship trait of rs-codeinsight."
+          },
+          {
+            "name": "tree-sitter",
+            "desc": "core capability of rs-codeinsight."
+          },
+          {
+            "name": "analysis",
+            "desc": "core capability of rs-codeinsight."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install"
+          },
+          {
+            "kind": "cmd",
+            "text": "cargo install rs-codeinsight"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/rs-codeinsight.git"
+          }
+        ]
+      }
+    },
     "stars": 0,
-    "pushedAt": "2026-10-05T21:29:05Z",
+    "pushedAt": "2026-11-01T10:36:37Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 4
+    "commits14d": 7
   },
   "006": {
     "code": "006",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-06T17:37:41Z",
+    "pushedAt": "2026-11-05T20:52:37Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 100
+    "commits14d": 66
   },
   "009": {
     "code": "009",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-06T17:53:23Z",
+    "pushedAt": "2026-11-05T17:28:38Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 100
+    "commits14d": 22
   },
   "010": {
     "code": "010",
@@ -219,61 +1338,61 @@
     "pushedAt": "2026-10-05T20:06:30Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 1
+    "commits14d": 0
   },
   "017": {
     "code": "017",
     "missing": true,
-    "stars": 16,
-    "pushedAt": null,
+    "stars": 1,
+    "pushedAt": "2026-11-07T09:36:24Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 0
+    "commits14d": 1
   },
   "018": {
     "code": "018",
     "missing": true,
-    "stars": 5,
-    "pushedAt": null,
+    "stars": 1,
+    "pushedAt": "2026-11-07T01:54:50Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 100
+    "commits14d": 31
   },
   "019": {
     "code": "019",
     "missing": true,
-    "stars": 2,
-    "pushedAt": "2026-10-06T15:40:18Z",
+    "stars": 0,
+    "pushedAt": "2026-11-10T01:52:27Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 100
+    "commits14d": 15
   },
   "020": {
     "code": "020",
     "missing": true,
-    "stars": 0,
-    "pushedAt": "2026-09-26T12:45:16Z",
+    "stars": 1,
+    "pushedAt": "2026-11-07T01:54:55Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 11
+    "commits14d": 1
   },
   "086": {
     "code": "086",
     "missing": true,
-    "stars": 0,
-    "pushedAt": "2026-10-06T17:52:39Z",
+    "stars": 1,
+    "pushedAt": "2026-11-06T09:29:21Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 51
+    "commits14d": 100
   },
   "093": {
     "code": "093",
     "missing": true,
     "stars": 0,
-    "pushedAt": null,
+    "pushedAt": "2026-11-10T06:58:51Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 0
+    "commits14d": 96
   },
   "014": {
     "code": "014",
@@ -282,31 +1401,31 @@
     "pushedAt": "2026-10-05T20:06:43Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 1
+    "commits14d": 0
   },
   "087": {
     "code": "087",
     "missing": true,
     "stars": 0,
-    "pushedAt": null,
+    "pushedAt": "2026-11-01T14:31:00Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 26
+    "commits14d": 2
   },
   "089": {
     "code": "089",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-06T15:11:06Z",
+    "pushedAt": "2026-11-01T10:33:47Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 0
+    "commits14d": 2
   },
   "090": {
     "code": "090",
     "missing": true,
     "stars": 0,
-    "pushedAt": null,
+    "pushedAt": "2026-10-25T12:40:49Z",
     "archived": false,
     "disabled": false,
     "commits14d": 0
@@ -315,7 +1434,7 @@
     "code": "091",
     "missing": true,
     "stars": 0,
-    "pushedAt": null,
+    "pushedAt": "2026-11-01T10:34:02Z",
     "archived": false,
     "disabled": false,
     "commits14d": 2
@@ -324,7 +1443,7 @@
     "code": "092",
     "missing": true,
     "stars": 0,
-    "pushedAt": null,
+    "pushedAt": "2026-11-01T10:33:56Z",
     "archived": false,
     "disabled": false,
     "commits14d": 2
@@ -353,17 +1472,17 @@
       "category": "voice"
     },
     "home": null,
-    "stars": 4,
-    "pushedAt": null,
+    "stars": 0,
+    "pushedAt": "2026-11-05T12:25:17Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 19
+    "commits14d": 2
   },
   "031": {
     "code": "031",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-06T10:16:16Z",
+    "pushedAt": "2026-10-24T13:53:27Z",
     "archived": false,
     "disabled": false,
     "commits14d": 0
@@ -372,7 +1491,7 @@
     "code": "094",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-06T17:52:25Z",
+    "pushedAt": "2026-11-09T10:10:32Z",
     "archived": false,
     "disabled": false,
     "commits14d": 100
@@ -475,10 +1594,10 @@
     "code": "097",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-05T10:27:29Z",
+    "pushedAt": "2026-10-07T16:06:22Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 3
+    "commits14d": 0
   },
   "098": {
     "code": "098",
@@ -492,8 +1611,8 @@
   "050": {
     "code": "050",
     "missing": true,
-    "stars": 2,
-    "pushedAt": null,
+    "stars": 0,
+    "pushedAt": "2026-09-20T16:58:50Z",
     "archived": false,
     "disabled": false,
     "commits14d": 0
@@ -501,11 +1620,11 @@
   "051": {
     "code": "051",
     "missing": true,
-    "stars": 0,
-    "pushedAt": "2026-10-02T08:49:36Z",
+    "stars": 1,
+    "pushedAt": "2026-11-07T20:50:04Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 0
+    "commits14d": 4
   },
   "054": {
     "code": "054",
@@ -596,25 +1715,25 @@
     "code": "056",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-09-23T15:24:03Z",
+    "pushedAt": "2026-11-08T08:58:19Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 0
+    "commits14d": 1
   },
   "085": {
     "code": "085",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-05T21:10:30Z",
+    "pushedAt": "2026-10-08T10:02:23Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 5
+    "commits14d": 0
   },
   "095": {
     "code": "095",
     "missing": true,
     "stars": 1,
-    "pushedAt": "2026-09-30T10:10:05Z",
+    "pushedAt": "2026-10-12T08:15:56Z",
     "archived": false,
     "disabled": false,
     "commits14d": 0
@@ -622,8 +1741,8 @@
   "061": {
     "code": "061",
     "missing": true,
-    "stars": 2,
-    "pushedAt": null,
+    "stars": 1,
+    "pushedAt": "2026-11-10T06:24:51Z",
     "archived": false,
     "disabled": false,
     "commits14d": 100
@@ -631,22 +1750,22 @@
   "071": {
     "code": "071",
     "missing": true,
-    "stars": 5,
-    "pushedAt": null,
+    "stars": 0,
+    "pushedAt": "2026-11-10T08:32:22Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 0
+    "commits14d": 2
   },
   "072": {
     "code": "072",
     "src": "https://anentrypoint.github.io/design/",
     "site": null,
     "home": null,
-    "stars": 0,
-    "pushedAt": "2026-10-06T10:46:33Z",
+    "stars": 1,
+    "pushedAt": "2026-11-06T06:41:11Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 40
+    "commits14d": 1
   },
   "088": {
     "code": "088",
@@ -655,13 +1774,13 @@
     "pushedAt": "2026-09-28T14:34:16Z",
     "archived": false,
     "disabled": false,
-    "commits14d": 50
+    "commits14d": 0
   },
   "096": {
     "code": "096",
     "missing": true,
     "stars": 0,
-    "pushedAt": null,
+    "pushedAt": "2026-10-02T20:39:46Z",
     "archived": false,
     "disabled": false,
     "commits14d": 0
@@ -670,7 +1789,16 @@
     "code": "084",
     "missing": true,
     "stars": 0,
-    "pushedAt": "2026-10-01T07:42:15Z",
+    "pushedAt": "2026-10-29T11:41:59Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 4
+  },
+  "099": {
+    "code": "099",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-11-10T08:42:26Z",
     "archived": false,
     "disabled": false,
     "commits14d": 100
