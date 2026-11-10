@@ -1,0 +1,678 @@
+{
+  "001": {
+    "code": "001",
+    "src": "https://anentrypoint.github.io/gm/",
+    "site": {
+      "title": "gm",
+      "tagline": "the comedown for vibe coding",
+      "description": "vibe coding ships fast and lies about being done. gm puts a deterministic SPECIFY, PROVE, EMIT, STATE, CONC, SEC, RES, DECIDE, COMPLETE pipeline around your coding agent, so the good vibe survives contact with a gate that actually checks. one skill, every harness. the orchestrator lives in rust as plugkit.wasm.",
+      "repo": "https://github.com/AnEntrypoint/gm",
+      "url": "https://anentrypoint.github.io/gm",
+      "year": 2026,
+      "keywords": [
+        "flagship",
+        "state-machine",
+        "discipline",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "g",
+      "code": "001",
+      "category": "gm"
+    },
+    "home": null,
+    "stars": 4,
+    "pushedAt": "2026-10-06T17:54:46Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 98
+  },
+  "003": {
+    "code": "003",
+    "src": "https://anentrypoint.github.io/rs-search/",
+    "site": {
+      "title": "rs-search",
+      "tagline": "hybrid BM25 + vector codebase search over MCP",
+      "description": "hybrid BM25 + vector (nomic-embed-text-v1.5) code search over MCP, with PDF ingest and RRF fusion. how gm finds \"where X happens\" without burning context.",
+      "repo": "https://github.com/AnEntrypoint/rs-search",
+      "url": "https://anentrypoint.github.io/rs-search",
+      "year": 2026,
+      "keywords": [
+        "rust",
+        "search",
+        "mcp",
+        "bm25",
+        "vector",
+        "embeddings",
+        "rrf",
+        "pdf",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#7ee787",
+      "accent_to": "#56d364",
+      "glyph": "⌕",
+      "code": "003",
+      "category": "gm"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "rs-search",
+        "subheading": "hybrid BM25 + vector codebase search over MCP",
+        "body": "hybrid BM25 + vector (nomic-embed-text-v1.5) code search with RRF fusion, PDF ingest, and per-call project_root over MCP. how gm finds \"where X happens\" without burning context.",
+        "badges": [
+          {
+            "label": "rust"
+          },
+          {
+            "label": "bm25"
+          },
+          {
+            "label": "vector"
+          },
+          {
+            "label": "mcp"
+          },
+          {
+            "label": "pdf"
+          },
+          {
+            "label": "gm"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/rs-search",
+            "primary": true
+          },
+          {
+            "label": "Install",
+            "href": "https://github.com/AnEntrypoint/rs-search#installation"
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why rs-search",
+        "items": [
+          {
+            "name": "hybrid ranking",
+            "desc": "BM25 + vector fused with reciprocal rank fusion (k=60); identifier queries get a 1.5x BM25 boost."
+          },
+          {
+            "name": "nomic embeddings",
+            "desc": "nomic-embed-text-v1.5 GGUF via candle-core. lazy-loaded, mean-pooled, L2-normalized, SIMD cosine, MRL truncation."
+          },
+          {
+            "name": "pdf ingest",
+            "desc": ".pdf is a first-class search target. pure-Rust pdf_extract splits on form-feed; hits render as doc.pdf:<page>."
+          },
+          {
+            "name": "mcp server",
+            "desc": "stdio MCP with panic-safe tools/call. per-call project_root, index, and discipline resolution — one server, many roots."
+          },
+          {
+            "name": "cli flags",
+            "desc": "--root, --index, --discipline override project root, index dir, and discipline at the CLI without touching env."
+          },
+          {
+            "name": "content-addressable cache",
+            "desc": "BLAKE3-keyed embedding cache on disk; skips re-embedding unchanged chunks across runs."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# install (nightly toolchain required)"
+          },
+          {
+            "kind": "cmd",
+            "text": "cargo +nightly install --git https://github.com/AnEntrypoint/rs-search rs-search"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# one-shot search in current dir"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs-search search \"reciprocal rank fusion\""
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# explicit project root + index dir"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs-search --root ./repo --index ./.code-search search query"
+          },
+          {
+            "kind": "cmt",
+            "text": ""
+          },
+          {
+            "kind": "cmt",
+            "text": "# MCP stdio server"
+          },
+          {
+            "kind": "cmd",
+            "text": "rs-search serve"
+          }
+        ]
+      }
+    },
+    "stars": 0,
+    "pushedAt": "2026-10-05T21:10:33Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 5
+  },
+  "004": {
+    "code": "004",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-05T21:29:05Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 4
+  },
+  "006": {
+    "code": "006",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-06T17:37:41Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "009": {
+    "code": "009",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-06T17:53:23Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "010": {
+    "code": "010",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-10-05T20:06:30Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 1
+  },
+  "017": {
+    "code": "017",
+    "missing": true,
+    "stars": 16,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "018": {
+    "code": "018",
+    "missing": true,
+    "stars": 5,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "019": {
+    "code": "019",
+    "missing": true,
+    "stars": 2,
+    "pushedAt": "2026-10-06T15:40:18Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "020": {
+    "code": "020",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-09-26T12:45:16Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 11
+  },
+  "086": {
+    "code": "086",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-06T17:52:39Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 51
+  },
+  "093": {
+    "code": "093",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "014": {
+    "code": "014",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-10-05T20:06:43Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 1
+  },
+  "087": {
+    "code": "087",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 26
+  },
+  "089": {
+    "code": "089",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-06T15:11:06Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "090": {
+    "code": "090",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "091": {
+    "code": "091",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 2
+  },
+  "092": {
+    "code": "092",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 2
+  },
+  "030": {
+    "code": "030",
+    "src": "https://anentrypoint.github.io/zellous/",
+    "site": {
+      "title": "zellous",
+      "tagline": "serverless push-to-talk",
+      "description": "hold the button. talk. someone on the other side hears you. Opus codec, dynamic rooms, 50-message replay. built in the open, iterated fast.",
+      "repo": "https://github.com/AnEntrypoint/zellous",
+      "url": "https://anentrypoint.github.io/zellous",
+      "year": 2026,
+      "keywords": [
+        "voice",
+        "opus",
+        "realtime",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#f97583",
+      "accent_to": "#ffa657",
+      "glyph": "Z",
+      "code": "030",
+      "category": "voice"
+    },
+    "home": null,
+    "stars": 4,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 19
+  },
+  "031": {
+    "code": "031",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-06T10:16:16Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "094": {
+    "code": "094",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-06T17:52:25Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "042": {
+    "code": "042",
+    "src": "https://anentrypoint.github.io/codebasesearch/",
+    "site": {
+      "title": "codebasesearch",
+      "tagline": "codebase-wide semantic search",
+      "description": "index a whole codebase, ask it questions in english. companion to rs-search for the JS side.",
+      "repo": "https://github.com/AnEntrypoint/codebasesearch",
+      "url": "https://anentrypoint.github.io/codebasesearch",
+      "year": 2026,
+      "keywords": [
+        "search",
+        "codebase",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#79c0ff",
+      "accent_to": "#bc8cff",
+      "glyph": "⌗",
+      "code": "042",
+      "category": "data"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "codebasesearch",
+        "subheading": "codebase-wide semantic search",
+        "body": "index a whole codebase, ask it questions in english. companion to rs-search for the JS side.",
+        "badges": [
+          {
+            "label": "search"
+          },
+          {
+            "label": "codebase"
+          },
+          {
+            "label": "data"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/codebasesearch",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why codebasesearch",
+        "items": [
+          {
+            "name": "search",
+            "desc": "flagship trait of codebasesearch."
+          },
+          {
+            "name": "codebase",
+            "desc": "core capability of codebasesearch."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/codebasesearch.git"
+          }
+        ]
+      }
+    },
+    "stars": 4,
+    "pushedAt": "2026-08-30T10:32:45Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "044": {
+    "code": "044",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-09-21T06:04:34Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "097": {
+    "code": "097",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-05T10:27:29Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 3
+  },
+  "098": {
+    "code": "098",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-10-06T15:38:52Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "050": {
+    "code": "050",
+    "missing": true,
+    "stars": 2,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "051": {
+    "code": "051",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-02T08:49:36Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "054": {
+    "code": "054",
+    "src": "https://anentrypoint.github.io/agent-gsuite/",
+    "site": {
+      "title": "agent-gsuite",
+      "tagline": "gsuite tools for agents",
+      "description": "Google Workspace integrations packaged as agent tools. mail, docs, calendar.",
+      "repo": "https://github.com/AnEntrypoint/agent-gsuite",
+      "url": "https://anentrypoint.github.io/agent-gsuite",
+      "year": 2026,
+      "keywords": [
+        "agents",
+        "gsuite",
+        "247420",
+        "anentrypoint"
+      ],
+      "accent_from": "#ffa657",
+      "accent_to": "#f0883e",
+      "glyph": "⊙",
+      "code": "054",
+      "category": "tooling"
+    },
+    "home": {
+      "id": "home",
+      "title": "Home",
+      "hero": {
+        "heading": "agent-gsuite",
+        "subheading": "gsuite tools for agents",
+        "body": "Google Workspace integrations packaged as agent tools. mail, docs, calendar.",
+        "badges": [
+          {
+            "label": "agents"
+          },
+          {
+            "label": "gsuite"
+          },
+          {
+            "label": "tooling"
+          }
+        ],
+        "ctas": [
+          {
+            "label": "GitHub",
+            "href": "https://github.com/AnEntrypoint/agent-gsuite",
+            "primary": true
+          },
+          {
+            "label": "247420",
+            "href": "https://247420.xyz"
+          }
+        ]
+      },
+      "features": {
+        "heading": "Why agent-gsuite",
+        "items": [
+          {
+            "name": "agents",
+            "desc": "flagship trait of agent-gsuite."
+          },
+          {
+            "name": "gsuite",
+            "desc": "core capability of agent-gsuite."
+          }
+        ]
+      },
+      "quickstart": {
+        "heading": "Quick start",
+        "lines": [
+          {
+            "kind": "cmt",
+            "text": "# source"
+          },
+          {
+            "kind": "cmd",
+            "text": "git clone https://github.com/AnEntrypoint/agent-gsuite.git"
+          }
+        ]
+      }
+    },
+    "stars": 1,
+    "pushedAt": "2026-09-28T18:25:06Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "056": {
+    "code": "056",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-09-23T15:24:03Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "085": {
+    "code": "085",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-05T21:10:30Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 5
+  },
+  "095": {
+    "code": "095",
+    "missing": true,
+    "stars": 1,
+    "pushedAt": "2026-09-30T10:10:05Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "061": {
+    "code": "061",
+    "missing": true,
+    "stars": 2,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  },
+  "071": {
+    "code": "071",
+    "missing": true,
+    "stars": 5,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "072": {
+    "code": "072",
+    "src": "https://anentrypoint.github.io/design/",
+    "site": null,
+    "home": null,
+    "stars": 0,
+    "pushedAt": "2026-10-06T10:46:33Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 40
+  },
+  "088": {
+    "code": "088",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-09-28T14:34:16Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 50
+  },
+  "096": {
+    "code": "096",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": null,
+    "archived": false,
+    "disabled": false,
+    "commits14d": 0
+  },
+  "084": {
+    "code": "084",
+    "missing": true,
+    "stars": 0,
+    "pushedAt": "2026-10-01T07:42:15Z",
+    "archived": false,
+    "disabled": false,
+    "commits14d": 100
+  }
+}

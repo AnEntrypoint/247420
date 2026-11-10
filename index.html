@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="ds-247420" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>247420 | the creative department of the internet</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  
+  <meta name="description" content="247420 is a discord community and the tools it builds — a 1,300-strong room shipping rough drafts, a broadcast fed by what people drop, and the agent tooling behind it. the door is on discord.">
+  <meta name="keywords" content="247420, discord community, creative collective, agent tooling, gm, broadcast, AnEntrypoint">
+  <meta property="og:title" content="247420 | the creative department of the internet">
+  <meta property="og:description" content="a discord community that ships. 1,300+ in the room, a broadcast on a UTC clock, and the projects anyone can build. take your shoes off — the door is unlocked.">
+  <meta property="og:image" content="https://247420.xyz/logo.gif">
+  <meta property="og:url" content="https://247420.xyz">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="247420 | the creative department of the internet">
+  <meta name="twitter:description" content="a discord community that ships. 1,300+ in the room, a broadcast on a UTC clock, and the projects anyone can build.">
+  <meta name="twitter:image" content="https://247420.xyz/logo.gif">
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  
+  <button id="music-toggle" class="music-toggle" type="button" aria-pressed="false" title="play background music">music: off</button>
+  <script type="module">
+    import * as ds from 'https://cdn.jsdelivr.net/gh/AnEntrypoint/design@f53a1125b894623994ca8001caca6855922013b8/dist/247420.js';
+    window.ds = ds;
+    if (ds.initTheme) ds.initTheme();
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

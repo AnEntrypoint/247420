@@ -1,0 +1,77 @@
+## 🎯 247420-community-app v2.0.0
+
+# 9f 16.5kL 79fn 2cls cx1.7
+*Legend: f=files L=lines fn=functions cls=classes cx=avg-complexity | file:line:name(NL)=location Np=params | ↑N=imports-from ↓N=imported-by (N)=occurrences (+N)=more | 🔄circular 🏝️isolated 🔥complex 📋duplicated 📁large*
+
+**Langs:** JSON:88% JS:11%
+
+## 🛠️ Tech Stack
+
+**Patterns:** html(15), document.getElementById(15), Math.floor(13), setState(11), this.showStaticScreen(10), setTimeout(10)
+**Top IDs:** console(65), scheduledVideoElement(55), log(48), Math(37), error(36), currentTimeSlot(33)
+
+## ⚡ Code Patterns
+
+**Async:** async(34), await(34)
+**Errors:** try/catch(15), throw(6)
+**Internal calls:** html(15), document.getElementById(15), Math.floor(13), setState(11), setTimeout(10), this.showStaticScreen(10), Math.max(7), this.playRandomVideo(6)
+
+## 🔗 I/O & Integration
+
+**HTTP:** fetch(2)
+**Storage:** files(11)
+**Events:** emit(0), listen(17)
+
+## 📊 Code Organization
+
+**Large files:** schwelevision.js:1413L, app.js:248L, utils/schwepe-tv-scheduler.js:206L
+**Long funcs:** schwelevision.js:645:playCurrentVideoInMontage(110L), schwelevision.js:10:constructor(82L), schwelevision.js:411:getCurrentScheduledContent(56L), schwelevision.js:202:handleTvSlap(53L)
+**Many params:** schwelevision.js:168:setupEventListeners(8p)
+**Classes:** utils/schwepe-tv-scheduler.js:0:SchwepeTVScheduler, schwelevision.js:0:Schwelevision
+
+## 🔄 Architecture
+
+**L0 [pure exports]:** schwepe-tv-scheduler(1↓)
+**L3 [pure imports]:** schwelevision(1↑)
+**Cross-module:** schwelevision.js→utils
+**External:** htm, webjsx
+
+## 🔌 API Surface
+
+**Classes:** SchwepeTVScheduler, Schwelevision
+**Entry files:** schwepe-tv-scheduler
+
+## 🚨 Issues
+
+- 🔥 Complex funcs: schwelevision.js:645:playCurrentVideoInMontage(110L)
+- 📁 Large files: schwelevision.js:1413L
+- 📋 2 duplicated groups
+
+## 🧹 Dead Code & Tests
+
+**Orphaned:** saved_images.json, video-schedule.json, package.json, saved_images.json, saved_videos.json, saved_media.json
+**Unused exports:** schwelevision.js: Schwelevision
+**Tests:** 0/9 (0%)
+
+## 📦 Modules
+
+- utils: 1f, 1cx, 0↑1↓
+- static: 1f, 0cx, 0↑0↓
+- mnt: 3f, 0cx, 0↑0↓
+
+## 📄 File Index
+
+**app.js** 248L fn: setState, Navbar, Hero, FeatureCard (+9)
+**mnt/c/dev/247420/saved_images.json** 3390L
+**mnt/c/dev/247420/saved_media.json** 5126L
+**mnt/c/dev/247420/saved_videos.json** 1738L
+**package.json** 6L
+**saved_images.json** 1212L
+**schwelevision.js** 1413L exports: [Schwelevision] fn: constructor, init, loadVideoSchedule, loadWeeklySchedule (+52)
+**static/video-schedule.json** 3117L
+**utils/schwepe-tv-scheduler.js** 206L exports: [SchwepeTVScheduler] fn: constructor, getCurrentTimeSlot, getDeterministicSelection, calculateSeekPosition (+6)
+
+Git: branch: claude/fix-gh-pages-links-theme-Evsv5
+Hot: videos-thread.html(27), lore.html(18), package.json(11), index.html(9), gallery.html(8), images-thread.html(7)
+Tooling: GitHub Actions (optimized-build.yml, deploy.yml)
+Conv[JS]: 4-space, single quotes, semicolons, arrow functions, relative imports, kebab-case files

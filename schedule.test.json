@@ -1,0 +1,11 @@
+[
+  {"t":0,"v":"clipA","d":1800,"title":"Clip A","url":"https://example.com/a.mp4","kind":"show"},
+  {"t":1800,"v":"clipB","d":1800,"title":"Clip B","url":"https://example.com/b.mp4","kind":"show"},
+  {"t":3600,"v":"showX","d":900,"title":"Show X","url":"https://example.com/x.mp4","kind":"segment","seek":0},
+  {"t":4500,"v":"ad1","d":300,"title":"Ad 1","url":"https://example.com/ad1.mp4","kind":"ad"},
+  {"t":4800,"v":"showX","d":900,"title":"Show X","url":"https://example.com/x.mp4","kind":"segment","seek":900},
+  {"t":5700,"v":"ad2","d":300,"title":"Ad 2","url":"https://example.com/ad2.mp4","kind":"ad"},
+  {"t":6000,"v":"showX","d":1200,"title":"Show X","url":"https://example.com/x.mp4","kind":"segment","seek":1800},
+  {"t":7200,"v":"movieM","d":9000,"title":"Movie M","url":"https://example.com/m.mp4","kind":"movie","span":3},
+  {"t":16200,"v":"showY","d":3600,"title":"Show Y","url":"https://example.com/y.mp4","kind":"show"}
+]
