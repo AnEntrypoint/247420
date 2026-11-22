@@ -5,6 +5,7 @@ import { loadBlogPosts } from './lib/community.js';
 import VideoPlayer from './lib/video.js';
 import Music from './lib/music.js';
 import { guideRows } from './lib/station.js';
+import { installTvUi } from './lib/tv-ui.js';
 
 const router = new Router({ fallback: pages.home });
 window.__router = router;
@@ -34,6 +35,7 @@ const player = new VideoPlayer();
 window.__debug.videoPlayer = player;
 window.__debug.video = player.state;
 window.__debug.scheduler = player.scheduler.state;
+installTvUi(player);
 function slotClock(t) {
     const day = Math.floor(t / 86400);
     const sec = t % 86400;
@@ -52,7 +54,7 @@ function renderSchedule() {
         return;
     }
     el.innerHTML = guideRows(sched).map(row => `
-        <div class="schedule-slot">
+        <div class="schedule-slot" data-t="${row.t}">
             <span class="time">${slotClock(row.t)}</span>
             <span class="title">${row.title}${row.detail ? ' — ' + row.detail : ''}</span>
         </div>
