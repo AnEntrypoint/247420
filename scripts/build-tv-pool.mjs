@@ -19,6 +19,7 @@ const ANTHOLOGIES = {
   commons: 'Commons Cinema',
 };
 const WARN = /horror|blood|kill|death|dead|war\b|violence|drug|cigarette|smoking|bikini|girlie|burlesque|gore|gory|creepypasta|nude|sex/i;
+const REAL_HARM = /murder|ambush|shooting|shot dead|body[- ]?cam|dashcam|deputies|police|lethal|killed|terror|isis|execution|hostage|massacre|genocide|holocaust|gustloff|third reich|wehrmacht|swastika|assassin|suicide|bomb|autopsy|crime scene|manhunt|riot|hitler|hate|racist|bodycam/i;
 const FREE_LICENSE = /^(CC|Public domain|PD|GFDL|FAL|Attribution)/i;
 
 const lines = fs.readFileSync(path.join(input, 'meta.jsonl'), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
@@ -57,7 +58,7 @@ for (const m of lines) {
   if (multi && long.length >= 2) long.forEach(r => { r.series = m.title.replace(/\s+/g, ' ').trim(); });
   for (const r of records) if (!r.series && r.dur >= 1200 && r.dur <= 3660) r.series = ANTHOLOGIES[theme] || ANTHOLOGIES.pd;
   if (!m.rights) { unlicensed.push(...records); continue; }
-  if (m.warn || WARN.test(m.title)) { borderline.push(...records.map(r => ({ title: r.title, url: r.url, why: 'title keyword' }))); continue; }
+  if (m.warn || WARN.test(m.title) || REAL_HARM.test(m.title + ' ' + m.tags.join(' '))) { borderline.push(...records.map(r => ({ title: r.title, url: r.url, why: 'title keyword' }))); continue; }
   items.push(...records);
   for (const r of records) { count(stats.bySource, 'archive.org'); count(stats.byTheme, theme); }
 }
@@ -79,7 +80,7 @@ for (const file of fs.readdirSync(commonsDir).filter(f => f.startsWith('c-'))) {
       url: info.url.split('?')[0], dur: Math.round(info.duration), tags: [], rights: 'commons:' + license, theme: 'commons', source: 'commons.wikimedia.org',
     };
     if (!FREE_LICENSE.test(license)) { unlicensed.push(record); continue; }
-    if (WARN.test(title)) { borderline.push({ title, url: record.url, why: 'title keyword' }); continue; }
+    if (WARN.test(title) || REAL_HARM.test(title)) { borderline.push({ title, url: record.url, why: 'title keyword' }); continue; }
     items.push(record);
     count(stats.bySource, 'commons');
     count(stats.byTheme, 'commons');
