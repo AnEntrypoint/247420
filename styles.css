@@ -230,3 +230,6 @@
 .tv-volume-input:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 body.tv-theatre .tv-stage { position: fixed; inset: 0; z-index: 50; background: #000; }
 body.tv-theatre .tv-stage .tv-video { width: 100%; height: 100%; object-fit: contain; }
+.tv-keys { font-family: var(--ff-mono); font-size: var(--fs-xs); color: var(--panel-text-3); margin: 0; padding: var(--space-2) var(--space-4); }
+body.tv-theatre .tv-nownext { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: color-mix(in oklab, var(--panel-0) 88%, transparent); }
+@media (max-width: 720px) { .tv-keys { display: none; } .ds-247420 .tv-nownext { gap: var(--space-3); } }
