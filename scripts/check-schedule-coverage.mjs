@@ -5,13 +5,18 @@ import path from 'node:path';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { WEEKS } = await import(pathToFileURL(path.join(root, 'lib/week-schedules.js')).href);
 const station = await import(pathToFileURL(path.join(root, 'lib/station.js')).href);
-const { buildPool, buildWeek, classify, BLOCK_SECONDS, WEEK_SECONDS, WEEK_EPOCH, MOVIE_TIMES } = station;
+const { buildPool, buildWeek, rotationWeeks, classify, BLOCK_SECONDS, WEEK_SECONDS, WEEK_EPOCH, MOVIE_TIMES } = station;
 
 global.window = { __debug: {} };
 const { default: Scheduler } = await import(pathToFileURL(path.join(root, 'lib/scheduler.js')).href);
 const scheduler = new Scheduler();
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'schedule.json'), 'utf8'));
-const pool = buildPool(WEEKS, catalog);
+const extra = JSON.parse(fs.readFileSync(path.join(root, 'lib/pool.json'), 'utf8'));
+const unlicensedOnAir = extra.items.filter(item => !item.rights);
+if (unlicensedOnAir.length) throw new Error(unlicensedOnAir.length + ' pool items have no rights record, e.g. ' + unlicensedOnAir[0].url);
+const pool = buildPool(WEEKS, catalog, extra);
+const byRights = {};
+for (const item of extra.items) { const key = item.rights.split(':')[0] === 'cc' ? 'creative-commons' : item.rights.split(':')[0]; byRights[key] = (byRights[key] || 0) + 1; }
 const currentWeek = Math.floor((Date.now() - WEEK_EPOCH) / (WEEK_SECONDS * 1000));
 const sample = [...new Set([0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 181, 182, 183, 184, 365, 366, currentWeek, currentWeek + 1])];
 if (scheduler.getWeekIndex() !== currentWeek) throw new Error('scheduler week index ' + scheduler.getWeekIndex() + ' disagrees with station epoch week ' + currentWeek);
@@ -66,6 +71,10 @@ for (const start of movieStarts) expect(allowedMovieTimes.has(start), 'movie sta
 const total = [...share.values()].reduce((a, b) => a + b, 0);
 const ranked = [...share].sort((a, b) => b[1] - a[1]);
 console.log('pool classes', JSON.stringify(pool.counts), 'series', pool.series.length, 'movies', pool.movies.length, 'clips', pool.clips.length, 'ads', pool.ads.length);
+console.log('pool checked', extra.checked, 'dead', extra.dead.length, 'rights', JSON.stringify(byRights), 'unslotted series', pool.unslotted.length);
+const clipHours = pool.clips.reduce((sum, c) => sum + c.dur, 0) / 3600;
+console.log('unique clip hours ' + clipHours.toFixed(0) + ', series episodes ' + pool.series.reduce((n, s) => n + s.episodes.length, 0) + ', longest series cycle ' + Math.max(...pool.series.map(s => s.episodes.length)) + ' weeks');
+console.log('rotation before the weekly line-up repeats: ' + rotationWeeks(pool) + ' weeks');
 console.log('weeks checked', sample.join(','));
 console.log('air time covered', (total / 3600).toFixed(0) + 'h of ' + (sample.length * 168) + 'h');
 for (const [title, seconds] of ranked.slice(0, 12)) console.log((100 * seconds / total).toFixed(2).padStart(6) + '%  ' + title);
