@@ -19,9 +19,33 @@ const ANTHOLOGIES = {
   commons: 'Commons Cinema',
 };
 const WARN = /horror|blood|kill|death|dead|war\b|violence|drug|cigarette|smoking|bikini|girlie|burlesque|gore|gory|creepypasta|nude|sex/i;
-const REAL_HARM = /murder|ambush|shooting|shot dead|body[- ]?cam|dashcam|deputies|police|lethal|killed|terror|isis|execution|hostage|massacre|genocide|holocaust|gustloff|third reich|wehrmacht|swastika|assassin|suicide|bomb|autopsy|crime scene|manhunt|riot|hitler|hate|racist|bodycam/i;
+const CATEGORIES = {
+  'real-violence': /murder|ambush|shooting|shot dead|body[- ]?cam|dashcam|deputies|\bpolice\b|lethal|killed|manhunt|crime scene|autopsy|stabbing|homicide|massacre|hostage|execution|beheading|bodycam|assassin|\bbombs?\b|\bbombing\b/i,
+  'war-atrocity-extremism': /nazi|hitler|third reich|wehrmacht|swastika|holocaust|genocide|gustloff|\bisis\b|terror|jihad|\bkkk\b|white power|supremacist/i,
+  hate: /\bhate\b|racist|slur/i,
+  sexual: /porn|\bxxx\b|\bsex(ual|y)?\b|erotic|nude|naked|fetish|hentai|strip(per|tease)|nsfw|lingerie|bdsm/i,
+  'gore-self-harm': /\bgore\b|\bgory\b|snuff|corpse|suicide|self[- ]harm|torture|mutilat|dismember|cadaver/i,
+  harassment: /doxx|harass|stalker|revenge porn|swatting/i,
+  tragedy: /tragedy|victims?\b|funeral|died in/i,
+};
 const FREE_LICENSE = /^(CC|Public domain|PD|GFDL|FAL|Attribution)/i;
 
+const archiveText = new Map();
+const commonsText = new Map();
+for (const file of fs.readdirSync(input)) {
+  if (/^desc-.*\.jsonl$/.test(file)) for (const line of fs.readFileSync(path.join(input, file), 'utf8').split('\n').filter(Boolean)) { const r = JSON.parse(line); if (r.ok) archiveText.set(r.id, [r.description, r.subject, r.collection.join(' '), r.creator].join(' ')); }
+  if (file === 'cdesc.jsonl') for (const line of fs.readFileSync(path.join(input, file), 'utf8').split('\n').filter(Boolean)) { const r = JSON.parse(line); commonsText.set(r.title, [r.description, r.categories.join(' ')].join(' ')); }
+}
+const screened = {};
+const unjudged = [];
+const words = {};
+const screen = (text) => {
+  for (const name of Object.keys(CATEGORIES)) {
+    const hit = CATEGORIES[name].exec(text);
+    if (hit) { words[name + ':' + hit[0].toLowerCase()] = (words[name + ':' + hit[0].toLowerCase()] || 0) + 1; return name; }
+  }
+  return undefined;
+};
 const lines = fs.readFileSync(path.join(input, 'meta.jsonl'), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
 const items = [];
 const unlicensed = [];
@@ -58,7 +82,14 @@ for (const m of lines) {
   if (multi && long.length >= 2) long.forEach(r => { r.series = m.title.replace(/\s+/g, ' ').trim(); });
   for (const r of records) if (!r.series && r.dur >= 1200 && r.dur <= 3660) r.series = ANTHOLOGIES[theme] || ANTHOLOGIES.pd;
   if (!m.rights) { unlicensed.push(...records); continue; }
-  if (m.warn || WARN.test(m.title) || REAL_HARM.test(m.title + ' ' + m.tags.join(' '))) { borderline.push(...records.map(r => ({ title: r.title, url: r.url, why: 'title keyword' }))); continue; }
+  const category = screen(m.title + ' ' + m.tags.join(' ') + ' ' + (archiveText.get(m.id) || ''));
+  if (category || m.warn || WARN.test(m.title)) {
+    const why = category || 'title keyword';
+    screened[why] = (screened[why] || 0) + 1;
+    borderline.push(...records.map(r => ({ title: r.title, url: r.url, why })));
+    continue;
+  }
+  if (!archiveText.get(m.id)) unjudged.push(...records.map(r => ({ title: r.title, url: r.url, why: 'no description or subjects fetched' })));
   items.push(...records);
   for (const r of records) { count(stats.bySource, 'archive.org'); count(stats.byTheme, theme); }
 }
@@ -80,7 +111,14 @@ for (const file of fs.readdirSync(commonsDir).filter(f => f.startsWith('c-'))) {
       url: info.url.split('?')[0], dur: Math.round(info.duration), tags: [], rights: 'commons:' + license, theme: 'commons', source: 'commons.wikimedia.org',
     };
     if (!FREE_LICENSE.test(license)) { unlicensed.push(record); continue; }
-    if (WARN.test(title) || REAL_HARM.test(title)) { borderline.push({ title, url: record.url, why: 'title keyword' }); continue; }
+    const commonsCategory = screen(title + ' ' + (commonsText.get(page.title) || ''));
+    if (commonsCategory || WARN.test(title)) {
+      const why = commonsCategory || 'title keyword';
+      screened[why] = (screened[why] || 0) + 1;
+      borderline.push({ title, url: record.url, why });
+      continue;
+    }
+    if (!commonsText.get(page.title)) unjudged.push({ title, url: record.url, why: 'no description fetched' });
     items.push(record);
     count(stats.bySource, 'commons');
     count(stats.byTheme, 'commons');
@@ -89,8 +127,16 @@ for (const file of fs.readdirSync(commonsDir).filter(f => f.startsWith('c-'))) {
 
 const byUrl = new Map();
 for (const item of items) if (!byUrl.has(item.url)) byUrl.set(item.url, item);
-const pool = { generated: new Date().toISOString().slice(0, 10), checked: null, dead: [], items: [...byUrl.values()].sort((a, b) => (a.url < b.url ? -1 : 1)) };
+const FAMILY_CAP = 10;
+const families = new Map();
+const capped = [...byUrl.values()].filter(item => {
+  const family = item.title.toLowerCase().replace(/[-_ .\d]+$/, '');
+  families.set(family, (families.get(family) || 0) + 1);
+  return families.get(family) <= FAMILY_CAP;
+});
+const pool = { generated: new Date().toISOString().slice(0, 10), checked: null, dead: [], items: capped.sort((a, b) => (a.url < b.url ? -1 : 1)) };
 fs.writeFileSync(path.join(root, 'lib/pool.json'), JSON.stringify(pool));
 fs.writeFileSync(path.join(root, 'tv/pool-unlicensed.json'), JSON.stringify({ note: 'not on air: rights unknown, awaiting owner decision', items: unlicensed }));
 fs.writeFileSync(path.join(root, 'tv/pool-borderline.json'), JSON.stringify({ note: 'not on air: borderline content, awaiting owner decision', items: borderline }));
-console.log(JSON.stringify({ onAir: pool.items.length, unlicensed: unlicensed.length, borderline: borderline.length, commonsPages, ...stats }, null, 1));
+fs.writeFileSync(path.join(root, 'tv/pool-unjudged.json'), JSON.stringify({ note: 'on air judged by title only, no description available', items: unjudged }));
+console.log(JSON.stringify({ matchedWords: Object.entries(words).sort((a, b) => b[1] - a[1]).slice(0, 25), screened, unjudged: unjudged.length, onAir: pool.items.length, unlicensed: unlicensed.length, borderline: borderline.length, commonsPages, ...stats }, null, 1));

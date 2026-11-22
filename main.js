@@ -4,7 +4,7 @@ import { loadShowcase } from './lib/projects.js';
 import { loadBlogPosts } from './lib/community.js';
 import VideoPlayer from './lib/video.js';
 import Music from './lib/music.js';
-import { guideRows } from './lib/station.js';
+import { renderGuide } from './lib/guide-grid.js';
 import { installTvUi } from './lib/tv-ui.js';
 
 const router = new Router({ fallback: pages.home });
@@ -36,15 +36,6 @@ window.__debug.videoPlayer = player;
 window.__debug.video = player.state;
 window.__debug.scheduler = player.scheduler.state;
 installTvUi(player);
-function slotClock(t) {
-    const day = Math.floor(t / 86400);
-    const sec = t % 86400;
-    const hh = Math.floor(sec / 3600) % 24;
-    const mm = Math.floor((sec % 3600) / 60);
-    const dayName = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'][day] || 'day ' + day;
-    return dayName + ' ' + String(hh).padStart(2, '0') + ':' + String(mm).padStart(2, '0');
-}
-
 function renderSchedule() {
     const el = document.getElementById('schedule');
     if (!el) return;
@@ -53,12 +44,7 @@ function renderSchedule() {
         el.innerHTML = '<p class="ds-prose">No schedule data.</p>';
         return;
     }
-    el.innerHTML = guideRows(sched).map(row => `
-        <div class="schedule-slot" data-t="${row.t}">
-            <span class="time">${slotClock(row.t)}</span>
-            <span class="title">${row.title}${row.detail ? ' — ' + row.detail : ''}</span>
-        </div>
-    `).join('');
+    renderGuide(el, sched, player.loadedWeek);
 }
 function renderNowNext() {
     const nowEl = document.getElementById('tv-now');

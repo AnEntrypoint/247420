@@ -7,7 +7,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ALLOWED = new Set(['—']);
 const files = [
   'main.js', 'index.html', 'test.js', 'styles.css',
-  'lib/scheduler.js', 'lib/video.js',
+  'lib/scheduler.js', 'lib/video.js', 'lib/tv-ui.js', 'lib/guide-grid.js', 'lib/station.js',
   'lib/components.js', 'lib/projects.js',
   'scripts/fetch-showcase.mjs', 'scripts/lint-glyphs.mjs',
 ];

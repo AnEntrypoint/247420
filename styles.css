@@ -233,3 +233,44 @@ body.tv-theatre .tv-stage .tv-video { width: 100%; height: 100%; object-fit: con
 .tv-keys { font-family: var(--ff-mono); font-size: var(--fs-xs); color: var(--panel-text-3); margin: 0; padding: var(--space-2) var(--space-4); }
 body.tv-theatre .tv-nownext { position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: color-mix(in oklab, var(--panel-0) 88%, transparent); }
 @media (max-width: 720px) { .tv-keys { display: none; } .ds-247420 .tv-nownext { gap: var(--space-3); } }
+
+.guide { --blk: 72px; padding: var(--space-3) var(--space-4); }
+.guide-tools { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; justify-content: space-between; margin-bottom: var(--space-3); }
+.guide-days { display: none; flex-wrap: wrap; gap: 4px; }
+.guide-day[aria-pressed="true"] { background: var(--panel-2); box-shadow: inset 0 -3px 0 var(--green); }
+.guide-scroll { overflow-x: auto; padding-bottom: var(--space-2); }
+.guide-hours { display: flex; margin-left: 48px; width: calc(var(--blk) * 48); font-family: var(--ff-mono); font-size: var(--fs-xs); color: var(--panel-text-3); }
+.guide-hours span { flex: 0 0 calc(var(--blk) * 2); }
+.guide-row { display: flex; align-items: stretch; margin-top: 2px; width: max-content; }
+.guide-dayname { flex: 0 0 48px; position: sticky; left: 0; z-index: 2; display: flex; align-items: center; background: var(--panel-0); color: var(--green); font-family: var(--ff-mono); font-size: var(--fs-sm); text-transform: uppercase; }
+.guide-cells { display: flex; }
+.guide-cell { flex: 0 0 calc(var(--blk) * var(--span)); min-width: 0; height: 56px; margin: 0; padding: 4px 6px; border: 1px solid var(--panel-0); border-radius: 3px; display: flex; flex-direction: column; justify-content: space-between; gap: 2px; text-align: left; font-family: var(--ff-mono); font-size: var(--fs-xs); color: #fff; overflow: hidden; cursor: pointer; }
+.guide-cell .guide-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; }
+.guide-clock { opacity: 0.85; }
+.kind-show { background: hsl(calc(var(--hue) * 40 + 15) 45% 24%); }
+.kind-movie { background: #3b3b3b; border-color: #e6c14a; }
+.kind-reel { background: var(--panel-1); color: var(--panel-text); }
+.guide-strip { display: flex; gap: 1px; height: 6px; width: 100%; }
+.guide-strip i { display: block; min-width: 2px; }
+.guide-strip .seg0 { background: var(--green); }
+.guide-strip .seg1 { background: var(--panel-text-3); }
+.guide-cell[aria-current="time"] { outline: 3px solid var(--green); outline-offset: -3px; }
+.guide-cell:focus-visible { outline: 3px solid #fff; outline-offset: -3px; position: relative; z-index: 3; }
+.guide-legend { margin-top: var(--space-3); font-family: var(--ff-mono); font-size: var(--fs-xs); color: var(--panel-text); }
+.guide-legend summary { cursor: pointer; min-height: 28px; }
+.guide-legend ul { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); padding: var(--space-2) 0 0; margin: 0; }
+.legend-chip { display: inline-flex; align-items: center; gap: 6px; }
+.legend-chip .swatch { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--panel-2); }
+.tv-audio, .tv-view { display: inline-flex; align-items: center; gap: var(--space-2); padding: 2px var(--space-2); border: 1px solid var(--panel-2); border-radius: 4px; }
+.tv-controls-right { flex-wrap: wrap; justify-content: flex-end; }
+@media (max-width: 720px) {
+  .guide-days { display: flex; }
+  .guide-hours, .guide-dayname { display: none; }
+  .guide-scroll { overflow-x: visible; }
+  .guide-row { display: none; width: 100%; }
+  .guide[data-day="0"] .guide-row[data-day="0"], .guide[data-day="1"] .guide-row[data-day="1"], .guide[data-day="2"] .guide-row[data-day="2"], .guide[data-day="3"] .guide-row[data-day="3"], .guide[data-day="4"] .guide-row[data-day="4"], .guide[data-day="5"] .guide-row[data-day="5"], .guide[data-day="6"] .guide-row[data-day="6"] { display: flex; }
+  .guide-cells { flex-direction: column; width: 100%; }
+  .guide-cell { flex: 0 0 auto; height: auto; min-height: 44px; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--space-3); }
+  .guide-strip { width: 48px; flex: 0 0 48px; }
+  .tv-controls-right { justify-content: flex-start; }
+}
