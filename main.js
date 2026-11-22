@@ -4,6 +4,7 @@ import { loadShowcase } from './lib/projects.js';
 import { loadBlogPosts } from './lib/community.js';
 import VideoPlayer from './lib/video.js';
 import Music from './lib/music.js';
+import { guideRows } from './lib/station.js';
 
 const router = new Router({ fallback: pages.home });
 window.__router = router;
@@ -50,10 +51,10 @@ function renderSchedule() {
         el.innerHTML = '<p class="ds-prose">No schedule data.</p>';
         return;
     }
-    el.innerHTML = sched.map(entry => `
+    el.innerHTML = guideRows(sched).map(row => `
         <div class="schedule-slot">
-            <span class="time">${slotClock(entry.t)}</span>
-            <span class="title">${entry.title || entry.v}</span>
+            <span class="time">${slotClock(row.t)}</span>
+            <span class="title">${row.title}${row.detail ? ' — ' + row.detail : ''}</span>
         </div>
     `).join('');
 }
@@ -71,7 +72,7 @@ function renderNowNext() {
     if (nowEl) {
         nowEl.textContent = slot
             ? (slot.entry.title || slot.entry.v || 'untitled')
-            : 'off air — static';
+            : 'tuning in — the clock is still syncing';
     }
     const upcoming = player.scheduler.getUpcomingSlots(1);
     if (nextEl) {
