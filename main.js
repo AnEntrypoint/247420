@@ -119,7 +119,7 @@ function startTvTick() {
     if (tvTick) return;
     tvTick = setInterval(() => {
         if (!document.getElementById('tv-now')) { clearInterval(tvTick); tvTick = null; return; }
-        renderNowNext();
+        player.syncSlot().then(renderNowNext).catch(e => console.error('TV slot sync error:', e));
     }, 15000);
 }
 
