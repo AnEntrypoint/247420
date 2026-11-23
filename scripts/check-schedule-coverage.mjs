@@ -14,6 +14,12 @@ const catalog = JSON.parse(fs.readFileSync(path.join(root, 'schedule.json'), 'ut
 const extra = JSON.parse(fs.readFileSync(path.join(root, 'lib/pool.json'), 'utf8'));
 const unlicensedOnAir = extra.items.filter(item => !item.rights);
 if (unlicensedOnAir.length) throw new Error(unlicensedOnAir.length + ' pool items have no rights record, e.g. ' + unlicensedOnAir[0].url);
+const { CATEGORIES, DENY } = await import(pathToFileURL(path.join(root, 'scripts/pool-filters.mjs')).href);
+const filters = [...Object.entries(DENY), ...Object.entries(CATEGORIES)];
+const denied = extra.items.map(item => ({ item, hit: filters.find(([, re]) => re.test(item.title + ' ' + item.series + ' ' + item.episode)) })).filter(x => x.hit);
+if (denied.length) throw new Error(denied.length + ' pool items match a deny category, e.g. ' + denied[0].hit[0] + ': ' + denied[0].item.title);
+const unscored = extra.items.filter(item => !(item.score >= 3));
+if (unscored.length) throw new Error(unscored.length + ' pool items lack a score of 3 or more, e.g. ' + unscored[0].title);
 const pool = buildPool(WEEKS, catalog, extra);
 const byRights = {};
 for (const item of extra.items) { const key = item.rights.split(':')[0] === 'cc' ? 'creative-commons' : item.rights.split(':')[0]; byRights[key] = (byRights[key] || 0) + 1; }

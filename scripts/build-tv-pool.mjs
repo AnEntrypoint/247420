@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { CATEGORIES, DENY } from './pool-filters.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const input = process.argv[2];
@@ -19,32 +20,8 @@ const ANTHOLOGIES = {
   commons: 'Commons Cinema',
 };
 const WARN = /horror|blood|kill|death|dead|war\b|violence|drug|cigarette|smoking|bikini|girlie|burlesque|gore|gory|creepypasta|nude|sex/i;
-const CATEGORIES = {
-  'real-violence': /murder|ambush|shooting|shot dead|body[- ]?cam|dashcam|deputies|\bpolice\b|lethal|killed|manhunt|crime scene|autopsy|stabbing|homicide|massacre|hostage|execution|beheading|bodycam|assassin|\bbombs?\b|\bbombing\b/i,
-  'war-atrocity-extremism': /nazi|hitler|third reich|wehrmacht|swastika|holocaust|genocide|gustloff|\bisis\b|terror|jihad|\bkkk\b|white power|supremacist/i,
-  hate: /\bhate\b|racist|slur/i,
-  sexual: /porn|\bxxx\b|\bsex(ual|y)?\b|erotic|nude|naked|fetish|hentai|strip(per|tease)|nsfw|lingerie|bdsm/i,
-  'gore-self-harm': /\bgore\b|\bgory\b|snuff|corpse|suicide|self[- ]harm|torture|mutilat|dismember|cadaver/i,
-  harassment: /doxx|harass|stalker|revenge porn|swatting/i,
-  tragedy: /tragedy|victims?\b|funeral|died in/i,
-};
 const FREE_LICENSE = /^(CC|Public domain|PD|GFDL|FAL|Attribution)/i;
 
-const DENY = {
-  religion: /\bpray(er|ers|ing)?\b|mosque|church|sermon|\bmass\b|quran|koran|bible|hymn|gospel|ramadan|\bimam\b|pastor|worship|christian|islamic|jesus|\bgod\b|sunday school|evangeli|ministry|catholic|synagogue|buddhis[tm]|scripture|\bchrist\b|\bfaith\b|\bmuslim|\bmissionar/i,
-  'news-politics': /\bnews\b|election|\bspeech\b|press conference|parliament|\brally\b|\bpresident|\bsenate\b|congress|\bcampaign\b|politic|government|\bminister\b|protest|newsreel|broadcast of/i,
-  'lectures-talks': /\blectures?\b|\btalks?\b|\bpanel\b|seminar|symposium|keynote|webinar|tutorial|\bcourses?\b|colloquium|opencourseware|commencement|\bclass\b|\blesson\b|how to\b/i,
-  conference: /conference|\bsummit\b|convention|workshop|proceedings|\bfestival\b/i,
-  interview: /interview|\bq&a\b|in conversation|podcast|\bdiscussion\b/i,
-  'local-event': /ceremony|\bparade\b|graduation|wedding|funeral|memorial|town hall|council|dedication|commemorat|\bconcert\b|recital/i,
-  travelogue: /travelogue|\btravel\b|tour of|trip to|walking tour|city tour|vacation|holiday in|journey through|sightseeing|\bvisiting\b/i,
-  'military-war': /\bwar\b|wwii|world war|military|\barmy\b|\bnavy\b|soldiers?\b|\bbattle\b|troops|combat|veterans?\b|air force|marines|weapons?\b|missile|pentagon|armed forces|\bnato\b/i,
-  medical: /surg(ery|ical)|\bpatients?\b|medical|hospital|anatomy|clinical|disease|therapy|dental|cancer|\bnurse|physician|health care/i,
-  courtroom: /courtroom|\btrial\b|\bjudge\b|testimony|\bhearing\b|lawsuit|supreme court/i,
-  'home-video': /home movies?|family video|birthday party|\bbaby\b|camcorder|vlog|day in the life|family reunion|christmas morning|amateur film/i,
-  sports: /\bmatch\b|football|soccer|basketball|baseball|hockey|tennis|\bgolf\b|olympic|\bnfl\b|\bnba\b|championship|super bowl|world cup|\bleague\b/i,
-  'bland-compilation': /compilation|\bcollection\b|\bvarious\b|\bmisc\b|untitled|unlisted|all animated movies|best movies ever|full series|complete series|\bseason \d+\b|archive of|\bepisodes?\b/i,
-};
 const denied = {};
 const deniedItems = [];
 const deny = (text, title, dl) => {
@@ -59,6 +36,28 @@ for (const file of fs.readdirSync(input)) {
   if (/^desc-.*\.jsonl$/.test(file)) for (const line of fs.readFileSync(path.join(input, file), 'utf8').split('\n').filter(Boolean)) { const r = JSON.parse(line); if (r.ok) archiveText.set(r.id, [r.description, r.subject, r.collection.join(' '), r.creator].join(' ')); }
   if (file === 'cdesc.jsonl') for (const line of fs.readFileSync(path.join(input, file), 'utf8').split('\n').filter(Boolean)) { const r = JSON.parse(line); commonsText.set(r.title, [r.description, r.categories.join(' ')].join(' ')); }
 }
+const stats = { archiveItems: 0, dropped: {}, bySource: {}, byTheme: {} };
+const count = (bucket, key) => { bucket[key] = (bucket[key] || 0) + 1; };
+const scores = new Map();
+const scoresDir = path.join(input, 'scores');
+if (fs.existsSync(scoresDir)) for (const f of fs.readdirSync(scoresDir).filter(f => /^out-.*\.json$/.test(f))) for (const r of JSON.parse(fs.readFileSync(path.join(scoresDir, f), 'utf8'))) scores.set(r.k, r);
+const scoreGate = (key) => {
+  if (!scores.size) return { s: 3 };
+  const r = scores.get(key);
+  if (!r) { count(stats.dropped, 'unscored'); return null; }
+  if (r.flag) { count(stats.dropped, 'scorer-flagged'); return null; }
+  if (r.s < 3) { count(stats.dropped, 'score-below-3'); return null; }
+  return r;
+};
+const ANTHOLOGY_RULES = [
+  [/glitch|datamosh|video synth|analog video|net art|vaporwave|synthwave/i, 'Glitch Channel'],
+  [/demoscene|8-bit|chiptune|\bintro\b|amiga|atari|c64|pixel/i, 'Demoscene Showcase'],
+  [/commercial|advert|\bident\b|bumper/i, 'Ad Break Theater'],
+  [/trailer/i, 'Trailer Trash Theater'],
+  [/cartoon|animat|betty boop|popeye|fleischer|stop.?motion/i, 'Cartoon Cabinet'],
+  [/surreal|absurd|experimental|abstract/i, 'Weird Cinema'],
+];
+const anthologyOf = (text, theme) => (ANTHOLOGY_RULES.find(([re]) => re.test(text)) || [])[1] || ANTHOLOGIES[theme] || 'Weird Late Show';
 const screened = {};
 const unjudged = [];
 const words = {};
@@ -69,12 +68,12 @@ const screen = (text) => {
   }
   return undefined;
 };
-const lines = fs.readFileSync(path.join(input, 'meta.jsonl'), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
+if (fs.existsSync(path.join(input, 'units.json'))) for (const u of JSON.parse(fs.readFileSync(path.join(input, 'units.json'), 'utf8'))) if (u.k.startsWith('archive.org/') && !archiveText.has(u.k.slice(12))) archiveText.set(u.k.slice(12), [u.desc, u.subj, u.col].join(' '));
+const lines = fs.readdirSync(input).filter(f => /^meta(-new-\d+)?\.jsonl$/.test(f)).flatMap(f => fs.readFileSync(path.join(input, f), 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l)));
 const items = [];
 const unlicensed = [];
 const borderline = [];
-const stats = { archiveItems: 0, dropped: {}, bySource: {}, byTheme: {} };
-const count = (bucket, key) => { bucket[key] = (bucket[key] || 0) + 1; };
+
 
 const seenIds = new Set();
 for (const m of lines) {
@@ -103,7 +102,7 @@ for (const m of lines) {
   }));
   const long = records.filter(r => r.dur >= 1200 && r.dur <= 3660);
   if (multi && long.length >= 2) long.forEach(r => { r.series = m.title.replace(/\s+/g, ' ').trim(); });
-  for (const r of records) if (!r.series && r.dur >= 1200 && r.dur <= 3660) r.series = ANTHOLOGIES[theme] || ANTHOLOGIES.pd;
+  for (const r of records) if (!r.series && r.dur >= 1200 && r.dur <= 3660) r.series = anthologyOf(m.title + ' ' + m.tags.join(' '), theme);
   if (!m.rights) { unlicensed.push(...records); continue; }
   const category = screen(m.title + ' ' + m.tags.join(' ') + ' ' + (archiveText.get(m.id) || ''));
   if (category || m.warn || WARN.test(m.title)) {
@@ -113,16 +112,19 @@ for (const m of lines) {
     continue;
   }
   if (deny(m.title + ' ' + m.tags.join(' ') + ' ' + m.col.join(' ') + ' ' + (archiveText.get(m.id) || ''), m.title, downloads.get(m.id) || 0)) { borderline.push(...records.map(r => ({ title: r.title, url: r.url, why: 'deny genre' }))); continue; }
-  if (!archiveText.get(m.id)) unjudged.push(...records.map(r => ({ title: r.title, url: r.url, why: 'no description or subjects fetched' })));
+  if (!archiveText.get(m.id) && !m.curated) unjudged.push(...records.map(r => ({ title: r.title, url: r.url, why: 'no description or subjects fetched' })));
+  const verdict = scoreGate('archive.org/' + m.id);
+  if (!verdict) continue;
+  for (const r of records) { r.score = verdict.s; if (verdict.why) r.why = verdict.why; }
   items.push(...records);
   for (const r of records) { count(stats.bySource, 'archive.org'); count(stats.byTheme, theme); }
 }
 
-const commonsDir = path.join(input, 'disc');
+const commonsFiles = ['disc', 'disc2'].flatMap(dir => (fs.existsSync(path.join(input, dir)) ? fs.readdirSync(path.join(input, dir)).filter(f => /^c2?-/.test(f)).map(f => path.join(input, dir, f)) : []));
 const commonsSeen = new Set();
 let commonsPages = 0;
-for (const file of fs.readdirSync(commonsDir).filter(f => f.startsWith('c-'))) {
-  for (const page of JSON.parse(fs.readFileSync(path.join(commonsDir, file), 'utf8')).pages) {
+for (const file of commonsFiles) {
+  for (const page of JSON.parse(fs.readFileSync(file, 'utf8')).pages) {
     const info = (page.imageinfo || [])[0];
     if (!info || commonsSeen.has(page.title)) continue;
     commonsSeen.add(page.title);
@@ -135,15 +137,20 @@ for (const file of fs.readdirSync(commonsDir).filter(f => f.startsWith('c-'))) {
       url: info.url.split('?')[0], dur: Math.round(info.duration), tags: [], rights: 'commons:' + license, theme: 'commons', source: 'commons.wikimedia.org',
     };
     if (!FREE_LICENSE.test(license)) { unlicensed.push(record); continue; }
-    const commonsCategory = screen(title + ' ' + (commonsText.get(page.title) || ''));
+    const commonsBody = commonsText.get(page.title) || (((info.extmetadata || {}).ImageDescription || {}).value || '') + ' ' + (page.categories || []).map(c => c.title).join(' ');
+    const commonsCategory = screen(title + ' ' + commonsBody);
     if (commonsCategory || WARN.test(title)) {
       const why = commonsCategory || 'title keyword';
       screened[why] = (screened[why] || 0) + 1;
       borderline.push({ title, url: record.url, why });
       continue;
     }
-    if (deny(title + ' ' + (commonsText.get(page.title) || ''), title, 0)) { borderline.push({ title, url: record.url, why: 'deny genre' }); continue; }
-    if (!commonsText.get(page.title)) unjudged.push({ title, url: record.url, why: 'no description fetched' });
+    if (deny(title + ' ' + commonsBody, title, 0)) { borderline.push({ title, url: record.url, why: 'deny genre' }); continue; }
+    if (!commonsBody.trim()) unjudged.push({ title, url: record.url, why: 'no description fetched' });
+    const commonsVerdict = scoreGate('commons:' + decodeURIComponent(info.url.split('?')[0].split('/').pop()));
+    if (!commonsVerdict) continue;
+    record.score = commonsVerdict.s;
+    if (commonsVerdict.why) record.why = commonsVerdict.why;
     items.push(record);
     count(stats.bySource, 'commons');
     count(stats.byTheme, 'commons');
@@ -154,12 +161,15 @@ const byUrl = new Map();
 for (const item of items) if (!byUrl.has(item.url)) byUrl.set(item.url, item);
 const FAMILY_CAP = 10;
 const families = new Map();
-const capped = [...byUrl.values()].filter(item => {
+const capped = [...byUrl.values()].filter(item => !deny(item.episode + ' ' + item.series, item.title, 0)).filter(item => !screen(item.episode + ' ' + item.series + ' ' + item.title)).filter(item => {
   const family = item.title.toLowerCase().replace(/[-_ .\d]+$/, '');
   families.set(family, (families.get(family) || 0) + 1);
   return families.get(family) <= FAMILY_CAP;
 });
-const pool = { generated: new Date().toISOString().slice(0, 10), checked: null, dead: [], items: capped.sort((a, b) => (a.url < b.url ? -1 : 1)) };
+const catalog = JSON.parse(fs.readFileSync(path.join(root, 'schedule.json'), 'utf8'));
+const catalogDenied = entry => Object.entries(DENY).some(([name, re]) => name !== 'bland-compilation' && re.test(entry.title)) || Object.values(CATEGORIES).some(re => re.test(entry.title));
+const offAir = [...new Set(catalog.filter(entry => entry.url && catalogDenied(entry)).map(entry => entry.url))];
+const pool = { generated: new Date().toISOString().slice(0, 10), checked: null, dead: [], offAir, items: capped.sort((a, b) => (a.url < b.url ? -1 : 1)) };
 fs.writeFileSync(path.join(root, 'lib/pool.json'), JSON.stringify(pool));
 fs.writeFileSync(path.join(root, 'tv/pool-unlicensed.json'), JSON.stringify({ note: 'not on air: rights unknown, awaiting owner decision', items: unlicensed }));
 fs.writeFileSync(path.join(root, 'tv/pool-borderline.json'), JSON.stringify({ note: 'not on air: borderline content, awaiting owner decision', items: borderline }));
