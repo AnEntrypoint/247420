@@ -30,6 +30,29 @@ const CATEGORIES = {
 };
 const FREE_LICENSE = /^(CC|Public domain|PD|GFDL|FAL|Attribution)/i;
 
+const DENY = {
+  religion: /\bpray(er|ers|ing)?\b|mosque|church|sermon|\bmass\b|quran|koran|bible|hymn|gospel|ramadan|\bimam\b|pastor|worship|christian|islamic|jesus|\bgod\b|sunday school|evangeli|ministry|catholic|synagogue|buddhis[tm]|scripture|\bchrist\b|\bfaith\b|\bmuslim|\bmissionar/i,
+  'news-politics': /\bnews\b|election|\bspeech\b|press conference|parliament|\brally\b|\bpresident|\bsenate\b|congress|\bcampaign\b|politic|government|\bminister\b|protest|newsreel|broadcast of/i,
+  'lectures-talks': /\blectures?\b|\btalks?\b|\bpanel\b|seminar|symposium|keynote|webinar|tutorial|\bcourses?\b|colloquium|opencourseware|commencement|\bclass\b|\blesson\b|how to\b/i,
+  conference: /conference|\bsummit\b|convention|workshop|proceedings|\bfestival\b/i,
+  interview: /interview|\bq&a\b|in conversation|podcast|\bdiscussion\b/i,
+  'local-event': /ceremony|\bparade\b|graduation|wedding|funeral|memorial|town hall|council|dedication|commemorat|\bconcert\b|recital/i,
+  travelogue: /travelogue|\btravel\b|tour of|trip to|walking tour|city tour|vacation|holiday in|journey through|sightseeing|\bvisiting\b/i,
+  'military-war': /\bwar\b|wwii|world war|military|\barmy\b|\bnavy\b|soldiers?\b|\bbattle\b|troops|combat|veterans?\b|air force|marines|weapons?\b|missile|pentagon|armed forces|\bnato\b/i,
+  medical: /surg(ery|ical)|\bpatients?\b|medical|hospital|anatomy|clinical|disease|therapy|dental|cancer|\bnurse|physician|health care/i,
+  courtroom: /courtroom|\btrial\b|\bjudge\b|testimony|\bhearing\b|lawsuit|supreme court/i,
+  'home-video': /home movies?|family video|birthday party|\bbaby\b|camcorder|vlog|day in the life|family reunion|christmas morning|amateur film/i,
+  sports: /\bmatch\b|football|soccer|basketball|baseball|hockey|tennis|\bgolf\b|olympic|\bnfl\b|\bnba\b|championship|super bowl|world cup|\bleague\b/i,
+  'bland-compilation': /compilation|\bcollection\b|\bvarious\b|\bmisc\b|untitled|unlisted|all animated movies|best movies ever|full series|complete series|\bseason \d+\b|archive of|\bepisodes?\b/i,
+};
+const denied = {};
+const deniedItems = [];
+const deny = (text, title, dl) => {
+  for (const name of Object.keys(DENY)) if (DENY[name].test(text)) { denied[name] = (denied[name] || 0) + 1; deniedItems.push({ title, dl, why: name }); return name; }
+  return undefined;
+};
+const downloads = new Map();
+if (fs.existsSync(path.join(input, 'candidates.json'))) for (const c of JSON.parse(fs.readFileSync(path.join(input, 'candidates.json'), 'utf8'))) downloads.set(c.id, c.dl || 0);
 const archiveText = new Map();
 const commonsText = new Map();
 for (const file of fs.readdirSync(input)) {
@@ -89,6 +112,7 @@ for (const m of lines) {
     borderline.push(...records.map(r => ({ title: r.title, url: r.url, why })));
     continue;
   }
+  if (deny(m.title + ' ' + m.tags.join(' ') + ' ' + m.col.join(' ') + ' ' + (archiveText.get(m.id) || ''), m.title, downloads.get(m.id) || 0)) { borderline.push(...records.map(r => ({ title: r.title, url: r.url, why: 'deny genre' }))); continue; }
   if (!archiveText.get(m.id)) unjudged.push(...records.map(r => ({ title: r.title, url: r.url, why: 'no description or subjects fetched' })));
   items.push(...records);
   for (const r of records) { count(stats.bySource, 'archive.org'); count(stats.byTheme, theme); }
@@ -118,6 +142,7 @@ for (const file of fs.readdirSync(commonsDir).filter(f => f.startsWith('c-'))) {
       borderline.push({ title, url: record.url, why });
       continue;
     }
+    if (deny(title + ' ' + (commonsText.get(page.title) || ''), title, 0)) { borderline.push({ title, url: record.url, why: 'deny genre' }); continue; }
     if (!commonsText.get(page.title)) unjudged.push({ title, url: record.url, why: 'no description fetched' });
     items.push(record);
     count(stats.bySource, 'commons');
@@ -139,4 +164,7 @@ fs.writeFileSync(path.join(root, 'lib/pool.json'), JSON.stringify(pool));
 fs.writeFileSync(path.join(root, 'tv/pool-unlicensed.json'), JSON.stringify({ note: 'not on air: rights unknown, awaiting owner decision', items: unlicensed }));
 fs.writeFileSync(path.join(root, 'tv/pool-borderline.json'), JSON.stringify({ note: 'not on air: borderline content, awaiting owner decision', items: borderline }));
 fs.writeFileSync(path.join(root, 'tv/pool-unjudged.json'), JSON.stringify({ note: 'on air judged by title only, no description available', items: unjudged }));
+console.log('deny categories', JSON.stringify(denied));
+console.log('25 highest-download items removed by the deny filter:');
+for (const item of deniedItems.sort((a, b) => b.dl - a.dl).slice(0, 25)) console.log('  ' + item.dl + ' ' + item.why + ' | ' + item.title.slice(0, 70));
 console.log(JSON.stringify({ matchedWords: Object.entries(words).sort((a, b) => b[1] - a[1]).slice(0, 25), screened, unjudged: unjudged.length, onAir: pool.items.length, unlicensed: unlicensed.length, borderline: borderline.length, commonsPages, ...stats }, null, 1));
